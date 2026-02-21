@@ -1,7 +1,14 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+
 function App() {
 	return (
 		<>
-			<img className="ml-20 mt-15 scale-200" src="/logo.svg" />
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Home />} />
+				</Routes>
+			</BrowserRouter>
 		</>
 	);
 }
