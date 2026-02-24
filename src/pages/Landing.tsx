@@ -1,6 +1,7 @@
 import Card from "@/components/Card";
 import Footer from "@/components/Footer";
 import { GridScan } from "@/components/GridScan";
+import Navbar from "@/components/Navbar";
 
 const Landing = () => {
 	return (
@@ -30,7 +31,14 @@ const Landing = () => {
 					scanOnClick={false}
 				/>
 			</div>
-			<Card index={1} title="Learn Python" description="Hey hey hey. Learn Python with us the fun way" button="Learn More" text={"Module"} />
+			<Navbar />
+
+			<Card
+				index={1}
+				title="Learn Python"
+				description="Hey hey hey. Learn Python with us the fun way"
+				text={"Module"}
+			/>
 
 			<Footer />
 		</>

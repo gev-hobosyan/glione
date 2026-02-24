@@ -11,7 +11,7 @@
 html,
 body {
 	background-color: #101010;
-	overflow-x:hidden;
+	overflow-x: hidden;
 }
 
 * {
@@ -38,7 +38,6 @@ body {
 	--color-popover: var(--popover);
 	--color-popover-foreground: var(--popover-foreground);
 	--color-primary-foreground: var(--primary-foreground);
-	--color-secondary: var(--secondary);
 	--color-secondary-foreground: var(--secondary-foreground);
 	--color-muted: var(--muted);
 	--color-muted-foreground: var(--muted-foreground);
