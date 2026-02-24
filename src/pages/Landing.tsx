@@ -1,4 +1,5 @@
 import { GridScan } from "@/components/GridScan";
+import Navbar from "@/components/Navbar";
 
 const Landing = () => {
 	return (
@@ -28,6 +29,8 @@ const Landing = () => {
 					scanOnClick={false}
 				/>
 			</div>
+
+			<Navbar />
 		</>
 	);
 };
