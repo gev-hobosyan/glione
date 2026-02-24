@@ -1,5 +1,5 @@
+import Footer from "@/components/Footer";
 import { GridScan } from "@/components/GridScan";
-import Navbar from "@/components/Navbar";
 
 const Landing = () => {
 	return (
@@ -30,7 +30,7 @@ const Landing = () => {
 				/>
 			</div>
 
-			<Navbar />
+			<Footer />
 		</>
 	);
 };
