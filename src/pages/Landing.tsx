@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import { GridScan } from "@/components/GridScan";
 
 const Landing = () => {
@@ -28,6 +29,7 @@ const Landing = () => {
 					scanOnClick={false}
 				/>
 			</div>
+			<Footer/>
 		</>
 	);
 };
