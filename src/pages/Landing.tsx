@@ -1,3 +1,4 @@
+import Card from "@/components/Card";
 import Footer from "@/components/Footer";
 import { GridScan } from "@/components/GridScan";
 
@@ -29,7 +30,9 @@ const Landing = () => {
 					scanOnClick={false}
 				/>
 			</div>
-			<Footer/>
+			<Card index={1} title="Learn Python" description="Hey hey hey. Learn Python with us the fun way" button="Learn More" text={"Module"} />
+
+			<Footer />
 		</>
 	);
 };
