@@ -10,7 +10,7 @@ interface Props {
 const Card = ({ title, description, index, text }: Props) => {
 	return (
 		<>
-			<div className="w-82 rounded-2xl border border-white/5 mx-10 my-10 px-10 py-5 hover:-translate-y-3 transition-all duration-300">
+			<div className="w-82 rounded-2xl border border-white/5 px-10 py-5 hover:-translate-y-3 transition-all duration-300">
 				<p className="text-secondary text-[10px]">
 					{index >= 10 ? index : `0${index}`} / {text}
 				</p>

@@ -33,12 +33,32 @@ const Landing = () => {
 			</div>
 			<Navbar />
 
+			<div className="flex gap-6 mx-10 my-10 items-center justify-between">
 			<Card
 				index={1}
 				title="Learn Python"
 				description="Hey hey hey. Learn Python with us the fun way"
 				text={"Module"}
 			/>
+			<Card
+				index={2}
+				title="Games with Python"
+				description="Create games using Python"
+				text={"Module"}
+			/>
+			<Card
+				index={3}
+				title="Programming with Python"
+				description="Create apps using Python"
+				text={"Module"}
+			/>
+			<Card
+				index={4}
+				title="Python"
+				description="Create games using Python"
+				text={"Module"}
+			/>
+			</div>
 
 			<Footer />
 		</>
