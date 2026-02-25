@@ -33,12 +33,38 @@ const Landing = () => {
 			</div>
 			<Navbar />
 
-			<Card
+			{/* <Card
 				index={1}
 				title="Learn Python"
 				description="Hey hey hey. Learn Python with us the fun way"
 				text={"Module"}
-			/>
+			/> */}
+			<Card
+  firstCard={{
+    index: 1,
+    text: "Module",
+    title: "Python Quick Game",
+    description: "Practice concepts through quick challenges.",
+  }}
+  secondCard={{
+    index: 2,
+    text: "Module",
+    title: "Learn Python",
+    description: "Hey hey hey. Learn Python with us the fun way.",
+  }}
+  thirdCard={{
+	index: 3,
+	text: "Module",
+	title: "Python Programming",
+	description: "Python is a programming language used for game creation.",
+  }}
+  fourthCard={{
+	index: 4,
+	text: "Module",
+	title: "Python Development",
+	description: "Experienced in building applications using Python.",
+  }}
+/>
 
 			<Footer />
 		</>
