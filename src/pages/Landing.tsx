@@ -12,26 +12,9 @@ const Landing = () => {
 					width: window.innerWidth,
 					height: window.innerHeight,
 					position: "relative",
+					backgroundColor: "black",
 				}}
-			>
-				<GridScan
-					sensitivity={0.55}
-					lineThickness={1}
-					linesColor="#006E2A"
-					scanColor="#56AD2D"
-					scanOpacity={0.4}
-					gridScale={0.1}
-					lineStyle="solid"
-					lineJitter={0.2}
-					scanDirection="pingpong"
-					noiseIntensity={0.01}
-					scanGlow={0.6}
-					scanSoftness={2.5}
-					scanDuration={2.5}
-					scanDelay={0.5}
-					scanOnClick={false}
-				/>
-			</div>
+			></div>
 			<Navbar />
 
 			<div className="flex gap-6 mx-10 my-10 items-center justify-between">
@@ -71,7 +54,7 @@ const Landing = () => {
 						"Interactive coding exercises",
 						"Community support",
 						"10 practice challanges",
-						"Progress tracking"
+						"Progress tracking",
 					]}
 				/>
 
@@ -84,7 +67,7 @@ const Landing = () => {
 						"Full access to all courses",
 						"Real-world Python projects",
 						"Unlimited practice challanges",
-						"Priority support"
+						"Priority support",
 					]}
 				/>
 
@@ -97,7 +80,7 @@ const Landing = () => {
 						"Career-focused learning tracks",
 						"1-on-1 mentor sessions",
 						"Portfolio review",
-						"Advanced topics (AI, Web, Automation)"
+						"Advanced topics (AI, Web, Automation)",
 					]}
 				/>
 			</div>
