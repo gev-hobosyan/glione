@@ -1,6 +1,5 @@
 import Card from "@/components/Card";
 import Footer from "@/components/Footer";
-import { GridScan } from "@/components/GridScan";
 import Navbar from "@/components/Navbar";
 import PriceCard from "@/components/PriceCard";
 
