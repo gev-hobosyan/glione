@@ -6,17 +6,10 @@ import PriceCard from "@/components/PriceCard";
 const Landing = () => {
 	return (
 		<>
-			<div
-				style={{
-					width: window.innerWidth,
-					height: window.innerHeight,
-					position: "relative",
-					backgroundColor: "black",
-				}}
-			></div>
+			<div className="relative w-screen h-screen bg-black"></div>
 			<Navbar />
 
-			<div className="flex gap-6 mx-10 my-10 items-center justify-between">
+			<div className="flex gap-6 mx-10 my-10 items-center justify-between sm:max-xl:justify-center max-xl:flex-wrap">
 				<Card
 					index={1}
 					title="Learn Python"
@@ -43,7 +36,7 @@ const Landing = () => {
 				/>
 			</div>
 
-			<div className="flex gap-6 mx-10 my-10 items-center justify-between">
+			<div className="flex gap-6 mx-10 my-10 items-center justify-center max-xl:flex-wrap">
 				<PriceCard
 					title="Starter"
 					description="Perfect for beginners who want to explore Python fundamentals at their own pace."

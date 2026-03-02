@@ -4,7 +4,7 @@ import PrimaryButton from "./PrimaryButton";
 
 const Navbar = () => {
 	return (
-		<div className="flex justify-between items-center w-screen pt-5 px-7 fixed top-0">
+		<div className="flex justify-between items-center w-screen px-7 fixed top-5 z-50">
 			<img src="/logo.svg" />
 			<div className="flex justify-center items-center gap-5">
 				<NavbarElement isActive={true} href="#home">

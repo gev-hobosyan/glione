@@ -12,7 +12,7 @@ const Card = ({ title, description, index, text }: Props) => {
 	return (
 		<>
 			<div
-				className={`card-wrapper w-90 h-45 hover:-translate-y-3 transition-all duration-300`}
+				className={`card-wrapper w-85 h-45 hover:-translate-y-3 transition-all duration-300 z-0`}
 			>
 				<div className="card-content w-82 rounded-2xl border border-white/5 px-10 py-5 flex flex-col justify-center">
 					<p className="text-secondary text-[10px]">
