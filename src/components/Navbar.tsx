@@ -17,8 +17,8 @@ const Navbar = () => {
 					Home
 				</NavbarElement>
 				<NavbarElement href="#about">About</NavbarElement>
-				<NavbarElement href="#cources">Courses</NavbarElement>
-				<NavbarElement href="#contact">Contact Us</NavbarElement>
+				<NavbarElement href="#courses">Courses</NavbarElement>
+				<NavbarElement href="#pricing">Pricing</NavbarElement>
 			</div>
 		</div>
 	);
