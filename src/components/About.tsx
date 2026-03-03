@@ -8,7 +8,7 @@ const About = () => {
                 <p className="mt-3">Play. Experiment. Built.</p>
                 <p>Welcome to a smarter (and way more fun) way to learn Python</p>
             </div>
-            <div className="w-1/2 "></div>
+            <div className="w-1/2"></div>
         </div>
 
     )

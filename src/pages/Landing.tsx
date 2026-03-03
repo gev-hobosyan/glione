@@ -8,6 +8,12 @@ import PriceCard from "@/components/PriceCard";
 const Landing = () => {
 	return (
 		<>
+			<img
+				src="/medusa.png"
+				width="100px"
+				className="fixed z-50 bottom-10 right-10 bg-primary/30 backdrop-blur-2xl rounded-full border border-primary"
+			/>
+
 			<div className="relative bg-black w-screen h-screen flex flex-col items-center justify-center">
 				<BlurCircle z="z-10" />
 				<BlurCircle z="z-10" left="50px" top="15px" />
