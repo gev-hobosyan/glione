@@ -52,6 +52,8 @@ body {
 @theme {
 	--color-primary: #006e2a;
 	--color-secondary: #56ad2d;
+	--shadow-effective: 0 0 45px #006e2a;
+	--shadow-input: 0 0 10px #56ad2d;
 }
 
 @theme inline {
