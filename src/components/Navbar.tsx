@@ -8,7 +8,7 @@ const Navbar = () => {
 			<div className="flex justify-between items-center w-screen px-7 fixed top-7 z-50">
 				<img src="/logo.svg" />
 				<div className="flex items-center gap-5">
-					<Link name="Sign in" to="/" />
+					<Link name="Sign in" to="/login" />
 					<PrimaryButton name="Get Started" />
 				</div>
 			</div>
