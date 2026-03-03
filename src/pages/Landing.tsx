@@ -1,4 +1,5 @@
 import BlurCircle from "@/components/BlurCircle";
+import About from "@/components/About";
 import Card from "@/components/Card";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -20,6 +21,8 @@ const Landing = () => {
 				</p>
 			</div>
 			<Navbar />
+
+			<About />
 
 			<div
 				className="flex gap-6 mx-10 my-10 items-center justify-between max-xl:flex-wrap max-xl:justify-center"
