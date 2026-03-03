@@ -1,3 +1,4 @@
+import BlurCircle from "@/components/BlurCircle";
 import Card from "@/components/Card";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -6,7 +7,18 @@ import PriceCard from "@/components/PriceCard";
 const Landing = () => {
 	return (
 		<>
-			<div className="relative bg-black w-screen h-screen"></div>
+			<div className="relative bg-black w-screen h-screen flex flex-col items-center justify-center">
+				<BlurCircle z="z-10" />
+				<BlurCircle z="z-10" left="50px" top="15px" />
+				<BlurCircle z="z-10" right="20px" bottom="-6px" />
+				<BlurCircle z="z-10" right="60px" top="30px" />
+				<BlurCircle z="z-10" left="120px" bottom="45px" />
+				<img src="/medusa.png" width="300px" className="" />
+				<p className="text-white text-2xl absolute top-[calc(50%+130px)] text-center">
+					Welcome Adventurer!! <br />
+					I've been waiting for you
+				</p>
+			</div>
 			<Navbar />
 
 			<div
