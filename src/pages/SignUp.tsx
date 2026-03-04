@@ -1,13 +1,14 @@
 import Input from "@/components/Input";
 import LoginOptions from "@/components/LoginOptions";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
 	return (
 		<div className="h-screen w-screen overflow-hidden flex items-center justify-center">
 			<div className="flex flex-col items-center justify-center h-screen w-[50%] border-r border-r-gray-500 rounded-2xl">
-				<img src="/icon.svg" className="w-20 h-20" />
-				<p className="text-white text-2xl mb-20">Create an Account!</p>
+				<img src="/icon.svg" className="w-20 h-20 mb-1" />
+				<p className="text-white text-2xl mb-7">Create an Account!</p>
 				<form className="flex flex-col gap-3">
 					<Input id="email" type="email">
 						Email
@@ -25,6 +26,14 @@ const SignUp = () => {
 					></input>
 				</form>
 				<LoginOptions />
+				<div className="mt-10 flex items-center justify-center gap-1.5 text-[14px]">
+					<p className="text-white">
+						Already have an account?
+					</p>
+					<Link className="text-secondary" to="/login">
+						Log In
+					</Link>
+				</div>
 			</div>
 			<div className="h-screen w-[50%]"></div>
 		</div>
