@@ -1,4 +1,5 @@
 import Input from "@/components/Input";
+import LoginOptions from "@/components/LoginOptions";
 import React from "react";
 
 const SignUp = () => {
@@ -14,15 +15,16 @@ const SignUp = () => {
 					<Input id="password" type="password">
 						Password
 					</Input>
-					<Input id="password" type="password">
+					<Input id="confpassword" type="password">
 						Confirm Password
 					</Input>
 					<input
 						type="submit"
-						className="bg-primary text-white rounded-xl w-70 flex py-2.5 flex-col mt-4"
+						className="bg-primary text-white rounded-xl w-70 flex py-2.5 flex-col mt-4 cursor-pointer hover:scale-105 transition-all duration-300"
 						value="Sign Up"
 					></input>
 				</form>
+				<LoginOptions />
 			</div>
 			<div className="h-screen w-[50%]"></div>
 		</div>
