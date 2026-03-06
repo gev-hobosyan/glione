@@ -27,7 +27,7 @@ const PriceCard = ({
 				<p className="text-gray-500 mt-3 text-[12px]">{description}</p>
 				<p className="text-white mt-5 text-[20px] mb-5">{price}</p>
 				{!active ? (
-					<PrimaryButton name="Continue" />
+					<PrimaryButton>Continue</PrimaryButton>
 				) : (
 					<SecondaryButton>Your current plan</SecondaryButton>
 				)}
