@@ -1,4 +1,5 @@
-import Link from "../components/Link";
+import { Link as DOMLink } from "react-router-dom";
+import Link from "./Link";
 import NavbarElement from "./NavbarElement";
 import PrimaryButton from "./PrimaryButton";
 
@@ -9,7 +10,9 @@ const Navbar = () => {
 				<img src="/logo.svg" />
 				<div className="flex items-center gap-5">
 					<Link name="Sign in" to="/login" />
-					<PrimaryButton name="Get Started" />
+					<PrimaryButton>
+						<DOMLink to="/signup">Get Started</DOMLink>
+					</PrimaryButton>
 				</div>
 			</div>
 			<div className="flex justify-center items-center gap-5 bg-white/20 backdrop-blur-xs border border-white/50 rounded-full px-20 py-3 fixed top-7 z-50 max-xl:hidden">

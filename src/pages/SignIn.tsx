@@ -1,15 +1,28 @@
-import { ArrowLeft, Check, CheckCircle, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 import Input from "@/components/Input";
-import React from "react";
 import LoginOptions from "@/components/LoginOptions";
 import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { SupabaseContext } from "@/App";
 
 const SignIn = () => {
+	const supabase = useContext(SupabaseContext);
+
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
+	const signIn = async () => {
+		const { data, error } = await supabase.auth.signInWithPassword({
+			email,
+			password,
+		});
+
+		console.log(data);
+		console.log(error);
+	};
+
 	return (
 		<div className="h-screen w-screen overflow-hidden flex items-center justify-center">
-			{
-				// Not the final version. Might be removed
-			}
 			<Link to="/">
 				<ArrowLeft className="stroke-secondary fixed top-7 left-7 w-8 hover:scale-110 transition-all duration-300" />
 			</Link>
@@ -17,11 +30,16 @@ const SignIn = () => {
 			<div className="flex flex-col items-center justify-center h-screen w-[50%] border-r border-r-gray-500 rounded-2xl">
 				<img src="/icon.svg" className="w-20 h-20 mb-1" />
 				<p className="text-white text-2xl mb-7">Welcome Back!</p>
-				<form className="flex flex-col gap-3">
-					<Input id="email" type="email">
+				<form className="flex flex-col gap-3" action={signIn}>
+					<Input id="email" type="email" value={email} setValue={setEmail}>
 						Email
 					</Input>
-					<Input id="password" type="password">
+					<Input
+						id="password"
+						type="password"
+						value={password}
+						setValue={setPassword}
+					>
 						Password
 					</Input>
 					<input
