@@ -2,6 +2,7 @@ import { SupabaseContext } from "@/App";
 import { useContext, useEffect, useState } from "react";
 import Landing from "./Landing";
 import type { JwtPayload } from "@supabase/supabase-js";
+import NavbarMain from "@/components/NavbarMain"
 
 const Home = () => {
 	const [claims, setClaims] = useState<JwtPayload | undefined>(undefined);
@@ -36,10 +37,7 @@ const Home = () => {
 				<Landing></Landing>
 			) : (
 				<>
-					<p className="text-white">Hello {claims.email}</p>
-					<button onClick={logOut} className="text-white">
-						Log out
-					</button>
+					<NavbarMain />
 				</>
 			)}
 		</>
