@@ -21,6 +21,12 @@ const SignIn = () => {
 		console.log(error);
 	};
 
+	const googleSignIn = () => {
+		supabase.auth.signInWithOAuth({
+			provider: "google",
+		});
+	};
+
 	return (
 		<div className="h-screen w-screen overflow-hidden flex items-center justify-center">
 			<Link to="/">
@@ -48,7 +54,7 @@ const SignIn = () => {
 						value="Log in"
 					></input>
 				</form>
-				<LoginOptions />
+				<LoginOptions signIn={googleSignIn} />
 				<div className="mt-10 flex items-center justify-center gap-1.5 text-[14px]">
 					<p className="text-white">Don't have an account?</p>
 					<Link className="text-secondary" to="/signup">
