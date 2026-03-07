@@ -37,6 +37,7 @@ const NavbarMain = ({ logOut, claims }: Props) => {
 						width={"40px"}
 						className="rounded-full"
 						onClick={logOut}
+						referrerPolicy="no-referrer"
 					/>
 				) : (
 					<CircleUserRoundIcon color="#fff" width={"36px"} />
