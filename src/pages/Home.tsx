@@ -3,9 +3,12 @@ import { useContext, useEffect, useState } from "react";
 import Landing from "./Landing";
 import type { JwtPayload } from "@supabase/supabase-js";
 import NavbarMain from "@/components/NavbarMain";
+import CodeEditor from "@/components/CodeEditor";
 
 const Home = () => {
 	const [claims, setClaims] = useState<JwtPayload | undefined>(undefined);
+
+	const [value, setValue] = useState("");
 
 	const supabase = useContext(SupabaseContext);
 
@@ -38,6 +41,10 @@ const Home = () => {
 			) : (
 				<>
 					<NavbarMain logOut={logOut} claims={claims} />
+
+					<div className="h-screen w-screen flex items-center justify-center">
+						<CodeEditor value={value} setValue={setValue} />
+					</div>
 				</>
 			)}
 		</>
