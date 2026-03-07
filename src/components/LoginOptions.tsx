@@ -1,4 +1,8 @@
-const LoginOptions = () => {
+interface Props {
+	signIn: () => void;
+}
+
+const LoginOptions = ({ signIn }: Props) => {
 	return (
 		<>
 			<div className="mt-4 flex items-center justify-center w-60">
@@ -7,7 +11,10 @@ const LoginOptions = () => {
 				<div className="bg-gray-500 h-[1.5px] w-full"></div>
 			</div>
 			<div className="mt-5">
-				<div className="text-white text-[16px] flex items-center justify-center gap-2 border border-white rounded-xl px-10 py-2.5 cursor-pointer hover:scale-105 transition-all duration-300">
+				<div
+					className="text-white text-[16px] flex items-center justify-center gap-2 border border-white rounded-xl px-10 py-2.5 cursor-pointer hover:scale-105 transition-all duration-300"
+					onClick={signIn}
+				>
 					Log in with <img src="/google.png" className="w-5" />
 				</div>
 			</div>
