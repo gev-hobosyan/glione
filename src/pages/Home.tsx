@@ -8,8 +8,6 @@ import CodeEditor from "@/components/CodeEditor";
 const Home = () => {
 	const [claims, setClaims] = useState<JwtPayload | undefined>(undefined);
 
-	const [value, setValue] = useState("");
-
 	const supabase = useContext(SupabaseContext);
 
 	useEffect(() => {
@@ -27,7 +25,7 @@ const Home = () => {
 
 		return () => subscription.unsubscribe();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [supabase]);
 
 	const logOut = async () => {
 		await supabase.auth.signOut();
@@ -43,7 +41,7 @@ const Home = () => {
 					<NavbarMain logOut={logOut} claims={claims} />
 
 					<div className="h-screen w-screen flex items-center justify-center">
-						<CodeEditor value={value} setValue={setValue} />
+						<CodeEditor />
 					</div>
 				</>
 			)}
