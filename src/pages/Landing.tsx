@@ -48,6 +48,7 @@ const Landing = () => {
 						"10 practice challanges",
 						"Progress tracking",
 					]}
+					active={true}
 				/>
 
 				<PriceCard
@@ -61,6 +62,7 @@ const Landing = () => {
 						"Unlimited practice challanges",
 						"Priority support",
 					]}
+					effective={true}
 				/>
 
 				<PriceCard
