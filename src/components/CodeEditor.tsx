@@ -1,6 +1,6 @@
 import Editor, { useMonaco } from "@monaco-editor/react";
-import { useEffect, useState, type Dispatch } from "react";
-import { Pyodide } from "../lib/pyodide.js";
+import { useEffect, useState } from "react";
+import { Pyodide } from "../lib/pyodide.ts";
 import { PlayIcon } from "lucide-react";
 
 /**
@@ -70,6 +70,10 @@ print(player.coins)`);
 					fontSize: 18,
 					fontFamily: "JetBrains Mono",
 					fontLigatures: true,
+					scrollBeyondLastLine: false,
+					minimap: {
+						enabled: false,
+					},
 					bracketPairColorization: {
 						enabled: false,
 					},
