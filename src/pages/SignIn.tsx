@@ -1,7 +1,7 @@
 import { ArrowLeft, Check } from "lucide-react";
 import Input from "@/components/Input";
 import LoginOptions from "@/components/LoginOptions";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import { useContext, useState } from "react";
 import { SupabaseContext } from "@/App";
 
@@ -16,9 +16,8 @@ const SignIn = () => {
 			email,
 			password,
 		});
-
-		console.log(data);
-		console.log(error);
+		
+		redirect("/");
 	};
 
 	const googleSignIn = () => {
