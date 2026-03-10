@@ -1,13 +1,11 @@
-import { SupabaseContext } from "@/App";
 import Input from "@/components/Input";
 import LoginOptions from "@/components/LoginOptions";
+import { supabase } from "@/utils/supabaseClient";
 import type { AuthError } from "@supabase/supabase-js";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-	const supabase = useContext(SupabaseContext);
-
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confPassword, setConfPassword] = useState("");

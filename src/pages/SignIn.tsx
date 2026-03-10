@@ -3,11 +3,9 @@ import Input from "@/components/Input";
 import LoginOptions from "@/components/LoginOptions";
 import { Link, redirect } from "react-router-dom";
 import { useContext, useState } from "react";
-import { SupabaseContext } from "@/App";
+import { supabase } from "@/utils/supabaseClient";
 
 const SignIn = () => {
-	const supabase = useContext(SupabaseContext);
-
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -16,7 +14,7 @@ const SignIn = () => {
 			email,
 			password,
 		});
-		
+
 		redirect("/");
 	};
 

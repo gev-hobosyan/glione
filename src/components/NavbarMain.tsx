@@ -1,15 +1,16 @@
-import type { JwtPayload } from "@supabase/supabase-js";
+import { UserAuth } from "@/context/AuthContext";
 import { CircleUserRoundIcon, Flame } from "lucide-react";
 import { Worm } from "lucide-react";
 import { Gem } from "lucide-react";
 
 interface Props {
-	claims: JwtPayload | undefined;
 	logOut: () => void;
 }
 
-const NavbarMain = ({ logOut, claims }: Props) => {
-	console.log(claims);
+const NavbarMain = ({ logOut }: Props) => {
+	const { session } = UserAuth();
+	
+	console.log(session);
 
 	return (
 		<div className="flex justify-between border border-white/20 rounded-2xl py-2.5 px-3 fixed top-2 left-2 right-2 bg-transparent backdrop-blur-sm z-50">
@@ -31,16 +32,20 @@ const NavbarMain = ({ logOut, claims }: Props) => {
 					<Gem color="#16e6e9" />
 				</div>
 
-				{claims && claims["user_metadata"] ? (
+				{session["user"]["user_metadata"] ? (
 					<img
-						src={claims["user_metadata"]["avatar_url"]}
+						src={session["user"]["user_metadata"]["avatar_url"]}
 						width={"40px"}
 						className="rounded-full"
 						onClick={logOut}
 						referrerPolicy="no-referrer"
 					/>
 				) : (
-					<CircleUserRoundIcon color="#fff" width={"36px"} />
+					<CircleUserRoundIcon
+						color="#fff"
+						width={"36px"}
+						onClick={logOut}
+					/>
 				)}
 			</div>
 		</div>

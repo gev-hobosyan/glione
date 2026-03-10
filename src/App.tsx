@@ -1,30 +1,34 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createContext } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import Home from "./pages/Home";
+import Landing from "./pages/Landing";
+import { AuthContextProvider } from "./context/AuthContext";
+import ProtectedRoutes from "./utils/ProtectedRoutes";
 
-const supabase = createClient(
-	import.meta.env.VITE_SUPABASE_URL,
-	import.meta.env.VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY,
-);
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const SupabaseContext = createContext<SupabaseClient>(supabase);
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: (
+			<ProtectedRoutes>
+				<Home />
+			</ProtectedRoutes>
+		),
+	},
+	{ path: "/landing", element: <Landing /> },
+	{ path: "/login", element: <SignIn /> },
+	{ path: "/signup", element: <SignUp /> },
+]);
 
 function App() {
 	return (
 		<>
-			<SupabaseContext.Provider value={supabase}>
-				<BrowserRouter>
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/login" element={<SignIn />} />
-						<Route path="/signup" element={<SignUp />} />
-					</Routes>
-				</BrowserRouter>
-			</SupabaseContext.Provider>
+			{/*<SupabaseContext.Provider value={supabase}>
+				<RouterProvider router={router} />
+			</SupabaseContext.Provider>*/}
+			<AuthContextProvider>
+				<RouterProvider router={router} />
+			</AuthContextProvider>
 		</>
 	);
 }
