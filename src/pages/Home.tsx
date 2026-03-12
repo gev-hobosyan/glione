@@ -3,6 +3,7 @@ import type { JwtPayload } from "@supabase/supabase-js";
 import NavbarMain from "@/components/NavbarMain";
 import CodeEditor from "@/components/CodeEditor";
 import { UserAuth } from "@/context/AuthContext";
+import ProfileCard from "@/components/ProfileCard";
 
 const Home = () => {
 	const [claims, setClaims] = useState<JwtPayload | undefined>(undefined);
@@ -37,11 +38,9 @@ const Home = () => {
 	return (
 		<>
 			<>
-				<NavbarMain logOut={signOut} claims={claims} />
-
-				<div className="h-screen w-screen flex items-center justify-center">
-					<CodeEditor />
-				</div>
+				
+				<ProfileCard />
+				
 			</>
 		</>
 	);
