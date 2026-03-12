@@ -8,6 +8,7 @@ import AdminDashboard from "@/components/admin/AdminDashboard";
 import type { Tab } from "@/components/SideBar";
 import SideBar from "@/components/SideBar";
 import AddName from "@/components/AddName";
+import ProfileCard from "@/components/ProfileCard";
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -62,6 +63,9 @@ const Home = () => {
 				<div className="h-screen w-screen flex items-center justify-center">
 					<CodeEditor />
 				</div>*/}
+				
+				<ProfileCard />
+				
 			</>
 		</>
 	);
