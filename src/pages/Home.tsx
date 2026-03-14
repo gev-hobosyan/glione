@@ -1,47 +1,63 @@
-import { useState } from "react";
-import type { JwtPayload } from "@supabase/supabase-js";
-import NavbarMain from "@/components/NavbarMain";
-import CodeEditor from "@/components/CodeEditor";
+import { useRef, useState } from "react";
+// import NavbarMain from "@/components/NavbarMain";
+// import CodeEditor from "@/components/CodeEditor";
 import { UserAuth } from "@/context/AuthContext";
+import { type IRefPhaserGame } from "@/game/PhaserGame";
+import { BookOpenTextIcon, HomeIcon, type LucideProps } from "lucide-react";
+import AdminDashboard from "@/components/admin/AdminDashboard";
+import type { Tab } from "@/components/SideBar";
+import SideBar from "@/components/SideBar";
 
 const Home = () => {
-	const [claims, setClaims] = useState<JwtPayload | undefined>(undefined);
+	const [activeTab, setActiveTab] = useState(0);
 
-	// const supabase = useContext(SupabaseContext);
+	const tabs: Tab<Omit<LucideProps, "ref">>[] = [
+		{
+			id: 0,
+			icon: HomeIcon,
+			element: <AdminDashboard />,
+		},
+		{
+			id: 1,
+			icon: BookOpenTextIcon,
+			element: undefined,
+		},
+	];
 
-	// useEffect(() => {
-	// 	supabase.auth.getClaims().then(({ data }) => {
-	// 		setClaims(data?.claims);
-	// 	});
+	const phaserRef = useRef<IRefPhaserGame | null>(null);
 
-	// 	const {
-	// 		data: { subscription },
-	// 	} = supabase.auth.onAuthStateChange(() => {
-	// 		supabase.auth.getClaims().then(({ data }) => {
-	// 			setClaims(data?.claims);
-	// 		});
-	// 	});
-
-	// 	return () => subscription.unsubscribe();
-	// }, [supabase]);
-
-	// const logOut = async () => {
-	// 	await supabase.auth.signOut();
-	// 	setClaims(undefined);
-	// };
+	const currentScene = (scene: Phaser.Scene) => {
+		console.log(scene);
+	};
 
 	const { session, signOut } = UserAuth();
-
-	console.log(session);
 
 	return (
 		<>
 			<>
-				<NavbarMain logOut={signOut} claims={claims} />
+				<div className="flex h-screen py-3 px-5">
+					<SideBar
+						tabs={tabs}
+						activeTab={activeTab}
+						setActiveTab={setActiveTab}
+					/>
+					{tabs[activeTab].element}
+				</div>
+
+				{/*<NavbarMain logOut={signOut} />
+
+				<div className="flex items-center justify-center h-screen">
+					<div className="border border-white rounded-4xl p-5 bg-white">
+						<PhaserGame
+							ref={phaserRef}
+							currentActiveScene={currentScene}
+						/>
+					</div>
+				</div>
 
 				<div className="h-screen w-screen flex items-center justify-center">
 					<CodeEditor />
-				</div>
+				</div>*/}
 			</>
 		</>
 	);

@@ -31,7 +31,7 @@ const SignIn = () => {
 			</Link>
 
 			<div className="flex flex-col items-center justify-center h-screen w-[50%] border-r border-r-gray-500 rounded-2xl">
-				<img src="/icon.svg" className="w-20 h-20 mb-1" />
+				<img src="/icon.png" className="w-20 h-20 mb-1" />
 				<p className="text-white text-2xl mb-7">Welcome Back!</p>
 				<form className="flex flex-col gap-3" action={signIn}>
 					<Input id="email" type="email" value={email} setValue={setEmail}>

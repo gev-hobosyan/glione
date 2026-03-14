@@ -64,7 +64,7 @@ const SignUp = () => {
 	return (
 		<div className="h-screen w-screen overflow-hidden flex items-center justify-center">
 			<div className="flex flex-col items-center justify-center h-screen w-[50%] border-r border-r-gray-500 rounded-2xl">
-				<img src="/icon.svg" className="w-20 h-20 mb-1" />
+				<img src="/icon.png" className="w-20 h-20 mb-1" />
 				<p className="text-white text-2xl mb-7">Create an Account!</p>
 				{verifying ? (
 					<div className="text-2xl text-white">

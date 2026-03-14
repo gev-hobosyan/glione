@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Landing from "./pages/Landing";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
+import Admin from "./pages/Admin";
 
 const router = createBrowserRouter([
 	{
@@ -18,14 +19,15 @@ const router = createBrowserRouter([
 	{ path: "/landing", element: <Landing /> },
 	{ path: "/login", element: <SignIn /> },
 	{ path: "/signup", element: <SignUp /> },
+	{
+		path: "/admin",
+		element: <Admin />,
+	},
 ]);
 
 function App() {
 	return (
 		<>
-			{/*<SupabaseContext.Provider value={supabase}>
-				<RouterProvider router={router} />
-			</SupabaseContext.Provider>*/}
 			<AuthContextProvider>
 				<RouterProvider router={router} />
 			</AuthContextProvider>
