@@ -4,6 +4,7 @@ import NavbarMain from "@/components/NavbarMain";
 import CodeEditor from "@/components/CodeEditor";
 import { UserAuth } from "@/context/AuthContext";
 import ProfileCard from "@/components/ProfileCard";
+import Dashboard from "@/components/Dashboard";
 
 const Home = () => {
 	const [claims, setClaims] = useState<JwtPayload | undefined>(undefined);
@@ -39,8 +40,7 @@ const Home = () => {
 		<>
 			<>
 				
-				<ProfileCard />
-				
+				<Dashboard />				
 			</>
 		</>
 	);
