@@ -9,6 +9,7 @@ import type { Tab } from "@/components/SideBar";
 import SideBar from "@/components/SideBar";
 import AddName from "@/components/AddName";
 import ProfileCard from "@/components/ProfileCard";
+import Dashboard from "@/components/Dashboard";
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -64,8 +65,7 @@ const Home = () => {
 					<CodeEditor />
 				</div>*/}
 				
-				<ProfileCard />
-				
+				<Dashboard />				
 			</>
 		</>
 	);
