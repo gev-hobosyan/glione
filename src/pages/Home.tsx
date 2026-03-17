@@ -7,6 +7,7 @@ import { BookOpenTextIcon, HomeIcon, type LucideProps } from "lucide-react";
 import AdminDashboard from "@/components/admin/AdminDashboard";
 import type { Tab } from "@/components/SideBar";
 import SideBar from "@/components/SideBar";
+import AddName from "@/components/AddName";
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -32,8 +33,11 @@ const Home = () => {
 
 	const { session, signOut } = UserAuth();
 
+	console.log(session);
+
 	return (
 		<>
+			{!session["user"]["user_metadata"]["name"] && <AddName />}
 			<>
 				<div className="flex h-screen py-3 px-5">
 					<SideBar

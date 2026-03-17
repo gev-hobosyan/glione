@@ -72,6 +72,20 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 		return { success: true };
 	};
 
+	const signInUser = async (email: string, password: string) => {
+		const { data, error } = await supabase.auth.signInWithPassword({
+			email,
+			password,
+		});
+
+		if (error) {
+			console.error(`Sign up error: ${error}`);
+			return { success: false, error };
+		}
+
+		return { success: true, data };
+	};
+
 	useEffect(() => {
 		const {
 			data: { subscription },
