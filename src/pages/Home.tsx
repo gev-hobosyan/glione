@@ -5,45 +5,40 @@ import CodeEditor from "@/components/CodeEditor";
 import { UserAuth } from "@/context/AuthContext";
 import ProfileCard from "@/components/ProfileCard";
 import Dashboard from "@/components/Dashboard";
+import LessonCard from "@/components/LessonCard";
+
+
 
 const Home = () => {
-	const [claims, setClaims] = useState<JwtPayload | undefined>(undefined);
+  return (
+    <div >
+      
+<LessonCard 
+  name="If / Else" 
+  description="Conditional statements and logic" 
+  level="10" 
+  progress={50} 
+  color="bg-blue-600/20 border-blue-500" 
+/>
 
-	// const supabase = useContext(SupabaseContext);
+      <LessonCard 
+        name="Cycles" 
+        description="Fundamnets of cycles" 
+        level="10" 
+        progress="50" 
+        color="bg-purple-600/20 border-purple-500" 
+      />
 
-	// useEffect(() => {
-	// 	supabase.auth.getClaims().then(({ data }) => {
-	// 		setClaims(data?.claims);
-	// 	});
+      <LessonCard 
+        name="Variables" 
+        description="Types of data and variables" 
+        level="4" 
+        progress="90" 
+        color="bg-green-600/20 border-green-500" 
+      />
 
-	// 	const {
-	// 		data: { subscription },
-	// 	} = supabase.auth.onAuthStateChange(() => {
-	// 		supabase.auth.getClaims().then(({ data }) => {
-	// 			setClaims(data?.claims);
-	// 		});
-	// 	});
-
-	// 	return () => subscription.unsubscribe();
-	// }, [supabase]);
-
-	// const logOut = async () => {
-	// 	await supabase.auth.signOut();
-	// 	setClaims(undefined);
-	// };
-
-	const { session, signOut } = UserAuth();
-
-	console.log(session);
-
-	return (
-		<>
-			<>
-				
-				<Dashboard />				
-			</>
-		</>
-	);
+    </div>
+  );
 };
 
 export default Home;
