@@ -10,6 +10,7 @@ import SideBar from "@/components/SideBar";
 import AddName from "@/components/AddName";
 import ProfileCard from "@/components/ProfileCard";
 import Dashboard from "@/components/Dashboard";
+import LessonCard from "@/components/LessonCard";
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -38,36 +39,31 @@ const Home = () => {
 	console.log(session);
 
 	return (
-		<>
-			{!session["user"]["user_metadata"]["name"] && <AddName />}
-			<>
-				<div className="flex h-screen py-3 px-5">
-					<SideBar
-						tabs={tabs}
-						activeTab={activeTab}
-						setActiveTab={setActiveTab}
-					/>
-					{tabs[activeTab].element}
-				</div>
+		<div>
+			<LessonCard
+				name="If / Else"
+				description="Conditional statements and logic"
+				level="10"
+				progress={50}
+				color="bg-blue-600/20 border-blue-500"
+			/>
 
-				{/*<NavbarMain logOut={signOut} />
+			<LessonCard
+				name="Cycles"
+				description="Fundamnets of cycles"
+				level="10"
+				progress="50"
+				color="bg-purple-600/20 border-purple-500"
+			/>
 
-				<div className="flex items-center justify-center h-screen">
-					<div className="border border-white rounded-4xl p-5 bg-white">
-						<PhaserGame
-							ref={phaserRef}
-							currentActiveScene={currentScene}
-						/>
-					</div>
-				</div>
-
-				<div className="h-screen w-screen flex items-center justify-center">
-					<CodeEditor />
-				</div>*/}
-				
-				<Dashboard />				
-			</>
-		</>
+			<LessonCard
+				name="Variables"
+				description="Types of data and variables"
+				level="4"
+				progress="90"
+				color="bg-green-600/20 border-green-500"
+			/>
+		</div>
 	);
 };
 
