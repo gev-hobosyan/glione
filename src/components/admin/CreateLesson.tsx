@@ -18,7 +18,7 @@ export type Step = {
 	>;
 };
 
-const icons = {
+export const icons = {
 	text: TextInitial,
 	code: Code,
 	multi: SquareCheck,

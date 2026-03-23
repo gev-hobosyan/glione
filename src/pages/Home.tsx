@@ -11,6 +11,7 @@ import AddName from "@/components/AddName";
 import ProfileCard from "@/components/ProfileCard";
 import Dashboard from "@/components/Dashboard";
 import LessonCard from "@/components/LessonCard";
+import LessonsSidebar from "@/components/LessonsSidebar";
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -24,7 +25,7 @@ const Home = () => {
 		{
 			id: 1,
 			icon: BookOpenTextIcon,
-			element: undefined,
+			element: <LessonsSidebar />,
 		},
 	];
 
