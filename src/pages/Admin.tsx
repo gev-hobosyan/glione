@@ -1,22 +1,16 @@
 import AdminDashboard from "@/components/admin/AdminDashboard";
 import AdminSideBar, { type Tab } from "@/components/admin/AdminSideBar";
-import CreateLesson, { type Step } from "@/components/admin/CreateLesson";
+import CreateLesson, {
+	icons,
+	type Step,
+} from "@/components/admin/CreateLesson";
 import {
 	BookOpenTextIcon,
-	Code,
 	Home,
-	SquareCheck,
 	SquarePen,
-	TextInitial,
 	type LucideProps,
 } from "lucide-react";
 import { useState } from "react";
-
-const icons = {
-	text: TextInitial,
-	code: Code,
-	multi: SquareCheck,
-};
 
 const Admin = () => {
 	const [activeTab, setActiveTab] = useState(2);
@@ -25,17 +19,23 @@ const Admin = () => {
 		{
 			id: 0,
 			title: "First step",
-			type: icons.text,
+			type: "text",
+			content: "",
+			icon: icons.text,
 		},
 		{
 			id: 1,
 			title: "Code",
-			type: icons.code,
+			type: "code",
+			content: "",
+			icon: icons.code,
 		},
 		{
 			id: 2,
 			title: "Multiple Choice",
-			type: icons.multi,
+			type: "multi",
+			content: "",
+			icon: icons.multi,
 		},
 	]);
 
