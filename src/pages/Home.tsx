@@ -12,6 +12,7 @@ import ProfileCard from "@/components/ProfileCard";
 import Dashboard from "@/components/Dashboard";
 import LessonCard from "@/components/LessonCard";
 import LessonsSidebar from "@/components/LessonsSidebar";
+import TextSection from "@/components/TextSection";
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -25,7 +26,13 @@ const Home = () => {
 		{
 			id: 1,
 			icon: BookOpenTextIcon,
-			element: <LessonsSidebar />,
+			element: (
+    			<div style={{ display: "flex", gap: "20px" }}>
+      				<LessonsSidebar />
+      				<TextSection />
+    			</div>
+  ),
+			
 		},
 	];
 
