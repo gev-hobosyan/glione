@@ -12,6 +12,7 @@ import ProfileCard from "@/components/ProfileCard";
 import Dashboard from "@/components/Dashboard";
 import LessonCard from "@/components/LessonCard";
 import LessonsSidebar from "@/components/LessonsSidebar";
+import MultipleChoice from "@/components/MultipleChoice";
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -25,7 +26,10 @@ const Home = () => {
 		{
 			id: 1,
 			icon: BookOpenTextIcon,
-			element: <LessonsSidebar />,
+			element: <div className="flex w-full">
+				<LessonsSidebar></LessonsSidebar>
+				<MultipleChoice></MultipleChoice>
+			</div>,
 		},
 	];
 
