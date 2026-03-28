@@ -11,6 +11,7 @@ import EditStep from "./EditStep";
 import Input from "../Input";
 import LessonCard from "../LessonCard";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
 	text: TextInitial,
 	code: Code,
@@ -50,6 +51,18 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 		});
 	};
 
+	const submitStep = () => {
+		const editedStep = editStep;
+
+		setSteps((prev) =>
+			prev.map((step) =>
+				step.id === editedStep?.id ? editedStep || step : step,
+			),
+		);
+
+		setEditStep(undefined);
+	};
+
 	const submitTitle = () => {
 		if (editTitle) {
 			setEditTitle((prev) => {
@@ -62,7 +75,11 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 
 	return (
 		<>
-			{editStep && <EditStep edit={setEditStep}>{editStep}</EditStep>}
+			{editStep && (
+				<EditStep submitStep={submitStep} edit={setEditStep}>
+					{editStep}
+				</EditStep>
+			)}
 
 			<div className="h-full w-[calc(50vw-5rem)] bg-black/40 ml-3 rounded-3xl border border-primary/40 flex items-center flex-col justify-between py-5 px-10">
 				{editTitle !== undefined ? (
@@ -120,7 +137,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 					description={"test"}
 					level={"2"}
 					progress={0}
-					color={"green"}
+					color={"primary"}
 				></LessonCard>
 			</div>
 
