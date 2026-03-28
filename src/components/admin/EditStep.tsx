@@ -1,14 +1,16 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
-import type { Step } from "./CreateLesson";
+import { icons, type Step } from "./CreateLesson";
 import { Edit, X } from "lucide-react";
 import Input from "../Input";
+import TextField from "./TextField";
 
 interface Props {
 	children: Step;
 	edit: Dispatch<SetStateAction<Step | undefined>>;
+	submitStep: () => void;
 }
 
-const EditStep = ({ children, edit }: Props) => {
+const EditStep = ({ children, edit, submitStep }: Props) => {
 	const [editTitle, setEditTitle] = useState<string | undefined>(
 		children.title ? undefined : children.title,
 	);
@@ -27,11 +29,25 @@ const EditStep = ({ children, edit }: Props) => {
 		}
 	};
 
+	const cycleTypes = () => {
+		edit((step) => {
+			if (step?.type === "text") {
+				return { ...step, type: "multi", icon: icons.multi };
+			} else if (step?.type === "multi") {
+				return { ...step, type: "code", icon: icons.code };
+			} else if (step?.type === "code") {
+				return { ...step, type: "text", icon: icons.text };
+			}
+
+			return step;
+		});
+	};
+
 	return (
 		<>
 			<div
 				className="w-screen h-screen absolute z-10 bg-black/50 backdrop-blur-sm top-0 left-0 flex items-center justify-center"
-				onClick={() => edit(undefined)}
+				onClick={() => submitStep()}
 			></div>
 			<div className="absolute top-12.5 left-12.5 bottom-12.5 right-12.5 bg-black rounded-4xl border border-primary/50 shadow-effective px-10 py-7 z-50">
 				<div className="flex items-center justify-between">
@@ -64,13 +80,20 @@ const EditStep = ({ children, edit }: Props) => {
 						</h1>
 					)}
 					<div className="flex items-center justify-center gap-4">
-						<children.type className="stroke-white cursor-pointer hover:scale-110 transition-all duration-300" />
+						<children.icon
+							className="stroke-white cursor-pointer hover:scale-110 transition-all duration-300"
+							onClick={cycleTypes}
+						/>
 						<X
 							className="stroke-white cursor-pointer hover:scale-110 transition-all duration-300"
-							onClick={() => edit(undefined)}
+							onClick={() => submitStep()}
 						/>
 					</div>
 				</div>
+				<div className="w-full h-0.5 bg-gray-400 mt-5 rounded-full"></div>
+				<div className="text-white mt-5 ">{children.content}</div>
+
+				<TextField />
 			</div>
 		</>
 	);

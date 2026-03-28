@@ -12,7 +12,11 @@ import ProfileCard from "@/components/ProfileCard";
 import Dashboard from "@/components/Dashboard";
 import LessonCard from "@/components/LessonCard";
 import LessonsSidebar from "@/components/LessonsSidebar";
+<<<<<<< HEAD
 import MultipleChoice from "@/components/MultipleChoice";
+=======
+import TextSection from "@/components/TextSection";
+>>>>>>> fd69c9df0f5d9a6045f04432729ab68a226df50d
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState(0);

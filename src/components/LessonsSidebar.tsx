@@ -29,7 +29,7 @@ const LessonSidebar = () => {
 const [selectedStep, setSelectedStep] = useState<number | null>(null);
 
 return (
-    <div className="ml-2 border border-primary/40 bg-black/40 rounded-3xl">
+    <div className="ml-2 border border-primary/40 bg-black/40 rounded-3xl h-full w-70">
         <p className="text-white text-wrap w-60 text-xl ml-5 mt-2.5 mb-2.5">Temperature & State Changes in Water</p>
 
 {steps.map((step) => {
@@ -49,6 +49,8 @@ return (
         })}
      </div>
     );
+  <div></div>
 };
-
 export default LessonSidebar
+
+

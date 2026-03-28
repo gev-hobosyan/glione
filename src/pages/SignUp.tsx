@@ -5,6 +5,7 @@ import { supabase } from "@/utils/supabaseClient";
 import type { AuthError } from "@supabase/supabase-js";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import BlurCircle from "@/components/BlurCircle";
 
 const SignUp = () => {
 	const [email, setEmail] = useState("");
@@ -117,7 +118,18 @@ const SignUp = () => {
 						</Link>
 					</div>
 				</div>
-				<div className="h-screen w-[50%]"></div>
+				<div className="h-screen w-[50%]">
+					<div className="relative w-full h-screen flex flex-col items-center justify-center">
+					<BlurCircle z="z-10" />
+					<BlurCircle z="z-10" left="50px" top="15px" />
+					<BlurCircle z="z-10" right="20px" bottom="-6px" />
+					<BlurCircle z="z-10" right="60px" top="30px" />
+					<BlurCircle z="z-10" left="120px" bottom="45px" />
+					<img src="/medusa.png" width="300px" />
+					<p className="text-white text-[18px]">Welcome to our Python learning project powered by Medusa.</p>
+					<p className="text-white text-[18px]">Learn Python through simple lessons and hands-on practice.</p>
+				</div>
+				</div>
 			</div>
 		</>
 	);

@@ -4,6 +4,7 @@ import LoginOptions from "@/components/LoginOptions";
 import { Link, redirect } from "react-router-dom";
 import { useContext, useState } from "react";
 import { supabase } from "@/utils/supabaseClient";
+import BlurCircle from "@/components/BlurCircle";
 
 const SignIn = () => {
 	const [email, setEmail] = useState("");
@@ -59,28 +60,18 @@ const SignIn = () => {
 					</Link>
 				</div>
 			</div>
-			<div className="h-screen w-[50%]">
-				<p className="text-white flex items-center justify-center mt-60 mr-80 text-[24px]">
-					Your App, Enterprise Ready.
-				</p>
-				<div className="flex ml-28 mt-5">
-					<Check className="h-4 w-4 bg-primary rounded-xs stroke-white pl-0.5" />
-					<p className="text-[16px] text-gray-600 ml-3">
-						Ship a complete B2B auth platform in minutes with Glione.
-					</p>
+			<div className="h-screen w-[50%] relative">
+				<div className="relative w-full h-screen flex flex-col items-center justify-center">
+					<BlurCircle z="z-10" />
+					<BlurCircle z="z-10" left="50px" top="15px" />
+					<BlurCircle z="z-10" right="20px" bottom="-6px" />
+					<BlurCircle z="z-10" right="60px" top="30px" />
+					<BlurCircle z="z-10" left="120px" bottom="45px" />
+					<img src="/medusa.png" width="300px" />
+					<p className="text-white text-[18px]">Welcome to our Python learning project powered by Medusa.</p>
+					<p className="text-white text-[18px]">Learn Python through simple lessons and hands-on practice.</p>
 				</div>
-				<div className="flex ml-28 mt-5">
-					<Check className="h-4 w-4 bg-primary rounded-xs stroke-white pl-0.5" />
-					<p className="text-[16px] text-gray-600 ml-3">
-						Unlock self-serve SSO and Directory Sync with Admin Portal.
-					</p>
-				</div>
-				<div className="flex ml-28 mt-5">
-					<Check className="h-4 w-4 bg-primary rounded-xs stroke-white pl-0.5" />
-					<p className="text-[16px] text-gray-600 ml-3">
-						No credit card required.
-					</p>
-				</div>
+
 			</div>
 		</div>
 	);
