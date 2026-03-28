@@ -21,7 +21,7 @@ const Step = ({ index, title, description, icon, isSelected, onClick }: Props) =
 
             <div>
                 <div className="flex items-center">
-                    <p className="text-white text-[15px]">{index >= 10 ? index : `0${index}`}: {title}</p>
+                    <p className="text-white text-[15px]">{index > 10 ? index : `0${index}`}: {title}</p>
 
                 </div>
                 <p className="text-gray-400 text-sm">{description}</p>
