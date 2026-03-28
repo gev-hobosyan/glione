@@ -25,6 +25,6 @@ Glione turns learning Python into an adventure. Instead of dry tutorials you exp
 
 ## Tech stack
 
-- **Fronted** - React + TypeScript + Tailwind CSS
+- **Frontend** - React + TypeScript + Tailwind CSS
 - **Routing** - React Router
 - **Styling** - Custom dark theme with green accents
