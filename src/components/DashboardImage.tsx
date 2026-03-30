@@ -7,5 +7,5 @@ const DashboardImage = () => {
     )
 }
 
-
+``
 export default DashboardImage;
