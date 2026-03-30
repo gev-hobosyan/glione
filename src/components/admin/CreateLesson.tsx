@@ -1,15 +1,16 @@
 import {
 	Code,
-	Edit,
 	PlusIcon,
 	SquareCheck,
 	TextInitial,
 	type LucideProps,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, type SetStateAction } from "react";
 import EditStep from "./EditStep";
 import Input from "../Input";
 import LessonCard from "../LessonCard";
+import TextField from "../TextField";
+import PrimaryButton from "../PrimaryButton";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
@@ -31,9 +32,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 	const [description, setDescription] = useState(
 		"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 	);
-	const [editDescription, setEditDescription] = useState<string | undefined>(
-		undefined,
-	);
+	const [editDescription, setEditDescription] = useState<boolean>(true);
 
 	const createStep = () => {
 		setSteps((prev) => {
@@ -131,7 +130,29 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 					</div>
 				)}
 
-				<div className="text-white">{description}</div>
+				{editDescription ? (
+					<div className="w-full">
+						<form
+							className="w-full flex flex-col gap-3"
+							action={() => setEditDescription(false)}
+						>
+							<TextField
+								id="description"
+								value={description}
+								setValue={setDescription}
+							>
+								Descrption
+							</TextField>
+							<input
+								type="submit"
+								value="OK"
+								className="bg-primary text-white rounded-xl px-4 py-2 flex flex-col items-center justify-center text-center cursor-pointer hover:scale-105 transition-all duration-300 w-20 self-center"
+							></input>
+						</form>
+					</div>
+				) : (
+					<div className="text-white" onDoubleClick={() => setEditDescription(true)}>{description}</div>
+				)}
 				{/*<div className="text-white w-50 h-50 flex items-center justify-center border border-white mb-10 rounded-2xl">
 					Preview
 				</div>*/}

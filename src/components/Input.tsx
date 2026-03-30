@@ -31,7 +31,7 @@ const Input = ({
 			></input>
 			<label
 				htmlFor={id}
-				className="absolute left-5 top-5 text-white peer-placeholder-shown:text-gray-500 -translate-y-5.5 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-90 scale-90 transition-all"
+				className="absolute left-5 top-3 text-white peer-placeholder-shown:text-gray-500 -translate-y-5.5 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-90 scale-90 transition-all"
 			>
 				{children}
 			</label>

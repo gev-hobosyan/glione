@@ -2,9 +2,8 @@ import { useState, type Dispatch, type SetStateAction } from "react";
 import { icons, type Step } from "./CreateLesson";
 import { Edit, X } from "lucide-react";
 import Input from "../Input";
-import TextField from "./TextField";
+import TextField from "../TextField";
 import AdminChoice from "./AdminChoice";
-
 
 interface Props {
 	children: Step;
@@ -15,6 +14,10 @@ interface Props {
 const EditStep = ({ children, edit, submitStep }: Props) => {
 	const [editTitle, setEditTitle] = useState<string | undefined>(
 		children.title ? undefined : children.title,
+	);
+
+	const [editContent, setEditContent] = useState<string | undefined>(
+		children.content ? undefined : children.content,
 	);
 
 	if (children === undefined) {
@@ -28,6 +31,16 @@ const EditStep = ({ children, edit, submitStep }: Props) => {
 			});
 
 			setEditTitle(undefined);
+		}
+	};
+
+	const submitContent = () => {
+		if (editContent) {
+			edit((prev) => {
+				return { ...prev, content: editContent } as Step;
+			});
+
+			setEditContent(undefined);
 		}
 	};
 
@@ -73,12 +86,11 @@ const EditStep = ({ children, edit, submitStep }: Props) => {
 							></input>
 						</form>
 					) : (
-						<h1 className="text-white text-2xl flex items-center justify-center gap-5">
-							{children.title}{" "}
-							<Edit
-								className="w-5 cursor-pointer hover:scale-110 transition-all duration-300"
-								onClick={() => setEditTitle(children.title)}
-							/>
+						<h1
+							className="text-white text-2xl flex items-center justify-center gap-5"
+							onDoubleClick={() => setEditTitle(children.title)}
+						>
+							{children.title}
 						</h1>
 					)}
 					<div className="flex items-center justify-center gap-4">
@@ -93,16 +105,36 @@ const EditStep = ({ children, edit, submitStep }: Props) => {
 					</div>
 				</div>
 				<div className="w-full h-0.5 bg-gray-400 mt-5 rounded-full"></div>
-				<div className="text-white mt-5  ">{children.content}</div>
-
-				<TextField />
+				<div className="my-5">
+					{editContent !== undefined ? (
+						<form action={submitContent} className="w-full flex flex-col">
+							<TextField
+								id="content"
+								value={editContent}
+								setValue={setEditContent}
+							>
+								Content
+							</TextField>
+							<input
+								type="submit"
+								value="OK"
+								className="bg-primary text-white rounded-xl px-4 py-2 flex flex-col items-center justify-center text-center cursor-pointer hover:scale-105 transition-all duration-300 self-center"
+							></input>
+						</form>
+					) : (
+						<div
+							className="text-white mt-5 wrap-anywhere"
+							onDoubleClick={() => setEditContent(children.content)}
+						>
+							{children.content}
+						</div>
+					)}
+				</div>
 				<div className="w-full">
 					<AdminChoice text="Option 1" check={false} />
 					<AdminChoice text="Option 2" check={false} />
 					<AdminChoice text="Option 3" check={false} />
 				</div>
-				
-
 			</div>
 		</>
 	);
