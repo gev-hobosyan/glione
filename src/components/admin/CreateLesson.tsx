@@ -103,12 +103,15 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 					</form>
 				) : (
 					<div>
-						<h1 className="text-white text-2xl flex items-center justify-center gap-5">
+						<h1
+							className="text-white text-2xl flex items-center justify-center gap-5"
+							onDoubleClick={() => setEditTitle(title)}
+						>
 							{title}
-							<Edit
+							{/*<Edit
 								className="w-5 cursor-pointer hover:scale-110 transition-all duration-300"
 								onClick={() => setEditTitle(title)}
-							/>
+							/>*/}
 						</h1>
 
 						<div className="flex text-white gap-3 mt-5">
@@ -133,11 +136,19 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 					Preview
 				</div>*/}
 				<LessonCard
-					name={"test"}
-					description={"test"}
-					level={"2"}
-					progress={0}
-					color={"primary"}
+					name={"if/else"}
+					description={"If is a condition that does the demanded action. "}
+					progress={20}
+					authors={[
+						{ name: "Narek" },
+						{ name: "Gevorg" },
+						{ name: "Levon" },
+					]}
+					tags={[
+						{ name: "python" },
+						{ name: "lessons" },
+						{ name: "programming" },
+					]}
 				></LessonCard>
 			</div>
 
