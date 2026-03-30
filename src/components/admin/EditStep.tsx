@@ -3,6 +3,8 @@ import { icons, type Step } from "./CreateLesson";
 import { Edit, X } from "lucide-react";
 import Input from "../Input";
 import TextField from "./TextField";
+import AdminChoice from "./AdminChoice";
+
 
 interface Props {
 	children: Step;
@@ -91,9 +93,16 @@ const EditStep = ({ children, edit, submitStep }: Props) => {
 					</div>
 				</div>
 				<div className="w-full h-0.5 bg-gray-400 mt-5 rounded-full"></div>
-				<div className="text-white mt-5 ">{children.content}</div>
+				<div className="text-white mt-5  ">{children.content}</div>
 
 				<TextField />
+				<div className="w-full">
+					<AdminChoice text="Option 1" check={false} />
+					<AdminChoice text="Option 2" check={false} />
+					<AdminChoice text="Option 3" check={false} />
+				</div>
+				
+
 			</div>
 		</>
 	);

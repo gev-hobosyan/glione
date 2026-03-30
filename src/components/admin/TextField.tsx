@@ -1,7 +1,11 @@
 const TextField = () => {
-	return (
-		<textarea className="w-full h-50 border-white/50 focus:border-secondary/50 focus:ring-0 ring-0 focus:outline-none focus:shadow-input border rounded-xl py-2.5 px-5 text-white peer placeholder-transparent"></textarea>
-	);
+    return (
+        <div className="border border-white/50 rounded-xl p-4">
+            {}
+            <textarea className="w-full h-40  text-white "></textarea>
+            {}
+        </div>
+    );
 };
 
 export default TextField;
