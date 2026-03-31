@@ -6,7 +6,7 @@ interface Props {
 const Choice = ({ children, isRight }: Props) => {
 	return (
 		<>
-			<div className="border border-primary w-[calc(100%-100px)] px-5 py-1.5 rounded-lg flex items-center gap-5 has-checked:shadow-[0_0_15px_#006e2a]">
+			<div className="border border-primary w-full px-5 py-1.5 rounded-lg flex items-center gap-5 has-checked:shadow-[0_0_15px_#006e2a]">
 				<input
 					id={children}
 					type="radio"

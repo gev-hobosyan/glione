@@ -1,19 +1,11 @@
 import { useRef, useState } from "react";
-// import NavbarMain from "@/components/NavbarMain";
-// import CodeEditor from "@/components/CodeEditor";
 import { UserAuth } from "@/context/AuthContext";
 import { type IRefPhaserGame } from "@/game/PhaserGame";
 import { BookOpenTextIcon, HomeIcon, type LucideProps } from "lucide-react";
 import AdminDashboard from "@/components/admin/AdminDashboard";
 import type { Tab } from "@/components/SideBar";
 import SideBar from "@/components/SideBar";
-import AddName from "@/components/AddName";
-import ProfileCard from "@/components/ProfileCard";
-import Dashboard from "@/components/Dashboard";
-import LessonCard from "@/components/LessonCard";
-import LessonsSidebar from "@/components/LessonsSidebar";
-import MultipleChoice from "@/components/MultipleChoice";
-import TextSection from "@/components/TextSection";
+import Lesson from "@/components/Lesson";
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -27,10 +19,7 @@ const Home = () => {
 		{
 			id: 1,
 			icon: BookOpenTextIcon,
-			element: <div className="flex w-full">
-				<LessonsSidebar></LessonsSidebar>
-				<MultipleChoice></MultipleChoice>
-			</div>,
+			element: <Lesson />,
 		},
 	];
 
@@ -45,7 +34,7 @@ const Home = () => {
 	console.log(session);
 
 	return (
-		<div className="flex h-screen py-3 px-5">
+		<div className="flex h-screen px-4 py-3">
 			<SideBar
 				tabs={tabs}
 				activeTab={activeTab}
