@@ -6,7 +6,7 @@ import SimpleDashboard from "./SimpleDashboard";
 
 const Dashboard = () => {
 	return (
-		<>
+		<div className="h-full w-full bg-black/40 ml-3 rounded-3xl border border-primary/40">
 			<ProfileCard />
 			<DashboardCalendar />
 			<DashboardImage />
@@ -32,7 +32,7 @@ const Dashboard = () => {
 					icon={<Percent className="stroke-primary mt-1 ml-0.5 w-4.5" />}
 				/>
 			</div>
-		</>
+		</div>
 	);
 };
 

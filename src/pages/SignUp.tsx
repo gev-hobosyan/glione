@@ -6,6 +6,7 @@ import type { AuthError } from "@supabase/supabase-js";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BlurCircle from "@/components/BlurCircle";
+import { ArrowLeft } from "lucide-react";
 
 const SignUp = () => {
 	const [email, setEmail] = useState("");
@@ -65,6 +66,10 @@ const SignUp = () => {
 
 	return (
 		<>
+			<Link to="/">
+				<ArrowLeft className="stroke-secondary fixed top-7 left-7 w-8 hover:scale-110 transition-all duration-300" />
+			</Link>
+
 			{verifying && <VerifyEmail email={email} />}
 			<div className="h-screen w-screen overflow-hidden flex items-center justify-center">
 				<div className="flex flex-col items-center justify-center h-screen w-[50%] border-r border-r-gray-500 rounded-2xl">
@@ -120,15 +125,19 @@ const SignUp = () => {
 				</div>
 				<div className="h-screen w-[50%]">
 					<div className="relative w-full h-screen flex flex-col items-center justify-center">
-					<BlurCircle z="z-10" />
-					<BlurCircle z="z-10" left="50px" top="15px" />
-					<BlurCircle z="z-10" right="20px" bottom="-6px" />
-					<BlurCircle z="z-10" right="60px" top="30px" />
-					<BlurCircle z="z-10" left="120px" bottom="45px" />
-					<img src="/medusa.png" width="300px" />
-					<p className="text-white text-[18px]">Welcome to our Python learning project powered by Medusa.</p>
-					<p className="text-white text-[18px]">Learn Python through simple lessons and hands-on practice.</p>
-				</div>
+						<BlurCircle z="z-10" />
+						<BlurCircle z="z-10" left="50px" top="15px" />
+						<BlurCircle z="z-10" right="20px" bottom="-6px" />
+						<BlurCircle z="z-10" right="60px" top="30px" />
+						<BlurCircle z="z-10" left="120px" bottom="45px" />
+						<img src="/medusa.png" width="300px" />
+						<p className="text-white text-[18px]">
+							Welcome to our Python learning project powered by Medusa.
+						</p>
+						<p className="text-white text-[18px]">
+							Learn Python through simple lessons and hands-on practice.
+						</p>
+					</div>
 				</div>
 			</div>
 		</>

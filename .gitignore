@@ -10,6 +10,8 @@ lerna-debug.log*
 package-lock.json
 .gitignore
 
+.env
+
 node_modules
 dist
 dist-ssr

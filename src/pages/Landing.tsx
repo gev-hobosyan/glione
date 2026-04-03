@@ -14,7 +14,10 @@ const Landing = () => {
 				className="fixed z-50 bottom-10 right-10 bg-primary/30 backdrop-blur-2xl rounded-full border border-primary"
 			/>
 
-			<div className="relative bg-black w-screen h-screen flex flex-col items-center justify-center">
+			<div
+				className="relative bg-black w-screen h-screen flex flex-col items-center justify-center"
+				id="home"
+			>
 				<BlurCircle z="z-10" />
 				<BlurCircle z="z-10" left="50px" top="15px" />
 				<BlurCircle z="z-10" right="20px" bottom="-6px" />
@@ -31,9 +34,11 @@ const Landing = () => {
 			<About />
 
 			<div
-				id="courses" className="flex gap-6 mx-10 my-10 items-center justify-between max-xl:flex-wrap max-xl:justify-center"
-
+				id="courses"
+				className="flex gap-6 mx-10 my-10 items-center justify-between max-xl:flex-wrap max-xl:justify-center relative"
 			>
+				<BlurCircle z="z-0" right="50%" top="100px" />
+
 				<Card
 					index={1}
 					title="Learn Python"
@@ -60,7 +65,12 @@ const Landing = () => {
 				/>
 			</div>
 
-			<div id="pricing" className="flex gap-6 mx-10 my-10 items-center justify-between max-xl:flex-wrap max-xl:justify-center">
+			<div
+				id="pricing"
+				className="flex gap-6 mx-10 my-10 items-center justify-between max-xl:flex-wrap max-xl:justify-center relative"
+			>
+				<BlurCircle z="z-0" right="30%" bottom="0px" />
+
 				<PriceCard
 					title="Starter"
 					description="Perfect for beginners who want to explore Python fundamentals at their own pace."
@@ -102,6 +112,7 @@ const Landing = () => {
 					]}
 				/>
 			</div>
+			
 			<Footer />
 		</>
 	);

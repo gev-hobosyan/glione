@@ -30,7 +30,9 @@ const MultipleChoice = () => {
 				</p>
 				<div className="flex w-full items-center gap-4 flex-col">
 					{choices.map((choice) => (
-						<Choice isRight={choice.isRight}>{choice.text}</Choice>
+						<Choice key={choice.text} isRight={choice.isRight}>
+							{choice.text}
+						</Choice>
 					))}
 				</div>
 			</div>

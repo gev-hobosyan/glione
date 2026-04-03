@@ -6,6 +6,7 @@ import Landing from "./pages/Landing";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import Admin from "./pages/Admin";
+import Lesson from "./components/Lesson";
 
 const router = createBrowserRouter([
 	{
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
 	{
 		path: "/admin",
 		element: <Admin />,
+	},
+	{
+		path: "/lesson",
+		element: <Lesson />,
 	},
 ]);
 

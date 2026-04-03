@@ -1,9 +1,10 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
-import { icons, type Step } from "./CreateLesson";
-import { Edit, X } from "lucide-react";
+import { icons } from "./CreateLesson";
+import { X } from "lucide-react";
 import Input from "../Input";
 import TextField from "../TextField";
 import AdminChoice from "./AdminChoice";
+import type { Step } from "@/utils/types";
 
 interface Props {
 	children: Step;

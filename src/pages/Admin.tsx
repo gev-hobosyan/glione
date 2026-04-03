@@ -11,6 +11,7 @@ import {
 	type LucideProps,
 } from "lucide-react";
 import { useState } from "react";
+import Lessons from "./Lessons";
 
 const Admin = () => {
 	const [activeTab, setActiveTab] = useState(2);
@@ -49,7 +50,7 @@ const Admin = () => {
 		{
 			id: 1,
 			icon: BookOpenTextIcon,
-			element: undefined,
+			element: <Lessons />,
 		},
 		{
 			id: 2,

@@ -1,16 +1,10 @@
-import {
-	Code,
-	PlusIcon,
-	SquareCheck,
-	TextInitial,
-	type LucideProps,
-} from "lucide-react";
-import { useState, type SetStateAction } from "react";
+import { Code, PlusIcon, SquareCheck, TextInitial } from "lucide-react";
+import { useState } from "react";
 import EditStep from "./EditStep";
 import Input from "../Input";
 import LessonCard from "../LessonCard";
 import TextField from "../TextField";
-import PrimaryButton from "../PrimaryButton";
+import type { Step, Tag } from "@/utils/types";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
@@ -151,7 +145,12 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 						</form>
 					</div>
 				) : (
-					<div className="text-white" onDoubleClick={() => setEditDescription(true)}>{description}</div>
+					<div
+						className="text-white"
+						onDoubleClick={() => setEditDescription(true)}
+					>
+						{description}
+					</div>
 				)}
 				{/*<div className="text-white w-50 h-50 flex items-center justify-center border border-white mb-10 rounded-2xl">
 					Preview
@@ -199,38 +198,3 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 };
 
 export default CreateLesson;
-
-export type Step = {
-	id: number;
-	title: string;
-	type: string;
-	content: string;
-	predefinedCode?: string;
-	rightAnswer?: string;
-	choices?: [];
-	icon: React.ForwardRefExoticComponent<
-		Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
-	>;
-};
-
-interface Choice {
-	text: string;
-	isRight: boolean;
-}
-
-interface Author {
-	name: string;
-}
-
-interface Tag {
-	name: string;
-}
-
-interface Lesson {
-	title: string;
-	published: boolean;
-	tags: Tag[];
-	authors: Author[];
-	section: string;
-	steps?: Step[];
-}

@@ -1,0 +1,55 @@
+import LessonCard from "@/components/LessonCard";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import getAllLessons from "@/utils/backend/getAllLessons";
+import type { Lesson } from "@/utils/types";
+import { useEffect, useState } from "react";
+
+const Lessons = () => {
+	const [lessons, setLessons] = useState<Lesson[]>();
+	const [loading, setLoading] = useState<boolean>(true);
+	const [error, setError] = useState<unknown>();
+
+	useEffect(() => {
+		const loadData = async () => {
+			setLoading(true);
+			try {
+				setLessons(await getAllLessons());
+			} catch (e) {
+				console.log(e);
+				setError(e);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		loadData();
+	}, []);
+
+	console.log(lessons);
+
+	return (
+		<>
+			{loading ? (
+				<div className="w-full h-full flex items-center justify-center border border-primary/40 bg-black/40 rounded-3xl ml-5">
+					<LoadingSpinner />
+				</div>
+			) : error ? (
+				<p className="text-white">Error</p>
+			) : (
+				<div className="w-full border border-primary/40 bg-black/40 rounded-3xl grid  lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-6 p-6 content-start ml-5 ">
+					{lessons!.map((lesson) => (
+						<LessonCard
+							name={lesson.title}
+							description={lesson.title}
+							progress={0}
+							authors={lesson.authors}
+							tags={lesson.tags}
+						></LessonCard>
+					))}
+				</div>
+			)}
+		</>
+	);
+};
+
+export default Lessons;

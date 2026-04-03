@@ -5,7 +5,8 @@ import { BookOpenTextIcon, HomeIcon, type LucideProps } from "lucide-react";
 import AdminDashboard from "@/components/admin/AdminDashboard";
 import type { Tab } from "@/components/SideBar";
 import SideBar from "@/components/SideBar";
-import Lesson from "@/components/Lesson";
+import Lessons from "./Lessons";
+import Dashboard from "@/components/Dashboard";
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -14,12 +15,12 @@ const Home = () => {
 		{
 			id: 0,
 			icon: HomeIcon,
-			element: <AdminDashboard />,
+			element: <Dashboard />,
 		},
 		{
 			id: 1,
 			icon: BookOpenTextIcon,
-			element: <Lesson />,
+			element: <Lessons />,
 		},
 	];
 
@@ -30,8 +31,6 @@ const Home = () => {
 	};
 
 	const { session, signOut } = UserAuth();
-
-	console.log(session);
 
 	return (
 		<div className="flex h-screen px-4 py-3">
