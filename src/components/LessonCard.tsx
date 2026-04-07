@@ -1,6 +1,6 @@
 import type { Author, Tag } from "@/utils/types";
-import { BookOpen } from "lucide-react";
-import { redirect } from "react-router-dom";
+import { ArrowRight, BookOpen } from "lucide-react";
+import { Link, redirect } from "react-router-dom";
 
 interface Props {
 	name: string;
@@ -46,15 +46,24 @@ const LessonCard = ({ name, description, progress, authors, tags }: Props) => {
 				</div>
 			</div>
 
-			<div className="flex items-center gap-1.5">
-				{tags.map((tag) => (
-					<p
-						className="text-[11px] border border-primary rounded-full px-2 py-0.5 bg-green-950"
-						key={tag.name}
-					>
-						{tag.name}
-					</p>
-				))}
+			<div className="flex items-center justify-between">
+				<div className="flex items-center gap-1.5">
+					{tags.map((tag) => (
+						<p
+							className="text-[11px] border border-primary rounded-full px-2 py-0.5 bg-green-950"
+							key={tag.name}
+						>
+							{tag.name}
+						</p>
+					))}
+				</div>
+				<Link
+					to={"/lesson"}
+					className="group flex text-[12px] items-center gap-2 cursor-pointer"
+				>
+					{progress ? "Continue" : "Start"}{" "}
+					<ArrowRight className="w-4"></ArrowRight>
+				</Link>
 			</div>
 		</div>
 	);

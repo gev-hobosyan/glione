@@ -9,19 +9,20 @@ export type Tag = {
 };
 
 export type Step = {
-	_id: number;
+	_id?: number;
 	title: string;
-	type: string;
+	type: "text" | "multi" | "code";
 	content: string;
 	predefinedCode?: string;
 	rightAnswer?: string;
-	choices?: [];
-	icon: React.ForwardRefExoticComponent<
+	choices?: Choice[];
+	icon?: React.ForwardRefExoticComponent<
 		Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
 	>;
 };
 
 export type Choice = {
+	_id?: string;
 	text: string;
 	isRight: boolean;
 };

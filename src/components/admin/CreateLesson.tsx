@@ -5,6 +5,7 @@ import Input from "../Input";
 import LessonCard from "../LessonCard";
 import TextField from "../TextField";
 import type { Step, Tag } from "@/utils/types";
+import createLesson from "@/utils/backend/createLesson";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
@@ -170,6 +171,15 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 						{ name: "programming" },
 					]}
 				></LessonCard>
+
+				<div
+					className="text-white bg-primary px-10 py-4 rounded-3xl"
+					onClick={async () => {
+						await createLesson();
+					}}
+				>
+					Submit
+				</div>
 			</div>
 
 			<div className="h-full w-[50vw] bg-black/40 ml-3 rounded-3xl border border-primary/40 flex flex-col items-center justify-center overflow-scroll">

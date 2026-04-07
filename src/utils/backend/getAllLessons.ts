@@ -5,8 +5,7 @@ const getAllLessons = async () => {
 		const res = await fetch(`${API_URL}/lessons/display`);
 		return await res.json();
 	} catch (e) {
-		console.log(e);
-		return "ERROR!!";
+		throw new Error(`ERROR!!! ${e}`)
 	}
 };
 

@@ -1,4 +1,4 @@
-import type { Lesson, Step } from "../types";
+import type { Lesson } from "../types";
 
 const getLessonById = async (id: string) => {
 	const API_URL = import.meta.env.VITE_API_URL || "";
@@ -8,10 +8,8 @@ const getLessonById = async (id: string) => {
 		const json = await res.json();
 
 		return { id: json._id, ...json } as Lesson;
-		return id;
 	} catch (e) {
-		console.log(e);
-		return "ERROR!!";
+		throw new Error(`ERROR!! ${e}`);
 	}
 };
 

@@ -1,39 +1,14 @@
-import { Book, BookOpenCheck, CopyCheck, Swords } from "lucide-react";
-import { useState } from "react";
 import Step from "./Step";
 import type { Lesson } from "@/utils/types";
 import { icons } from "./admin/CreateLesson";
 
-const steps = [
-	{
-		id: 1,
-		title: "Evaporative cooling",
-		description: "8 minutes",
-		icon: BookOpenCheck,
-	},
-	{
-		id: 2,
-		title: "Vaporized Water Transform",
-		description: "25 minutes",
-		icon: CopyCheck,
-	},
-	{
-		id: 3,
-		title: "Heat Specificity",
-		description: "30 minutes",
-		icon: Swords,
-	},
-];
-
 interface Props {
 	lesson: Lesson;
+	selectedStep: number | null;
+	setSelectedStep: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-const LessonSidebar = ({ lesson }: Props) => {
-	const [selectedStep, setSelectedStep] = useState<number | null>(null);
-
-	console.log(lesson.steps);
-
+const LessonSidebar = ({ lesson, selectedStep, setSelectedStep }: Props) => {
 	return (
 		<div className="ml-2 border border-primary/40 bg-black/40 rounded-3xl h-full w-70">
 			<div className="flex gap-1 items-center justify-center flex-wrap px-10 py-3">
@@ -58,7 +33,7 @@ const LessonSidebar = ({ lesson }: Props) => {
 			</div>
 
 			{lesson.steps!.map((step, index) => {
-				const Icon = icons["text"];
+				const Icon = icons[step.type];
 
 				return (
 					<Step
