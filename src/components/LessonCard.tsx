@@ -36,13 +36,18 @@ const LessonCard = ({ name, description, progress, authors, tags }: Props) => {
 					</div>
 				</div>
 				<div className="flex flex-col gap-1">
-					<p className="text-[14px] opacity-80 text-gray-300">
+					<p className="text-[14px] opacity-80 text-gray-300 truncate">
 						{description}
 					</p>
 
 					<div
-						className={`w-full h-2 bg-gray-900 rounded-full after:h-full after:bg-primary after:absolute after:z-1 after:rounded-full after:w-[${progress}%] transition-all duration-300 relative`}
-					></div>
+						className={`w-full h-2 bg-gray-900 rounded-full transition-all duration-300 relative`}
+					>
+						<div
+							className="bg-primary h-full absolute z-1 rounded-full"
+							style={{ width: `${progress}%` }}
+						></div>
+					</div>
 				</div>
 			</div>
 

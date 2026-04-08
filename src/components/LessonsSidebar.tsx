@@ -44,7 +44,7 @@ const LessonSidebar = ({ lesson, selectedStep, setSelectedStep }: Props) => {
 							<Icon className="stroke-primary 2-5 group-hover:stroke-white transition-all"></Icon>
 						}
 						isSelected={selectedStep === step._id}
-						onClick={() => setSelectedStep(step._id)}
+						onClick={() => setSelectedStep(step._id!)}
 					/>
 				);
 			})}
