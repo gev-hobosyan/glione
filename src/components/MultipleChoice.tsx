@@ -5,7 +5,6 @@ interface Props {
 }
 
 const MultipleChoice = ({ step }: Props) => {
-	console.log(step.choices);
 	return (
 		<>
 			<div className="w-full h-full flex flex-col items-center justify-center px-10">

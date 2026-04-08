@@ -7,6 +7,7 @@ import TextField from "../TextField";
 import Message from "./Message";
 import type { Lesson, Step, Tag } from "@/utils/types";
 import createLesson from "@/utils/backend/createLesson";
+import Hint from "../Hint";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
@@ -31,15 +32,19 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 	const [editDescription, setEditDescription] = useState<boolean>(true);
 	const [success, setSuccess] = useState<boolean>(false);
 	const [error, setError] = useState<boolean>(false);
+	const [currentId, setCurrentId] = useState(0);
 
 	const createStep = () => {
 		setSteps((prev) => {
 			const newStep: Step = {
+				id: currentId + 1,
 				title: "",
 				type: "text",
 				content: "",
 				icon: icons.text,
 			};
+
+			setCurrentId((prev) => prev + 1);
 
 			setEditStep(newStep);
 
@@ -52,7 +57,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 
 		setSteps((prev) =>
 			prev.map((step) =>
-				step._id === editedStep?._id ? editedStep || step : step,
+				step.id === editedStep?.id ? editedStep || step : step,
 			),
 		);
 
@@ -129,10 +134,11 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 				) : (
 					<div>
 						<h1
-							className="text-white text-2xl flex items-center justify-center gap-5"
+							className="text-white text-2xl flex items-center justify-center gap-5 relative group"
 							onDoubleClick={() => setEditTitle(title)}
 						>
 							{title}
+							<Hint>Double click to edit</Hint>
 						</h1>
 
 						<div className="flex text-white gap-3 mt-5">
@@ -174,10 +180,11 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 					</div>
 				) : (
 					<div
-						className="text-white"
+						className="text-white relative group"
 						onDoubleClick={() => setEditDescription(true)}
 					>
 						{description}
+						<Hint>Double click to edit</Hint>
 					</div>
 				)}
 				<LessonCard

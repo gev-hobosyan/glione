@@ -27,7 +27,7 @@ const Home = () => {
 	const phaserRef = useRef<IRefPhaserGame | null>(null);
 
 	const currentScene = (scene: Phaser.Scene) => {
-		console.log(scene);
+
 	};
 
 	const { session, signOut } = UserAuth();

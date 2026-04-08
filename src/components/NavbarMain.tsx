@@ -10,8 +10,6 @@ interface Props {
 const NavbarMain = ({ logOut }: Props) => {
 	const { session } = UserAuth();
 
-	console.log(session.user);
-
 	return (
 		<div className="flex justify-between border border-white/20 rounded-2xl py-2.5 px-3 fixed top-2 left-2 right-2 bg-transparent backdrop-blur-sm z-50">
 			<img src="logo.svg" />

@@ -46,8 +46,6 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 	const [session, setSession] = useState<Session | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
 
-	console.log(session);
-
 	const signUpUser = async (email: string, password: string) => {
 		const { data, error } = await supabase.auth.signUp({
 			email,

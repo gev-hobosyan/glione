@@ -5,6 +5,7 @@ import Input from "../Input";
 import TextField from "../TextField";
 import AdminChoice from "./AdminChoice";
 import type { Step } from "@/utils/types";
+import Hint from "../Hint";
 
 interface Props {
 	children: Step;
@@ -88,10 +89,11 @@ const EditStep = ({ children, edit, submitStep }: Props) => {
 						</form>
 					) : (
 						<h1
-							className="text-white text-2xl flex items-center justify-center gap-5"
+							className="text-white text-2xl flex items-center justify-center gap-5 relative group"
 							onDoubleClick={() => setEditTitle(children.title)}
 						>
-							{children.title}
+								{children.title}
+								<Hint>Double click to edit</Hint>
 						</h1>
 					)}
 					<div className="flex items-center justify-center gap-4">

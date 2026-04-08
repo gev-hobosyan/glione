@@ -9,6 +9,7 @@ export type Tag = {
 };
 
 export type Step = {
+	id: number;
 	_id?: number;
 	title: string;
 	type: "text" | "multi" | "code";

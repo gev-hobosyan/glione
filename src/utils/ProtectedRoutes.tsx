@@ -5,8 +5,6 @@ import { Navigate } from "react-router-dom";
 const ProtectedRoutes = ({ children }: { children: ReactNode }) => {
 	const session = UserAuth()?.session;
 
-	console.log(session);
-
 	return <>{session ? <>{children}</> : <Navigate to="/landing" />}</>;
 };
 

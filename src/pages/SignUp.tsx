@@ -53,9 +53,6 @@ const SignUp = () => {
 		});
 
 		setVerifying(true);
-
-		console.log(data);
-		console.log(error);
 	};
 
 	const googleSignIn = () => {

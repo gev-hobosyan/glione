@@ -15,7 +15,6 @@ const LessonCard = ({ name, description, progress, authors, tags }: Props) => {
 		<div
 			className="w-96 h-48 border border-primary  text-white font-bold rounded-4xl px-5 py-3 flex flex-col justify-between cursor-pointer hover:-translate-y-1 hover:shadow-effective transition-all duration-300"
 			onClick={() => {
-				console.log("redirect");
 				throw redirect("/lesson");
 			}}
 		>

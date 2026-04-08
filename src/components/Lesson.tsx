@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type SetStateAction } from "react";
+import { useEffect, useMemo, useState } from "react";
 import LessonSidebar from "./LessonsSidebar";
 import MultipleChoice from "./MultipleChoice";
 import { type Lesson as LessonType, type Step } from "@/utils/types";
@@ -6,8 +6,11 @@ import getLessonById from "@/utils/backend/getLessonById";
 import LoadingSpinner from "./LoadingSpinner";
 import TextSection from "./TextSection";
 import CodeEditor from "./CodeEditor";
+import { useParams } from "react-router-dom";
 
 const Lesson = () => {
+	const { id } = useParams();
+
 	const [lesson, setLesson] = useState<LessonType>();
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<unknown>();
@@ -38,9 +41,6 @@ const Lesson = () => {
 
 		getData();
 	}, []);
-
-	console.log(selectedStep);
-	console.log(step);
 
 	return (
 		<>

@@ -64,7 +64,6 @@ print(player.coins)`);
 				value={value}
 				onChange={(value) => {
 					setValue(value!);
-					console.log(value);
 				}}
 				options={{
 					fontSize: 18,

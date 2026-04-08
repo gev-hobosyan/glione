@@ -25,8 +25,12 @@ const router = createBrowserRouter([
 		element: <Admin />,
 	},
 	{
-		path: "/lesson",
-		element: <Lesson />,
+		path: "/lesson/:id",
+		element: (
+			<ProtectedRoutes>
+				<Lesson />
+			</ProtectedRoutes>
+		),
 	},
 ]);
 
