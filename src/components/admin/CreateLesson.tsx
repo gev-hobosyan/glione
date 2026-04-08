@@ -5,6 +5,7 @@ import Input from "../Input";
 import LessonCard from "../LessonCard";
 import TextField from "../TextField";
 import type { Step, Tag } from "@/utils/types";
+import SuccessMessage from "./SuccessMessage";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
@@ -193,6 +194,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 					<PlusIcon className="stroke-white w-5" /> Add
 				</div>
 			</div>
+			
 		</>
 	);
 };
