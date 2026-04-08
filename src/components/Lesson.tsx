@@ -1,14 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState, type SetStateAction } from "react";
 import LessonSidebar from "./LessonsSidebar";
 import MultipleChoice from "./MultipleChoice";
-import { type Lesson as LessonType } from "@/utils/types";
+import { type Lesson as LessonType, type Step } from "@/utils/types";
 import getLessonById from "@/utils/backend/getLessonById";
 import LoadingSpinner from "./LoadingSpinner";
+import TextSection from "./TextSection";
+import CodeEditor from "./CodeEditor";
 
 const Lesson = () => {
 	const [lesson, setLesson] = useState<LessonType>();
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<unknown>();
+
+	const stepTypes = {
+		text: TextSection,
+		multi: MultipleChoice,
+		code: CodeEditor,
+	};
+
+	const [selectedStep, setSelectedStep] = useState<number | null>(null);
+
+	const step = useMemo(() => {
+		return lesson?.steps!.find((s) => s._id == selectedStep) as Step;
+	}, [selectedStep, lesson]);
 
 	useEffect(() => {
 		const getData = async () => {
@@ -16,15 +30,17 @@ const Lesson = () => {
 			try {
 				setLesson(await getLessonById("69cbcecabea0fe09ab6a66f9"));
 			} catch (e) {
-				console.log(e);
+				setError(e);
 			} finally {
 				setLoading(false);
 			}
 		};
+
 		getData();
 	}, []);
 
-	console.log(lesson);
+	console.log(selectedStep);
+	console.log(step);
 
 	return (
 		<>
@@ -34,10 +50,30 @@ const Lesson = () => {
 				</div>
 			) : (
 				<div className="w-screen h-screen flex items-center gap-5 p-2">
-					<LessonSidebar lesson={lesson!} />
-					<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-full">
+					<LessonSidebar
+						lesson={lesson!}
+						selectedStep={selectedStep}
+						setSelectedStep={setSelectedStep}
+					/>
+					{step != undefined ? (
+						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-full">
+							{step.type == "text" ? (
+								<TextSection step={step} />
+							) : step.type == "multi" ? (
+								<MultipleChoice step={step} />
+							) : step.type == "code" ? (
+								<CodeEditor></CodeEditor>
+							) : (
+								<div></div>
+							)}
+						</div>
+					) : (
+						<div></div>
+					)}
+
+					{/*{/*<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-full">
 						<MultipleChoice />
-					</div>
+					</div>*/}
 				</div>
 			)}
 		</>

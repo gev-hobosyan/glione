@@ -1,11 +1,12 @@
 import { Code, PlusIcon, SquareCheck, TextInitial } from "lucide-react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import EditStep from "./EditStep";
 import Input from "../Input";
 import LessonCard from "../LessonCard";
 import TextField from "../TextField";
-import type { Step, Tag } from "@/utils/types";
 import SuccessMessage from "./SuccessMessage";
+import type { Lesson, Step, Tag } from "@/utils/types";
+import createLesson from "@/utils/backend/createLesson";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
@@ -32,7 +33,6 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 	const createStep = () => {
 		setSteps((prev) => {
 			const newStep: Step = {
-				id: prev.length > 0 ? prev.at(-1)!.id + 1 : 0,
 				title: "",
 				type: "text",
 				content: "",
@@ -50,7 +50,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 
 		setSteps((prev) =>
 			prev.map((step) =>
-				step.id === editedStep?.id ? editedStep || step : step,
+				step._id === editedStep?._id ? editedStep || step : step,
 			),
 		);
 
@@ -66,6 +66,23 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 			});
 		}
 	};
+
+	const submitLesson = useCallback(async () => {
+		const lesson: Lesson = {
+			title,
+			published: true,
+			tags,
+			authors: [],
+			section: "Python",
+			steps: steps,
+		};
+
+		try {
+			const res = await createLesson(lesson);
+		} catch (e) {
+			console.log(e);
+		}
+	}, [steps, tags, title]);
 
 	return (
 		<>
@@ -102,10 +119,6 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 							onDoubleClick={() => setEditTitle(title)}
 						>
 							{title}
-							{/*<Edit
-								className="w-5 cursor-pointer hover:scale-110 transition-all duration-300"
-								onClick={() => setEditTitle(title)}
-							/>*/}
 						</h1>
 
 						<div className="flex text-white gap-3 mt-5">
@@ -153,13 +166,10 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 						{description}
 					</div>
 				)}
-				{/*<div className="text-white w-50 h-50 flex items-center justify-center border border-white mb-10 rounded-2xl">
-					Preview
-				</div>*/}
 				<LessonCard
-					name={"if/else"}
-					description={"If is a condition that does the demanded action. "}
-					progress={20}
+					name={title}
+					description={description}
+					progress={100}
 					authors={[
 						{ name: "Narek" },
 						{ name: "Gevorg" },
@@ -171,6 +181,13 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 						{ name: "programming" },
 					]}
 				></LessonCard>
+
+				<div
+					className="text-white bg-primary px-10 py-4 rounded-3xl"
+					onClick={submitLesson}
+				>
+					Submit
+				</div>
 			</div>
 
 			<div className="h-full w-[50vw] bg-black/40 ml-3 rounded-3xl border border-primary/40 flex flex-col items-center justify-center overflow-scroll">

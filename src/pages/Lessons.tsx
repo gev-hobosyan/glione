@@ -36,7 +36,7 @@ const Lessons = () => {
 			) : error ? (
 				<p className="text-white">Error</p>
 			) : (
-				<div className="w-full border border-primary/40 bg-black/40 rounded-3xl grid  lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-6 p-6 content-start ml-5 ">
+				<div className="w-full border border-primary/40 bg-black/40 rounded-3xl grid  lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-6 p-6 content-start ml-5 overflow-scroll">
 					{lessons!.map((lesson) => (
 						<LessonCard
 							name={lesson.title}
