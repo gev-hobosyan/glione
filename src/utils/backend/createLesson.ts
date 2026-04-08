@@ -12,7 +12,7 @@ const createLesson = async (lesson: Lesson) => {
 			body: JSON.stringify(lesson),
 		});
 
-		return "Success!!";
+		return res;
 	} catch (e) {
 		throw new Error(`${e}`);
 	}

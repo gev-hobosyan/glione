@@ -4,7 +4,7 @@ import EditStep from "./EditStep";
 import Input from "../Input";
 import LessonCard from "../LessonCard";
 import TextField from "../TextField";
-import SuccessMessage from "./SuccessMessage";
+import Message from "./Message";
 import type { Lesson, Step, Tag } from "@/utils/types";
 import createLesson from "@/utils/backend/createLesson";
 
@@ -29,6 +29,8 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 		"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 	);
 	const [editDescription, setEditDescription] = useState<boolean>(true);
+	const [success, setSuccess] = useState<boolean>(false);
+	const [error, setError] = useState<boolean>(false);
 
 	const createStep = () => {
 		setSteps((prev) => {
@@ -79,13 +81,25 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 
 		try {
 			const res = await createLesson(lesson);
+			if(res.status == 201){setSuccess(true)}
+			else{setError(true)}
 		} catch (e) {
-			console.log(e);
+			setError(true);
 		}
 	}, [steps, tags, title]);
 
 	return (
 		<>
+			{success && <Message 
+			title="Success"
+			text="Lesson is created successfully. Good Luck!"
+			type="success"
+			/>}
+			{error && <Message
+			title="Error"
+			text="Lesson is not created. Please try again."
+			type="error"
+			/>}
 			{editStep && (
 				<EditStep submitStep={submitStep} edit={setEditStep}>
 					{editStep}
