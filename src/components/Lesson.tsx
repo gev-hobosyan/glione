@@ -8,6 +8,7 @@ import TextSection from "./TextSection";
 import CodeEditor from "./CodeEditor";
 import { useParams } from "react-router-dom";
 
+
 const Lesson = () => {
 	const { id } = useParams();
 
@@ -75,6 +76,7 @@ const Lesson = () => {
 						<MultipleChoice />
 					</div>*/}
 				</div>
+				
 			)}
 		</>
 	);

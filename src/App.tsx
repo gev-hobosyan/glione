@@ -8,9 +8,10 @@ import ProtectedRoutes from "./utils/ProtectedRoutes";
 import Admin from "./pages/Admin";
 import Lesson from "./components/Lesson";
 
+
 const router = createBrowserRouter([
 	{
-		path: "/",
+		path: "/",	
 		element: (
 			<ProtectedRoutes>
 				<Home />
