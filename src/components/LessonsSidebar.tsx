@@ -10,7 +10,7 @@ interface Props {
 
 const LessonSidebar = ({ lesson, selectedStep, setSelectedStep }: Props) => {
 	return (
-		<div className="ml-2 border border-primary/40 bg-black/40 rounded-3xl h-full w-70">
+		<div className="ml-2 border border-primary/40 bg-black/40 rounded-3xl h-full w-[20%]">
 			<div className="flex gap-1 items-center justify-center flex-wrap px-10 py-3">
 				{lesson.authors!.map((author) => (
 					<p key={author.name} className="text-[13px] text-gray-400">
@@ -18,7 +18,7 @@ const LessonSidebar = ({ lesson, selectedStep, setSelectedStep }: Props) => {
 					</p>
 				))}
 			</div>
-			<p className="text-white wrap-anywhere w-60 text-xl text-center py-3 px-2 font-bold">
+			<p className="text-white wrap-anywhere text-xl text-center py-3 px-2 font-bold">
 				{lesson.title}
 			</p>
 			<div className="flex gap-2 items-center justify-center flex-wrap px-10 py-3">

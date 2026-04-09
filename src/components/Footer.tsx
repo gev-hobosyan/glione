@@ -15,10 +15,10 @@ const Footer = () => {
 
 				<div className="flex items-center justify-center max-md:flex-col max-md:gap-2 gap-10">
 					<p className="text-white text-xs cursor-pointer hover:underline">
-						Privacy
+						Գաղտնիություն
 					</p>
 					<p className="text-white text-xs cursor-pointer hover:underline">
-						Terms
+						Պայմաններ
 					</p>
 				</div>
 			</div>

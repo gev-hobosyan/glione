@@ -9,20 +9,16 @@ const About = () => {
 			<BlurCircle z="z-0" left="0" top="100px"/>
 			<div className="w-1/2 ">
 				<h3 className="text-secondary text-[24px] mb-3">
-					Learn Python like you've never learned anything before
+					Սովորիր Python այնպես, ինչպես երբեք չես սովորել
 				</h3>
 				<p className="mt-3 mb-3">
-					This app turns coding into an interactive game - no boring docs,
-					no overwhelming theory. You'll start with simple Hello World!
-					challanges and level up through real programming logic, solving
-					problems as you play.
+					Այս հավելվածը ծրագրավորումը վերածում է ինտերակտիվ խաղի՝ առանց ձանձրալի փաստաթղթերի և հոգնեցուցիչ տեսության: Դու կսկսես պարզ Hello World! մարտահրավերներից և կբարձրացնես մակարդակդ իրական ծրագրավորման տրամաբանության միջոցով՝ լուծելով խնդիրներ խաղալու ընթացքում:
 				</p>
 				<p className="mt-3 mb-3">
-					It is built for beginners, but designed to grow with you. Every
-					step feels like progress, not pressure.
+					Այն ստեղծված է սկսնակների համար, բայց նախագծված է քեզ հետ աճելու համար: Յուրաքանչյուր քայլ զգացվում է որպես առաջընթաց, այլ ոչ թե ճնշում:
 				</p>
-				<p className="mt-3">Play. Experiment. Built.</p>
-				<p>Welcome to a smarter (and way more fun) way to learn Python</p>
+				<p className="mt-3">Խաղա: Փորձարկիր: Ստեղծիր:</p>
+				<p>Բարի գալուստ Python սովորելու ավելի խելացի (և շատ ավելի զվարճալի) տարբերակ</p>
 			</div>
 			<div className="w-1/2 flex items-center justify-center relative">
 				<BlurCircle z="z-0" />

@@ -34,15 +34,19 @@ const Lessons = () => {
 				<p className="text-white">Error</p>
 			) : (
 				<div className="w-full border border-primary/40 bg-black/40 rounded-3xl grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 p-6 content-start ml-5 overflow-scroll">
-					{lessons!.map((lesson) => (
-						<LessonCard
-							name={lesson.title}
-							description={lesson.title}
-							progress={0}
-							authors={lesson.authors}
-							tags={lesson.tags}
-						></LessonCard>
-					))}
+					{lessons!.map((lesson) => {
+						console.log(lesson);
+						return (
+							<LessonCard
+								id={lesson._id!}
+								name={lesson.title}
+								description={lesson.description}
+								progress={0}
+								authors={lesson.authors}
+								tags={lesson.tags}
+							></LessonCard>
+						);
+					})}
 				</div>
 			)}
 		</>

@@ -32,7 +32,7 @@ const Lesson = () => {
 		const getData = async () => {
 			setLoading(true);
 			try {
-				setLesson(await getLessonById("69cbcecabea0fe09ab6a66f9"));
+				setLesson(await getLessonById(id!));
 			} catch (e) {
 				setError(e);
 			} finally {
@@ -57,7 +57,7 @@ const Lesson = () => {
 						setSelectedStep={setSelectedStep}
 					/>
 					{step != undefined ? (
-						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-full">
+						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-[80%]">
 							{step.type == "text" ? (
 								<TextSection step={step} />
 							) : step.type == "multi" ? (

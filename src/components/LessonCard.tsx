@@ -3,6 +3,7 @@ import { ArrowRight, BookOpen } from "lucide-react";
 import { Link, redirect } from "react-router-dom";
 
 interface Props {
+	id: string;
 	name: string;
 	description: string;
 	progress: number;
@@ -10,13 +11,10 @@ interface Props {
 	tags: Tag[];
 }
 
-const LessonCard = ({ name, description, progress, authors, tags }: Props) => {
+const LessonCard = ({ id, name, description, progress, authors, tags }: Props) => {
 	return (
 		<div
-			className="w-96 h-48 border border-primary  text-white font-bold rounded-4xl px-5 py-3 flex flex-col justify-between cursor-pointer hover:-translate-y-1 hover:shadow-effective transition-all duration-300"
-			onClick={() => {
-				throw redirect("/lesson");
-			}}
+			className="max-w-96 h-48 border border-primary  text-white font-bold rounded-4xl px-5 py-3 flex flex-col justify-between cursor-pointer hover:-translate-y-1 hover:shadow-effective transition-all duration-300 group"
 		>
 			<div className="flex-col gap-5 flex">
 				<div className="flex items-center justify-between gap-1.5 ">
@@ -24,11 +22,14 @@ const LessonCard = ({ name, description, progress, authors, tags }: Props) => {
 						<div className="border border-primary bg-primary/40 rounded-full p-1.5 shrink-0">
 							<BookOpen className="w-5.5" />
 						</div>
-						<h2 className="text-xl">{name}</h2>
+						<h2 className="text-lg">{name}</h2>
 					</div>
-					<div className="flex gap-1.5">
+					<div className={`flex ${authors.length > 3 ? "w-30" : ""} flex-wrap items-center justify-center mt-2 group`}>
 						{authors.map((author) => (
-							<p className="text-[11px] text-gray-400" key={author.name}>
+							<p
+								className="text-[11px] text-gray-400 ml-1 mb-0.5"
+								key={author.name}
+							>
 								{author.name}
 							</p>
 						))}
@@ -54,7 +55,7 @@ const LessonCard = ({ name, description, progress, authors, tags }: Props) => {
 				<div className="flex items-center gap-1.5">
 					{tags.map((tag) => (
 						<p
-							className="text-[11px] border border-primary rounded-full px-2 py-0.5 bg-green-950"
+							className="text-[11px] border border-primary rounded-full px-2 py-0.5 bg-primary/40 hover:scale-105 transition-all duration-300"
 							key={tag.name}
 						>
 							{tag.name}
@@ -62,11 +63,11 @@ const LessonCard = ({ name, description, progress, authors, tags }: Props) => {
 					))}
 				</div>
 				<Link
-					to={"/lesson"}
+					to={`/lesson/${id}`}
 					className="group flex text-[12px] items-center gap-2 cursor-pointer"
 				>
 					{progress ? "Continue" : "Start"}{" "}
-					<ArrowRight className="w-4"></ArrowRight>
+					<ArrowRight className="w-4 group-hover:translate-x-0.5 transition-all duration-300"></ArrowRight>
 				</Link>
 			</div>
 		</div>

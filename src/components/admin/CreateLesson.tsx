@@ -8,6 +8,7 @@ import Message from "./Message";
 import type { Lesson, Step, Tag } from "@/utils/types";
 import createLesson from "@/utils/backend/createLesson";
 import Hint from "../Hint";
+import EditTag from "./EditTag";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
@@ -24,31 +25,48 @@ interface Props {
 const CreateLesson = ({ steps, setSteps }: Props) => {
 	const [editStep, setEditStep] = useState<Step | undefined>(undefined);
 	const [editTitle, setEditTitle] = useState<string | undefined>(undefined);
+	const [editTag, setEditTag] = useState<Tag | undefined>();
 	const [tags, setTags] = useState<Tag[]>([]);
 	const [title, setTitle] = useState("Title");
 	const [description, setDescription] = useState(
 		"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 	);
-	const [editDescription, setEditDescription] = useState<boolean>(true);
-	const [success, setSuccess] = useState<boolean>(false);
+	const [editDescription, setEditDescription] = useState<boolean>(false);
+	const [success, setSuccess] = useState<string | undefined>(undefined);
 	const [error, setError] = useState<boolean>(false);
-	const [currentId, setCurrentId] = useState(0);
+	const [currentStepId, setCurentStepId] = useState(0);
+	const [currentTagId, setCurentTagId] = useState(0);
 
 	const createStep = () => {
 		setSteps((prev) => {
 			const newStep: Step = {
-				id: currentId + 1,
+				id: currentStepId,
 				title: "",
 				type: "text",
 				content: "",
 				icon: icons.text,
 			};
 
-			setCurrentId((prev) => prev + 1);
+			setCurentStepId((prev) => prev + 1);
 
 			setEditStep(newStep);
 
 			return [...prev, newStep];
+		});
+	};
+
+	const createTag = () => {
+		setTags((prev) => {
+			const newTag: Tag = {
+				id: currentTagId,
+				name: "",
+			};
+
+			setCurentTagId((prev) => prev + 1);
+
+			setEditTag(newTag);
+
+			return [...prev, newTag];
 		});
 	};
 
@@ -62,6 +80,18 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 		);
 
 		setEditStep(undefined);
+	};
+
+	const submitTag = (text: string) => {
+		const editedTag = editTag ? { ...editTag, name: text } : undefined;
+
+		console.log(editedTag);
+
+		setTags((prev) =>
+			prev.map((tag) => (tag.id === editedTag?.id ? editedTag || tag : tag)),
+		);
+
+		setEditTag(undefined);
 	};
 
 	const submitTitle = () => {
@@ -78,6 +108,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 		const lesson: Lesson = {
 			title,
 			published: true,
+			description,
 			tags,
 			authors: [],
 			section: "Python",
@@ -86,25 +117,43 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 
 		try {
 			const res = await createLesson(lesson);
-			if(res.status == 201){setSuccess(true)}
-			else{setError(true)}
+			if (res.status == 201) {
+				const lesson = await res.json();
+
+				setSuccess(lesson._id);
+			} else {
+				setError(true);
+			}
 		} catch (e) {
+			console.log(e);
 			setError(true);
 		}
-	}, [steps, tags, title]);
+	}, [steps, tags, title, description]);
 
 	return (
 		<>
-			{success && <Message 
-			title="Success"
-			text="Lesson is created successfully. Good Luck!"
-			type="success"
-			/>}
-			{error && <Message
-			title="Error"
-			text="Lesson is not created. Please try again."
-			type="error"
-			/>}
+			{editTag && (
+				<EditTag edit={setEditTag} submit={submitTag}>
+					{editTag}
+				</EditTag>
+			)}
+
+			{success && (
+				<Message
+					id={success}
+					title="Success"
+					text="Lesson is created successfully. Good Luck!"
+					type="success"
+				/>
+			)}
+			{error && (
+				<Message
+					id={""}
+					title="Error"
+					text="Lesson is not created. Please try again."
+					type="error"
+				/>
+			)}
 			{editStep && (
 				<EditStep submitStep={submitStep} edit={setEditStep}>
 					{editStep}
@@ -141,18 +190,20 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 							<Hint>Double click to edit</Hint>
 						</h1>
 
-						<div className="flex text-white gap-3 mt-5">
-							<p className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300">
-								test
-							</p>
-							<p className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg">
-								test
-							</p>
-							<p className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg">
-								test
-							</p>
-							<p className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg">
-								test
+						<div className="flex text-white gap-3 mt-5 items-center justify-center">
+							{tags.map((tag) => (
+								<p
+									className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300"
+									key={tag.name}
+								>
+									{tag.name}
+								</p>
+							))}
+							<p
+								className="text-xl cursor-pointer hover:scale-110 transition-all duration-200"
+								onClick={createTag}
+							>
+								+
 							</p>
 						</div>
 					</div>
@@ -180,14 +231,17 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 					</div>
 				) : (
 					<div
-						className="text-white relative group"
+						className="relative group"
 						onDoubleClick={() => setEditDescription(true)}
 					>
-						{description}
+						<h1 className="text-white h-40 overflow-scroll">
+							{description}
+						</h1>
 						<Hint>Double click to edit</Hint>
 					</div>
 				)}
 				<LessonCard
+					id=""
 					name={title}
 					description={description}
 					progress={100}
@@ -204,7 +258,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 				></LessonCard>
 
 				<div
-					className="text-white bg-primary px-10 py-4 rounded-3xl"
+					className="text-white bg-primary px-10 py-4 rounded-3xl cursor-pointer hover:scale-110 transition duration-200"
 					onClick={submitLesson}
 				>
 					Submit
@@ -232,7 +286,6 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 					<PlusIcon className="stroke-white w-5" /> Add
 				</div>
 			</div>
-			
 		</>
 	);
 };

@@ -5,6 +5,8 @@ export type Author = {
 };
 
 export type Tag = {
+	id?: number;
+	_id?: number;
 	name: string;
 };
 
@@ -29,7 +31,9 @@ export type Choice = {
 };
 
 export type Lesson = {
+	_id?: string;
 	title: string;
+	description: string;
 	published: boolean;
 	tags: Tag[];
 	authors: Author[];

@@ -16,11 +16,11 @@ const AddName = () => {
 			<div className="w-150 h-120 bg-black/50 backdrop-blur-sm rounded-4xl border border-primary/50 shadow-effective flex items-center justify-center flex-col">
 				<div className="flex flex-col items-center justify-center gap-5 text-center">
 					<h1 className="text-white font-semibold text-2xl">
-						Let's get to know you
+						Եկեք ծանոթանանք
 					</h1>
 					<p className="text-white/70">
-						Looks like we don't know your name.
-						<br /> Help us to know a little more about you.
+						Կարծես թե մենք չգիտենք քո անունը:
+						<br /> Օգնիր մեզ մի փոքր ավելին իմանալ քո մասին:
 					</p>
 				</div>
 				<form className="mt-15">
@@ -36,7 +36,7 @@ const AddName = () => {
 					<input
 						type="submit"
 						className="bg-primary text-white rounded-xl w-70 flex py-2.5 flex-col mt-4 cursor-pointer hover:scale-105 transition-all duration-300"
-						value="Submit"
+						value="Հաստատել"
 					></input>
 				</form>
 			</div>

@@ -21,7 +21,7 @@ const Card = ({ title, description, index, text }: Props) => {
 					<h4 className="mt-3 text-[15px]  text-white">{title}</h4>
 					<p className="mt-3 text-[12px] text-white">{description}</p>
 					<div className="gap-3 mt-5 flex items-center group cursor-pointer">
-						<h6 className="text-xs text-secondary">View Details</h6>
+						<h6 className="text-xs text-secondary">Տեսնել ավելին</h6>
 						<MoveRight className="stroke-secondary w-4 group-hover:translate-x-1 transition-all duration-150" />
 					</div>
 				</div>
