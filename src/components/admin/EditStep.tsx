@@ -1,11 +1,11 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
 import { icons } from "./CreateLesson";
-import { X } from "lucide-react";
+import { TextInitial, X } from "lucide-react";
 import Input from "../Input";
-import TextField from "../TextField";
-import AdminChoice from "./AdminChoice";
-import type { Step } from "@/utils/types";
+import type { Choice, Step } from "@/utils/types";
 import Hint from "../Hint";
+import TextStep from "./sections/TextStep";
+import ChoiceStep from "./sections/ChoiceStep";
 
 interface Props {
 	children: Step;
@@ -17,7 +17,6 @@ const EditStep = ({ children, edit, submitStep }: Props) => {
 	const [editTitle, setEditTitle] = useState<string | undefined>(
 		children.title ? undefined : children.title,
 	);
-
 	const [editContent, setEditContent] = useState<string | undefined>(
 		children.content ? undefined : children.content,
 	);
@@ -46,6 +45,70 @@ const EditStep = ({ children, edit, submitStep }: Props) => {
 		}
 	};
 
+	const newChoice = () => {
+		const newChoice: Choice = {
+			text: "",
+			isRight: false,
+		};
+
+		edit((prev) => {
+			if (prev === undefined) return undefined;
+
+			if (prev.choices === undefined || prev.choices.length === 0) {
+				newChoice.id = 0;
+
+				return { ...prev, choices: [newChoice] };
+			}
+
+			newChoice.id = prev.choices.length;
+			return { ...prev, choices: [...prev.choices, newChoice] };
+		});
+	};
+
+	const deleteChoice = (id: number) => {
+		edit((prev) => {
+			if (prev === undefined) return undefined;
+
+			const filtered = prev.choices?.filter((choice) => choice.id !== id);
+
+			return { ...prev, choices: filtered };
+		});
+	};
+
+	const check = (id: number) => {
+		edit((prev) => {
+			if (prev === undefined) return undefined;
+
+			const choices = prev.choices?.map((choice) => {
+				if (choice.id === id) {
+					choice.isRight = !choice.isRight;
+				} else {
+					choice.isRight = false;
+				}
+
+				return choice;
+			});
+
+			return { ...prev, choices };
+		});
+	};
+
+	const editChoiceText = (value: string, id: number) => {
+		edit((prev) => {
+			if (prev === undefined) return undefined;
+
+			const choices = prev.choices?.map((choice) => {
+				if (choice.id === id) {
+					choice.text = value;
+				}
+
+				return choice;
+			});
+
+			return { ...prev, choices };
+		});
+	};
+
 	const cycleTypes = () => {
 		edit((step) => {
 			if (step?.type === "text") {
@@ -59,6 +122,8 @@ const EditStep = ({ children, edit, submitStep }: Props) => {
 			return step;
 		});
 	};
+
+	const Icon = children.icon || TextInitial;
 
 	return (
 		<>
@@ -92,12 +157,12 @@ const EditStep = ({ children, edit, submitStep }: Props) => {
 							className="text-white text-2xl flex items-center justify-center gap-5 relative group"
 							onDoubleClick={() => setEditTitle(children.title)}
 						>
-								{children.title}
-								<Hint>Double click to edit</Hint>
+							{children.title}
+							<Hint>Double click to edit</Hint>
 						</h1>
 					)}
 					<div className="flex items-center justify-center gap-4">
-						<children.icon
+						<Icon
 							className="stroke-white cursor-pointer hover:scale-110 transition-all duration-300"
 							onClick={cycleTypes}
 						/>
@@ -108,36 +173,25 @@ const EditStep = ({ children, edit, submitStep }: Props) => {
 					</div>
 				</div>
 				<div className="w-full h-0.5 bg-gray-400 mt-5 rounded-full"></div>
-				<div className="my-5">
-					{editContent !== undefined ? (
-						<form action={submitContent} className="w-full flex flex-col">
-							<TextField
-								id="content"
-								value={editContent}
-								setValue={setEditContent}
-							>
-								Content
-							</TextField>
-							<input
-								type="submit"
-								value="OK"
-								className="bg-primary text-white rounded-xl px-4 py-2 flex flex-col items-center justify-center text-center cursor-pointer hover:scale-105 transition-all duration-300 self-center"
-							></input>
-						</form>
-					) : (
-						<div
-							className="text-white mt-5 wrap-anywhere"
-							onDoubleClick={() => setEditContent(children.content)}
-						>
-							{children.content}
-						</div>
-					)}
-				</div>
-				<div className="w-full">
-					<AdminChoice text="Option 1" check={false} />
-					<AdminChoice text="Option 2" check={false} />
-					<AdminChoice text="Option 3" check={false} />
-				</div>
+				<TextStep
+					editContent={editContent}
+					setEditContent={setEditContent}
+					submitContent={submitContent}
+				>
+					{children}
+				</TextStep>
+				{children.type == "multi" ? (
+					<ChoiceStep
+						changeText={editChoiceText}
+						newChoice={newChoice}
+						deleteChoice={deleteChoice}
+						check={check}
+					>
+						{children.choices}
+					</ChoiceStep>
+				) : (
+					<></>
+				)}
 			</div>
 		</>
 	);

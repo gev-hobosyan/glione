@@ -1,8 +1,8 @@
-import { ArrowLeft, Check } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Input from "@/components/Input";
 import LoginOptions from "@/components/LoginOptions";
 import { Link, redirect } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { supabase } from "@/utils/supabaseClient";
 import BlurCircle from "@/components/BlurCircle";
 
@@ -11,7 +11,9 @@ const SignIn = () => {
 	const [password, setPassword] = useState("");
 
 	const signIn = async () => {
-		const { data, error } = await supabase.auth.signInWithPassword({
+		// const { data, error } =
+
+		await supabase.auth.signInWithPassword({
 			email,
 			password,
 		});
@@ -68,10 +70,13 @@ const SignIn = () => {
 					<BlurCircle z="z-10" right="60px" top="30px" />
 					<BlurCircle z="z-10" left="120px" bottom="45px" />
 					<img src="/medusa.png" width="300px" />
-					<p className="text-white text-[18px]">Welcome to our Python learning project powered by Medusa.</p>
-					<p className="text-white text-[18px]">Learn Python through simple lessons and hands-on practice.</p>
+					<p className="text-white text-[18px]">
+						Welcome to our Python learning project powered by Medusa.
+					</p>
+					<p className="text-white text-[18px]">
+						Learn Python through simple lessons and hands-on practice.
+					</p>
 				</div>
-
 			</div>
 		</div>
 	);

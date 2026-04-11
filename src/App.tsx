@@ -6,7 +6,7 @@ import Landing from "./pages/Landing";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import Admin from "./pages/Admin";
-import Lesson from "./components/Lesson";
+import Lesson from "./pages/Lesson";
 
 
 const router = createBrowserRouter([

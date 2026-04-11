@@ -6,7 +6,7 @@ import {
 	type ReactNode,
 } from "react";
 import { supabase } from "@/utils/supabaseClient";
-import type { AuthError, Session, User } from "@supabase/supabase-js";
+import type { AuthError, Session, User, WeakPassword } from "@supabase/supabase-js";
 
 interface AuthContextInterface {
 	session: Session | null;
@@ -35,6 +35,25 @@ interface AuthContextInterface {
 		  }
 		| {
 				success: boolean;
+				error?: undefined;
+		  }
+	>;
+	signInUser: (
+		email: string,
+		password: string,
+	) => Promise<
+		| {
+				success: boolean;
+				error: AuthError;
+				data?: undefined;
+		  }
+		| {
+				success: boolean;
+				data: {
+					user: User;
+					session: Session;
+					weakPassword?: WeakPassword;
+				};
 				error?: undefined;
 		  }
 	>;
@@ -96,7 +115,9 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 	}, []);
 
 	return (
-		<AuthContext.Provider value={{ session, signUpUser, signOut }}>
+		<AuthContext.Provider
+			value={{ session, signUpUser, signOut, signInUser }}
+		>
 			{loading ? <p className="text-white">Loading</p> : children}
 		</AuthContext.Provider>
 	);

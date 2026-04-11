@@ -1,13 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import LessonSidebar from "./LessonsSidebar";
-import MultipleChoice from "./MultipleChoice";
+import LessonSidebar from "../components/LessonsSidebar";
+import MultipleChoice from "../components/MultipleChoice";
 import { type Lesson as LessonType, type Step } from "@/utils/types";
 import getLessonById from "@/utils/backend/getLessonById";
-import LoadingSpinner from "./LoadingSpinner";
-import TextSection from "./TextSection";
-import CodeEditor from "./CodeEditor";
+import LoadingSpinner from "../components/LoadingSpinner";
+import TextSection from "../components/TextSection";
+import CodeEditor from "../components/CodeEditor";
 import { useParams } from "react-router-dom";
-
 
 const Lesson = () => {
 	const { id } = useParams();
@@ -71,12 +70,7 @@ const Lesson = () => {
 					) : (
 						<div></div>
 					)}
-
-					{/*{/*<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-full">
-						<MultipleChoice />
-					</div>*/}
 				</div>
-				
 			)}
 		</>
 	);

@@ -28,6 +28,7 @@ export type Choice = {
 	_id?: string;
 	text: string;
 	isRight: boolean;
+	id?: number;
 };
 
 export type Lesson = {
