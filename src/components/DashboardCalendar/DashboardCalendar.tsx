@@ -11,13 +11,13 @@ const DashboardCalendar = () => {
 
     return (
         <div className='w-100 mt-4'>
-            <Calendar className="text-white justify-center" tileClassName={({ activeStartDate, date, view }) => {
+            <Calendar className="text-white justify-center" tileClassName={({ activeStartDate, date }) => {
                 if(date.getMonth() != activeStartDate.getMonth()){
                     return "text-gray-500"
                 }
                 
                 return "text-white";
-            }} view='month' value={value} onChange={(value, event) => {
+            }} view='month' value={value} onChange={(value) => {
                 setValue(value);
                 }}/>
         </div>

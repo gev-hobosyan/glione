@@ -19,7 +19,7 @@ export type Tab<P> = {
 };
 
 const SideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
-	const { signOut } = UserAuth();
+	const signOut = UserAuth() ? UserAuth()?.signOut : undefined;
 
 	return (
 		<div className="h-full p-5 border border-primary/40 bg-black/40 rounded-3xl backdrop-blur-3x flex flex-col items-center justify-between">

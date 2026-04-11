@@ -1,8 +1,6 @@
 import { useRef, useState } from "react";
-import { UserAuth } from "@/context/AuthContext";
 import { type IRefPhaserGame } from "@/game/PhaserGame";
 import { BookOpenTextIcon, HomeIcon, type LucideProps } from "lucide-react";
-import AdminDashboard from "@/components/admin/AdminDashboard";
 import type { Tab } from "@/components/SideBar";
 import SideBar from "@/components/SideBar";
 import Lessons from "./Lessons";
@@ -24,13 +22,11 @@ const Home = () => {
 		},
 	];
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const phaserRef = useRef<IRefPhaserGame | null>(null);
 
-	const currentScene = (scene: Phaser.Scene) => {
-
-	};
-
-	const { session, signOut } = UserAuth();
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const currentScene = (scene: Phaser.Scene) => {};
 
 	return (
 		<div className="flex h-screen px-4 py-3">

@@ -1,5 +1,5 @@
 import { ArrowRight, RotateCcw } from "lucide-react";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface Props {
 	title: string;

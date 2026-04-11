@@ -2,8 +2,8 @@ import Input from "@/components/Input";
 import LoginOptions from "@/components/LoginOptions";
 import VerifyEmail from "@/components/VerifyEmail";
 import { supabase } from "@/utils/supabaseClient";
-import type { AuthError } from "@supabase/supabase-js";
-import React, { useContext, useEffect, useState } from "react";
+import type { AuthError, EmailOtpType } from "@supabase/supabase-js";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BlurCircle from "@/components/BlurCircle";
 import { ArrowLeft } from "lucide-react";
@@ -13,7 +13,9 @@ const SignUp = () => {
 	const [password, setPassword] = useState("");
 	const [confPassword, setConfPassword] = useState("");
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [authError, setAuthError] = useState<AuthError | null>(null);
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [authSuccess, setAuthSuccess] = useState(false);
 
 	const params = new URLSearchParams(window.location.search);
@@ -24,7 +26,7 @@ const SignUp = () => {
 	useEffect(() => {
 		const params = new URLSearchParams(window.location.search);
 		const token_hash = params.get("token_hash");
-		const type = params.get("type");
+		const type = params.get("type") as EmailOtpType;
 
 		if (token_hash) {
 			supabase.auth
@@ -47,7 +49,9 @@ const SignUp = () => {
 	});
 
 	const signUp = async () => {
-		const { data, error } = await supabase.auth.signUp({
+		// const { data, error } =
+
+		await supabase.auth.signUp({
 			email,
 			password,
 		});

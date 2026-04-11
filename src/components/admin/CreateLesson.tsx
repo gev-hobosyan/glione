@@ -129,6 +129,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 				setError(true);
 			}
 		} catch (e) {
+			console.log(e);
 			setError(true);
 		} finally {
 			setLoading(false);

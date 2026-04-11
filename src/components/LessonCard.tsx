@@ -1,6 +1,6 @@
 import type { Author, Tag } from "@/utils/types";
 import { ArrowRight, BookOpen } from "lucide-react";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface Props {
 	id: string;

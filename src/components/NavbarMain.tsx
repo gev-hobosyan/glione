@@ -8,7 +8,7 @@ interface Props {
 }
 
 const NavbarMain = ({ logOut }: Props) => {
-	const { session } = UserAuth();
+	const session = UserAuth() ? UserAuth()?.session : undefined;
 
 	return (
 		<div className="flex justify-between border border-white/20 rounded-2xl py-2.5 px-3 fixed top-2 left-2 right-2 bg-transparent backdrop-blur-sm z-50">
@@ -30,9 +30,9 @@ const NavbarMain = ({ logOut }: Props) => {
 					<Gem color="#16e6e9" />
 				</div>
 
-				{session["user"]["user_metadata"] ? (
+				{session!["user"]["user_metadata"] ? (
 					<img
-						src={session["user"]["user_metadata"]["avatar_url"]}
+						src={session!["user"]["user_metadata"]["avatar_url"]}
 						width={"40px"}
 						className="rounded-full"
 						onClick={logOut}

@@ -3,7 +3,7 @@ interface Props {
 	isRight: boolean;
 }
 
-const Choice = ({ children, isRight }: Props) => {
+const Choice = ({ children }: Props) => {
 	return (
 		<>
 			<div className="border border-primary w-full px-5 py-1.5 rounded-lg flex items-center gap-5 has-checked:shadow-[0_0_15px_#006e2a]">

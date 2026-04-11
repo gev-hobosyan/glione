@@ -15,12 +15,6 @@ const Lesson = () => {
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<unknown>();
 
-	const stepTypes = {
-		text: TextSection,
-		multi: MultipleChoice,
-		code: CodeEditor,
-	};
-
 	const [selectedStep, setSelectedStep] = useState<number | null>(null);
 
 	const step = useMemo(() => {
