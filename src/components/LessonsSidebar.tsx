@@ -51,12 +51,18 @@ const LessonSidebar = ({
 							selectedStep ===
 							stepsOrder.findIndex((value) => value === step._id!)
 						}
-						onClick={() =>
-							setSelectedStep(
-								stepsOrder.findIndex((value) => value === step._id!),
-							)
-						}
-						status={step.status}
+						onClick={() => {
+							if (
+								lesson.steps?.find(
+									(step) => step._id === stepsOrder[selectedStep!],
+								)?.status !== "ns"
+							) {
+								setSelectedStep(
+									stepsOrder.findIndex((value) => value === step._id!),
+								);
+							}
+						}}
+						status={step.status!}
 					/>
 				);
 			})}

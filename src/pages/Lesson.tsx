@@ -17,7 +17,6 @@ const Lesson = () => {
 
 	const [selectedStep, setSelectedStep] = useState<number>(0);
 
-
 	const stepsOrder: number[] = useMemo(() => {
 		if (lesson) {
 			return lesson.steps?.map((step) => step._id!);
@@ -47,26 +46,28 @@ const Lesson = () => {
 		getData();
 	}, [id]);
 
-
 	const changeCurrentStep = (direction: "next" | "prev") => {
-		if(direction == "prev") {
-			setSelectedStep(prev => prev !== 0 ? prev - 1 : prev)
+		if (direction == "prev") {
+			setSelectedStep((prev) => (prev !== 0 ? prev - 1 : prev));
 		} else {
-			setSelectedStep(prev => stepsOrder.length - 1 !== prev ? prev + 1 : prev)
+			setSelectedStep((prev) =>
+				stepsOrder.length - 1 !== prev ? prev + 1 : prev,
+			);
 		}
-	}
+	};
 
 	const changeStatus = (status: "ns" | "completed" | "wrong", id: number) => {
-		setLesson(prev => {
-			if(prev == undefined) return undefined
-			const steps = prev.steps?.map(step => {
-				if(step._id == id) {
-					step.status = status
-				} return step;
-			})
-			return {...prev, steps};
-		})
-	}
+		setLesson((prev) => {
+			if (prev == undefined) return undefined;
+			const steps = prev.steps?.map((step) => {
+				if (step._id == id) {
+					step.status = status;
+				}
+				return step;
+			});
+			return { ...prev, steps };
+		});
+	};
 
 	return (
 		<>
@@ -85,17 +86,20 @@ const Lesson = () => {
 					{step != undefined ? (
 						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-[80%]">
 							{step.type == "text" ? (
-								<TextSection step={step} 
-								changeCurrentStep={changeCurrentStep}
-								selectedStep={selectedStep}
-								stepCount={stepsOrder.length}
-								changeStatus={changeStatus}
+								<TextSection
+									step={step}
+									changeCurrentStep={changeCurrentStep}
+									selectedStep={selectedStep}
+									stepCount={stepsOrder.length}
+									changeStatus={changeStatus}
 								/>
 							) : step.type == "multi" ? (
-								<MultipleChoice step={step} 
-								changeCurrentStep={changeCurrentStep}
-								selectedStep={selectedStep}
-								stepCount={stepsOrder.length}
+								<MultipleChoice
+									changeStatus={changeStatus}
+									step={step}
+									changeCurrentStep={changeCurrentStep}
+									selectedStep={selectedStep}
+									stepCount={stepsOrder.length}
 								/>
 							) : step.type == "code" ? (
 								<CodeEditor></CodeEditor>
