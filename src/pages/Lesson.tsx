@@ -17,6 +17,7 @@ const Lesson = () => {
 
 	const [selectedStep, setSelectedStep] = useState<number>(0);
 
+
 	const stepsOrder: number[] = useMemo(() => {
 		if (lesson) {
 			return lesson.steps?.map((step) => step._id!);
@@ -55,6 +56,18 @@ const Lesson = () => {
 		}
 	}
 
+	const changeStatus = (status: "ns" | "completed" | "wrong", id: number) => {
+		setLesson(prev => {
+			if(prev == undefined) return undefined
+			const steps = prev.steps?.map(step => {
+				if(step._id == id) {
+					step.status = status
+				} return step;
+			})
+			return {...prev, steps};
+		})
+	}
+
 	return (
 		<>
 			{loading ? (
@@ -76,6 +89,7 @@ const Lesson = () => {
 								changeCurrentStep={changeCurrentStep}
 								selectedStep={selectedStep}
 								stepCount={stepsOrder.length}
+								changeStatus={changeStatus}
 								/>
 							) : step.type == "multi" ? (
 								<MultipleChoice step={step} 

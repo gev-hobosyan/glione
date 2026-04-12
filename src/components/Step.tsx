@@ -8,15 +8,17 @@ interface Props {
 	>;
 	isSelected: boolean;
 	onClick: () => void;
+	status: "ns" | "completed" | "wrong";
 }
 
-const Step = ({ index, title, Icon, isSelected, onClick }: Props) => {
+const Step = ({ index, title, Icon, isSelected, onClick, status }: Props) => {
 	return (
 		<div
 			onClick={onClick}
 			className={`border border-primary/40 flex items-center px-2 py-3 gap-2 cursor-pointer group mx-2 mb-2 rounded-3xl hover:scale-105 transition-all duration-300
-        ${isSelected ? "bg-green-700 text-white" : "hover:bg-green-700"}
+        ${isSelected ? "bg-green-700 text-white" : status == "completed" ? "bg-primary/40" : "hover:bg-green-700"}
       `}
+
 		>
 			<Icon
 				className={`${!isSelected ? "stroke-primary" : "stroke-white"} 2-5 group-hover:stroke-white transition-all`}

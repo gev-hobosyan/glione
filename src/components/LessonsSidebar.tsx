@@ -56,6 +56,7 @@ const LessonSidebar = ({
 								stepsOrder.findIndex((value) => value === step._id!),
 							)
 						}
+						status={step.status}
 					/>
 				);
 			})}

@@ -22,6 +22,7 @@ export type Step = {
 	icon?: React.ForwardRefExoticComponent<
 		Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
 	>;
+	status?: "ns" | "completed" | "wrong"
 };
 
 export type Choice = {

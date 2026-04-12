@@ -1,14 +1,18 @@
 import type { Step } from "@/utils/types";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useState } from "react";
 
 interface Props {
 	step: Step;
 	changeCurrentStep: (direction : "next" | "prev") => void;
 	selectedStep: number;
 	stepCount: number;
+	changeStatus: (status: "ns" | "completed" | "wrong", id: number) => void;
 }
 
-const TextSection = ({ step, changeCurrentStep, selectedStep, stepCount }: Props) => {
+const TextSection = ({ step, changeCurrentStep, selectedStep, stepCount, changeStatus }: Props) => {
+	
+
 	return (
 		<div className="flex items-center justify-center flex-col h-full w-full relative">
 			<p className="text-white text-wrap font-sans mb-7 text-xl">
@@ -34,7 +38,9 @@ const TextSection = ({ step, changeCurrentStep, selectedStep, stepCount }: Props
 				</button>
 
 				<button
-				onClick={() => changeCurrentStep("next")}
+				onClick={() => {
+					changeStatus("completed", step._id!)
+					changeCurrentStep("next")}}
 					className={`group flex items-center gap-2 bg-green-900
     rounded-full px-10 py-2 text-sm cursor-pointer
 	${selectedStep == stepCount - 1 ? "hidden" : ""}`}
