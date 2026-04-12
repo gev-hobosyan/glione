@@ -46,6 +46,15 @@ const Lesson = () => {
 		getData();
 	}, [id]);
 
+
+	const changeCurrentStep = (direction: "next" | "prev") => {
+		if(direction == "prev") {
+			setSelectedStep(prev => prev !== 0 ? prev - 1 : prev)
+		} else {
+			setSelectedStep(prev => stepsOrder.length - 1 !== prev ? prev + 1 : prev)
+		}
+	}
+
 	return (
 		<>
 			{loading ? (
@@ -63,9 +72,17 @@ const Lesson = () => {
 					{step != undefined ? (
 						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-[80%]">
 							{step.type == "text" ? (
-								<TextSection step={step} />
+								<TextSection step={step} 
+								changeCurrentStep={changeCurrentStep}
+								selectedStep={selectedStep}
+								stepCount={stepsOrder.length}
+								/>
 							) : step.type == "multi" ? (
-								<MultipleChoice step={step} />
+								<MultipleChoice step={step} 
+								changeCurrentStep={changeCurrentStep}
+								selectedStep={selectedStep}
+								stepCount={stepsOrder.length}
+								/>
 							) : step.type == "code" ? (
 								<CodeEditor></CodeEditor>
 							) : (

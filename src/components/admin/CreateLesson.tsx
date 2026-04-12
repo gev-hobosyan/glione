@@ -246,7 +246,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 								className="relative group text-white"
 								onDoubleClick={() => setEditDescription(true)}
 							>
-								<h1 className="text-white h-40 overflow-scroll">
+								<h1 className="text-white h-40 overflow-scroll max-w-85 wrap-anywhere">
 									{description}
 								</h1>
 								<Hint>Double click to edit</Hint>
