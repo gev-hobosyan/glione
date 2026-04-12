@@ -1,6 +1,6 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
 import { icons } from "./CreateLesson";
-import { TextInitial, X } from "lucide-react";
+import { TextInitial, Trash2, X } from "lucide-react";
 import Input from "../Input";
 import type { Choice, Step } from "@/utils/types";
 import Hint from "../Hint";
@@ -11,9 +11,10 @@ interface Props {
 	children: Step;
 	edit: Dispatch<SetStateAction<Step | undefined>>;
 	submitStep: () => void;
+	deleteStep: () => void;
 }
 
-const EditStep = ({ children, edit, submitStep }: Props) => {
+const EditStep = ({ children, edit, submitStep, deleteStep }: Props) => {
 	const [editTitle, setEditTitle] = useState<string | undefined>(
 		children.title ? undefined : children.title,
 	);
@@ -162,6 +163,10 @@ const EditStep = ({ children, edit, submitStep }: Props) => {
 						</h1>
 					)}
 					<div className="flex items-center justify-center gap-4">
+						<Trash2
+							className="stroke-red-700 cursor-pointer hover:scale-110 transition-all duration-300"
+							onClick={deleteStep}
+						/>
 						<Icon
 							className="stroke-white cursor-pointer hover:scale-110 transition-all duration-300"
 							onClick={cycleTypes}

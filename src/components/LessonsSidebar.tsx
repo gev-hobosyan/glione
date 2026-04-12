@@ -6,9 +6,15 @@ interface Props {
 	lesson: Lesson;
 	selectedStep: number | null;
 	setSelectedStep: React.Dispatch<React.SetStateAction<number | null>>;
+	stepsOrder: number[];
 }
 
-const LessonSidebar = ({ lesson, selectedStep, setSelectedStep }: Props) => {
+const LessonSidebar = ({
+	lesson,
+	selectedStep,
+	setSelectedStep,
+	stepsOrder,
+}: Props) => {
 	return (
 		<div className="ml-2 border border-primary/40 bg-black/40 rounded-3xl h-full w-[20%]">
 			<div className="flex gap-1 items-center justify-center flex-wrap px-10 py-3">
@@ -40,11 +46,16 @@ const LessonSidebar = ({ lesson, selectedStep, setSelectedStep }: Props) => {
 						key={step.title}
 						index={index + 1}
 						title={step.title}
-						icon={
-							<Icon className="stroke-primary 2-5 group-hover:stroke-white transition-all"></Icon>
+						Icon={Icon}
+						isSelected={
+							selectedStep ===
+							stepsOrder.findIndex((value) => value === step._id!)
 						}
-						isSelected={selectedStep === step._id}
-						onClick={() => setSelectedStep(step._id!)}
+						onClick={() =>
+							setSelectedStep(
+								stepsOrder.findIndex((value) => value === step._id!),
+							)
+						}
 					/>
 				);
 			})}

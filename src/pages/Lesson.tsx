@@ -15,11 +15,21 @@ const Lesson = () => {
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<unknown>();
 
-	const [selectedStep, setSelectedStep] = useState<number | null>(null);
+	const [selectedStep, setSelectedStep] = useState<number>(0);
+
+	const stepsOrder: number[] = useMemo(() => {
+		if (lesson) {
+			return lesson.steps?.map((step) => step._id!);
+		}
+
+		return [] as number[];
+	}, [lesson]);
 
 	const step = useMemo(() => {
-		return lesson?.steps!.find((s) => s._id == selectedStep) as Step;
-	}, [selectedStep, lesson]);
+		return lesson?.steps!.find(
+			(s) => s._id == stepsOrder[selectedStep],
+		) as Step;
+	}, [lesson, selectedStep, stepsOrder]);
 
 	useEffect(() => {
 		const getData = async () => {
@@ -34,7 +44,7 @@ const Lesson = () => {
 		};
 
 		getData();
-	}, []);
+	}, [id]);
 
 	return (
 		<>
@@ -48,6 +58,7 @@ const Lesson = () => {
 						lesson={lesson!}
 						selectedStep={selectedStep}
 						setSelectedStep={setSelectedStep}
+						stepsOrder={stepsOrder}
 					/>
 					{step != undefined ? (
 						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-[80%]">

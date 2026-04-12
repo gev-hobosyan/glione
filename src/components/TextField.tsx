@@ -17,6 +17,7 @@ const TextField = ({ id, children, value, setValue }: Props) => {
 				autoFocus={true}
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
+				required
 			></textarea>
 			<label
 				htmlFor={id}
