@@ -3,6 +3,8 @@ import Choice from "./Choice";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { useState } from "react";
 
+
+
 interface Props {
 	step: Step;
 	changeCurrentStep: (direction: "next" | "prev") => void;
@@ -20,6 +22,8 @@ const MultipleChoice = ({
 }: Props) => {
 	const [answer, setAnswer] = useState<ChoiceType | undefined>(undefined);
 	const [completed, setCompleted] = useState<boolean>(answer !== undefined);
+	const [status, setStatus] = useState<"ns" | "right" | "wrong">("ns");
+	const [message, setMessage] = useState<string>("")
 
 	const check = (id: string) => {
 		setAnswer(step.choices?.find((c) => c._id === id));
@@ -29,10 +33,14 @@ const MultipleChoice = ({
 		if (answer && step.status === "ns") {
 			if (answer?.isRight) {
 				changeStatus("completed", step._id!);
-				console.log("Yeah");
+				setStatus("right");
+				setMessage("Good job!")
 			} else {
+				const rightAnswer =  step.choices?.find(answer => answer.isRight == true);
 				changeStatus("wrong", step._id!);
-				console.log("No");
+				setStatus("wrong");
+				setMessage(`Oops.. Wrong answer!! The right answer was: ${rightAnswer?.text}`)
+
 			}
 
 			setCompleted(true);
@@ -101,6 +109,14 @@ const MultipleChoice = ({
 							/>
 						</button>
 					)}
+					
+					
+				</div>
+				<div className={`w-full h-full bg-black/50 backdrop-blur-lg absolute flex flex-col items-center justify-center z-50 ${step.status == "ns" ? "hidden" : ""}`}>
+						<img src="/medusa.png" className="w-70"/>
+						<p className="text-white text-lg font-semibold text-center px-6">
+							{message}
+						</p>
 				</div>
 			</div>
 		</>
