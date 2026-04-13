@@ -1,4 +1,4 @@
-import BlurCircle from "./BlurCircle";
+import BlurCircle from "./common/BlurCircle";
 
 const About = () => {
 	return (

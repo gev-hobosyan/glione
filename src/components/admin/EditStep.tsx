@@ -1,9 +1,9 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
 import { icons } from "./CreateLesson";
 import { TextInitial, Trash2, X } from "lucide-react";
-import Input from "../Input";
+import Input from "../inputs/Input";
 import type { Choice, Step } from "@/utils/types";
-import Hint from "../Hint";
+import Hint from "../common/Hint";
 import TextStep from "./sections/TextStep";
 import ChoiceStep from "./sections/ChoiceStep";
 

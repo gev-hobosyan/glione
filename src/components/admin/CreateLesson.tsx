@@ -1,15 +1,15 @@
 import { Code, PlusIcon, SquareCheck, TextInitial } from "lucide-react";
 import { useCallback, useState } from "react";
 import EditStep from "./EditStep";
-import Input from "../Input";
-import LessonCard from "../LessonCard";
-import TextField from "../TextField";
+import Input from "../inputs/Input";
+import LessonCard from "../lessons/LessonCard";
+import TextField from "../inputs/TextField";
 import Message from "./Message";
 import type { Lesson, Step, Tag } from "@/utils/types";
 import createLesson from "@/utils/backend/createLesson";
-import Hint from "../Hint";
+import Hint from "../common/Hint";
 import EditTag from "./EditTag";
-import LoadingSpinner from "../LoadingSpinner";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {

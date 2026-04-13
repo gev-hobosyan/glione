@@ -1,11 +1,11 @@
-import Input from "@/components/Input";
-import LoginOptions from "@/components/LoginOptions";
+import Input from "@/components/inputs/Input";
+import LoginOptions from "@/components/login/LoginOptions";
 import VerifyEmail from "@/components/VerifyEmail";
 import { supabase } from "@/utils/supabaseClient";
 import type { AuthError, EmailOtpType } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import BlurCircle from "@/components/BlurCircle";
+import BlurCircle from "@/components/common/BlurCircle";
 import { ArrowLeft } from "lucide-react";
 
 const SignUp = () => {

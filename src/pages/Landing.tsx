@@ -1,6 +1,6 @@
-import BlurCircle from "@/components/BlurCircle";
+import BlurCircle from "@/components/common/BlurCircle";
 import About from "@/components/About";
-import Card from "@/components/Card";
+import Card from "@/components/cards/Card";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import PriceCard from "@/components/PriceCard";
@@ -112,7 +112,7 @@ const Landing = () => {
 					]}
 				/>
 			</div>
-			
+
 			<Footer />
 		</>
 	);

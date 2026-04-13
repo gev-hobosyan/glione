@@ -1,6 +1,6 @@
 import { supabase } from "@/utils/supabaseClient";
-import PrimaryButton from "./PrimaryButton";
-import BlurCircle from "./BlurCircle";
+import PrimaryButton from "./buttons/PrimaryButton";
+import BlurCircle from "./common/BlurCircle";
 
 interface Props {
 	email: string;
@@ -18,9 +18,9 @@ const VerifyEmail = ({ email }: Props) => {
 		<div className="w-screen h-screen absolute top-0 left-0 bg-black/70 backdrop-blur-xs flex items-center justify-center">
 			<BlurCircle />
 			<BlurCircle top="-80px" left="-70px" />
-			<BlurCircle bottom="-150px" right="40px"/>
-			<BlurCircle right="-100px" top="100px"/>
-			<BlurCircle bottom="50px" left="50px"/>
+			<BlurCircle bottom="-150px" right="40px" />
+			<BlurCircle right="-100px" top="100px" />
+			<BlurCircle bottom="50px" left="50px" />
 
 			<div className="w-150 h-120 bg-black/50 backdrop-blur-sm rounded-4xl border border-primary/50 shadow-effective flex items-center justify-center flex-col">
 				<div className="flex flex-col items-center justify-center gap-5 text-center">

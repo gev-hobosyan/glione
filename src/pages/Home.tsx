@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
 import { type IRefPhaserGame } from "@/game/PhaserGame";
 import { BookOpenTextIcon, HomeIcon, type LucideProps } from "lucide-react";
-import type { Tab } from "@/components/SideBar";
-import SideBar from "@/components/SideBar";
+import type { Tab } from "@/components/layout/sidebar/SideBar";
+import SideBar from "@/components/layout/sidebar/SideBar";
 import Lessons from "./Lessons";
 import Dashboard from "@/components/Dashboard";
 

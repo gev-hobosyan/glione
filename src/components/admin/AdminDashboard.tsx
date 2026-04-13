@@ -1,6 +1,6 @@
-import DashboardCalendar from "../DashboardCalendar/DashboardCalendar";
-import DashboardImage from "../DashboardImage";
-import ProfileCard from "../ProfileCard";
+import DashboardCalendar from "../dashboard/DashboardCalendar/DashboardCalendar";
+import DashboardImage from "../dashboard/DashboardImage";
+import ProfileCard from "../cards/ProfileCard";
 
 const AdminDashboard = () => {
 	return (

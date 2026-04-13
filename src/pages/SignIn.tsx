@@ -1,10 +1,10 @@
 import { ArrowLeft } from "lucide-react";
-import Input from "@/components/Input";
-import LoginOptions from "@/components/LoginOptions";
+import Input from "@/components/inputs/Input";
+import LoginOptions from "@/components/login/LoginOptions";
 import { Link, redirect } from "react-router-dom";
 import { useState } from "react";
 import { supabase } from "@/utils/supabaseClient";
-import BlurCircle from "@/components/BlurCircle";
+import BlurCircle from "@/components/common/BlurCircle";
 
 const SignIn = () => {
 	const [email, setEmail] = useState("");

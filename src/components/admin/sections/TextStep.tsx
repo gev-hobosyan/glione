@@ -1,5 +1,5 @@
-import Hint from "@/components/Hint";
-import TextField from "@/components/TextField";
+import Hint from "@/components/common/Hint";
+import TextField from "@/components/inputs/TextField";
 import type { Step } from "@/utils/types";
 import type { Dispatch, SetStateAction } from "react";
 

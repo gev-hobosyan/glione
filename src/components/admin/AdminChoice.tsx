@@ -1,7 +1,7 @@
 import type { Choice } from "@/utils/types";
 import { Trash2 } from "lucide-react";
 import { useState } from "react";
-import Hint from "../Hint";
+import Hint from "../common/Hint";
 
 interface Props {
 	children: Choice;

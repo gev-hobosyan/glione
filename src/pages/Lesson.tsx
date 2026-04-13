@@ -3,8 +3,8 @@ import LessonSidebar from "../components/LessonsSidebar";
 import MultipleChoice from "../components/MultipleChoice";
 import { type Lesson as LessonType, type Step } from "@/utils/types";
 import getLessonById from "@/utils/backend/getLessonById";
-import LoadingSpinner from "../components/LoadingSpinner";
-import TextSection from "../components/TextSection";
+import LoadingSpinner from "../components/common/LoadingSpinner";
+import TextSection from "../components/lessons/TextSection";
 import CodeEditor from "../components/CodeEditor";
 import { useParams } from "react-router-dom";
 
