@@ -1,6 +1,6 @@
 import Editor, { useMonaco } from "@monaco-editor/react";
 import { useEffect, useState } from "react";
-import { Pyodide } from "../lib/pyodide.ts";
+import { Pyodide } from "../../lib/pyodide.ts";
 import { PlayIcon } from "lucide-react";
 
 /**

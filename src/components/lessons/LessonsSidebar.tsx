@@ -1,6 +1,6 @@
 import Step from "./Step";
 import type { Lesson } from "@/utils/types";
-import { icons } from "./admin/CreateLesson";
+import { icons } from "@/components/admin/CreateLesson";
 
 interface Props {
 	lesson: Lesson;

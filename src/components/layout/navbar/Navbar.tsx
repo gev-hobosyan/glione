@@ -1,7 +1,7 @@
 import { Link as DOMLink } from "react-router-dom";
-import Link from "./Link";
+import Link from "@/components/common/Link";
 import NavbarElement from "./NavbarElement";
-import PrimaryButton from "./buttons/PrimaryButton";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 
 const Navbar = () => {
 	return (

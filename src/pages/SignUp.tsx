@@ -1,6 +1,6 @@
 import Input from "@/components/inputs/Input";
 import LoginOptions from "@/components/login/LoginOptions";
-import VerifyEmail from "@/components/VerifyEmail";
+import VerifyEmail from "@/components/login/VerifyEmail";
 import { supabase } from "@/utils/supabaseClient";
 import type { AuthError, EmailOtpType } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";

@@ -1,6 +1,6 @@
 import { supabase } from "@/utils/supabaseClient";
-import PrimaryButton from "./buttons/PrimaryButton";
-import BlurCircle from "./common/BlurCircle";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
+import BlurCircle from "@/components/common/BlurCircle";
 
 interface Props {
 	email: string;

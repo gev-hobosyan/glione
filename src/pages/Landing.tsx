@@ -1,9 +1,9 @@
 import BlurCircle from "@/components/common/BlurCircle";
-import About from "@/components/About";
+import About from "@/components/common/About";
 import Card from "@/components/cards/Card";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import PriceCard from "@/components/PriceCard";
+import Footer from "@/components/layout/footer/Footer";
+import Navbar from "@/components/layout/navbar/Navbar";
+import PriceCard from "@/components/cards/PriceCard";
 
 const Landing = () => {
 	return (

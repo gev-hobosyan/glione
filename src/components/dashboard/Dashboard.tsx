@@ -1,6 +1,6 @@
-import DashboardCalendar from "./dashboard/DashboardCalendar/DashboardCalendar";
+import DashboardCalendar from "@/components/dashboard/DashboardCalendar/DashboardCalendar";
 import DashboardImage from "./DashboardImage";
-import ProfileCard from "./cards/ProfileCard";
+import ProfileCard from "@/components/cards/ProfileCard";
 import { ClipboardCheck, Clock10, Flame, Percent } from "lucide-react";
 import SimpleDashboard from "./SimpleDashboard";
 

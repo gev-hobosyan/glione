@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import LessonSidebar from "../components/LessonsSidebar";
-import MultipleChoice from "../components/MultipleChoice";
+import LessonSidebar from "../components/lessons/LessonsSidebar";
+import MultipleChoice from "../components/lessons/MultipleChoice";
 import { type Lesson as LessonType, type Step } from "@/utils/types";
 import getLessonById from "@/utils/backend/getLessonById";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import TextSection from "../components/lessons/TextSection";
-import CodeEditor from "../components/CodeEditor";
+import CodeEditor from "../components/lessons/CodeEditor";
 import { useParams } from "react-router-dom";
 
 const Lesson = () => {

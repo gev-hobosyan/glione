@@ -1,5 +1,5 @@
-import PrimaryButton from "./buttons/PrimaryButton";
-import SecondaryButton from "./buttons/SecondaryButton";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
+import SecondaryButton from "@/components/buttons/SecondaryButton";
 
 interface Props {
 	title: string;

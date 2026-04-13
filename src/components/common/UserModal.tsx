@@ -1,5 +1,5 @@
 import { CircleUserRound } from "lucide-react";
-import PrimaryButton from "./buttons/PrimaryButton";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 
 
 const UserModal = () => {

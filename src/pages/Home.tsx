@@ -4,7 +4,7 @@ import { BookOpenTextIcon, HomeIcon, type LucideProps } from "lucide-react";
 import type { Tab } from "@/components/layout/sidebar/SideBar";
 import SideBar from "@/components/layout/sidebar/SideBar";
 import Lessons from "./Lessons";
-import Dashboard from "@/components/Dashboard";
+import Dashboard from "@/components/dashboard/Dashboard";
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState(0);

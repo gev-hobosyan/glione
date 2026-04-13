@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Input from "./inputs/Input";
-import BlurCircle from "./common/BlurCircle";
+import Input from "@/components/inputs/Input";
+import BlurCircle from "@/components/common/BlurCircle";
 
 const AddName = () => {
 	const [userName, setUserName] = useState("");

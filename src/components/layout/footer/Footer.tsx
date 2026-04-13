@@ -1,4 +1,4 @@
-import BlurCircle from "./BlurCircle";
+import BlurCircle from "@/components/common/BlurCircle";
 
 const Footer = () => {
 	return (
