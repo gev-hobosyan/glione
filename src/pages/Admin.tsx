@@ -8,8 +8,8 @@ import {
 	type LucideProps,
 } from "lucide-react";
 import { useState } from "react";
-import Lessons from "./Lessons";
 import type { Step } from "@/utils/types";
+import AdminLessons from "@/components/admin/AdminLessons";
 
 const Admin = () => {
 	const [activeTab, setActiveTab] = useState(2);
@@ -25,7 +25,7 @@ const Admin = () => {
 		{
 			id: 1,
 			icon: BookOpenTextIcon,
-			element: <Lessons />,
+			element: <AdminLessons />,
 		},
 		{
 			id: 2,

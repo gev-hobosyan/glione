@@ -62,6 +62,9 @@ const LessonCard = ({ id, name, description, progress, authors, tags }: Props) =
 						</p>
 					))}
 				</div>
+
+                
+                
 				<Link
 					to={`/lesson/${id}`}
 					className="group flex text-[12px] items-center gap-2 cursor-pointer"
@@ -69,6 +72,7 @@ const LessonCard = ({ id, name, description, progress, authors, tags }: Props) =
 					{progress ? "Continue" : "Start"}{" "}
 					<ArrowRight className="w-4 group-hover:translate-x-0.5 transition-all duration-300"></ArrowRight>
 				</Link>
+                
 			</div>
 		</div>
 	);
