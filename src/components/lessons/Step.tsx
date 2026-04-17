@@ -16,8 +16,7 @@ const Step = ({ index, title, Icon, isSelected, onClick, status }: Props) => {
 		<div
 			onClick={onClick}
 			className={`border ${status === "wrong" ? "border-red-900" : "border-primary/40"} flex items-center px-2 py-3 gap-2 cursor-pointer group mx-2 mb-2 rounded-3xl hover:scale-105 transition-all duration-300
-        ${isSelected && status === "wrong" ? "bg-red-900 text-white" : isSelected ? "bg-green-700 text-white" : status === "completed" ? "bg-primary/40" : status === "wrong" ? "bg-red-800/40" : "hover:bg-green-700"}
-      `}
+        	${isSelected && status === "wrong" ? "bg-red-900 text-white" : isSelected ? "bg-green-700 text-white" : status === "completed" ? "bg-primary/40" : status === "wrong" ? "bg-red-800/40" : "hover:bg-green-700"}`}
 		>
 			<Icon
 				className={`${isSelected && status === "wrong" ? "stroke-red-600" : isSelected ? "stroke-white" : status === "wrong" ? "stroke-red-600" : "stroke-green-800"} 2-5 group-hover:stroke-white transition-all`}

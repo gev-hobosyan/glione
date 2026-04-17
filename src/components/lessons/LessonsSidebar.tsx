@@ -5,7 +5,7 @@ import { icons } from "@/components/admin/CreateLesson";
 interface Props {
 	lesson: Lesson;
 	selectedStep: number | null;
-	setSelectedStep: React.Dispatch<React.SetStateAction<number | null>>;
+	setSelectedStep: React.Dispatch<React.SetStateAction<number>>;
 	stepsOrder: number[];
 }
 
@@ -16,7 +16,7 @@ const LessonSidebar = ({
 	stepsOrder,
 }: Props) => {
 	return (
-		<div className="ml-2 border border-primary/40 bg-black/40 rounded-3xl h-full w-[20%]">
+		<div className="ml-2 border border-primary/40 bg-black/40 rounded-3xl h-full w-[20%] max-md:hidden">
 			<div className="flex gap-1 items-center justify-center flex-wrap px-10 py-3">
 				{lesson.authors!.map((author) => (
 					<p key={author.name} className="text-[13px] text-gray-400">

@@ -7,6 +7,7 @@ import LoadingSpinner from "../components/common/LoadingSpinner";
 import TextSection from "../components/lessons/TextSection";
 import CodeEditor from "../components/lessons/CodeEditor";
 import { useParams } from "react-router-dom";
+import ProgressBar from "@/components/lessons/ProgressBar";
 
 const Lesson = () => {
 	const { id } = useParams();
@@ -16,6 +17,8 @@ const Lesson = () => {
 	const [error, setError] = useState<unknown>();
 
 	const [selectedStep, setSelectedStep] = useState<number>(0);
+
+	const [completedSteps, setCompletedSteps] = useState<number>(0);
 
 	const stepsOrder: number[] = useMemo(() => {
 		if (lesson) {
@@ -65,9 +68,19 @@ const Lesson = () => {
 				}
 				return step;
 			});
+			setCompletedSteps((prev) => prev + 1);
+
 			return { ...prev, steps };
 		});
 	};
+
+	const progressBar = useMemo(() => {
+		return (
+			<ProgressBar
+				progress={(completedSteps / stepsOrder.length) * 100}
+			></ProgressBar>
+		);
+	}, [completedSteps, stepsOrder]);
 
 	return (
 		<>
@@ -84,7 +97,9 @@ const Lesson = () => {
 						stepsOrder={stepsOrder}
 					/>
 					{step != undefined ? (
-						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-[80%]">
+						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-[80%] max-md:w-full relative">
+							{progressBar}
+
 							{step.type == "text" ? (
 								<TextSection
 									step={step}

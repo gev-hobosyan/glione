@@ -1,9 +1,13 @@
 import type { Choice as ChoiceType, Step } from "@/utils/types";
 import Choice from "./Choice";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
-import { useState } from "react";
-
-
+import {
+	ArrowLeft,
+	ArrowRight,
+	Check,
+	ChevronLeft,
+	ChevronRight,
+} from "lucide-react";
+import { useState, type ReactNode } from "react";
 
 interface Props {
 	step: Step;
@@ -23,7 +27,7 @@ const MultipleChoice = ({
 	const [answer, setAnswer] = useState<ChoiceType | undefined>(undefined);
 	const [completed, setCompleted] = useState<boolean>(answer !== undefined);
 	const [status, setStatus] = useState<"ns" | "right" | "wrong">("ns");
-	const [message, setMessage] = useState<string>("")
+	const [message, setMessage] = useState<string>("");
 
 	const check = (id: string) => {
 		setAnswer(step.choices?.find((c) => c._id === id));
@@ -34,26 +38,27 @@ const MultipleChoice = ({
 			if (answer?.isRight) {
 				changeStatus("completed", step._id!);
 				setStatus("right");
-				setMessage("Good job!")
+				setMessage("Good job!");
 			} else {
-				const rightAnswer =  step.choices?.find(answer => answer.isRight == true);
+				const rightAnswer = step.choices?.find(
+					(answer) => answer.isRight == true,
+				);
 				changeStatus("wrong", step._id!);
 				setStatus("wrong");
-				setMessage(`Oops.. Wrong answer!! The right answer was: ${rightAnswer?.text}`)
-
+				setMessage(
+					`Oops.. Wrong answer!! The right answer was: ${rightAnswer?.text}`,
+				);
 			}
 
 			setCompleted(true);
 		}
 	};
 
-	console.log(completed);
-
 	return (
 		<>
 			<div className="w-full h-full flex flex-col items-center justify-center px-10 relative">
 				<h1 className="text-white text-2xl font-bold">{step.title}</h1>
-				<div className="w-[calc(100%-200px)] h-0.5 bg-white/70 rounded-full my-10"></div>
+				<div className="md:w-[calc(100%-200px)] w-[calc(100%-50px)] h-0.5 bg-white/70 rounded-full my-10"></div>
 				<p className="text-white mb-4 place-self-start">{step.content}</p>
 				<div className="flex w-full items-center gap-4 flex-col">
 					{step.choices?.map((c) => {
@@ -70,7 +75,36 @@ const MultipleChoice = ({
 						);
 					})}
 				</div>
-				<div className="flex justify-center gap-6  text-white absolute bottom-10  ">
+
+				<div className="md:hidden">
+					<button
+						onClick={() => changeCurrentStep("prev")}
+						className={`text-white absolute border border-white p-3 rounded-full bottom-7 left-10 hover:scale-110 transition duration-300 cursor-pointer`}
+					>
+						<ChevronLeft />
+					</button>
+					{completed ? (
+						<button
+							onClick={() => {
+								changeCurrentStep("next");
+								setCompleted(false);
+								setAnswer(undefined);
+							}}
+							className={`text-white absolute border border-primary/40 bg-primary/40 p-3 rounded-full bottom-7 right-10 hover:scale-110 transition duration-300 cursor-pointer`}
+						>
+							<ChevronRight />
+						</button>
+					) : (
+						<button
+							onClick={() => checkAnswer()}
+							className={`text-white absolute border border-primary/40 bg-primary/40 p-3 rounded-full bottom-7 right-10 hover:-translate-y-1 transition duration-300 cursor-pointer`}
+						>
+							<Check />
+						</button>
+					)}
+				</div>
+
+				<div className="flex justify-center gap-6  text-white absolute bottom-10 max-md:hidden">
 					<button
 						onClick={() => changeCurrentStep("prev")}
 						className={`group flex items-center gap-2 border border-white rounded-full px-6 py-2 text-sm cursor-pointer ${selectedStep == 0 ? "hidden" : ""}`}
@@ -109,15 +143,15 @@ const MultipleChoice = ({
 							/>
 						</button>
 					)}
-					
-					
 				</div>
-				<div className={`w-full h-full bg-black/50 backdrop-blur-lg absolute flex flex-col items-center justify-center z-50 ${step.status == "ns" ? "hidden" : ""}`}>
-						<img src="/medusa.png" className="w-70"/>
-						<p className="text-white text-lg font-semibold text-center px-6">
-							{message}
-						</p>
-				</div>
+				{/*<div
+					className={`w-full h-full bg-black/50 backdrop-blur-lg absolute flex flex-col items-center justify-center z-50 ${step.status == "ns" ? "hidden" : ""}`}
+				>
+					<img src="/medusa.png" className="w-70" />
+					<p className="text-white text-lg font-semibold text-center px-6">
+						{message}
+					</p>
+				</div>*/}
 			</div>
 		</>
 	);
