@@ -1,6 +1,5 @@
 import type { Step } from "@/utils/types";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { useState, type ReactNode } from "react";
 
 interface Props {
 	step: Step;

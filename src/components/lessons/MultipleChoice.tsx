@@ -7,7 +7,7 @@ import {
 	ChevronLeft,
 	ChevronRight,
 } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 
 interface Props {
 	step: Step;
