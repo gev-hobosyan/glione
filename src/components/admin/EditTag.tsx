@@ -1,6 +1,7 @@
 import type { Tag } from "@/utils/types";
 import Input from "../inputs/Input";
 import { useState, type Dispatch, type SetStateAction } from "react";
+import { t } from "i18next";
 
 interface Props {
 	children: Tag;
@@ -23,11 +24,11 @@ const EditTag = ({ children: tag, submit }: Props) => {
 					action={() => submit(text)}
 				>
 					<Input id="tag" type="text" value={text} setValue={setText}>
-						Tag
+						{t("Tag")}
 					</Input>
 					<input
 						type="submit"
-						value="OK"
+						value={t("Ok")}
 						className="text-white px-6 py-2 bg-primary rounded-[9px] cursor-pointer hover:scale-105 transition-all duration-300"
 					/>
 				</form>

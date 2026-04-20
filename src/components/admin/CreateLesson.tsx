@@ -10,6 +10,7 @@ import createLesson from "@/utils/backend/createLesson";
 import Hint from "../common/Hint";
 import EditTag from "./EditTag";
 import LoadingSpinner from "../common/LoadingSpinner";
+import { t } from "i18next";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
@@ -145,16 +146,16 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
       ) : error ? (
         <Message
           id={""}
-          title="Error"
-          text="Lesson is not created. Please try again."
+          title={t("MessageError")}
+          text={t("MessageErrorText")}
           type="error"
         />
       ) : (
         success && (
           <Message
             id={success}
-            title="Success"
-            text="Lesson is created successfully. Good Luck!"
+            title={t("Success")}
+            text={t("SuccessText")}
             type="success"
           />
         )
@@ -179,11 +180,11 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
                 action={() => setEditTitle(false)}
               >
                 <Input id="title" type="text" value={title} setValue={setTitle}>
-                  Title
+                  {t("AdminTitle")}
                 </Input>
                 <input
                   type="submit"
-                  value="OK"
+                  value={t("Ok")}
                   className="bg-primary text-white rounded-xl px-4 py-2 flex flex-col items-center justify-center text-center cursor-pointer hover:scale-105 transition-all duration-300"
                 ></input>
               </form>
@@ -194,7 +195,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
                   onDoubleClick={() => setEditTitle(true)}
                 >
                   {title}
-                  <Hint>Double click to edit</Hint>
+                  <Hint>{t("DoubleClickToEdit")}</Hint>
                 </h1>
 
                 <div className="flex text-white gap-3 mt-5 items-center justify-center">
@@ -227,11 +228,11 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
                     value={description}
                     setValue={setDescription}
                   >
-                    Descrption
+                    {t("AdminDescription")}
                   </TextField>
                   <input
                     type="submit"
-                    value="OK"
+                    value={t("Ok")}
                     className="bg-primary text-white rounded-xl px-4 py-2 flex flex-col items-center justify-center text-center cursor-pointer hover:scale-105 transition-all duration-300 w-20 self-center"
                   ></input>
                 </form>
@@ -244,7 +245,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
                 <h1 className="text-white h-40 overflow-scroll max-w-85 wrap-anywhere">
                   {description}
                 </h1>
-                <Hint>Double click to edit</Hint>
+                <Hint>{t("DoubleClickToEdit")}</Hint>
               </div>
             )}
             <div className="max-md:hidden">
@@ -262,7 +263,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
               className="text-white bg-primary px-10 py-4 rounded-3xl cursor-pointer hover:scale-110 transition duration-200"
               onClick={submitLesson}
             >
-              Submit
+              {t("Submit")}
             </div>
           </div>
 
@@ -288,7 +289,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
               className="px-6 py-2 border border-primary/50 rounded-full flex gap-3 text-white items-center justify-center cursor-pointer hover:scale-105 transition-all duration-300"
               onClick={createStep}
             >
-              <PlusIcon className="stroke-white w-5" /> Add
+              <PlusIcon className="stroke-white w-5" /> {t("Add")}
             </div>
           </div>
         </div>

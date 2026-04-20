@@ -1,6 +1,7 @@
 import Hint from "@/components/common/Hint";
 import TextField from "@/components/inputs/TextField";
 import type { Step } from "@/utils/types";
+import { t } from "i18next";
 import type { Dispatch, SetStateAction } from "react";
 
 interface Props {
@@ -25,11 +26,11 @@ const TextStep = ({
 						value={editContent}
 						setValue={setEditContent}
 					>
-						Content
+						{t("Content")}
 					</TextField>
 					<input
 						type="submit"
-						value="OK"
+						value={t("Ok")}
 						className="bg-primary text-white rounded-xl px-4 py-2 flex flex-col items-center justify-center text-center cursor-pointer hover:scale-105 transition-all duration-300 self-center"
 					></input>
 				</form>
@@ -39,7 +40,7 @@ const TextStep = ({
 					onDoubleClick={() => setEditContent(children.content)}
 				>
 					<p className="text-white wrap-anywhere overflow-scroll">{children.content}</p>
-					<Hint>Double click to edit</Hint>
+					<Hint>{t("DoubleClickToEdit")}</Hint>
 				</div>
 			)}
 		</div>

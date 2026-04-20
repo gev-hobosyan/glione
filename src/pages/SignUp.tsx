@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BlurCircle from "@/components/common/BlurCircle";
 import { ArrowLeft } from "lucide-react";
+import { t } from "i18next";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -75,7 +76,7 @@ const SignUp = () => {
       <div className="h-screen w-screen overflow-hidden flex items-center justify-center">
         <div className="flex flex-col items-center justify-center h-screen w-[50%] border-r border-r-gray-500 rounded-2xl">
           <img src="/icon.png" className="w-20 h-20 mb-1" />
-          <p className="text-white text-2xl mb-7">Create an Account!</p>
+          <p className="text-white text-2xl mb-7">{t("SignUpWelcome")}</p>
           {verifying ? (
             <div className="text-2xl text-white">
               <p>Waiting for email verification...</p>
@@ -90,7 +91,7 @@ const SignUp = () => {
                   value={email}
                   setValue={setEmail}
                 >
-                  Email
+                  {t("SignInEmail")}
                 </Input>
                 <Input
                   id="password"
@@ -98,7 +99,7 @@ const SignUp = () => {
                   value={password}
                   setValue={setPassword}
                 >
-                  Password
+                  {t("SignInPassword")}
                 </Input>
                 <Input
                   id="confpassword"
@@ -106,21 +107,21 @@ const SignUp = () => {
                   value={confPassword}
                   setValue={setConfPassword}
                 >
-                  Confirm Password
+                  {t("SignUpConfirmPassword")}
                 </Input>
                 <input
                   type="submit"
                   className="bg-primary text-white rounded-xl w-70 flex py-2.5 flex-col mt-4 cursor-pointer hover:scale-105 transition-all duration-300"
-                  value="Sign Up"
+                  value={t("SignUpButton")}
                 ></input>
               </form>
               <LoginOptions signIn={googleSignIn} />{" "}
             </>
           )}
           <div className="mt-10 flex items-center justify-center gap-1.5 text-[14px]">
-            <p className="text-white">Already have an account?</p>
+            <p className="text-white">{t("SignUpText")}</p>
             <Link className="text-secondary" to="/login">
-              Log In
+              {t("SignUpLogIn")}
             </Link>
           </div>
         </div>
@@ -133,10 +134,10 @@ const SignUp = () => {
             <BlurCircle z="z-10" left="120px" bottom="45px" />
             <img src="/medusa.png" width="300px" />
             <p className="text-white text-[18px]">
-              Welcome to our Python learning project powered by Medusa.
+              {t("SignInRightPageText")}
             </p>
             <p className="text-white text-[18px]">
-              Learn Python through simple lessons and hands-on practice.
+              {t("SignInRightPageText1")}
             </p>
           </div>
         </div>

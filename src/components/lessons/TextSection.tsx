@@ -1,4 +1,5 @@
 import type { Step } from "@/utils/types";
+import { t } from "i18next";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 interface Props {
@@ -37,7 +38,7 @@ const TextSection = ({
 						className=" transition duration-300 group-hover:-translate-x-0.5"
 						size={18}
 					/>
-					Previous
+					{t("Previous")}
 				</button>
 
 				<button
@@ -49,7 +50,7 @@ const TextSection = ({
     rounded-full px-10 py-2 text-sm cursor-pointer
 	${selectedStep == stepCount - 1 ? "hidden" : ""}`}
 				>
-					Next
+					{t("Next")}
 					<ArrowRight
 						className="transition duration-300 group-hover:translate-x-0.5"
 						size={18}
