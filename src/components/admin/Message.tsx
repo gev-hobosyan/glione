@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { ArrowRight, RotateCcw } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -19,12 +20,12 @@ const Message = ({ title, text, type, id }: Props) => {
 					<p className="text-white text-[15px]">{text}</p>
 					{type == "success" ? (
 						<Link to={`/lesson/${id}`} className="bg-primary px-5 py-1 rounded-2xl flex items-center justify-center gap-1 group">
-							<p className="text-white text-[8px]">Check it out </p>
+							<p className="text-white text-[8px]">{t("CheckItOut")}</p>
 							<ArrowRight className="w-3 stroke-white group-hover:translate-x-0.5 transition duration-200 " />
 						</Link>
 					) : (
 						<div className="bg-red-600 px-5 py-1 rounded-2xl flex items-center justify-center gap-1 group">
-							<p className="text-white text-[8px]">Try Again </p>
+							<p className="text-white text-[8px]">{t("TryAgain")}</p>
 							<RotateCcw className="w-3 stroke-white group-hover:rotate-360 transition duration-500 " />
 						</div>
 					)}

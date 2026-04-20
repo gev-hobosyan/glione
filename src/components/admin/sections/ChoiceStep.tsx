@@ -1,6 +1,7 @@
 import type { Choice } from "@/utils/types";
 import AdminChoice from "../AdminChoice";
 import { PlusIcon } from "lucide-react";
+import { t } from "i18next";
 
 interface Props {
 	children: Choice[] | undefined;
@@ -42,7 +43,7 @@ const ChoiceStep = ({
 				className="px-4 py-2 w-fit border border-primary/50 rounded-full flex gap-3 text-white items-center justify-center cursor-pointer hover:scale-105 transition-all duration-300"
 				onClick={newChoice}
 			>
-				<PlusIcon className="stroke-white w-5" /> Add
+				<PlusIcon className="stroke-white w-5" /> {t("Add")}
 			</div>
 		</div>
 	);

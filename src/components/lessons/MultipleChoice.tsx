@@ -8,6 +8,7 @@ import {
 	ChevronRight,
 } from "lucide-react";
 import { useState } from "react";
+import { t } from "i18next";
 
 interface Props {
 	step: Step;
@@ -113,7 +114,7 @@ const MultipleChoice = ({
 							className=" transition duration-300 group-hover:-translate-x-0.5"
 							size={18}
 						/>
-						Previous
+						{t("Previous")}
 					</button>
 
 					{completed ? (
@@ -125,7 +126,7 @@ const MultipleChoice = ({
 							}}
 							className={`group flex items-center gap-2 ${step.status === "wrong" ? "bg-red-900" : "bg-green-900"} rounded-full px-10 py-2 text-sm cursor-pointer `}
 						>
-							Next
+							{t("Next")}
 							<ArrowRight
 								className="transition duration-300 group-hover:translate-x-0.5"
 								size={18}
@@ -136,7 +137,7 @@ const MultipleChoice = ({
 							onClick={() => checkAnswer()}
 							className={`group flex items-center gap-2 bg-green-900 rounded-full px-10 py-2 text-sm cursor-pointer`}
 						>
-							Check
+							{t("Check")}
 							<Check
 								className="transition duration-300 group-hover:-translate-y-1"
 								size={18}

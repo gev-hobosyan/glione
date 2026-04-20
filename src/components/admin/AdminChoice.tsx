@@ -2,6 +2,7 @@ import type { Choice } from "@/utils/types";
 import { Trash2 } from "lucide-react";
 import { useState } from "react";
 import Hint from "../common/Hint";
+import { t } from "i18next";
 
 interface Props {
 	children: Choice;
@@ -45,7 +46,7 @@ const AdminChoice = ({ children, check, deleteChoice, changeText }: Props) => {
 
 						<input
 							type="submit"
-							value={"OK"}
+							value={t("Ok")}
 							className="text-white bg-primary px-3 text-[13px] rounded-md"
 						/>
 					</form>
@@ -55,7 +56,7 @@ const AdminChoice = ({ children, check, deleteChoice, changeText }: Props) => {
 						onDoubleClick={() => setEditText(true)}
 					>
 						{children.text}
-						<Hint>Double click to edit</Hint>
+						<Hint>{t("DoubleClickToEdit")}</Hint>
 					</p>
 				)}
 			</div>

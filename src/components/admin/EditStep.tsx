@@ -6,6 +6,7 @@ import type { Choice, Step } from "@/utils/types";
 import Hint from "../common/Hint";
 import TextStep from "./sections/TextStep";
 import ChoiceStep from "./sections/ChoiceStep";
+import { t } from "i18next";
 
 interface Props {
   children: Step;
@@ -149,7 +150,7 @@ const EditStep = ({ children, edit, submitStep, deleteStep }: Props) => {
               </Input>
               <input
                 type="submit"
-                value="OK"
+                value={t("Ok")}
                 className="bg-primary text-white rounded-xl px-4 py-2 flex flex-col items-center justify-center text-center cursor-pointer hover:scale-105 transition-all duration-300"
               ></input>
             </form>
@@ -159,7 +160,7 @@ const EditStep = ({ children, edit, submitStep, deleteStep }: Props) => {
               onDoubleClick={() => setEditTitle(children.title)}
             >
               {children.title}
-              <Hint>Double click to edit</Hint>
+              <Hint>{t("DoubleClickToEdit")}</Hint>
             </h1>
           )}
           <div className="flex items-center justify-center gap-4">

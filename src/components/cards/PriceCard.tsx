@@ -1,11 +1,13 @@
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
+import { t } from "i18next";
 
 interface Props {
 	title: string;
 	description: string;
 	price: string;
 	features: string[];
+	featureTitle: string;
 	active?: boolean;
 	effective?: boolean;
 }
@@ -15,6 +17,7 @@ const PriceCard = ({
 	description,
 	price,
 	features,
+	featureTitle,
 	active = false,
 	effective = false,
 }: Props) => {
@@ -27,11 +30,11 @@ const PriceCard = ({
 				<p className="text-gray-500 mt-3 text-[12px]">{description}</p>
 				<p className="text-white mt-5 text-[20px] mb-5">{price}</p>
 				{!active ? (
-					<PrimaryButton>Continue</PrimaryButton>
+					<PrimaryButton>{t("PriceCardButton1")}</PrimaryButton>
 				) : (
-					<SecondaryButton>Your current plan</SecondaryButton>
+					<SecondaryButton>{t("PriceCardButton")}</SecondaryButton>
 				)}
-				<p className="text-white mt-5">Everything in {title} includes:</p>
+				<p className="text-white mt-5">{featureTitle}</p>
 				<ul className="mt-3 space-y-2">
 					{features.map((feature, index) => (
 						<li

@@ -78,43 +78,46 @@ const Landing = () => {
 				<BlurCircle z="z-0" right="30%" bottom="0px" />
 
 				<PriceCard
-					title="Starter"
-					description="Perfect for beginners who want to explore Python fundamentals at their own pace."
-					price="For Free"
+					title={t("PriceCardTitle")}
+					description={t("PriceCardDescription")}
+					price={t("PriceCardPrice")}
+					featureTitle={t("PriceCardFeatureTitle")}
 					features={[
-						"Access to beginner lessons",
-						"Interactive coding exercises",
-						"Community support",
-						"10 practice challanges",
-						"Progress tracking",
+						t("PriceCardFeature"),
+						t("PriceCardFeature1"),
+  						t("PriceCardFeature2"),
+  						t("PriceCardFeature3"),
+  						t("PriceCardFeature4"),
 					]}
 					active={true}
 				/>
 
 				<PriceCard
-					title="Pro"
-					description="For serious learners who want structured paths, real-world projects, and faster progress."
+					title={t("PriceCardTitle1")}
+					description={t("PriceCardDescription1")}
 					price="$19.99"
+					featureTitle={t("PriceCardFeatureTitle1")}
 					features={[
-						"Everything in Starter",
-						"Full access to all courses",
-						"Real-world Python projects",
-						"Unlimited practice challanges",
-						"Priority support",
+						t("PriceCardFeature5"),
+						t("PriceCardFeature6"),
+  						t("PriceCardFeature7"),
+  						t("PriceCardFeature8"),
+  						t("PriceCardFeature9"),
 					]}
 					effective={true}
 				/>
 
 				<PriceCard
-					title="Master"
-					description="Advamced training designed to prepare you for professional Python development roles."
+					title={t("PriceCardTitle2")}
+					description={t("PriceCardDescription2")}
 					price="$49.99"
+					featureTitle={t("PriceCardFeatureTitle2")}
 					features={[
-						"Everything in Pro",
-						"Career-focused learning tracks",
-						"1-on-1 mentor sessions",
-						"Portfolio review",
-						"Advanced topics (AI, Web, Automation)",
+						t("PriceCardFeature10"),
+						t("PriceCardFeature11"),
+  						t("PriceCardFeature12"),
+  						t("PriceCardFeature13"),
+  						t("PriceCardFeature14"),
 					]}
 				/>
 			</div>
