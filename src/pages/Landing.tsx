@@ -43,27 +43,31 @@ const Landing = () => {
 
 				<Card
 					index={1}
-					title="Learn Python"
-					description="Hey hey hey. Learn Python with us the fun way"
-					text={"Module"}
+					title={t("Title")}
+					description={t("Description")}
+					text={t("Module")}
+					buttonText={t("ButtonText")}
 				/>
 				<Card
 					index={2}
-					title="Games with Python"
-					description="Create games using Python"
-					text={"Module"}
+					title={t("Title1")}
+					description={t("Description1")}
+					text={t("Module")}
+					buttonText={t("ButtonText")}
 				/>
 				<Card
 					index={3}
-					title="Programming with Python"
-					description="Create apps using Python"
-					text={"Module"}
+					title={t("Title2")}
+					description={t("Description2")}
+					text={t("Module")}
+					buttonText={t("ButtonText")}
 				/>
 				<Card
 					index={4}
-					title="Python"
-					description="Create games using Python"
-					text={"Module"}
+					title={t("Title3")}
+					description={t("Description3")}
+					text={t("Module")}
+					buttonText={t("ButtonText")}
 				/>
 			</div>
 

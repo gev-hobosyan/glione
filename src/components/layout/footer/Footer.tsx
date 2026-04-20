@@ -1,4 +1,5 @@
 import BlurCircle from "@/components/common/BlurCircle";
+import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 
 const Footer = () => {
@@ -23,10 +24,7 @@ const Footer = () => {
 
 				<div className="flex items-center justify-center max-md:flex-col max-md:gap-2 gap-10">
 					<p className="text-white text-xs cursor-pointer hover:underline">
-						Privacy
-					</p>
-					<p className="text-white text-xs cursor-pointer hover:underline">
-						Պայմաններ
+						{t("FooterPrivacy")}
 					</p>
 					<p
 						className="text-white text-xs cursor-pointer hover:underline"
