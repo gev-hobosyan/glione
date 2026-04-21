@@ -182,7 +182,7 @@ i18n.use(initReactI18next).init({
 			},
 		},
 	},
-	lng: "am",
+	lng: "en",
 	fallbackLng: "en",
 
 	interpolation: {

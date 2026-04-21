@@ -10,9 +10,18 @@ import {
 import { useState } from "react";
 import type { Step } from "@/utils/types";
 import AdminLessons from "@/components/admin/AdminLessons";
+import { useTranslation } from "react-i18next";
 
 const Admin = () => {
 	const [activeTab, setActiveTab] = useState(2);
+	const { i18n } = useTranslation();
+
+	const currentLang = i18n.language;
+
+	const handleLanguageChange = () => {
+		const languageToSet = currentLang == "en" ? "am" : "en";
+		i18n.changeLanguage(languageToSet);
+	};
 
 	const [steps, setSteps] = useState<Step[]>([]);
 
@@ -43,6 +52,12 @@ const Admin = () => {
 					setActiveTab={setActiveTab}
 				/>
 				{tabs[activeTab].element}
+				<div
+					className="text-white absolute right-8 top-6 cursor-pointer"
+					onClick={handleLanguageChange}
+				>
+					{currentLang}
+				</div>
 			</div>
 		</>
 	);
