@@ -22,7 +22,6 @@
 		"phaser3": "^0.4.34",
 		"postprocessing": "^6.38.3",
 		"pyodide": "^0.29.3",
-		"radix-ui": "^1.4.3",
 		"react": "^19.2.0",
 		"react-calendar": "^6.0.0",
 		"react-dom": "^19.2.0",

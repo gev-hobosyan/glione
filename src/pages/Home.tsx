@@ -5,9 +5,18 @@ import type { Tab } from "@/components/layout/sidebar/SideBar";
 import SideBar from "@/components/layout/sidebar/SideBar";
 import Lessons from "./Lessons";
 import Dashboard from "@/components/dashboard/Dashboard";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
 	const [activeTab, setActiveTab] = useState(0);
+	const { i18n } = useTranslation();
+
+	const currentLang = i18n.language;
+
+	const handleLanguageChange = () => {
+		const languageToSet = currentLang == "en" ? "am" : "en";
+		i18n.changeLanguage(languageToSet);
+	};
 
 	const tabs: Tab<Omit<LucideProps, "ref">>[] = [
 		{
@@ -36,6 +45,12 @@ const Home = () => {
 				setActiveTab={setActiveTab}
 			/>
 			{tabs[activeTab].element}
+			<div
+				className="text-white absolute right-8 top-6 cursor-pointer"
+				onClick={handleLanguageChange}
+			>
+				{currentLang}
+			</div>
 		</div>
 	);
 };
