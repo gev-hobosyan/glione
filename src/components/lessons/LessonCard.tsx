@@ -45,7 +45,7 @@ const LessonCard = ({ id, name, description, progress, authors, tags }: Props) =
 						className={`w-full h-2 bg-gray-900 rounded-full transition-all duration-300 relative`}
 					>
 						<div
-							className="bg-primary h-full absolute z-1 rounded-full"
+							className="bg-primary h-full absolute z-0 rounded-full"
 							style={{ width: `${progress}%` }}
 						></div>
 					</div>
