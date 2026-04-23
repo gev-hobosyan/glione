@@ -45,7 +45,7 @@ const Admin = () => {
 
 	return (
 		<>
-			<div className="flex h-screen py-3 px-5">
+			<div className="flex h-screen md:py-3 md:px-5 w-screen max-md:items-center max-md:justify-center max-md:h-screen">
 				<AdminSideBar
 					tabs={tabs}
 					activeTab={activeTab}
