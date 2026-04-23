@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import LessonSidebar from "../components/lessons/LessonsSidebar";
-import MultipleChoice from "../components/lessons/MultipleChoice";
+import MultipleChoice from "../components/lessons/sections/MultipleChoice";
 import { type Lesson as LessonType, type Step } from "@/utils/types";
 import getLessonById from "@/utils/backend/getLessonById";
 import LoadingSpinner from "../components/common/LoadingSpinner";
-import TextSection from "../components/lessons/TextSection";
+import TextSection from "../components/lessons/sections/TextSection";
 import CodeEditor from "../components/lessons/CodeEditor";
 import { useParams } from "react-router-dom";
 import ProgressBar from "@/components/lessons/ProgressBar";
@@ -16,11 +16,13 @@ const Lesson = () => {
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<unknown>();
 
+	console.log(error);
+
 	const [selectedStep, setSelectedStep] = useState<number>(0);
 
 	const [completedSteps, setCompletedSteps] = useState<number>(0);
 
-	const stepsOrder: number[] = useMemo(() => {
+	const stepsOrder = useMemo(() => {
 		if (lesson) {
 			return lesson.steps?.map((step) => step._id!);
 		}
@@ -30,7 +32,7 @@ const Lesson = () => {
 
 	const step = useMemo(() => {
 		return lesson?.steps!.find(
-			(s) => s._id == stepsOrder[selectedStep],
+			(s) => s._id == stepsOrder![selectedStep],
 		) as Step;
 	}, [lesson, selectedStep, stepsOrder]);
 
@@ -54,7 +56,7 @@ const Lesson = () => {
 			setSelectedStep((prev) => (prev !== 0 ? prev - 1 : prev));
 		} else {
 			setSelectedStep((prev) =>
-				stepsOrder.length - 1 !== prev ? prev + 1 : prev,
+				stepsOrder!.length - 1 !== prev ? prev + 1 : prev,
 			);
 		}
 	};
@@ -77,7 +79,7 @@ const Lesson = () => {
 	const progressBar = useMemo(() => {
 		return (
 			<ProgressBar
-				progress={(completedSteps / stepsOrder.length) * 100}
+				progress={(completedSteps / stepsOrder!.length) * 100}
 			></ProgressBar>
 		);
 	}, [completedSteps, stepsOrder]);
@@ -94,7 +96,7 @@ const Lesson = () => {
 						lesson={lesson!}
 						selectedStep={selectedStep}
 						setSelectedStep={setSelectedStep}
-						stepsOrder={stepsOrder}
+						stepsOrder={stepsOrder!}
 					/>
 					{step != undefined ? (
 						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-[80%] max-md:w-full relative">
@@ -105,7 +107,7 @@ const Lesson = () => {
 									step={step}
 									changeCurrentStep={changeCurrentStep}
 									selectedStep={selectedStep}
-									stepCount={stepsOrder.length}
+									stepCount={stepsOrder!.length}
 									changeStatus={changeStatus}
 								/>
 							) : step.type == "multi" ? (
@@ -114,7 +116,7 @@ const Lesson = () => {
 									step={step}
 									changeCurrentStep={changeCurrentStep}
 									selectedStep={selectedStep}
-									stepCount={stepsOrder.length}
+									stepCount={stepsOrder!.length}
 								/>
 							) : step.type == "code" ? (
 								<CodeEditor></CodeEditor>

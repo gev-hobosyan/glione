@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { type IRefPhaserGame } from "@/game/PhaserGame";
+import { useState } from "react";
+// import { type IRefPhaserGame } from "@/game/PhaserGame";
 import { BookOpenTextIcon, HomeIcon, type LucideProps } from "lucide-react";
 import type { Tab } from "@/components/layout/sidebar/SideBar";
 import SideBar from "@/components/layout/sidebar/SideBar";
@@ -31,11 +31,11 @@ const Home = () => {
 		},
 	];
 
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const phaserRef = useRef<IRefPhaserGame | null>(null);
+	// // eslint-disable-next-line @typescript-eslint/no-unused-vars
+	// const phaserRef = useRef<IRefPhaserGame | null>(null);
 
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const currentScene = (scene: Phaser.Scene) => {};
+	// // eslint-disable-next-line @typescript-eslint/no-unused-vars
+	// const currentScene = (scene: Phaser.Scene) => {};
 
 	return (
 		<div className="flex h-screen px-4 py-3">

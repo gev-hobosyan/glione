@@ -1,5 +1,5 @@
 import type { Choice as ChoiceType, Step } from "@/utils/types";
-import Choice from "./Choice";
+import Choice from "../Choice";
 import {
 	ArrowLeft,
 	ArrowRight,
@@ -22,13 +22,15 @@ const MultipleChoice = ({
 	step,
 	changeCurrentStep,
 	selectedStep,
-	stepCount,
 	changeStatus,
 }: Props) => {
 	const [answer, setAnswer] = useState<ChoiceType | undefined>(undefined);
 	const [completed, setCompleted] = useState<boolean>(answer !== undefined);
+
 	const [status, setStatus] = useState<"ns" | "right" | "wrong">("ns");
 	const [message, setMessage] = useState<string>("");
+
+	console.log(status, message);
 
 	const check = (id: string) => {
 		setAnswer(step.choices?.find((c) => c._id === id));

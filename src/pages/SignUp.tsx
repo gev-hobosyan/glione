@@ -10,140 +10,140 @@ import { ArrowLeft } from "lucide-react";
 import { t } from "i18next";
 
 const SignUp = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confPassword, setConfPassword] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [confPassword, setConfPassword] = useState("");
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [authError, setAuthError] = useState<AuthError | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [authSuccess, setAuthSuccess] = useState(false);
+	const [authError, setAuthError] = useState<AuthError | null>(null);
+	const [authSuccess, setAuthSuccess] = useState(false);
 
-  const params = new URLSearchParams(window.location.search);
-  const hasTokenHash = params.get("token_hash");
+	console.log(authError, authSuccess);
 
-  const [verifying, setVerifying] = useState(!!hasTokenHash);
+	const params = new URLSearchParams(window.location.search);
+	const hasTokenHash = params.get("token_hash");
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const token_hash = params.get("token_hash");
-    const type = params.get("type") as EmailOtpType;
+	const [verifying, setVerifying] = useState(!!hasTokenHash);
 
-    if (token_hash) {
-      supabase.auth
-        .verifyOtp({
-          token_hash,
-          type: type,
-        })
-        .then(({ error }) => {
-          if (error) {
-            setAuthError(error);
-          } else {
-            setAuthSuccess(true);
+	useEffect(() => {
+		const params = new URLSearchParams(window.location.search);
+		const token_hash = params.get("token_hash");
+		const type = params.get("type") as EmailOtpType;
 
-            window.history.replaceState({}, document.title, "/");
-          }
+		if (token_hash) {
+			supabase.auth
+				.verifyOtp({
+					token_hash,
+					type: type,
+				})
+				.then(({ error }) => {
+					if (error) {
+						setAuthError(error);
+					} else {
+						setAuthSuccess(true);
 
-          setVerifying(false);
-        });
-    }
-  });
+						window.history.replaceState({}, document.title, "/");
+					}
 
-  const signUp = async () => {
-    // const { data, error } =
+					setVerifying(false);
+				});
+		}
+	});
 
-    await supabase.auth.signUp({
-      email,
-      password,
-    });
+	const signUp = async () => {
+		// const { data, error } =
 
-    setVerifying(true);
-  };
+		await supabase.auth.signUp({
+			email,
+			password,
+		});
 
-  const googleSignIn = () => {
-    supabase.auth.signInWithOAuth({
-      provider: "google",
-    });
-  };
+		setVerifying(true);
+	};
 
-  return (
-    <>
-      <Link to="/">
-        <ArrowLeft className="stroke-secondary fixed top-7 left-7 w-8 hover:scale-110 transition-all duration-300" />
-      </Link>
+	const googleSignIn = () => {
+		supabase.auth.signInWithOAuth({
+			provider: "google",
+		});
+	};
 
-      {verifying && <VerifyEmail email={email} />}
-      <div className="h-screen w-screen overflow-hidden flex items-center justify-center">
-        <div className="flex flex-col items-center justify-center h-screen w-[50%] border-r border-r-gray-500 rounded-2xl">
-          <img src="/icon.png" className="w-20 h-20 mb-1" />
-          <p className="text-white text-2xl mb-7">{t("SignUpWelcome")}</p>
-          {verifying ? (
-            <div className="text-2xl text-white">
-              <p>Waiting for email verification...</p>
-              <p>Please check your inbox</p>
-            </div>
-          ) : (
-            <>
-              <form className="flex flex-col gap-3" action={signUp}>
-                <Input
-                  id="email"
-                  type="email"
-                  value={email}
-                  setValue={setEmail}
-                >
-                  {t("SignInEmail")}
-                </Input>
-                <Input
-                  id="password"
-                  type="password"
-                  value={password}
-                  setValue={setPassword}
-                >
-                  {t("SignInPassword")}
-                </Input>
-                <Input
-                  id="confpassword"
-                  type="password"
-                  value={confPassword}
-                  setValue={setConfPassword}
-                >
-                  {t("SignUpConfirmPassword")}
-                </Input>
-                <input
-                  type="submit"
-                  className="bg-primary text-white rounded-xl w-70 flex py-2.5 flex-col mt-4 cursor-pointer hover:scale-105 transition-all duration-300"
-                  value={t("SignUpButton")}
-                ></input>
-              </form>
-              <LoginOptions signIn={googleSignIn} />{" "}
-            </>
-          )}
-          <div className="mt-10 flex items-center justify-center gap-1.5 text-[14px]">
-            <p className="text-white">{t("SignUpText")}</p>
-            <Link className="text-secondary" to="/login">
-              {t("SignUpLogIn")}
-            </Link>
-          </div>
-        </div>
-        <div className="h-screen w-[50%]">
-          <div className="relative w-full h-screen flex flex-col items-center justify-center">
-            <BlurCircle z="z-10" />
-            <BlurCircle z="z-10" left="50px" top="15px" />
-            <BlurCircle z="z-10" right="20px" bottom="-6px" />
-            <BlurCircle z="z-10" right="60px" top="30px" />
-            <BlurCircle z="z-10" left="120px" bottom="45px" />
-            <img src="/medusa.png" width="300px" />
-            <p className="text-white text-[18px]">
-              {t("SignInRightPageText")}
-            </p>
-            <p className="text-white text-[18px]">
-              {t("SignInRightPageText1")}
-            </p>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<Link to="/">
+				<ArrowLeft className="stroke-secondary fixed top-7 left-7 w-8 hover:scale-110 transition-all duration-300" />
+			</Link>
+
+			{verifying && <VerifyEmail email={email} />}
+			<div className="h-screen w-screen overflow-hidden flex items-center justify-center">
+				<div className="flex flex-col items-center justify-center h-screen w-[50%] border-r border-r-gray-500 rounded-2xl">
+					<img src="/icon.png" className="w-20 h-20 mb-1" />
+					<p className="text-white text-2xl mb-7">{t("SignUpWelcome")}</p>
+					{verifying ? (
+						<div className="text-2xl text-white">
+							<p>Waiting for email verification...</p>
+							<p>Please check your inbox</p>
+						</div>
+					) : (
+						<>
+							<form className="flex flex-col gap-3" action={signUp}>
+								<Input
+									id="email"
+									type="email"
+									value={email}
+									setValue={setEmail}
+								>
+									{t("SignInEmail")}
+								</Input>
+								<Input
+									id="password"
+									type="password"
+									value={password}
+									setValue={setPassword}
+								>
+									{t("SignInPassword")}
+								</Input>
+								<Input
+									id="confpassword"
+									type="password"
+									value={confPassword}
+									setValue={setConfPassword}
+								>
+									{t("SignUpConfirmPassword")}
+								</Input>
+								<input
+									type="submit"
+									className="bg-primary text-white rounded-xl w-70 flex py-2.5 flex-col mt-4 cursor-pointer hover:scale-105 transition-all duration-300"
+									value={t("SignUpButton")}
+								></input>
+							</form>
+							<LoginOptions signIn={googleSignIn} />{" "}
+						</>
+					)}
+					<div className="mt-10 flex items-center justify-center gap-1.5 text-[14px]">
+						<p className="text-white">{t("SignUpText")}</p>
+						<Link className="text-secondary" to="/login">
+							{t("SignUpLogIn")}
+						</Link>
+					</div>
+				</div>
+				<div className="h-screen w-[50%]">
+					<div className="relative w-full h-screen flex flex-col items-center justify-center">
+						<BlurCircle z="z-10" />
+						<BlurCircle z="z-10" left="50px" top="15px" />
+						<BlurCircle z="z-10" right="20px" bottom="-6px" />
+						<BlurCircle z="z-10" right="60px" top="30px" />
+						<BlurCircle z="z-10" left="120px" bottom="45px" />
+						<img src="/medusa.png" width="300px" />
+						<p className="text-white text-[18px]">
+							{t("SignInRightPageText")}
+						</p>
+						<p className="text-white text-[18px]">
+							{t("SignInRightPageText1")}
+						</p>
+					</div>
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default SignUp;
