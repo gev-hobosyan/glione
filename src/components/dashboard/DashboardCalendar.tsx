@@ -1,3 +1,5 @@
+import { t } from "i18next";
+
 interface Props {
   className?: string;
 }
@@ -22,7 +24,7 @@ const DashboardCalendar = ({ className = "" }: Props) => {
     <div className={`${className} border border-primary h-40 w-80 rounded-2xl p-4`}>
       
       <h2 className="text-sm font-semibold text-white mb-3">
-        Weekly Progress
+        {t("WeeklyProgress")}
       </h2>
 
       <div className="flex items-end justify-between h-28">

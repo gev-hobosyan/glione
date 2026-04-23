@@ -11,7 +11,7 @@ interface Props {
 
 const SimpleDashboard = ({ number, text, icon, className = "" }: Props) => {
 	return (
-        <div className={`border border-primary w-45 h-15 rounded-xl mt-5 ${className}`}>
+        <div className={`border border-primary w-60 h-35 rounded-xl mt-5 ${className}`}>
             <div className="flex ml-1">
                 <p className="text-white ml-2 mt-1 text-lg">{number}</p>
                 {icon}

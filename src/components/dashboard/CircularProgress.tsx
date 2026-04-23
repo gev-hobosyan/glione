@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import React from "react";
 
 type Props = {
@@ -18,7 +19,7 @@ export default function CircularProgress({
 
   return (
     <div className={`flex flex-col items-center justify-center bg-black border border-primary p-4 rounded-2xl w-[260px] ${className}`}>
-      <h2 className="text-sm text-white mb-2 font-semibold">Project Progress</h2>
+      <h2 className="text-sm text-white mb-2 font-semibold">{t("YourProgress")}</h2>
 
       <div className="relative">
         <svg
@@ -56,11 +57,11 @@ export default function CircularProgress({
       <div className="flex gap-4 mt-4 text-xs text-gray-400">
         <div className="flex items-center gap-1">
           <span className="w-3 h-3 bg-green-600 rounded-full"></span>
-          Completed
+          {t("Completed")}
         </div>
         <div className="flex items-center gap-1">
           <span className="w-3 h-3 bg-gray-500 rounded-full"></span>
-          Pending
+          {t("Pending")}
         </div>
       </div>
     </div>
