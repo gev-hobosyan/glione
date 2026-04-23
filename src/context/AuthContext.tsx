@@ -6,62 +6,17 @@ import {
 	type ReactNode,
 } from "react";
 import { supabase } from "@/utils/supabaseClient";
-import type { AuthError, Session, User, WeakPassword } from "@supabase/supabase-js";
-
-interface AuthContextInterface {
-	session: Session | null;
-	signUpUser: (
-		email: string,
-		password: string,
-	) => Promise<
-		| {
-				success: boolean;
-				error: AuthError;
-				data?: undefined;
-		  }
-		| {
-				success: boolean;
-				data: {
-					user: User | null;
-					session: Session | null;
-				};
-				error?: undefined;
-		  }
-	>;
-	signOut: () => Promise<
-		| {
-				success: boolean;
-				error: AuthError;
-		  }
-		| {
-				success: boolean;
-				error?: undefined;
-		  }
-	>;
-	signInUser: (
-		email: string,
-		password: string,
-	) => Promise<
-		| {
-				success: boolean;
-				error: AuthError;
-				data?: undefined;
-		  }
-		| {
-				success: boolean;
-				data: {
-					user: User;
-					session: Session;
-					weakPassword?: WeakPassword;
-				};
-				error?: undefined;
-		  }
-	>;
-}
+import type { Session } from "@supabase/supabase-js";
+import type { AuthContextInterface } from "@/utils/types";
 
 const AuthContext = createContext<AuthContextInterface | undefined>(undefined);
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
+	const url =
+		import.meta.env.VITE_PUBLIC_SITE_URL ??
+		import.meta.env.VITE_PUBLIC_VERCEL_URL ??
+		"http://localhost:3000/";
+
 	const [session, setSession] = useState<Session | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
 
@@ -69,6 +24,9 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 		const { data, error } = await supabase.auth.signUp({
 			email,
 			password,
+			options: {
+				emailRedirectTo: url,
+			},
 		});
 
 		if (error) {
@@ -103,6 +61,22 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 		return { success: true, data };
 	};
 
+	const googleSignIn = async () => {
+		const { data, error } = await supabase.auth.signInWithOAuth({
+			provider: "google",
+			options: {
+				redirectTo: url,
+			},
+		});
+
+		if (error) {
+			console.error(`Sign in error: ${error}`);
+			return { success: false, error };
+		}
+
+		return { success: true, data };
+	};
+
 	useEffect(() => {
 		const {
 			data: { subscription },
@@ -116,7 +90,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
 	return (
 		<AuthContext.Provider
-			value={{ session, signUpUser, signOut, signInUser }}
+			value={{ session, signUpUser, signOut, signInUser, googleSignIn }}
 		>
 			{loading ? <p className="text-white">Loading</p> : children}
 		</AuthContext.Provider>

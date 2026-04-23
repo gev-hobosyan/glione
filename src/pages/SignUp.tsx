@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import BlurCircle from "@/components/common/BlurCircle";
 import { ArrowLeft } from "lucide-react";
 import { t } from "i18next";
+import { UserAuth } from "@/context/AuthContext";
 
 const SignUp = () => {
 	const [email, setEmail] = useState("");
@@ -49,22 +50,17 @@ const SignUp = () => {
 		}
 	});
 
-	const signUp = async () => {
-		// const { data, error } =
+	const signUpFunction = UserAuth()?.signUpUser;
 
-		await supabase.auth.signUp({
-			email,
-			password,
-		});
+	const signUp = () => {
+		if (signUpFunction !== undefined) {
+			signUpFunction(email, password);
 
-		setVerifying(true);
+			setVerifying(true);
+		}
 	};
 
-	const googleSignIn = () => {
-		supabase.auth.signInWithOAuth({
-			provider: "google",
-		});
-	};
+	const googleSignIn = UserAuth()?.googleSignIn;
 
 	return (
 		<>
@@ -90,6 +86,7 @@ const SignUp = () => {
 									type="email"
 									value={email}
 									setValue={setEmail}
+									width="w-70"
 								>
 									{t("SignInEmail")}
 								</Input>
@@ -98,6 +95,7 @@ const SignUp = () => {
 									type="password"
 									value={password}
 									setValue={setPassword}
+									width="w-70"
 								>
 									{t("SignInPassword")}
 								</Input>
@@ -106,6 +104,7 @@ const SignUp = () => {
 									type="password"
 									value={confPassword}
 									setValue={setConfPassword}
+									width="w-70"
 								>
 									{t("SignUpConfirmPassword")}
 								</Input>
@@ -115,7 +114,7 @@ const SignUp = () => {
 									value={t("SignUpButton")}
 								></input>
 							</form>
-							<LoginOptions signIn={googleSignIn} />{" "}
+							<LoginOptions signIn={googleSignIn!} />{" "}
 						</>
 					)}
 					<div className="mt-10 flex items-center justify-center gap-1.5 text-[14px]">

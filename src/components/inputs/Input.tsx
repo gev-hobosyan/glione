@@ -7,6 +7,7 @@ interface Props {
 		| React.Dispatch<React.SetStateAction<string>>
 		| React.Dispatch<React.SetStateAction<string | undefined>>;
 	autoFocus?: boolean;
+	width?: string;
 }
 
 const Input = ({
@@ -16,13 +17,14 @@ const Input = ({
 	value,
 	setValue,
 	autoFocus = false,
+	width,
 }: Props) => {
 	return (
 		<div className="relative">
 			<input
 				id={id}
 				type={type}
-				className="border-white/50 focus:border-secondary/50 focus:ring-0 ring-0 focus:outline-none focus:shadow-input border rounded-xl w-70 py-2.5 px-5 text-white peer placeholder-transparent max-sm:w-40 sm:w-50"
+				className={`border-white/50 focus:border-secondary/50 focus:ring-0 ring-0 focus:outline-none focus:shadow-input border rounded-xl py-2.5 px-5 text-white peer placeholder-transparent w-70 ${width ? width : "max-sm:w-40 sm:w-50"}`}
 				placeholder={children}
 				value={value}
 				onChange={(e) => setValue(e.target.value)}

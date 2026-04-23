@@ -1,3 +1,10 @@
+import type {
+	AuthError,
+	Provider,
+	Session,
+	User,
+	WeakPassword,
+} from "@supabase/supabase-js";
 import type { LucideProps } from "lucide-react";
 
 export type Author = {
@@ -22,7 +29,7 @@ export type Step = {
 	icon?: React.ForwardRefExoticComponent<
 		Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
 	>;
-	status?: "ns" | "completed" | "wrong"
+	status?: "ns" | "completed" | "wrong";
 };
 
 export type Choice = {
@@ -42,3 +49,69 @@ export type Lesson = {
 	section: string;
 	steps?: Step[];
 };
+
+export interface AuthContextInterface {
+	session: Session | null;
+	signUpUser: (
+		email: string,
+		password: string,
+	) => Promise<
+		| {
+				success: boolean;
+				error: AuthError;
+				data?: undefined;
+		  }
+		| {
+				success: boolean;
+				data: {
+					user: User | null;
+					session: Session | null;
+				};
+				error?: undefined;
+		  }
+	>;
+	signOut: () => Promise<
+		| {
+				success: boolean;
+				error: AuthError;
+		  }
+		| {
+				success: boolean;
+				error?: undefined;
+		  }
+	>;
+	signInUser: (
+		email: string,
+		password: string,
+	) => Promise<
+		| {
+				success: boolean;
+				error: AuthError;
+				data?: undefined;
+		  }
+		| {
+				success: boolean;
+				data: {
+					user: User;
+					session: Session;
+					weakPassword?: WeakPassword;
+				};
+				error?: undefined;
+		  }
+	>;
+	googleSignIn: () => Promise<
+		| {
+				success: boolean;
+				error: AuthError;
+				data?: undefined;
+		  }
+		| {
+				success: boolean;
+				data: {
+					provider: Provider;
+					url: string;
+				};
+				error?: undefined;
+		  }
+	>;
+}
