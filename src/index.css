@@ -43,15 +43,25 @@ html,
 body {
 	background-color: #101010;
 	overflow-x: hidden;
+	scroll-behavior: smooth;
 }
 
 * {
 	font-family: "Poppins", sans-serif;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 @theme {
 	--color-primary: #006e2a;
 	--color-secondary: #56ad2d;
+	--color-dark: #101010;
+
+	--shadow-effective: 0 0 45px #006e2a;
+	--shadow-input: 0 0 10px #56ad2d;
 }
 
 @theme inline {
