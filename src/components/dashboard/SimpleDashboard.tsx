@@ -5,12 +5,13 @@ interface Props {
     number: string;
 	text: string;
     icon: ReactNode;
+    className?: string
 }
 
 
-const SimpleDashboard = ({ number, text, icon }: Props) => {
+const SimpleDashboard = ({ number, text, icon, className = "" }: Props) => {
 	return (
-        <div className="border border-primary w-45 h-15 rounded-xl mt-5">
+        <div className={`border border-primary w-45 h-15 rounded-xl mt-5 ${className}`}>
             <div className="flex ml-1">
                 <p className="text-white ml-2 mt-1 text-lg">{number}</p>
                 {icon}
