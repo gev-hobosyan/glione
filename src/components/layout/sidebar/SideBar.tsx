@@ -1,5 +1,6 @@
+import Settings from "@/components/Settings/Settings";
 import { UserAuth } from "@/context/AuthContext";
-import { LogOut, Settings, type LucideProps } from "lucide-react";
+import { LogOut, Settings as SettingsIcon,   type LucideProps } from "lucide-react";
 import React, {
 	type Dispatch,
 	type ReactNode,
@@ -23,6 +24,7 @@ const SideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 
 	return (
 		<>
+		<Settings/>
 			<div className="h-full p-5 border border-primary/40 bg-black/40 rounded-3xl backdrop-blur-3x flex flex-col items-center justify-between max-md:hidden">
 				<div className="flex flex-col items-center">
 					<img src="/icon.png" width={"40px"} />
@@ -44,8 +46,9 @@ const SideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 						className="stroke-red-700 hover:-translate-y-1 transition-all duration-300"
 						onClick={signOut}
 					/>
-					<Settings className="stroke-white hover:-translate-y-1 transition-all duration-300" />
+					<SettingsIcon className="stroke-white hover:-translate-y-1 transition-all duration-300" />
 				</div>
+
 			</div>
 		</>
 	);
