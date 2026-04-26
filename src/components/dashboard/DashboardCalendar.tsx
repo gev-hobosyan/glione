@@ -21,18 +21,18 @@ const weekData: DayData[] = [
 
 const DashboardCalendar = ({ className = "" }: Props) => {
   return (
-    <div className={`${className} border border-primary h-40 w-80 rounded-2xl p-4`}>
+    <div className={`${className} border border-primary h-55 w-full rounded-2xl p-4 flex justify-between flex-col items-center`}>
       
-      <h2 className="text-sm font-semibold text-white mb-3">
+      <h2 className="text-sm font-semibold text-white mb-3 mt-3">
         {t("WeeklyProgress")}
       </h2>
 
-      <div className="flex items-end justify-between h-28">
+      <div className="flex items-end justify-between h-28 shrink-0 w-full">
         {weekData.map((d, i) => {
           const isActive = d.value > 0;
 
           return (
-            <div key={i} className="flex flex-col items-center gap-1 w-8">
+            <div key={i} className="flex flex-col items-center gap-1 w-8 ">
               
               {isActive && (
                 <span className="text-[10px] text-gray-400">

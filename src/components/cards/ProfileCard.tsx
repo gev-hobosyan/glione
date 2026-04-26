@@ -9,20 +9,20 @@ interface Props {
 const ProfileCard = ({ className = ""} : Props) => {
 	const session = UserAuth() ? UserAuth()?.session : null;
 	return (
-		<div className={`bg-black/50 w-full max-w-sm h-80 border border-primary rounded-3xl px-3 py-3 flex flex-col relative ${className}`}>
-			<Settings className="stroke-white absolute right-4 w-5 hover:scale-105 transition-all duration-300 cursor-pointer"></Settings>
-			<h3 className="text-white mb-2 font-semibold">{t("MyProfile")}</h3>
+		<div className={`bg-black/50 w-full max-w-sm h-55 border border-primary rounded-3xl px-3 py-3 flex flex-col justify-center relative ${className}`}>
+			<Settings className="stroke-white absolute right-4 w-5 hover:scale-105 transition-all duration-300 cursor-pointer top-3"></Settings>
+			<h3 className="text-white absolute top-3 font-semibold">{t("MyProfile")}</h3>
 			{session!["user"]["user_metadata"] ? (
 				<img
 					src={session!["user"]["user_metadata"]["avatar_url"]}
 					width={"80px"}
-					className="rounded-full absolute top-35 left-1/2 -translate-x-1/2 border-4 border-dark "
+					className="rounded-full self-center border-4 border-dark "
 					referrerPolicy="no-referrer"
 				/>
 			) : (
 				<CircleUserRoundIcon color="#fff" width={"48px"} />
 			)}
-			<p className="text-white mt-10 self-center wrap-anywhere">
+			<p className="text-white self-center wrap-anywhere">
 				{session!["user"]["user_metadata"]["name"]}
 			</p>
 			<p className="text-gray-500 self-center wrap-anywhere text-center">

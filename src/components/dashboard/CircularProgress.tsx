@@ -18,7 +18,7 @@ export default function CircularProgress({
     circumference - (percentage / 100) * circumference;
 
   return (
-    <div className={`flex flex-col items-center justify-center bg-black border border-primary p-4 rounded-2xl w-[260px] ${className}`}>
+    <div className={`flex flex-col items-center justify-center bg-black border border-primary p-4 rounded-2xl w-full h-55 ${className}`}>
       <h2 className="text-sm text-white mb-2 font-semibold">{t("YourProgress")}</h2>
 
       <div className="relative">

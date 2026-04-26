@@ -1,0 +1,55 @@
+import getLessonsByCount from "@/utils/backend/getLessonsByCount";
+import type { Lesson } from "@/utils/types";
+import { useEffect, useState } from "react";
+import LoadingSpinner from "../common/LoadingSpinner";
+import LessonCard from "../lessons/LessonCard";
+
+const LessonsScroll = () => {
+    const [lessons, setLessons] = useState<Lesson[]>();
+	const [loading, setLoading] = useState<boolean>(true);
+	const [error, setError] = useState<unknown>();
+
+	useEffect(() => {
+		const loadData = async () => {
+			setLoading(true);
+			try {
+				setLessons(await getLessonsByCount(10));
+			} catch (e) {
+				setError(e);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		loadData();
+	}, []);
+
+    return (
+        <div className="w-full h-full flex items-center gap-2 overflow-x-scroll">
+            {loading ? (
+                <div className="w-full h-full flex items-center justify-center bg-black/40 rounded-3xl">
+                    <LoadingSpinner />
+                </div>
+            ): error ? (
+                <p className="text-white">Error</p>
+            ): (
+                lessons && lessons.map((lesson) => {
+                    return (
+							<LessonCard
+                                id={lesson._id!}
+                                name={lesson.title}
+                                description={lesson.description}
+                                progress={0}
+                                authors={lesson.authors}
+                                tags={lesson.tags}
+                            ></LessonCard>
+							);
+                })
+            )
+        }
+        </div>
+    )
+}
+
+
+export default LessonsScroll;
