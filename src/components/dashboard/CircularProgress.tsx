@@ -50,7 +50,7 @@ export default function CircularProgress({
         </svg>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-2xl font-bold">{percentage}%</span>
+          <span className="text-2xl font-bold text-white">{percentage}%</span>
         </div>
       </div>
 

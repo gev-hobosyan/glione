@@ -59,7 +59,7 @@ const MultipleChoice = ({
 
 	return (
 		<>
-			<div className="w-full h-full flex flex-col items-center justify-center px-10 relative">
+			<div className="w-full h-full flex flex-col items-center justify-center px-10 absolute bottom-20">
 				<h1 className="text-white text-2xl font-bold">{step.title}</h1>
 				<div className="md:w-[calc(100%-200px)] w-[calc(100%-50px)] h-0.5 bg-white/70 rounded-full my-10"></div>
 				<p className="text-white mb-4 place-self-start">{step.content}</p>
@@ -92,6 +92,7 @@ const MultipleChoice = ({
 								changeCurrentStep("next");
 								setCompleted(false);
 								setAnswer(undefined);
+								setStatus("ns");
 							}}
 							className={`text-white absolute border border-primary/40 bg-primary/40 p-3 rounded-full bottom-7 right-10 hover:scale-110 transition duration-300 cursor-pointer`}
 						>
@@ -107,7 +108,7 @@ const MultipleChoice = ({
 					)}
 				</div>
 
-				<div className="flex justify-center gap-6  text-white absolute bottom-10 max-md:hidden">
+				<div className="flex justify-center gap-6  text-white absolute bottom-0 max-md:hidden">
 					<button
 						onClick={() => changeCurrentStep("prev")}
 						className={`group flex items-center gap-2 border border-white rounded-full px-6 py-2 text-sm cursor-pointer ${selectedStep == 0 ? "hidden" : ""}`}
@@ -125,6 +126,7 @@ const MultipleChoice = ({
 								changeCurrentStep("next");
 								setCompleted(false);
 								setAnswer(undefined);
+								setStatus("ns");
 							}}
 							className={`group flex items-center gap-2 ${step.status === "wrong" ? "bg-red-900" : "bg-green-900"} rounded-full px-10 py-2 text-sm cursor-pointer `}
 						>
@@ -147,14 +149,13 @@ const MultipleChoice = ({
 						</button>
 					)}
 				</div>
-				{/*<div
-					className={`w-full h-full bg-black/50 backdrop-blur-lg absolute flex flex-col items-center justify-center z-50 ${step.status == "ns" ? "hidden" : ""}`}
-				>
-					<img src="/medusa.png" className="w-70" />
-					<p className="text-white text-lg font-semibold text-center px-6">
-						{message}
-					</p>
-				</div>*/}
+				{
+					status !== "ns" &&
+					<>
+						<img src="/medusa.png" className="w-45 absolute right-10 -bottom-12" />
+						<p className="text-white text-lg font-semibold text-center px-6 absolute bottom-18">
+							{message}
+						</p></>}
 			</div>
 		</>
 	);
