@@ -1,7 +1,13 @@
 import Settings from "@/components/Settings/Settings";
 import { UserAuth } from "@/context/AuthContext";
-import { LogOut, Settings as SettingsIcon,   type LucideProps } from "lucide-react";
+import {
+	LogOut,
+	Settings as SettingsIcon,
+	type LucideProps,
+} from "lucide-react";
 import React, {
+	useCallback,
+	useState,
 	type Dispatch,
 	type ReactNode,
 	type SetStateAction,
@@ -21,10 +27,15 @@ export type Tab<P> = {
 
 const SideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 	const signOut = UserAuth() ? UserAuth()?.signOut : undefined;
+	const [openSettings, setOpenSettings] = useState<boolean>(false);
+
+	const close = useCallback(() => {
+		setOpenSettings(false);
+	}, []);
 
 	return (
 		<>
-		{/* <Settings/> */}
+			{openSettings && <Settings close={close} />}
 			<div className="h-full p-5 border border-primary/40 bg-black/40 rounded-3xl backdrop-blur-3x flex flex-col items-center justify-between max-md:hidden">
 				<div className="flex flex-col items-center">
 					<img src="/icon.png" width={"40px"} />
@@ -46,9 +57,11 @@ const SideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 						className="stroke-red-700 hover:-translate-y-1 transition-all duration-300"
 						onClick={signOut}
 					/>
-					<SettingsIcon className="stroke-white hover:-translate-y-1 transition-all duration-300" />
+					<SettingsIcon
+						className="stroke-white hover:-translate-y-1 transition-all duration-300"
+						onClick={() => setOpenSettings(true)}
+					/>
 				</div>
-
 			</div>
 		</>
 	);
