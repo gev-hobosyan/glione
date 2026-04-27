@@ -9,6 +9,13 @@ interface Props {
 	id: string;
 }
 
+/**
+ * This component is used to display success or error messages after actions.
+ * @param title {string} - the title of the message component (Success or Error).
+ * @param text {string} - the text of the message component.
+ * @param type {string} - defines the type of the message, can be "error" or "success".
+ * @param id {string} - the id of the lesson.
+ */
 const Message = ({ title, text, type, id }: Props) => {
 	return (
 		<>

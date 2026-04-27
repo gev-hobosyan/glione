@@ -6,6 +6,10 @@ interface Props {
 	className?: string
 }
 
+/**
+ * 
+ * 
+ */
 const ProfileCard = ({ className = ""} : Props) => {
 	const session = UserAuth() ? UserAuth()?.session : null;
 	return (
@@ -16,7 +20,7 @@ const ProfileCard = ({ className = ""} : Props) => {
 				<img
 					src={session!["user"]["user_metadata"]["avatar_url"]}
 					width={"80px"}
-					className="rounded-full self-center border-4 border-dark "
+					className="rounded-full self-center border-4 border-dark"
 					referrerPolicy="no-referrer"
 				/>
 			) : (

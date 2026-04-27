@@ -9,19 +9,26 @@ import CodeEditor from "../components/lessons/CodeEditor";
 import { useParams } from "react-router-dom";
 import ProgressBar from "@/components/lessons/ProgressBar";
 
+/**
+ * The page where the lesson is displayed and can be done step by step.
+ */
 const Lesson = () => {
 	const { id } = useParams();
 
+	//These states are used to fetch the lesson, also display loading animation or errors that occured.
 	const [lesson, setLesson] = useState<LessonType>();
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<unknown>();
 
 	console.log(error);
 
+	//This state is used to store the current selected step.
 	const [selectedStep, setSelectedStep] = useState<number>(0);
 
+	//This state is used to store the current completed steps.
 	const [completedSteps, setCompletedSteps] = useState<number>(0);
 
+	//This function memoizes and returns an array of step IDs from the lesson, recalculating only when the lesson changes.
 	const stepsOrder = useMemo(() => {
 		if (lesson) {
 			return lesson.steps?.map((step) => step._id!);
@@ -30,12 +37,14 @@ const Lesson = () => {
 		return [] as number[];
 	}, [lesson]);
 
+	//This function memoizes and returns the currently selected step by matching the selected index to its step ID.
 	const step = useMemo(() => {
 		return lesson?.steps!.find(
 			(s) => s._id == stepsOrder![selectedStep],
 		) as Step;
 	}, [lesson, selectedStep, stepsOrder]);
 
+	//This function is used to fetch the lesson by its ID.
 	useEffect(() => {
 		const getData = async () => {
 			setLoading(true);
@@ -51,6 +60,7 @@ const Lesson = () => {
 		getData();
 	}, [id]);
 
+	//This function is for navigating through steps.
 	const changeCurrentStep = (direction: "next" | "prev") => {
 		if (direction == "prev") {
 			setSelectedStep((prev) => (prev !== 0 ? prev - 1 : prev));
@@ -61,6 +71,7 @@ const Lesson = () => {
 		}
 	};
 
+	//This function is used to update a step’s status by ID and increment the completed steps counter.
 	const changeStatus = (status: "ns" | "completed" | "wrong", id: number) => {
 		setLesson((prev) => {
 			if (prev == undefined) return undefined;
@@ -76,6 +87,7 @@ const Lesson = () => {
 		});
 	};
 
+	//This function memoizes a progress bar component based on the percentage of completed steps.
 	const progressBar = useMemo(() => {
 		return (
 			<ProgressBar
