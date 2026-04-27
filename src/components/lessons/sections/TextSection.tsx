@@ -10,6 +10,16 @@ interface Props {
 	changeStatus: (status: "ns" | "completed" | "wrong", id: number) => void;
 }
 
+/**
+ * TextSection is a component that displays a step with title, content, and navigation buttons.
+ *
+ * @param step - Current step data (title, content, id)
+ * @param changeCurrentStep - Function to move between steps (next or previous)
+ * @param selectedStep - Index of the current step
+ * @param stepCount - Total number of steps
+ * @param changeStatus - Updates the status of a step (completed, wrong, or not started)
+ */
+
 const TextSection = ({
 	step,
 	changeCurrentStep,
