@@ -25,10 +25,17 @@ export type Tab<P> = {
 	element: ReactNode;
 };
 
+/**
+ * This is a Sidebar component for navigation between tabs.
+ * @param Tab - list of sidebar tabs with icons and content.
+ * @param {boolean} activeTab -  currently selected tab index.
+ * @param setActiveTab - updates the active tab index
+ */
 const SideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
+	//Sign-out function from authenticatin.
 	const signOut = UserAuth() ? UserAuth()?.signOut : undefined;
+	//Settings panel open & close state.
 	const [openSettings, setOpenSettings] = useState<boolean>(false);
-
 	const close = useCallback(() => {
 		setOpenSettings(false);
 	}, []);

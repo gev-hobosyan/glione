@@ -4,6 +4,9 @@ import NavbarElement from "./NavbarElement";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { t } from "i18next";
 
+/**
+ * This is the Navbar component used in the landing page for navigation.
+ */
 const Navbar = () => {
 	return (
 		<div className="flex items-center justify-center">

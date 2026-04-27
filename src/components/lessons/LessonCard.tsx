@@ -12,6 +12,15 @@ interface Props {
 	tags: Tag[];
 }
 
+/**
+ * A Lesson card component that displayes a lesson preview.
+ * @param {string} id - the id of the lesson.
+ * @param {string} name - the title of the lesson.
+ * @param {string} description - the description of the lesson.
+ * @param {number} progress - progress of the lesson.
+ * @param {Author[]} authors - list of lesson authors.
+ * @param {Tag[]} tags - the tags of the lesson.
+ */
 const LessonCard = ({ id, name, description, progress, authors, tags }: Props) => {
 	return (
 		<div
