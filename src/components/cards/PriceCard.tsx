@@ -12,6 +12,16 @@ interface Props {
 	effective?: boolean;
 }
 
+/**
+ * This is a price card component used on the landing page to display pricing plans and their features.
+ * @param {string} title - main heading of the Price card.
+ * @param {string} description - short description of the price card.
+ * @param {string} price - price displayed on the card.
+ * @param {string[]} features - list of features included in the card.
+ * @param {string} featureTitle - title of the features section.
+ * @param {boolean} active - this is the user's current plan.
+ * @param {boolean} effective - indicates the best price option.
+ */
 const PriceCard = ({
 	title,
 	description,

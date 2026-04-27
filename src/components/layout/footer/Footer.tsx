@@ -2,11 +2,17 @@ import BlurCircle from "@/components/common/BlurCircle";
 import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 
+/**
+ * This is the Footer component of the website.
+ */
 const Footer = () => {
+	//This is for handling language changes and translations.
 	const { i18n } = useTranslation();
 
+	//Current active language.
 	const currentLang = i18n.language;
 
+	//Switches the website language between English and Armenian.
 	const handleLanguageChange = () => {
 		const languageToSet = currentLang == "en" ? "am" : "en";
 		i18n.changeLanguage(languageToSet);

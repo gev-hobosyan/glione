@@ -5,6 +5,13 @@ interface Props {
 	check: () => void;
 }
 
+/**
+ * This is a Choice component representing a selectable radio option.
+ * @param {string} children - label text displayed for the choice.
+ * @param {boolean} isRight - whether this choice is the correct/right answer.
+ * @param {boolean} isChecked - whether this choice is currently selected.
+ * @param {function} check - runs when the choice is selected.
+ */
 const Choice = ({ children, isChecked, check }: Props) => {
 	return (
 		<>

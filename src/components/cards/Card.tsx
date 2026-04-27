@@ -9,6 +9,14 @@ interface Props {
 	buttonText: string;
 }
 
+/**
+ * This is a card component used on the landing page to display feature highlights.
+ * @param {number} index - used to control the order in which cards are displayed.
+ * @param {string} text -  card label in the format "XX/title" (e.g., "01/module")
+ * @param {string} title - the title of the Card component.
+ * @param {string} description - description text displayed on the card.
+ * @param {string} buttonText - text displayed on the card's button.
+ */
 const Card = ({ title, description, index, text, buttonText }: Props) => {
 	return (
 		<>

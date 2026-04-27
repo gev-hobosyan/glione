@@ -4,6 +4,12 @@ interface Props {
 	isActive?: boolean;
 }
 
+/**
+ * This is a Navbar link element used in the landing page navigation.
+ * @param {string} children - text displayed for the navigation item.
+ * @param {string} href - destination URL for the link.
+ * @param {boolean} isActive - shows whether the link is currently active.
+ */
 const NavbarElement = ({ children, href, isActive = false }: Props) => {
 	return (
 		<div className="flex flex-col group">

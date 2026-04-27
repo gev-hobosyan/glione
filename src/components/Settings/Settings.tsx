@@ -5,6 +5,13 @@ interface Props {
 	close: () => void;
 }
 
+/**
+ * This component creates settings for the user and keeps some info about the user. 
+ * @param {function} close - function to close the window
+ *
+ */
+
+//This function displays user settings using data from the current session
 const Settings = ({ close }: Props) => {
 	const session = UserAuth() ? UserAuth()?.session : null;
 	const name = session
