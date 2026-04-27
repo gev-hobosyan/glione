@@ -6,16 +6,22 @@ type Props = {
   className?: string;
 };
 
+/**
+ * This component shows progress as a circular ring with a percentage value inside.
+ * @param {number} percentage - progress value shown in the circle (0–100)
+ * @param {string} className - additional extra CSS classes for styling
+ */
 export default function CircularProgress({
   percentage, className = ""
 }: Props) {
+  // Sets the circle size, thickness, adjusted radius, and calculates the full circle length for the progress bar.
   const radius = 60;
   const stroke = 14;
   const normalizedRadius = radius - stroke * 0.5;
   const circumference = normalizedRadius * 2 * Math.PI;
-
-  const strokeDashoffset =
-    circumference - (percentage / 100) * circumference;
+  
+  // Calculates how much of the circle should be filled based on the percentage value.
+  const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
   return (
     <div className={`flex flex-col items-center justify-center bg-black border border-primary p-4 rounded-2xl w-full h-55 ${className}`}>

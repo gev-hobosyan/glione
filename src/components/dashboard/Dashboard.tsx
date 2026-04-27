@@ -5,6 +5,7 @@ import DashboardCalendar from "./DashboardCalendar";import CircularProgress from
 import { t } from "i18next";
 import LessonsScroll from "./LessonsScroll";
 
+// Displays a dashboard page with multiple cards, charts, and progress widgets arranged in a grid layout.
 const Dashboard = () => {
 	return (
 		<div className="w-full min-h-screen p-3 bg-black/40 rounded-3xl border border-primary/40 grid grid-cols-4 grid-rows-5 gap-4 ">
@@ -48,11 +49,11 @@ const Dashboard = () => {
 					<LessonsScroll />
 				</div>
 				<SimpleDashboard className="col-start-1 row-start-5"
-					number="85"
-					text={t("AvgScore")}
-					icon={<Percent className="stroke-primary mt-1 ml-1 w-4.5" />}
+					number="2"
+					text={t("DailyFinished")}
+					icon={<ClipboardCheck className="stroke-primary mt-1 ml-1" />}
 				/>
-				<div className="col-span-3 col-start-2 row-start-3 text-white border border-primary bg-black/50 rounded-xl text-center font-bold text-xl flex items-center justify-center">Be your best version</div>
+				<div className="col-span-3 col-start-2 row-start-3 text-white border border-primary bg-black/50 rounded-xl text-center font-bold text-xl flex items-center justify-center">{t("DashboardText")}</div>
     
 		</div>
 		

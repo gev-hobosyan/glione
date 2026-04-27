@@ -7,18 +7,26 @@ import BlurCircle from "@/components/common/BlurCircle";
 import { t } from "i18next";
 import { UserAuth } from "@/context/AuthContext";
 
+/**  
+ * SignIn page allows users to log in using email/password or Google authentication.
+ * SignIn component handles user authentication. It allows users to sign in using email/password or Google authentication.  
+ */
 const SignIn = () => {
+	// These keep what the user types in the email and password inputs.
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
+	// The function used to sign in a user using email and password.
 	const signInUser = UserAuth()?.signInUser;
 
+	// Calls signInUser with the current email and password to sign the user in, only if signInUser is defined.
 	const signIn = () => {
 		if (signInUser !== undefined) {
 			signInUser(email, password);
 		}
 	};
 
+	// Gets the googleSignIn function from authentication for Google login.
 	const googleSignIn = UserAuth()?.googleSignIn;
 
 	return (
