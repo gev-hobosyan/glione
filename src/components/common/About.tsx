@@ -1,6 +1,9 @@
 import BlurCircle from "@/components/common/BlurCircle";
 import { t } from "i18next";
 
+/**
+ * This component is used to display information about the project.
+ */
 const About = () => {
 	return (
 		<div

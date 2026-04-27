@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+ * This component is a design element (the loading spinner that shows up while fetching information)
+ */
 const LoadingSpinner = () => {
 	return (
 		<>

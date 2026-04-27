@@ -9,6 +9,13 @@ interface Props {
 	stepsOrder: number[];
 }
 
+/**
+ * This component displays lesson details (authors, title, tags) and allows users to navigate through lesson steps.
+ * @param {Lesson} lesson - the lesson data object containing authors, title, tags and steps to display in the sidebar.
+ * @param {number | null} selectedStep - the index of the currently selected step, used to display the active step in the UI.
+ * @param {React.Dispatch<React.SetStateAction<number>>} setSelectedStep - this function updates the currently selected step when a user clicks on a step.
+ * @param {number[]} stepsOrder - an array of step IDs that defines the order of steps and is used to control the navigation.
+ */
 const LessonSidebar = ({
 	lesson,
 	selectedStep,

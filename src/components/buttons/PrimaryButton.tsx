@@ -7,8 +7,8 @@ interface Props {
 
 /**
  * This component is the main button used throughout the project.
- * @param children {ReactNode} - elements to display on the button (text, icon, etc).
- * @param onClick {function} - actions that happen once the button is clicked.
+ * @param {ReactNode} children - elements to display on the button (text, icon, etc).
+ * @param {function} onClick - actions that happen once the button is clicked.
  */
 const PrimaryButton = ({ children, onClick }: Props) => {
 	return (
