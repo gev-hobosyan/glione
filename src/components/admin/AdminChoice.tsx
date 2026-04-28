@@ -51,13 +51,15 @@ const AdminChoice = ({ children, check, deleteChoice, changeText }: Props) => {
 						/>
 					</form>
 				) : (
-					<p
-						className="text-white relative group min-w-10 text-center min-h-6 text-md"
-						onDoubleClick={() => setEditText(true)}
-					>
-						{children.text}
+					<div>
+						<p
+							className="text-white relative group min-w-10 text-center min-h-6 text-md"
+							onDoubleClick={() => setEditText(true)}
+						>
+							{children.text}
+						</p>
 						<Hint>{t("DoubleClickToEdit")}</Hint>
-					</p>
+					</div>
 				)}
 			</div>
 

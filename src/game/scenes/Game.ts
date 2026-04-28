@@ -21,7 +21,7 @@ export class Game extends Scene {
 		const tileset = map.addTilesetImage("dungeon", "tiles");
 
 		map.createLayer("Ground", tileset!);
-		// map.createLayer("Walls_Below", tileset!);
+		map.createLayer("Walls_Bellow", tileset!);
 		// const wallsLayer = map.createLayer("Walls_Collide", tileset!);
 
 		// this.gameText = this.add
