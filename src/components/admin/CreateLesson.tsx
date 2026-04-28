@@ -48,6 +48,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 				type: "text",
 				content: "",
 				icon: icons.text,
+				map: "",
 			};
 
 			setCurentStepId((prev) => prev + 1);

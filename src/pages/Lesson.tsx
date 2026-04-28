@@ -1,13 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import LessonSidebar from "../components/lessons/LessonsSidebar";
 import MultipleChoice from "../components/lessons/sections/MultipleChoice";
 import { type Lesson as LessonType, type Step } from "@/utils/types";
 import getLessonById from "@/utils/backend/getLessonById";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import TextSection from "../components/lessons/sections/TextSection";
-import CodeEditor from "../components/lessons/CodeEditor";
 import { useParams } from "react-router-dom";
 import ProgressBar from "@/components/lessons/ProgressBar";
+import { PhaserGame, type IRefPhaserGame } from "@/game/PhaserGame";
 
 /**
  * The page where the lesson is displayed and can be done step by step.
@@ -96,6 +96,11 @@ const Lesson = () => {
 		);
 	}, [completedSteps, stepsOrder]);
 
+	const phaserRef = useRef<IRefPhaserGame | null>(null);
+	const currentScene = (scene: Phaser.Scene) => {
+		console.log(scene);
+	};
+
 	return (
 		<>
 			{loading ? (
@@ -131,7 +136,15 @@ const Lesson = () => {
 									stepCount={stepsOrder!.length}
 								/>
 							) : step.type == "code" ? (
-								<CodeEditor></CodeEditor>
+								<div className="flex items-center justify-center h-screen">
+									<div className="">
+										<PhaserGame
+											ref={phaserRef}
+											currentActiveScene={currentScene}
+											world={step.map!}
+										/>
+									</div>
+								</div>
 							) : (
 								<div></div>
 							)}

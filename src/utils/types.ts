@@ -30,6 +30,7 @@ export type Step = {
 		Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>
 	>;
 	status?: "ns" | "completed" | "wrong";
+	map?: string;
 };
 
 export type Choice = {

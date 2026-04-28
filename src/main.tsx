@@ -20,10 +20,13 @@ i18n.use(initReactI18next).init({
 				Description3: "Learning Python in interesting way",
 				Module: "Module",
 				ButtonText: "View details",
-				AboutTitle: "Venture into the depths. Conquer the code. Master Python.",
-				AboutDesc: "Glione is an interactive Python and Computer Science learning platform where every lesson is a dungeon, every challange is a monster.",
+				AboutTitle:
+					"Venture into the depths. Conquer the code. Master Python.",
+				AboutDesc:
+					"Glione is an interactive Python and Computer Science learning platform where every lesson is a dungeon, every challange is a monster.",
 				AboutQuestion: "What is Glione?",
-				AboutDesc1: "Glione turns learning Python into an adventure. Instead of dry tutorials you explore dungoens, slaying monsters. Solve coding challenges to defeat enemies, collect loot, and level up your character as your real-world skills grow.",
+				AboutDesc1:
+					"Glione turns learning Python into an adventure. Instead of dry tutorials you explore dungoens, slaying monsters. Solve coding challenges to defeat enemies, collect loot, and level up your character as your real-world skills grow.",
 				NavbarHome: "Home",
 				NavbarAbout: "About",
 				NavbarCourses: "Courses",
@@ -34,9 +37,12 @@ i18n.use(initReactI18next).init({
 				PriceCardTitle: "Starter",
 				PriceCardTitle1: "Pro",
 				PriceCardTitle2: "Master",
-				PriceCardDescription: "Perfect for beginners who want to explore Python fundamentals at their own pace.",
-				PriceCardDescription1: "For serious learners who want structured paths, real-world projects, and faster progress.",
-				PriceCardDescription2: "Advanced training designed to prepare you for professional Python development roles.",
+				PriceCardDescription:
+					"Perfect for beginners who want to explore Python fundamentals at their own pace.",
+				PriceCardDescription1:
+					"For serious learners who want structured paths, real-world projects, and faster progress.",
+				PriceCardDescription2:
+					"Advanced training designed to prepare you for professional Python development roles.",
 				PriceCardPrice: "For Free",
 				PriceCardButton: "Your current plan",
 				PriceCardButton1: "Continue",
@@ -66,8 +72,10 @@ i18n.use(initReactI18next).init({
 				SignInSignUp: "Sign Up",
 				SignInWithGoogle: "Log in with",
 				SignInOr: "or",
-				SignInRightPageText: "Welcome to our Python learning project powered by Medusa.",
-				SignInRightPageText1: "Learn Python through simple lessons and hands-on practice.",
+				SignInRightPageText:
+					"Welcome to our Python learning project powered by Medusa.",
+				SignInRightPageText1:
+					"Learn Python through simple lessons and hands-on practice.",
 				SignUpConfirmPassword: "Confirm Password",
 				SignUpButton: "Sign Up",
 				SignUpText: "Already have an account?",
@@ -123,10 +131,13 @@ i18n.use(initReactI18next).init({
 				Description3: "Սովորիր Python հետաքրքիր ձևով",
 				Module: "Մոդուլ",
 				ButtonText: "Տեսնել ավելին",
-				AboutTitle: "Սուզվիր խորքերը։ Հաղթահարիր կոդը։ Տիրապետիր Python-ին։",
-				AboutDesc: "«Glione»-ը ինտերակտիվ Python-ի և համակարգչային գիտության ուսուցման հարթակ է, որտեղ ամեն դաս մի զնդան է, իսկ ամեն մարտահրավեր՝ հրեշ, որը պետք է հաղթահարես։",
+				AboutTitle:
+					"Սուզվիր խորքերը։ Հաղթահարիր կոդը։ Տիրապետիր Python-ին։",
+				AboutDesc:
+					"«Glione»-ը ինտերակտիվ Python-ի և համակարգչային գիտության ուսուցման հարթակ է, որտեղ ամեն դաս մի զնդան է, իսկ ամեն մարտահրավեր՝ հրեշ, որը պետք է հաղթահարես։",
 				AboutQuestion: "Ինչ է «Glione»-ը",
-				AboutDesc1: "«Glione»-ը Python սովորելը վերածում է արկածի։ Չոր ու ձանձրալի ձեռնարկների փոխարեն դու ուսումնասիրում ես զնդաններ և կռվում հրեշների դեմ։ Լուծիր ծրագրավորման խնդիրներ՝ թշնամիներին հաղթելու համար, հավաքիր ավար և զարգացրու քո կերպարը, մինչ քո իրական հմտություններն էլ աճում են։",
+				AboutDesc1:
+					"«Glione»-ը Python սովորելը վերածում է արկածի։ Չոր ու ձանձրալի ձեռնարկների փոխարեն դու ուսումնասիրում ես զնդաններ և կռվում հրեշների դեմ։ Լուծիր ծրագրավորման խնդիրներ՝ թշնամիներին հաղթելու համար, հավաքիր ավար և զարգացրու քո կերպարը, մինչ քո իրական հմտություններն էլ աճում են։",
 				NavbarHome: "Գլխավոր էջ",
 				NavbarAbout: "Մեր մասին",
 				NavbarCourses: "Դասընթացներ",
@@ -137,9 +148,12 @@ i18n.use(initReactI18next).init({
 				PriceCardTitle: "Սկսնակ",
 				PriceCardTitle1: "Պրոֆեսիոնալ",
 				PriceCardTitle2: "Մաստեր",
-				PriceCardDescription: "Հիանալի է սկսնակների համար, ովքեր ցանկանում են ուսումնասիրել Python-ի հիմունքները իրենց սեփական տեմպով։",
-				PriceCardDescription1: "Լուրջ սովորողների համար, ովքեր ցանկանում են կառուցվածքային ուղիներ, իրական աշխարհի նախագծեր և ավելի արագ առաջընթաց։",
-				PriceCardDescription2: "Առաջադեմ դասընթաց, որը նախատեսված է ձեզ Python-ի մասնագիտական ​​​​մշակման դերերի պատրաստելու համար։",
+				PriceCardDescription:
+					"Հիանալի է սկսնակների համար, ովքեր ցանկանում են ուսումնասիրել Python-ի հիմունքները իրենց սեփական տեմպով։",
+				PriceCardDescription1:
+					"Լուրջ սովորողների համար, ովքեր ցանկանում են կառուցվածքային ուղիներ, իրական աշխարհի նախագծեր և ավելի արագ առաջընթաց։",
+				PriceCardDescription2:
+					"Առաջադեմ դասընթաց, որը նախատեսված է ձեզ Python-ի մասնագիտական ​​​​մշակման դերերի պատրաստելու համար։",
 				PriceCardPrice: "Անվճար",
 				PriceCardButton: "Ձեր ընթացիկ պլանը",
 				PriceCardButton1: "Շարունակել",
@@ -164,13 +178,15 @@ i18n.use(initReactI18next).init({
 				SignInWelcome: "Բարի՜ Վերադարձ",
 				SignInEmail: "Էլ. հասցե",
 				SignInPassword: "Գաղտնաբառ",
-				SignInButton: "Մուտք Գործել", 
+				SignInButton: "Մուտք Գործել",
 				SignInText: "Գրանցված չե՞ք։ Դե բա",
 				SignInSignUp: "գրանցվեք:",
 				SignInWithGoogle: "Մուտք գործել",
 				SignInOr: "կամ",
-				SignInRightPageText: "Բարի գալուստ մեր Python ուսուցման նախագիծ՝ Մեդուզայի կողմից։",
-				SignInRightPageText1: "Սովորեք Python՝ պարզ դասերի և գործնական պարապմունքների միջոցով։",
+				SignInRightPageText:
+					"Բարի գալուստ մեր Python ուսուցման նախագիծ՝ Մեդուզայի կողմից։",
+				SignInRightPageText1:
+					"Սովորեք Python՝ պարզ դասերի և գործնական պարապմունքների միջոցով։",
 				SignUpConfirmPassword: "Հաստատել Գաղտնաբառը",
 				SignUpButton: "Գրանցվել",
 				SignUpText: "Արդեն գրանցված ե՞ք: Դե բա",
@@ -211,6 +227,7 @@ i18n.use(initReactI18next).init({
 				Fri: "Ու",
 				Sat: "Շ",
 				MyProfile: "Իմ Պրոֆիլը"
+				Map: "Աշխարհ",
 			},
 		},
 	},

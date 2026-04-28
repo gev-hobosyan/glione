@@ -9,15 +9,18 @@ export interface IRefPhaserGame {
 
 interface IProps {
 	currentActiveScene?: (scene_instance: Phaser.Scene) => void;
+	world: string;
 }
 
 export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
-	function PhaserGame({ currentActiveScene }, ref) {
+	function PhaserGame({ currentActiveScene, world }, ref) {
 		const game = useRef<Phaser.Game | null>(null!);
 
 		useLayoutEffect(() => {
 			if (game.current === null) {
 				game.current = StartGame("game-container");
+
+				game.current.scene.start("preloader", { world });
 
 				if (typeof ref === "function") {
 					ref({ game: game.current, scene: null });
@@ -34,7 +37,7 @@ export const PhaserGame = forwardRef<IRefPhaserGame, IProps>(
 					}
 				}
 			};
-		}, [ref]);
+		}, [ref, world]);
 
 		useEffect(() => {
 			EventBus.on("current-scene-ready", (scene_instance: Phaser.Scene) => {

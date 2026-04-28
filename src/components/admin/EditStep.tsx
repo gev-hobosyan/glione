@@ -7,200 +7,222 @@ import Hint from "../common/Hint";
 import TextStep from "./sections/TextStep";
 import ChoiceStep from "./sections/ChoiceStep";
 import { t } from "i18next";
+import CodeStep from "./sections/CodeStep";
 
 interface Props {
-  children: Step;
-  edit: Dispatch<SetStateAction<Step | undefined>>;
-  submitStep: () => void;
-  deleteStep: () => void;
+	children: Step;
+	edit: Dispatch<SetStateAction<Step | undefined>>;
+	submitStep: () => void;
+	deleteStep: () => void;
 }
 
 const EditStep = ({ children, edit, submitStep, deleteStep }: Props) => {
-  const [editTitle, setEditTitle] = useState<string | undefined>(
-    children.title ? undefined : children.title
-  );
-  const [editContent, setEditContent] = useState<string | undefined>(
-    children.content ? undefined : children.content
-  );
+	const [editTitle, setEditTitle] = useState<string | undefined>(
+		children.title ? undefined : children.title,
+	);
+	const [editContent, setEditContent] = useState<string | undefined>(
+		children.content ? undefined : children.content,
+	);
+	const [editMap, setEditMap] = useState<string | undefined>(
+		children.map ? undefined : children.map,
+	);
 
-  if (children === undefined) {
-    return <></>;
-  }
+	if (children === undefined) {
+		return <></>;
+	}
 
-  const submitTitle = () => {
-    if (editTitle) {
-      edit((prev) => {
-        return { ...prev, title: editTitle } as Step;
-      });
+	const submitTitle = () => {
+		if (editTitle) {
+			edit((prev) => {
+				return { ...prev, title: editTitle } as Step;
+			});
 
-      setEditTitle(undefined);
-    }
-  };
+			setEditTitle(undefined);
+		}
+	};
 
-  const submitContent = () => {
-    if (editContent) {
-      edit((prev) => {
-        return { ...prev, content: editContent } as Step;
-      });
+	const submitContent = () => {
+		if (editContent) {
+			edit((prev) => {
+				return { ...prev, content: editContent } as Step;
+			});
 
-      setEditContent(undefined);
-    }
-  };
+			setEditContent(undefined);
+		}
+	};
 
-  const newChoice = () => {
-    const newChoice: Choice = {
-      text: "",
-      isRight: false,
-    };
+	const submitMap = () => {
+		if (editMap) {
+			edit((prev) => {
+				return { ...prev, map: editMap } as Step;
+			});
 
-    edit((prev) => {
-      if (prev === undefined) return undefined;
+			setEditMap(undefined);
+		}
+	};
 
-      if (prev.choices === undefined || prev.choices.length === 0) {
-        newChoice.id = 0;
+	const newChoice = () => {
+		const newChoice: Choice = {
+			text: "",
+			isRight: false,
+		};
 
-        return { ...prev, choices: [newChoice] };
-      }
+		edit((prev) => {
+			if (prev === undefined) return undefined;
 
-      newChoice.id = prev.choices.length;
-      return { ...prev, choices: [...prev.choices, newChoice] };
-    });
-  };
+			if (prev.choices === undefined || prev.choices.length === 0) {
+				newChoice.id = 0;
 
-  const deleteChoice = (id: number) => {
-    edit((prev) => {
-      if (prev === undefined) return undefined;
+				return { ...prev, choices: [newChoice] };
+			}
 
-      const filtered = prev.choices?.filter((choice) => choice.id !== id);
+			newChoice.id = prev.choices.length;
+			return { ...prev, choices: [...prev.choices, newChoice] };
+		});
+	};
 
-      return { ...prev, choices: filtered };
-    });
-  };
+	const deleteChoice = (id: number) => {
+		edit((prev) => {
+			if (prev === undefined) return undefined;
 
-  const check = (id: number) => {
-    edit((prev) => {
-      if (prev === undefined) return undefined;
+			const filtered = prev.choices?.filter((choice) => choice.id !== id);
 
-      const choices = prev.choices?.map((choice) => {
-        if (choice.id === id) {
-          choice.isRight = !choice.isRight;
-        } else {
-          choice.isRight = false;
-        }
+			return { ...prev, choices: filtered };
+		});
+	};
 
-        return choice;
-      });
+	const check = (id: number) => {
+		edit((prev) => {
+			if (prev === undefined) return undefined;
 
-      return { ...prev, choices };
-    });
-  };
+			const choices = prev.choices?.map((choice) => {
+				if (choice.id === id) {
+					choice.isRight = !choice.isRight;
+				} else {
+					choice.isRight = false;
+				}
 
-  const editChoiceText = (value: string, id: number) => {
-    edit((prev) => {
-      if (prev === undefined) return undefined;
+				return choice;
+			});
 
-      const choices = prev.choices?.map((choice) => {
-        if (choice.id === id) {
-          choice.text = value;
-        }
+			return { ...prev, choices };
+		});
+	};
 
-        return choice;
-      });
+	const editChoiceText = (value: string, id: number) => {
+		edit((prev) => {
+			if (prev === undefined) return undefined;
 
-      return { ...prev, choices };
-    });
-  };
+			const choices = prev.choices?.map((choice) => {
+				if (choice.id === id) {
+					choice.text = value;
+				}
 
-  const cycleTypes = () => {
-    edit((step) => {
-      if (step?.type === "text") {
-        return { ...step, type: "multi", icon: icons.multi };
-      } else if (step?.type === "multi") {
-        return { ...step, type: "code", icon: icons.code };
-      } else if (step?.type === "code") {
-        return { ...step, type: "text", icon: icons.text };
-      }
+				return choice;
+			});
 
-      return step;
-    });
-  };
+			return { ...prev, choices };
+		});
+	};
 
-  const Icon = children.icon || TextInitial;
+	const cycleTypes = () => {
+		edit((step) => {
+			if (step?.type === "text") {
+				return { ...step, type: "multi", icon: icons.multi };
+			} else if (step?.type === "multi") {
+				return { ...step, type: "code", icon: icons.code };
+			} else if (step?.type === "code") {
+				return { ...step, type: "text", icon: icons.text };
+			}
 
-  return (
-    <>
-      <div
-        className="w-screen h-screen absolute z-10 bg-black/50 backdrop-blur-sm top-0 left-0 flex items-center justify-center"
-        onClick={() => submitStep()}
-      ></div>
-      <div className="absolute top-12.5 left-12.5 bottom-12.5 right-12.5 bg-black rounded-4xl border border-primary/50 shadow-effective px-10 py-7 z-50">
-        <div className="flex items-center justify-between">
-          {editTitle !== undefined ? (
-            <form
-              className="flex items-center justify-center gap-5"
-              action={submitTitle}
-            >
-              <Input
-                id="title"
-                value={editTitle}
-                setValue={setEditTitle}
-                type="text"
-              >
-                {""}
-              </Input>
-              <input
-                type="submit"
-                value={t("Ok")}
-                className="bg-primary text-white rounded-xl px-4 py-2 flex flex-col items-center justify-center text-center cursor-pointer hover:scale-105 transition-all duration-300"
-              ></input>
-            </form>
-          ) : (
-            <h1
-              className="text-white text-2xl flex items-center justify-center gap-5 relative group"
-              onDoubleClick={() => setEditTitle(children.title)}
-            >
-              {children.title}
-              <Hint>{t("DoubleClickToEdit")}</Hint>
-            </h1>
-          )}
-          <div className="flex items-center justify-center gap-4">
-            <Trash2
-              className="stroke-red-700 cursor-pointer hover:scale-110 transition-all duration-300"
-              onClick={deleteStep}
-            />
-            <Icon
-              className="stroke-white cursor-pointer hover:scale-110 transition-all duration-300"
-              onClick={cycleTypes}
-            />
-            <X
-              className="stroke-white cursor-pointer hover:scale-110 transition-all duration-300"
-              onClick={() => submitStep()}
-            />
-          </div>
-        </div>
-        <div className="w-full h-0.5 bg-gray-400 mt-5 rounded-full"></div>
-        <TextStep
-          editContent={editContent}
-          setEditContent={setEditContent}
-          submitContent={submitContent}
-        >
-          {children}
-        </TextStep>
-        {children.type == "multi" ? (
-          <ChoiceStep
-            changeText={editChoiceText}
-            newChoice={newChoice}
-            deleteChoice={deleteChoice}
-            check={check}
-          >
-            {children.choices}
-          </ChoiceStep>
-        ) : (
-          <></>
-        )}
-      </div>
-    </>
-  );
+			return step;
+		});
+	};
+
+	const Icon = children.icon || TextInitial;
+
+	return (
+		<>
+			<div
+				className="w-screen h-screen absolute z-10 bg-black/50 backdrop-blur-sm top-0 left-0 flex items-center justify-center"
+				onClick={() => submitStep()}
+			></div>
+			<div className="absolute top-12.5 left-12.5 bottom-12.5 right-12.5 bg-black rounded-4xl border border-primary/50 shadow-effective px-10 py-7 z-50">
+				<div className="flex items-center justify-between">
+					{editTitle !== undefined ? (
+						<form
+							className="flex items-center justify-center gap-5"
+							action={submitTitle}
+						>
+							<Input
+								id="title"
+								value={editTitle}
+								setValue={setEditTitle}
+								type="text"
+							>
+								{""}
+							</Input>
+							<input
+								type="submit"
+								value={t("Ok")}
+								className="bg-primary text-white rounded-xl px-4 py-2 flex flex-col items-center justify-center text-center cursor-pointer hover:scale-105 transition-all duration-300"
+							></input>
+						</form>
+					) : (
+						<h1
+							className="text-white text-2xl flex items-center justify-center gap-5 relative group"
+							onDoubleClick={() => setEditTitle(children.title)}
+						>
+							{children.title}
+							<Hint>{t("DoubleClickToEdit")}</Hint>
+						</h1>
+					)}
+					<div className="flex items-center justify-center gap-4">
+						<Trash2
+							className="stroke-red-700 cursor-pointer hover:scale-110 transition-all duration-300"
+							onClick={deleteStep}
+						/>
+						<Icon
+							className="stroke-white cursor-pointer hover:scale-110 transition-all duration-300"
+							onClick={cycleTypes}
+						/>
+						<X
+							className="stroke-white cursor-pointer hover:scale-110 transition-all duration-300"
+							onClick={() => submitStep()}
+						/>
+					</div>
+				</div>
+				<div className="w-full h-0.5 bg-gray-400 mt-5 rounded-full"></div>
+				<TextStep
+					editContent={editContent}
+					setEditContent={setEditContent}
+					submitContent={submitContent}
+				>
+					{children}
+				</TextStep>
+				{children.type == "multi" ? (
+					<ChoiceStep
+						changeText={editChoiceText}
+						newChoice={newChoice}
+						deleteChoice={deleteChoice}
+						check={check}
+					>
+						{children.choices}
+					</ChoiceStep>
+				) : children.type == "code" ? (
+					<CodeStep
+						editMap={editMap}
+						setEditMap={setEditMap}
+						submitMap={submitMap}
+					>
+						{children}
+					</CodeStep>
+				) : (
+					<></>
+				)}
+			</div>
+		</>
+	);
 };
 
 export default EditStep;

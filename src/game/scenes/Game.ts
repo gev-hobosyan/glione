@@ -11,11 +11,18 @@ export class Game extends Scene {
 	}
 
 	create() {
-		this.camera = this.cameras.main;
-		this.camera.setBackgroundColor(0x101010);
+		// this.camera = this.cameras.main;
+		// this.camera.setBackgroundColor(0x101010);
 
-		this.background = this.add.image(0, 0, "background");
-		this.background.setAlpha(0.5);
+		// this.background = this.add.image(0, 0, "tiles");
+		// this.background.setAlpha(0.5);
+		//
+		const map = this.make.tilemap({ key: "dungeon" });
+		const tileset = map.addTilesetImage("dungeon", "tiles");
+
+		map.createLayer("Ground", tileset!);
+		// map.createLayer("Walls_Below", tileset!);
+		// const wallsLayer = map.createLayer("Walls_Collide", tileset!);
 
 		// this.gameText = this.add
 		// 	.text(300, 200, "Hello there traveler", {
@@ -30,13 +37,5 @@ export class Game extends Scene {
 		// 	.setDepth(100);
 
 		EventBus.emit("current-scene-ready", this);
-	}
-
-	changeScene() {
-		this.scene.start("GameOver");
-	}
-
-	preload() {
-		this.load.image("background", "/background.png");
 	}
 }
