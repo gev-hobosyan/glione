@@ -5,10 +5,12 @@ import type { Lesson } from "@/utils/types";
 import { useEffect, useState } from "react";
 
 const Lessons = () => {
+	// Holds fetched lessons, loading state during API call, and any error encountered
 	const [lessons, setLessons] = useState<Lesson[]>();
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<unknown>();
 
+	// Fetches lessons on mount, updating loading, data, and error states accordingly
 	useEffect(() => {
 		const loadData = async () => {
 			setLoading(true);
