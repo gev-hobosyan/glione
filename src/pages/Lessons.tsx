@@ -27,13 +27,13 @@ const Lessons = () => {
 	return (
 		<>
 			{loading ? (
-				<div className="w-full h-full flex items-center justify-center border border-primary/40 bg-black/40 rounded-3xl ml-5">
+				<div className="h-[calc(100%-2.5rem)] w-[calc(100%-7rem)] flex items-center justify-center border border-primary/40 bg-black/40 rounded-3xl ml-5">
 					<LoadingSpinner />
 				</div>
 			) : error ? (
 				<p className="text-white">Error</p>
 			) : (
-				<div className="w-full border border-primary/40 bg-black/40 rounded-3xl grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 p-6 content-start ml-5 overflow-scroll">
+				<div className="border border-primary/40 bg-black/40 rounded-3xl grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 p-6 content-start ml-5 overflow-scroll h-[calc(100%-2.5rem)] w-[calc(100%-7rem)]">
 					{lessons &&
 						lessons.map((lesson) => {
 							return (

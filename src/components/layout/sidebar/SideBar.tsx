@@ -43,7 +43,7 @@ const SideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 	return (
 		<>
 			{openSettings && <Settings close={close} />}
-			<div className="h-full p-5 border border-primary/40 bg-black/40 rounded-3xl backdrop-blur-3x flex flex-col items-center justify-between max-md:hidden">
+			<div className="h-[calc(100%-2.5rem)] p-5 border border-primary/40 bg-black/40 rounded-3xl backdrop-blur-3x flex flex-col items-center justify-between max-md:hidden">
 				<div className="flex flex-col items-center">
 					<img src="/icon.png" width={"40px"} />
 					<div className="flex flex-col items-center gap-8 mt-30">

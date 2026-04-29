@@ -18,9 +18,8 @@ interface Props {
  * @param {string} value - for understanding what's in the input
  * @param {string} type - is used to  understand what type of input is that-text,password or email
  * @param {function} setValue - changes the value of the input when user writes
- * @param {function} autoFocus - it keeps the same page and displays it
- * @param {function} width - is used for giving the needed amount of space
- *  
+ * @param {function} autoFocus - automatically focuses on the input once the page is opened (default value: false)
+ * @param {function} width - is used for giving the needed amount of space (can be null)
  */
 
 const Input = ({

@@ -19,7 +19,6 @@ interface Props {
  * @param stepCount - Total number of steps
  * @param changeStatus - Updates the status of a step (completed, wrong, or not started)
  */
-
 const TextSection = ({
 	step,
 	changeCurrentStep,

@@ -115,7 +115,8 @@ i18n.use(initReactI18next).init({
 				Thu: "Thu",
 				Fri: "F",
 				Sat: "Sat",
-				MyProfile: "My Profile"
+				Map: "Աշխարհ",
+				MyProfile: "My Profile",
 			},
 		},
 		am: {
@@ -226,7 +227,7 @@ i18n.use(initReactI18next).init({
 				Thu: "Հ",
 				Fri: "Ու",
 				Sat: "Շ",
-				MyProfile: "Իմ Պրոֆիլը"
+				MyProfile: "Իմ Պրոֆիլը",
 				Map: "Աշխարհ",
 			},
 		},

@@ -8,6 +8,7 @@ import {
 import { supabase } from "@/utils/supabaseClient";
 import type { Session } from "@supabase/supabase-js";
 import type { AuthContextInterface } from "@/utils/types";
+import LoadingSpinner from "@/components/common/LoadingSpinner";
 
 const AuthContext = createContext<AuthContextInterface | undefined>(undefined);
 
@@ -92,7 +93,13 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 		<AuthContext.Provider
 			value={{ session, signUpUser, signOut, signInUser, googleSignIn }}
 		>
-			{loading ? <p className="text-white">Loading</p> : children}
+			{loading ? (
+				<div className="w-[calc(100vw-20px)] h-[calc(100vh-20px)] mx-2.5 my-1 rounded-3xl flex items-center justify-center bg-black/40 border border-primary/40">
+					<LoadingSpinner></LoadingSpinner>
+				</div>
+			) : (
+				children
+			)}
 		</AuthContext.Provider>
 	);
 };

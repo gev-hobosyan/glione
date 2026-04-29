@@ -7,7 +7,7 @@ interface Props {
 }
 
 /**
- * This is a profile card component used in dashboard, desplaying user information.
+ * This is a profile card component used in dashboard, displaying user information.
  * @param {string} className - additional CSS class names for styling the card.
  */
 const ProfileCard = ({ className = ""} : Props) => {

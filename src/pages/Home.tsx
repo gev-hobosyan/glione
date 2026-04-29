@@ -38,7 +38,7 @@ const Home = () => {
 	// const currentScene = (scene: Phaser.Scene) => {};
 
 	return (
-		<div className="flex h-screen px-4 py-3">
+		<div className="flex h-screen items-center justify-around px-2">
 			<SideBar
 				tabs={tabs}
 				activeTab={activeTab}
