@@ -11,6 +11,15 @@ interface Props {
 	status: "ns" | "completed" | "wrong";
 }
 
+/**
+ * This component displays steps of each lesson on the sidebar.
+ * @param {number} index - Step number used for ordering and display.
+ * @param {string} title - Text label describing the step.
+ * @param {} Icon - Lucide icon component rendered alongside the step.
+ * @param {boolean} isSelected - Whether this step is currently active/selected.
+ * @param {function} onClick - Function called when the step is clicked.
+ * @param {string} status - Current state of the step. ("ns" (not started), "completed", or "wrong").
+ */
 const Step = ({ index, title, Icon, isSelected, onClick, status }: Props) => {
 	return (
 		<div

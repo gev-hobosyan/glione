@@ -1,4 +1,4 @@
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   className?: string;
@@ -9,17 +9,26 @@ type DayData = {
   value: number;
 };
 
-const weekData: DayData[] = [
-  { day: "S", value: 20 },
-  { day: "M", value: 80 },
-  { day: "T", value: 60 },
-  { day: "W", value: 90 },
-  { day: "T", value: 0 },
-  { day: "F", value: 0 },
-  { day: "S", value: 0 },
-];
-
+/**
+ * This component shows a weekly chart with bars to display daily progress or activity.
+ * * @param {string} className - additional extra CSS classes for styling
+ */
 const DashboardCalendar = ({ className = "" }: Props) => {
+  const { t } = useTranslation();
+  /**
+ * This represents weekly activity data
+ * @param {string} day - label for each day of the week
+ * @param {number} value - numeric progress value (used for bar height and percentage display)
+ */
+  const weekData: DayData[] = [
+  { day: t("Sunday"), value: 20 },
+  { day: t("Monday"), value: 80 },
+  { day: t("Tuesday"), value: 60 },
+  { day: t("Wednesday"), value: 90 },
+  { day: t("Thursday"), value: 0 },
+  { day: t("Friday"), value: 0 },
+  { day: t("Saturday"), value: 0 },
+];
   return (
     <div className={`${className} border border-primary h-55 w-full rounded-2xl p-4 flex justify-between flex-col items-center`}>
       

@@ -2,6 +2,10 @@ interface Props {
 	progress: number;
 }
 
+/**
+ * This component is for showing user progress.
+ * @param {number} progress - the percentage of lesson completion.
+ */
 const ProgressBar = ({ progress }: Props) => {
 	return (
 		<div className="absolute top-10 w-[calc(100%-100px)] h-4 bg-gray-800 rounded-full flex items-center justify-start -translate-x-1/2 left-1/2">

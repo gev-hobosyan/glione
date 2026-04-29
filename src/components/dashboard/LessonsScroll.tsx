@@ -5,11 +5,13 @@ import LoadingSpinner from "../common/LoadingSpinner";
 import LessonCard from "../lessons/LessonCard";
 
 const LessonsScroll = () => {
+    // Stores lessons data, loading state, and any fetch error.
     const [lessons, setLessons] = useState<Lesson[]>();
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<unknown>();
 
-	useEffect(() => {
+	// On mount, it loads 10 lessons, saves them to state, handles errors, and updates loading status.
+    useEffect(() => {
 		const loadData = async () => {
 			setLoading(true);
 			try {

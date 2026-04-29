@@ -4,6 +4,10 @@ interface Props {
 	signIn: () => void;
 }
 
+/**
+ * This component shows a Google sign-in button and calls signIn when clicked.
+ * @param {function} signIn - is a function used to handle the login action
+ */
 const LoginOptions = ({ signIn }: Props) => {
 	return (
 		<>

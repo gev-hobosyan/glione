@@ -6,6 +6,10 @@ interface Props {
 	email: string;
 }
 
+/**
+ * This component provides functionality to resend a signup verification email using Supabase for the given user email.
+ * @param {string} email - user email used to resend verification link
+ */
 const VerifyEmail = ({ email }: Props) => {
 	const resend = () => {
 		supabase.auth.resend({
