@@ -1,6 +1,7 @@
+import { Scene } from "phaser";
 import dungeonTiles from "../tiles/TileSet.png";
 
-export default class Preloader extends Phaser.Scene {
+export default class Preloader extends Scene {
 	world: string | undefined;
 
 	constructor() {

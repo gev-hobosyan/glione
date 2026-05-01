@@ -18,7 +18,7 @@
 		"i18next": "^26.0.8",
 		"lucide-react": "^1.11.0",
 		"monaco-themes": "^0.4.8",
-		"phaser": "^4.0.0",
+		"phaser": "^4.1.0",
 		"phaser3": "^0.4.34",
 		"postprocessing": "^6.39.1",
 		"pyodide": "^0.29.3",
