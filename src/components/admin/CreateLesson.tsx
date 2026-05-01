@@ -172,9 +172,9 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 				</EditStep>
 			)}
 
-			<div className="w-screen">
-				<div className="w-[calc(100vw-7.5rem)] h-full max-md:h-[calc(100vh-15rem)] flex items-center justify-center max-md:w-full">
-					<div className="h-full w-[calc(50vw-5rem)] max-md:w-[calc(50vw-2rem)] bg-black/40 md:ml-3 rounded-3xl border border-primary/40 flex items-center flex-col justify-between py-5 px-10">
+			<div className="w-screen md:h-[calc(100%-2.5rem)] h-screen max-md:overflow-y-scroll">
+				<div className="w-[calc(100vw-7.5rem)] h-full  flex items-center justify-between gap-7 max-md:w-full max-md:flex-col max-md:gap-3">
+					<div className="h-full w-[calc(50vw-5rem)] max-md:w-[calc(100vw-1rem)] bg-black/40 md:ml-3 rounded-3xl border border-primary/40 flex items-center flex-col justify-between py-5 px-10 max-md:h-130 max-md:mt-3">
 						{editTitle ? (
 							<form
 								className="flex items-center justify-center gap-5"
@@ -273,7 +273,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 						</div>
 					</div>
 
-					<div className="h-full w-[50vw] bg-black/40 ml-3 rounded-3xl border border-primary/40 flex flex-col items-center justify-center overflow-y-scroll">
+					<div className="h-full w-[50vw] bg-black/40 rounded-3xl border border-primary/40 flex flex-col items-center justify-center overflow-y-scroll max-md:w-[calc(100vw-1rem)] max-md:min-h-80 max-md:max-h-180 max-md:h-fit py-5">
 						{steps.map((step) => {
 							const Icon = step.icon || TextInitial;
 
@@ -289,7 +289,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 
 										<Icon className="stroke-white w-4" />
 									</div>
-									<div className="h-7 w-0.5 bg-primary/50 shadow-[0_0_20px_#006e2a]"></div>
+									<div className="h-7 shrink-0 w-0.5 bg-primary/50 shadow-[0_0_20px_#006e2a]"></div>
 								</>
 							);
 						})}
@@ -301,7 +301,8 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 						</div>
 					</div>
 				</div>
-				<div className="md:hidden mt-1 flex items-center justify-center bg-black/40 py-1 rounded-3xl border border-primary/50 ml-3 max-md:w-[calc(100vw-1.5rem)]">
+
+				<div className="md:hidden mt-6 mb-25 flex items-center justify-center bg-black/40 py-7 rounded-3xl border border-primary/50 ml-3 max-md:w-[calc(100vw-1.5rem)]">
 					<LessonCard
 						id=""
 						name={title}

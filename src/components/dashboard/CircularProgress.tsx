@@ -1,8 +1,8 @@
 import { t } from "i18next";
 
 type Props = {
-  percentage: number;
-  className?: string;
+	percentage: number;
+	className?: string;
 };
 
 /**
@@ -11,64 +11,71 @@ type Props = {
  * @param {string} className - additional extra CSS classes for styling
  */
 export default function CircularProgress({
-  percentage, className = ""
+	percentage,
+	className = "",
 }: Props) {
-  // Sets the circle size, thickness, adjusted radius, and calculates the full circle length for the progress bar.
-  const radius = 60;
-  const stroke = 14;
-  const normalizedRadius = radius - stroke * 0.5;
-  const circumference = normalizedRadius * 2 * Math.PI;
-  
-  // Calculates how much of the circle should be filled based on the percentage value.
-  const strokeDashoffset = circumference - (percentage / 100) * circumference;
+	// Sets the circle size, thickness, adjusted radius, and calculates the full circle length for the progress bar.
+	const radius = 60;
+	const stroke = 14;
+	const normalizedRadius = radius - stroke * 0.5;
+	const circumference = normalizedRadius * 2 * Math.PI;
 
-  return (
-    <div className={`flex flex-col items-center justify-center bg-black border border-primary p-4 rounded-2xl w-full h-55 ${className}`}>
-      <h2 className="text-sm text-white mb-2 font-semibold">{t("YourProgress")}</h2>
+	// Calculates how much of the circle should be filled based on the percentage value.
+	const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
-      <div className="relative">
-        <svg
-          height={radius * 2}
-          width={radius * 2}
-          className="-rotate-90"
-        >
-          <circle
-            stroke="oklch(55.1% 0.027 264.364)"
-            fill="transparent"
-            strokeWidth={stroke}
-            r={normalizedRadius}
-            cx={radius}
-            cy={radius}
-          />
+	return (
+		<div
+			className={`flex flex-col items-center justify-center bg-black border border-primary p-4 rounded-2xl w-full h-55 ${className}`}
+		>
+			<h2 className="text-sm text-white mb-2 font-semibold">
+				{t("YourProgress")}
+			</h2>
 
-          <circle
-            stroke="oklch(62.7% 0.194 149.214)"
-            fill="transparent"
-            strokeWidth={stroke}
-            strokeLinecap="round"
-            strokeDasharray={circumference}
-            strokeDashoffset={strokeDashoffset}
-            r={normalizedRadius}
-            cx={radius}
-            cy={radius}
-          />
-        </svg>
+			<div className="relative group">
+				<svg
+					height={radius * 2}
+					width={radius * 2}
+					className="-rotate-90 group-hover:-rotate-360 transition-all duration-500"
+				>
+					<circle
+						stroke="oklch(55.1% 0.027 264.364)"
+						fill="transparent"
+						strokeWidth={stroke}
+						r={normalizedRadius}
+						cx={radius}
+						cy={radius}
+					/>
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-2xl font-bold text-white">{percentage}%</span>
-        </div>
-      </div>
+					<circle
+						stroke="oklch(62.7% 0.194 149.214)"
+						fill="transparent"
+						strokeWidth={stroke}
+						strokeLinecap="round"
+						strokeDasharray={circumference}
+						strokeDashoffset={strokeDashoffset}
+						r={normalizedRadius}
+						cx={radius}
+						cy={radius}
+					/>
+				</svg>
 
-      <div className="flex gap-4 mt-4 text-xs text-gray-400">
-        <div className="flex items-center gap-1">
-          <span className="w-3 h-3 bg-green-600 rounded-full"></span>
-          {t("Completed")}
-        </div>
-        <div className="flex items-center gap-1">
-          <span className="w-3 h-3 bg-gray-500 rounded-full"></span>
-          {t("Pending")}
-        </div>
-      </div>
-    </div>
-  );
+				<div className="absolute inset-0 flex flex-col items-center justify-center">
+					<span className="text-2xl font-bold text-white">
+						{percentage}%
+					</span>
+				</div>
+			</div>
+
+			<div className="flex gap-4 mt-4 text-xs text-gray-400">
+				<div className="flex items-center gap-1">
+					<span className="w-3 h-3 bg-green-600 rounded-full"></span>
+					{t("Completed")}
+				</div>
+				<div className="flex items-center gap-1">
+					<span className="w-3 h-3 bg-gray-500 rounded-full"></span>
+					{t("Pending")}
+				</div>
+			</div>
+		</div>
+	);
 }

@@ -35,7 +35,7 @@ const Lessons = () => {
 			) : error ? (
 				<p className="text-white">Error</p>
 			) : (
-				<div className="border border-primary/40 bg-black/40 rounded-3xl grid  lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 p-6 content-start ml-5 overflow-scroll h-[calc(100%-2.5rem)] w-[calc(100%-7rem)]">
+				<div className="border border-primary/40 bg-black/40 rounded-3xl grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 p-6 max-md:p-0 max-md:py-6 content-start overflow-scroll h-[calc(100%-2.5rem)] w-[calc(100%-7rem)] max-md:overflow-y-scroll max-md:w-[calc(100%-2rem)] max-md:h-[calc(100%-7rem)] max-md:mb-25 max-md:mt-3">
 					{lessons &&
 						lessons.map((lesson) => {
 							return (

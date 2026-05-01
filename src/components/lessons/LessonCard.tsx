@@ -1,7 +1,7 @@
 import type { Author, Tag } from "@/utils/types";
 import { t } from "i18next";
 import { ArrowRight, BookOpen } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Props {
 	id: string;
@@ -21,10 +21,20 @@ interface Props {
  * @param {Author[]} authors - list of lesson authors.
  * @param {Tag[]} tags - the tags of the lesson.
  */
-const LessonCard = ({ id, name, description, progress, authors, tags }: Props) => {
+const LessonCard = ({
+	id,
+	name,
+	description,
+	progress,
+	authors,
+	tags,
+}: Props) => {
+	const navigate = useNavigate();
+
 	return (
 		<div
-			className="max-w-96 min-w-78 h-48 border border-primary  text-white font-bold rounded-4xl px-5 py-3 flex flex-col justify-between cursor-pointer hover:-translate-y-1 hover:shadow-effective transition-all duration-300 group"
+			className="max-w-96 min-w-78 md:min-w-90 h-48 border border-primary  text-white font-bold rounded-4xl px-5 py-3 flex flex-col justify-between cursor-pointer hover:-translate-y-1 hover:shadow-effective transition-all duration-300 group ml-auto mr-auto"
+			onClick={() => navigate(`/lesson/${id}`)}
 		>
 			<div className="flex-col gap-5 flex">
 				<div className="flex items-center justify-between gap-1.5 ">
@@ -34,7 +44,9 @@ const LessonCard = ({ id, name, description, progress, authors, tags }: Props) =
 						</div>
 						<h2 className="text-lg">{name}</h2>
 					</div>
-					<div className={`flex ${authors.length > 3 ? "w-30" : ""} flex-wrap items-center justify-center mt-2 group`}>
+					<div
+						className={`flex ${authors.length > 3 ? "w-30" : ""} flex-wrap items-center justify-center mt-2 group`}
+					>
 						{authors.map((author) => (
 							<p
 								className="text-[11px] text-gray-400 ml-1 mb-0.5"
@@ -73,8 +85,6 @@ const LessonCard = ({ id, name, description, progress, authors, tags }: Props) =
 					))}
 				</div>
 
-                
-                
 				<Link
 					to={`/lesson/${id}`}
 					className="group flex text-[12px] items-center gap-2 cursor-pointer"
@@ -82,7 +92,6 @@ const LessonCard = ({ id, name, description, progress, authors, tags }: Props) =
 					{progress ? t("Continue") : "Start"}{" "}
 					<ArrowRight className="w-4 group-hover:translate-x-0.5 transition-all duration-300"></ArrowRight>
 				</Link>
-                
 			</div>
 		</div>
 	);

@@ -20,7 +20,7 @@ export type Tab<P> = {
 const AdminSideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 	return (
 		<>
-			<div className="h-full p-5 border border-primary/40 bg-black/40 rounded-3xl backdrop-blur-3x flex flex-col items-center justify-between max-md:hidden">
+			<div className="h-[calc(100%-2.5rem)] p-5 border border-primary/40 bg-black/40 rounded-3xl backdrop-blur-3x flex flex-col items-center justify-between max-md:hidden">
 				<div className="flex flex-col items-center">
 					<img src="/icon.png" width={"40px"} />
 					<div className="flex flex-col items-center gap-8 mt-30">
@@ -42,8 +42,8 @@ const AdminSideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 				</div>
 			</div>
 
-			<div className="fixed bottom-6">
-				<div className="md:hidden relative border border-primary/40 bg-black/40 rounded-3xl backdrop-blur-3x px-3 py-3 flex items-center z-30">
+			<div className="fixed bottom-6 z-10">
+				<div className="md:hidden relative border border-primary/40 bg-black rounded-3xl backdrop-blur-3x px-3 py-3 flex items-center z-30">
 					<div className="flex items-center gap-8">
 						{tabs.slice(0, 2).map((tab) => {
 							return (

@@ -1,11 +1,10 @@
 import type { ReactNode } from "react";
 
-
 interface Props {
-    number: string;
-    text: string;
-    icon: ReactNode;
-    className?: string
+	number: string;
+	text: string;
+	icon: ReactNode;
+	className?: string;
 }
 
 /**
@@ -16,16 +15,17 @@ interface Props {
  * @param {string} className - additional extra CSS classes for styling
  */
 const SimpleDashboard = ({ number, text, icon, className = "" }: Props) => {
-    return (
-        <div className={`border border-primary py-5 px-6 w-full rounded-xl ${className}`}>
-            <div className="flex">
-                <p className="text-white text-lg">{number}</p>
-                {icon}
-            </div>
-            <p className="text-gray-200">{text}</p>
-        </div>
-    )
-}
-
+	return (
+		<div
+			className={`border border-primary py-5 px-6 w-full rounded-xl flex items-center justify-center flex-col gap-0.5 text-center hover:scale-105 transition-all duration-300 ${className}`}
+		>
+			<div className="flex items-center justify-center gap-1">
+				<p className="text-white text-lg text-center">{number}</p>
+				{icon}
+			</div>
+			<p className="text-gray-200 font-bold text-lg">{text}</p>
+		</div>
+	);
+};
 
 export default SimpleDashboard;

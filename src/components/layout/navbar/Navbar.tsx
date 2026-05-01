@@ -13,7 +13,9 @@ const Navbar = () => {
 			<div className="flex justify-between items-center w-screen px-7 fixed top-7 z-50">
 				<img src="/logo.svg" />
 				<div className="flex items-center gap-5">
-					<Link name={t("Signin")} to="/login" />
+					<div className="max-md:hidden">
+						<Link name={t("Signin")} to="/login" />
+					</div>
 					<PrimaryButton>
 						<DOMLink to="/signup">{t("GetStarted")}</DOMLink>
 					</PrimaryButton>

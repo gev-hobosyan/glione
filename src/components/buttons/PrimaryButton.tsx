@@ -13,7 +13,7 @@ interface Props {
 const PrimaryButton = ({ children, onClick }: Props) => {
 	return (
 		<div
-			className="text-white bg-primary/30 border-primary border backdrop-blur-3xl px-10 py-2 rounded-2xl cursor-pointer hover:scale-105 transition-all duration-300 text-center"
+			className="text-white bg-primary/30 border-primary border backdrop-blur-3xl px-10 py-2 rounded-2xl cursor-pointer hover:scale-105 transition-all duration-300 text-center z-6"
 			onClick={onClick}
 		>
 			{children}

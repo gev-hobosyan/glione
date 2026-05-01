@@ -31,14 +31,8 @@ const Home = () => {
 		},
 	];
 
-	// // eslint-disable-next-line @typescript-eslint/no-unused-vars
-	// const phaserRef = useRef<IRefPhaserGame | null>(null);
-
-	// // eslint-disable-next-line @typescript-eslint/no-unused-vars
-	// const currentScene = (scene: Phaser.Scene) => {};
-
 	return (
-		<div className="flex h-screen items-center justify-around px-2">
+		<div className="flex h-screen items-center justify-around px-2 max-md:px-0">
 			<SideBar
 				tabs={tabs}
 				activeTab={activeTab}
