@@ -3,7 +3,6 @@ import type { Lesson } from "@/utils/types";
 import { useEffect, useRef, useState } from "react";
 import LoadingSpinner from "../common/LoadingSpinner";
 import LessonCard from "../lessons/LessonCard";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const LessonsScroll = () => {
 	// Stores lessons data, loading state, and any fetch error.

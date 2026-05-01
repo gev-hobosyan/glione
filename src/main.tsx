@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import i18n from "i18next";
@@ -242,6 +241,4 @@ i18n.use(initReactI18next).init({
 	},
 });
 
-createRoot(document.getElementById("root")!).render(
-	<App />,
-);
+createRoot(document.getElementById("root")!).render(<App />);
