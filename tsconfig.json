@@ -9,6 +9,6 @@
 		"paths": {
 			"@/*": ["./src/*"],
 		},
-		"ignoreDeprecations": true,
+		"ignoreDeprecations": "6.0",
 	},
 }
