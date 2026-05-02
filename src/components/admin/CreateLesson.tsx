@@ -40,6 +40,29 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 	const [error, setError] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(false);
 
+	const reload = useCallback(() => {
+		setEditStep(undefined);
+		setEditTitle(true);
+		setEditTag(undefined);
+		setTags([]);
+		setTitle("");
+		setDescription("");
+		setEditDescription(true);
+
+		setCurentStepId(0);
+		setCurentTagId(0);
+
+		setSuccess(undefined);
+		setError(false);
+		setLoading(false);
+	}, []);
+
+	const tryAgain = useCallback(() => {
+		setLoading(false);
+		setSuccess(undefined);
+		setError(false);
+	}, []);
+
 	const createStep = () => {
 		setSteps((prev) => {
 			const newStep: Step = {
@@ -150,6 +173,8 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 					title={t("MessageError")}
 					text={t("MessageErrorText")}
 					type="error"
+					reload={reload}
+					tryAgain={tryAgain}
 				/>
 			) : (
 				success && (
@@ -158,6 +183,8 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 						title={t("Success")}
 						text={t("SuccessText")}
 						type="success"
+						reload={reload}
+						tryAgain={tryAgain}
 					/>
 				)
 			)}
