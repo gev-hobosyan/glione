@@ -18,7 +18,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 		import.meta.env.VITE_PUBLIC_VERCEL_URL ??
 		"https://glione.vercel.app/";
 
-	const test = proccess.env.dasd;
+	console.log(import.meta.env);
 
 	const [session, setSession] = useState<Session | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
