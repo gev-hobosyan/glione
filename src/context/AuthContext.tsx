@@ -18,6 +18,8 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 		import.meta.env.VITE_PUBLIC_VERCEL_URL ??
 		"https://glione.vercel.app/";
 
+	const test = proccess.env.dasd;
+
 	const [session, setSession] = useState<Session | null>(null);
 	const [loading, setLoading] = useState<boolean>(true);
 
@@ -61,6 +63,8 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
 		return { success: true, data };
 	};
+
+	console.log(url);
 
 	const googleSignIn = async () => {
 		const { data, error } = await supabase.auth.signInWithOAuth({
