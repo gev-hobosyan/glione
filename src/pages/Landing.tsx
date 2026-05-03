@@ -13,6 +13,8 @@ const Landing = () => {
 
 	return (
 		<>
+			<Navbar />
+
 			<img
 				src="/medusa.png"
 				width="100px"
@@ -46,7 +48,6 @@ const Landing = () => {
 					</PrimaryButton>
 				</div>
 			</div>
-			<Navbar />
 
 			<About />
 

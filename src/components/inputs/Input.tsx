@@ -1,3 +1,6 @@
+import { Eye, EyeClosed } from "lucide-react";
+import { useState } from "react";
+
 interface Props {
 	children: string;
 	id: string;
@@ -12,9 +15,9 @@ interface Props {
 
 /**
  * This component is used for the user to write on the input
- * 
+ *
  * @param {string} children - children is used as placeholder here
- * @param {string} id - to understand that this is the exact name of the specific input 
+ * @param {string} id - to understand that this is the exact name of the specific input
  * @param {string} value - for understanding what's in the input
  * @param {string} type - is used to  understand what type of input is that-text,password or email
  * @param {function} setValue - changes the value of the input when user writes
@@ -31,11 +34,13 @@ const Input = ({
 	autoFocus = false,
 	width,
 }: Props) => {
+	const [currenType, setCurrentType] = useState(type);
+
 	return (
 		<div className="relative">
 			<input
 				id={id}
-				type={type}
+				type={currenType}
 				className={`border-white/50 focus:border-secondary/50 focus:ring-0 ring-0 focus:outline-none focus:shadow-input border rounded-xl py-2.5 px-5 text-white peer placeholder-transparent w-70 ${width ? width : "max-sm:w-40 sm:w-50"}`}
 				placeholder={children}
 				value={value}
@@ -49,6 +54,18 @@ const Input = ({
 			>
 				{children}
 			</label>
+			{type == "password" &&
+				(currenType == "password" ? (
+					<Eye
+						className="stroke-white absolute right-3 -translate-y-1/2 top-1/2 w-5 cursor-pointer hover:scale-110 transition-all duration-300"
+						onClick={() => setCurrentType("text")}
+					></Eye>
+				) : (
+					<EyeClosed
+						className="stroke-white absolute right-3 -translate-y-1/2 top-1/2 w-5 cursor-pointer hover:scale-110 transition-all duration-300"
+						onClick={() => setCurrentType("password")}
+					></EyeClosed>
+				))}
 		</div>
 	);
 };

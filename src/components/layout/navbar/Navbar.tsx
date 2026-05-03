@@ -22,9 +22,7 @@ const Navbar = () => {
 				</div>
 			</div>
 			<div className="flex justify-center items-center gap-5 bg-white/20 backdrop-blur-xs border border-white/50 rounded-full px-20 py-3 fixed top-7 z-50 max-xl:hidden">
-				<NavbarElement isActive={true} href="#home">
-					{t("NavbarHome")}
-				</NavbarElement>
+				<NavbarElement href="#home">{t("NavbarHome")}</NavbarElement>
 				<NavbarElement href="#about">{t("NavbarAbout")}</NavbarElement>
 				<NavbarElement href="#courses">{t("NavbarCourses")}</NavbarElement>
 				<NavbarElement href="#pricing">{t("NavbarPricing")}</NavbarElement>
