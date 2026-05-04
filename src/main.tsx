@@ -85,7 +85,7 @@ i18n.use(initReactI18next).init({
 				Check: "Check",
 				Complete: "Complete",
 				DoubleClickToEdit: "Double click to edit",
-				Content: "content",
+				Content: "Content",
 				Ok: "OK",
 				Add: "Add",
 				Sumbit: "Submit",

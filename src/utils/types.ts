@@ -8,6 +8,7 @@ import type {
 import type { LucideProps } from "lucide-react";
 
 export type Author = {
+	id?: number;
 	name: string;
 };
 

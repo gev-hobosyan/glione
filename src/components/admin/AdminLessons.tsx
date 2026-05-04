@@ -8,7 +8,7 @@ import { CloudAlert, RotateCcw } from "lucide-react";
 const AdminLessons = () => {
 	const [lessons, setLessons] = useState<Lesson[]>();
 	const [loading, setLoading] = useState<boolean>(true);
-	const [error, setError] = useState<unknown>(true);
+	const [error, setError] = useState<unknown>();
 
 	const loadData = async () => {
 		setLoading(true);
@@ -60,6 +60,7 @@ const AdminLessons = () => {
 									authors={lesson.authors}
 									tags={lesson.tags}
 									reload={loadData}
+									published={lesson.published}
 								></AdminLessonCard>
 							);
 						})}

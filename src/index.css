@@ -62,6 +62,7 @@ body {
 
 	--shadow-effective: 0 0 45px #006e2a;
 	--shadow-input: 0 0 10px #56ad2d;
+	--shadow-error: 0 0 10px #c91019;
 }
 
 @theme inline {

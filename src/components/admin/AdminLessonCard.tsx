@@ -13,6 +13,7 @@ interface Props {
 	authors: Author[];
 	tags: Tag[];
 	reload: () => void;
+	published: boolean;
 }
 
 const AdminLessonCard = ({
@@ -23,6 +24,7 @@ const AdminLessonCard = ({
 	authors,
 	tags,
 	reload,
+	published,
 }: Props) => {
 	const [loading, setLoading] = useState<boolean>(false);
 
@@ -56,7 +58,11 @@ const AdminLessonCard = ({
 						<div className="border border-primary bg-primary/40 rounded-full p-1.5 shrink-0">
 							<BookOpen className="w-5.5" />
 						</div>
-						<h2 className="text-lg">{name}</h2>
+						<h2
+							className={`text-lg ${published ? "text-white" : "text-gray-400"}`}
+						>
+							{name}
+						</h2>
 					</div>
 					<div
 						className={`flex ${

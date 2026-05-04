@@ -4,6 +4,7 @@ import getAllLessons from "@/utils/backend/getAllLessons";
 import type { Lesson } from "@/utils/types";
 import { useEffect, useState } from "react";
 import { CloudAlert, RotateCcw } from "lucide-react";
+import getPublishedLessons from "@/utils/backend/getPublishedLessons";
 
 const Lessons = () => {
 	// Holds fetched lessons, loading state during API call, and any error encountered
@@ -15,7 +16,7 @@ const Lessons = () => {
 	const loadData = async () => {
 		setLoading(true);
 		try {
-			setLessons(await getAllLessons());
+			setLessons(await getPublishedLessons());
 		} catch (e) {
 			setError(e);
 		} finally {

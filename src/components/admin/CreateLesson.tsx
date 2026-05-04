@@ -1,16 +1,24 @@
-import { Code, PlusIcon, SquareCheck, TextInitial } from "lucide-react";
+import {
+	Code,
+	EditIcon,
+	PlusIcon,
+	SquareCheck,
+	TextInitial,
+} from "lucide-react";
 import { useCallback, useState } from "react";
 import EditStep from "./EditStep";
 import Input from "../inputs/Input";
 import LessonCard from "../lessons/LessonCard";
 import TextField from "../inputs/TextField";
 import Message from "./Message";
-import type { Lesson, Step, Tag } from "@/utils/types";
+import type { Author, Lesson, Step, Tag } from "@/utils/types";
 import createLesson from "@/utils/backend/createLesson";
 import Hint from "../common/Hint";
 import EditTag from "./EditTag";
 import LoadingSpinner from "../common/LoadingSpinner";
 import { t } from "i18next";
+import ToggleSwitch from "../ToggleSwitch";
+import EditAuthors from "./EditAuthors";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
@@ -32,6 +40,8 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [editDescription, setEditDescription] = useState<boolean>(true);
+	const [authors, setAuthors] = useState<Author[]>([]);
+	const [editAuthors, setEditAuthors] = useState<boolean>(false);
 
 	const [currentStepId, setCurentStepId] = useState(0);
 	const [currentTagId, setCurentTagId] = useState(0);
@@ -39,6 +49,8 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 	const [success, setSuccess] = useState<string | undefined>(undefined);
 	const [error, setError] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(false);
+
+	const [published, setPublished] = useState(true);
 
 	const reload = useCallback(() => {
 		setEditStep(undefined);
@@ -125,13 +137,18 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 		setEditTag(undefined);
 	};
 
+	const changeAuthors = (selectedAuthors: Author[]) => {
+		setAuthors(selectedAuthors);
+		setEditAuthors(false);
+	};
+
 	const submitLesson = useCallback(async () => {
 		const lesson: Lesson = {
 			title,
-			published: true,
+			published: published,
 			description,
 			tags,
-			authors: [],
+			authors: authors,
 			section: "Python",
 			steps: steps,
 		};
@@ -153,10 +170,16 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 		} finally {
 			setLoading(false);
 		}
-	}, [steps, tags, title, description]);
+	}, [steps, tags, title, description, published, authors]);
 
 	return (
 		<>
+			{editAuthors && (
+				<EditAuthors
+					edit={changeAuthors}
+					currentAuthors={authors}
+				></EditAuthors>
+			)}
 			{editTag && (
 				<EditTag edit={setEditTag} submit={submitTag}>
 					{editTag}
@@ -271,14 +294,27 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 								</form>
 							</div>
 						) : (
-							<div
-								className="relative group text-white"
-								onDoubleClick={() => setEditDescription(true)}
-							>
-								<h1 className="text-white h-40 overflow-scroll max-w-85 wrap-anywhere">
-									{description}
-								</h1>
-								<Hint>{t("DoubleClickToEdit")}</Hint>
+							<div className="flex flex-col items-center gap-2">
+								<div className="text-white flex items-center justify-center gap-2">
+									{authors.map((author) => (
+										<div className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300">
+											{author.name}
+										</div>
+									))}
+									<EditIcon
+										className="text-xl cursor-pointer hover:scale-110 transition-all duration-200"
+										onClick={() => setEditAuthors(true)}
+									></EditIcon>
+								</div>
+								<div
+									className="relative group text-white"
+									onDoubleClick={() => setEditDescription(true)}
+								>
+									<h1 className="text-white h-40 overflow-scroll max-w-85 wrap-anywhere">
+										{description}
+									</h1>
+									<Hint>{t("DoubleClickToEdit")}</Hint>
+								</div>
 							</div>
 						)}
 						<div className="max-md:hidden">
@@ -292,11 +328,20 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 							></LessonCard>
 						</div>
 
-						<div
-							className="text-white bg-primary px-10 py-4 rounded-3xl cursor-pointer hover:scale-110 transition duration-200"
-							onClick={submitLesson}
-						>
-							{t("Submit")}
+						<div className="flex flex-col items-center">
+							<ToggleSwitch
+								checked={published}
+								handleSwitch={() => {
+									setPublished((prev) => !prev);
+								}}
+							></ToggleSwitch>
+							<p className="text-white my-1">Publish</p>
+							<div
+								className="text-white bg-primary px-10 py-4 rounded-3xl cursor-pointer hover:scale-110 transition duration-200"
+								onClick={submitLesson}
+							>
+								{t("Submit")}
+							</div>
 						</div>
 					</div>
 
@@ -335,7 +380,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 						name={title}
 						description={description}
 						progress={100}
-						authors={[]}
+						authors={authors}
 						tags={tags}
 					></LessonCard>
 				</div>

@@ -18,6 +18,10 @@ const SignUp = () => {
 	const [authError, setAuthError] = useState<AuthError | null>(null);
 	const [authSuccess, setAuthSuccess] = useState(false);
 
+	const [emailError, setEmailError] = useState("");
+	const [passwordError, setPasswordError] = useState("");
+	const [confPasswordError, setConfPasswordError] = useState("");
+
 	console.log(authError, authSuccess);
 
 	const params = new URLSearchParams(window.location.search);
@@ -87,6 +91,7 @@ const SignUp = () => {
 									value={email}
 									setValue={setEmail}
 									width="w-70"
+									error={emailError}
 								>
 									{t("SignInEmail")}
 								</Input>
@@ -96,6 +101,7 @@ const SignUp = () => {
 									value={password}
 									setValue={setPassword}
 									width="w-70"
+									error={passwordError}
 								>
 									{t("SignInPassword")}
 								</Input>
@@ -105,6 +111,7 @@ const SignUp = () => {
 									value={confPassword}
 									setValue={setConfPassword}
 									width="w-70"
+									error={confPasswordError}
 								>
 									{t("SignUpConfirmPassword")}
 								</Input>
