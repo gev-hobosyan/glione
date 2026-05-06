@@ -1,6 +1,5 @@
 import LessonCard from "@/components/lessons/LessonCard";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
-import getAllLessons from "@/utils/backend/getAllLessons";
 import type { Lesson } from "@/utils/types";
 import { useEffect, useState } from "react";
 import { CloudAlert, RotateCcw } from "lucide-react";

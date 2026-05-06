@@ -71,6 +71,9 @@ const Lesson = () => {
 		}
 	};
 
+	if (lesson && lesson.steps && lesson.steps?.length !== 0) {
+		console.log(lesson.steps![0].content);
+	}
 	//This function is used to update a step’s status by ID and increment the completed steps counter.
 	const changeStatus = (status: "ns" | "completed" | "wrong", id: number) => {
 		setLesson((prev) => {

@@ -19,6 +19,7 @@ import LoadingSpinner from "../common/LoadingSpinner";
 import { t } from "i18next";
 import ToggleSwitch from "../ToggleSwitch";
 import EditAuthors from "./EditAuthors";
+import { supabase } from "@/utils/supabaseClient";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
@@ -51,6 +52,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 	const [loading, setLoading] = useState<boolean>(false);
 
 	const [published, setPublished] = useState(true);
+	const [files, setFiles] = useState<File[]>([]);
 
 	const reload = useCallback(() => {
 		setEditStep(undefined);
@@ -156,6 +158,18 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 		setLoading(true);
 
 		try {
+			for (const file of files) {
+				const { error } = await supabase.storage
+					.from("LessonImages")
+					.upload(file.name, file);
+
+				console.log(file);
+
+				if (error) {
+					throw new Error(`${error}`);
+				}
+			}
+
 			const res = await createLesson(lesson);
 			if (res.status == 201) {
 				const lesson = await res.json();
@@ -170,7 +184,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 		} finally {
 			setLoading(false);
 		}
-	}, [steps, tags, title, description, published, authors]);
+	}, [steps, tags, title, description, published, authors, files]);
 
 	return (
 		<>
@@ -323,7 +337,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 								name={title}
 								description={description}
 								progress={100}
-								authors={[]}
+								authors={authors}
 								tags={tags}
 							></LessonCard>
 						</div>
@@ -345,7 +359,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 						</div>
 					</div>
 
-					<div className="h-full w-[50vw] bg-black/40 rounded-3xl border border-primary/40 flex flex-col items-center justify-center overflow-y-scroll max-md:w-[calc(100vw-1rem)] max-md:min-h-80 max-md:max-h-180 max-md:h-fit py-5">
+					<div className="h-full w-[50vw] bg-black/40 rounded-3xl border border-primary/40 flex flex-col items-center justify-center overflow-y-scroll max-md:w-[calc(100vw-1rem)] max-md:min-h-80 max-md:max-h-180 max-md:h-fit py-5 relative">
 						{steps.map((step) => {
 							const Icon = step.icon || TextInitial;
 
@@ -370,6 +384,30 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 							onClick={createStep}
 						>
 							<PlusIcon className="stroke-white w-5" /> {t("Add")}
+						</div>
+
+						<div className="absolute text-white bottom-4 text-sm flex flex-col items-center justify-center max-h-15 overflow-y-scroll">
+							<div>
+								<input
+									id="file_input"
+									className="text-white hidden"
+									type="file"
+									onChange={(e) => {
+										if (e.target.files !== null) {
+											setFiles((prev) => [
+												...prev,
+												e.target.files![0],
+											]);
+										}
+									}}
+								></input>
+								<label htmlFor="file_input" className="text-white">
+									Choose images to upload
+								</label>
+							</div>
+							{files.map((file) => (
+								<p>{file.name}</p>
+							))}
 						</div>
 					</div>
 				</div>

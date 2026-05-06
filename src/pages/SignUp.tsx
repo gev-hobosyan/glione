@@ -56,11 +56,17 @@ const SignUp = () => {
 
 	const signUpFunction = UserAuth()?.signUpUser;
 
-	const signUp = () => {
+	const signUp = async () => {
 		if (signUpFunction !== undefined) {
-			signUpFunction(email, password);
+			const res = await signUpFunction(email, password);
 
-			setVerifying(true);
+			if (res.success === false) {
+				setEmailError("Wrong credentials");
+				setPasswordError("Wrong credentials");
+				setConfPasswordError("Wrong credentials");
+			} else {
+				setVerifying(true);
+			}
 		}
 	};
 

@@ -23,9 +23,13 @@ const SignIn = () => {
 	const signInUser = UserAuth()?.signInUser;
 
 	// Calls signInUser with the current email and password to sign the user in, only if signInUser is defined.
-	const signIn = () => {
+	const signIn = async () => {
 		if (signInUser !== undefined) {
-			signInUser(email, password);
+			const res = await signInUser(email, password);
+			if (res.success === false) {
+				setEmailError("Wrong credentials");
+				setPasswordError("Wrong credentials");
+			}
 		}
 	};
 

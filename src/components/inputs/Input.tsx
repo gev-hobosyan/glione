@@ -1,5 +1,5 @@
 import { Eye, EyeClosed } from "lucide-react";
-import { useState, type Dispatch, type SetStateAction } from "react";
+import { useState } from "react";
 
 interface Props {
 	children: string;
@@ -73,9 +73,7 @@ const Input = ({
 					))}
 			</div>
 			{error && (
-				<p className="text-red-600 ml-2 font-light text-xs">
-					{error}
-				</p>
+				<p className="text-red-600 ml-2 font-light text-xs">{error}</p>
 			)}
 		</div>
 	);

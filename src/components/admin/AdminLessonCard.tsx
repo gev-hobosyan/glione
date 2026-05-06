@@ -2,7 +2,7 @@ import deleteLesson from "@/utils/backend/deleteLesson";
 import type { Author, Tag } from "@/utils/types";
 import { ArrowRight, BookOpen, Pencil, Trash2 } from "lucide-react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LoadingSpinner from "../common/LoadingSpinner";
 
 interface Props {
@@ -40,13 +40,8 @@ const AdminLessonCard = ({
 		}
 	};
 
-	const navigate = useNavigate();
-
 	return (
-		<div
-			className="max-w-96 sm:min-w-78 min-w-85 md:min-w-90 h-48 border border-primary  text-white font-bold rounded-4xl px-5 py-3 flex flex-col justify-between cursor-pointer hover:-translate-y-1 hover:shadow-effective transition-all duration-300 group relative ml-auto mr-auto"
-			onClick={() => navigate(`/lesson/${id}`)}
-		>
+		<div className="max-w-96 sm:min-w-78 min-w-85 md:min-w-90 h-48 border border-primary  text-white font-bold rounded-4xl px-5 py-3 flex flex-col justify-between cursor-pointer hover:-translate-y-1 hover:shadow-effective transition-all duration-300 group relative ml-auto mr-auto">
 			{loading && (
 				<div className="rounded-4xl top-0 left-0 z-3 backdrop-blur-lg bg-black/30 h-full w-full flex items-center justify-center absolute">
 					<LoadingSpinner></LoadingSpinner>

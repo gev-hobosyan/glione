@@ -16,7 +16,12 @@ interface Props {
 	deleteStep: () => void;
 }
 
-const EditStep = ({ children, edit, submitStep, deleteStep }: Props) => {
+const EditStep = ({
+	children,
+	edit,
+	submitStep,
+	deleteStep,
+}: Props) => {
 	const [editTitle, setEditTitle] = useState<string | undefined>(
 		children.title ? undefined : children.title,
 	);
