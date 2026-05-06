@@ -103,7 +103,9 @@ const AdminLessonCard = ({
 				</div>
 
 				<div className="flex items-center gap-3">
-					<Pencil className="w-4 text-blue-400 cursor-pointer" />
+					<Link to={`/edit/${id}`}>
+						<Pencil className="w-4 text-blue-400 cursor-pointer" />
+					</Link>
 					<Trash2
 						onClick={_deleteLesson}
 						className="w-4 text-red-400 cursor-pointer"

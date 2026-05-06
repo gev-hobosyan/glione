@@ -1,13 +1,13 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
-import { icons } from "./CreateLesson";
+import { icons } from "../CreateLesson";
 import { TextInitial, Trash2, X } from "lucide-react";
-import Input from "../inputs/Input";
+import Input from "../../inputs/Input";
 import type { Choice, Step } from "@/utils/types";
-import Hint from "../common/Hint";
-import TextStep from "./sections/TextStep";
-import ChoiceStep from "./sections/ChoiceStep";
+import Hint from "../../common/Hint";
+import TextStep from "../sections/TextStep";
+import ChoiceStep from "../sections/ChoiceStep";
 import { t } from "i18next";
-import CodeStep from "./sections/CodeStep";
+import CodeStep from "../sections/CodeStep";
 
 interface Props {
 	children: Step;

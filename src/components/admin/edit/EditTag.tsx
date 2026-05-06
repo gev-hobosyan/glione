@@ -1,5 +1,5 @@
 import type { Tag } from "@/utils/types";
-import Input from "../inputs/Input";
+import Input from "../../inputs/Input";
 import { useState, type Dispatch, type SetStateAction } from "react";
 import { t } from "i18next";
 

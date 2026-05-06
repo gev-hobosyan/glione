@@ -5,21 +5,23 @@ import {
 	SquareCheck,
 	TextInitial,
 } from "lucide-react";
-import { useCallback, useState } from "react";
-import EditStep from "./edit/EditStep";
-import Input from "../inputs/Input";
-import LessonCard from "../lessons/LessonCard";
-import TextField from "../inputs/TextField";
-import Message from "./Message";
+import { useCallback, useEffect, useState } from "react";
+import EditStep from "./EditStep";
+import Input from "../../inputs/Input";
+import LessonCard from "../../lessons/LessonCard";
+import TextField from "../../inputs/TextField";
+import Message from "../Message";
 import type { Author, Lesson, Step, Tag } from "@/utils/types";
-import createLesson from "@/utils/backend/createLesson";
-import Hint from "../common/Hint";
-import EditTag from "./edit/EditTag";
-import LoadingSpinner from "../common/LoadingSpinner";
+import Hint from "../../common/Hint";
+import EditTag from "./EditTag";
+import LoadingSpinner from "../../common/LoadingSpinner";
 import { t } from "i18next";
-import ToggleSwitch from "../ToggleSwitch";
-import EditAuthors from "./edit/EditAuthors";
+import ToggleSwitch from "../../ToggleSwitch";
+import EditAuthors from "./EditAuthors";
 import { supabase } from "@/utils/supabaseClient";
+import { useParams } from "react-router-dom";
+import getLessonById from "@/utils/backend/getLessonById";
+import updateLesson from "@/utils/backend/updateLesson";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
@@ -28,17 +30,15 @@ export const icons = {
 	multi: SquareCheck,
 };
 
-interface Props {
-	steps: Step[];
-	setSteps: React.Dispatch<React.SetStateAction<Step[]>>;
-}
+const EditLesson = () => {
+	const { id } = useParams();
 
-const CreateLesson = ({ steps, setSteps }: Props) => {
 	const [editStep, setEditStep] = useState<Step | undefined>(undefined);
 	const [editTitle, setEditTitle] = useState<boolean>(true);
 	const [editTag, setEditTag] = useState<Tag | undefined>();
 	const [tags, setTags] = useState<Tag[]>([]);
 	const [title, setTitle] = useState("");
+	const [steps, setSteps] = useState<Step[]>([]);
 	const [description, setDescription] = useState("");
 	const [editDescription, setEditDescription] = useState<boolean>(true);
 	const [authors, setAuthors] = useState<Author[]>([]);
@@ -53,6 +53,30 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 
 	const [published, setPublished] = useState(true);
 	const [files, setFiles] = useState<File[]>([]);
+
+	useEffect(() => {
+		const loadData = async () => {
+			setLoading(true);
+			try {
+				if (id === undefined) throw new Error("id is required");
+
+				const res = await getLessonById(id);
+
+				setTitle(res.title);
+				setDescription(res.description);
+				setAuthors(res.authors);
+				setSteps(res.steps || []);
+				setPublished(res.published);
+				setTags(res.tags);
+			} catch {
+				setError(true);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		loadData();
+	}, [id]);
 
 	const reload = useCallback(() => {
 		setEditStep(undefined);
@@ -146,7 +170,8 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 
 	const submitLesson = useCallback(async () => {
 		const lesson: Lesson = {
-			title,
+			_id: id,
+			title: title,
 			published: published,
 			description,
 			tags,
@@ -170,8 +195,8 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 				}
 			}
 
-			const res = await createLesson(lesson);
-			if (res.status == 201) {
+			const res = await updateLesson(lesson);
+			if (res.status == 200) {
 				const lesson = await res.json();
 
 				setSuccess(lesson._id);
@@ -184,7 +209,11 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 		} finally {
 			setLoading(false);
 		}
-	}, [steps, tags, title, description, published, authors, files]);
+	}, [authors, description, files, id, published, steps, tags, title]);
+
+	if (id === undefined) {
+		return <></>;
+	}
 
 	return (
 		<>
@@ -236,8 +265,8 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 				</EditStep>
 			)}
 
-			<div className="w-screen md:h-[calc(100%-2.5rem)] h-screen max-md:overflow-y-scroll">
-				<div className="w-[calc(100vw-7.5rem)] h-full  flex items-center justify-between gap-7 max-md:w-full max-md:flex-col max-md:gap-3">
+			<div className="w-screen h-screen max-md:overflow-y-scroll">
+				<div className="w-full h-full flex items-center justify-around gap-7 max-md:flex-col max-md:gap-3">
 					<div className="h-full w-[calc(50vw-5rem)] max-md:w-[calc(100vw-1rem)] bg-black/40 md:ml-3 rounded-3xl border border-primary/40 flex items-center flex-col justify-between py-5 px-10 max-md:h-130 max-md:mt-3">
 						{editTitle ? (
 							<form
@@ -427,4 +456,4 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 	);
 };
 
-export default CreateLesson;
+export default EditLesson;

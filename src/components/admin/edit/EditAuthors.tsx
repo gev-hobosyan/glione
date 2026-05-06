@@ -1,7 +1,7 @@
 import type { Author } from "@/utils/types";
 import { useMemo, useState } from "react";
 import { t } from "i18next";
-import Hint from "../common/Hint";
+import Hint from "../../common/Hint";
 
 interface Props {
 	edit: (selectedAuthors: Author[]) => void;
