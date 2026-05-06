@@ -1,4 +1,4 @@
-import deleteLesson from "@/utils/backend/deleteLesson";
+import deleteLesson from "@/utils/backend/lessons/deleteLesson";
 import type { Author, Tag } from "@/utils/types";
 import { ArrowRight, BookOpen, Pencil, Trash2 } from "lucide-react";
 import { useState } from "react";

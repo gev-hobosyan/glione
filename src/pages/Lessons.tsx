@@ -3,7 +3,7 @@ import LoadingSpinner from "@/components/common/LoadingSpinner";
 import type { Lesson } from "@/utils/types";
 import { useEffect, useState } from "react";
 import { CloudAlert, RotateCcw } from "lucide-react";
-import getPublishedLessons from "@/utils/backend/getPublishedLessons";
+import getPublishedLessons from "@/utils/backend/lessons/getPublishedLessons";
 
 const Lessons = () => {
 	// Holds fetched lessons, loading state during API call, and any error encountered

@@ -149,13 +149,17 @@ const MultipleChoice = ({
 						</button>
 					)}
 				</div>
-				{
-					status !== "ns" &&
+				{/*{status !== "ns" && (
 					<>
-						<img src="/medusa.png" className="w-45 absolute right-10 -bottom-12" />
-						<p className="text-white text-lg font-semibold text-center px-6 absolute bottom-18">
+						<img
+							src="/medusa.png"
+							className="w-45 absolute right-10 -bottom-16 max-md:-translate-x-1/2 max-md:right-1/2 left-1/2"
+						/>
+						<p className="text-white text-sm font-semibold text-center px-6 absolute bottom-18">
 							{message}
-						</p></>}
+						</p>
+					</>
+				)}*/}
 			</div>
 		</>
 	);

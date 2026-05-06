@@ -1,5 +1,5 @@
 import LoadingSpinner from "@/components/common/LoadingSpinner";
-import getAllLessons from "@/utils/backend/getAllLessons";
+import getAllLessons from "@/utils/backend/lessons/getAllLessons";
 import type { Lesson } from "@/utils/types";
 import { useEffect, useState } from "react";
 import AdminLessonCard from "./AdminLessonCard";

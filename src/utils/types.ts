@@ -117,3 +117,19 @@ export interface AuthContextInterface {
 		  }
 	>;
 }
+
+export interface User {
+	userId: string;
+	xp: number;
+	role: string;
+	energy: number;
+	streak: number;
+	lessons: LessonProgress[];
+}
+
+export interface LessonProgress {
+	lessonId: string;
+	progress: number;
+	steps_completed: number;
+	total_steps: number;
+}

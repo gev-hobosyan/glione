@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import LessonSidebar from "../components/lessons/LessonsSidebar";
 import MultipleChoice from "../components/lessons/sections/MultipleChoice";
 import { type Lesson as LessonType, type Step } from "@/utils/types";
-import getLessonById from "@/utils/backend/getLessonById";
+import getLessonById from "@/utils/backend/lessons/getLessonById";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import TextSection from "../components/lessons/sections/TextSection";
 import { useParams } from "react-router-dom";
@@ -71,9 +71,6 @@ const Lesson = () => {
 		}
 	};
 
-	if (lesson && lesson.steps && lesson.steps?.length !== 0) {
-		console.log(lesson.steps![0].content);
-	}
 	//This function is used to update a step’s status by ID and increment the completed steps counter.
 	const changeStatus = (status: "ns" | "completed" | "wrong", id: number) => {
 		setLesson((prev) => {

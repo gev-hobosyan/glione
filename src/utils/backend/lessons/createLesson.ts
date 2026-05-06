@@ -1,4 +1,4 @@
-import type { Lesson } from "../types";
+import type { Lesson } from "../../types";
 
 const createLesson = async (lesson: Lesson) => {
   const API_URL = import.meta.env.VITE_API_URL || "";

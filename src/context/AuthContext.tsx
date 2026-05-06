@@ -62,8 +62,6 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 		return { success: true, data };
 	};
 
-	console.log(url);
-
 	const googleSignIn = async () => {
 		const { data, error } = await supabase.auth.signInWithOAuth({
 			provider: "google",

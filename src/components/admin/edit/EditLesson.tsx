@@ -20,8 +20,8 @@ import ToggleSwitch from "../../ToggleSwitch";
 import EditAuthors from "./EditAuthors";
 import { supabase } from "@/utils/supabaseClient";
 import { useParams } from "react-router-dom";
-import getLessonById from "@/utils/backend/getLessonById";
-import updateLesson from "@/utils/backend/updateLesson";
+import getLessonById from "@/utils/backend/lessons/getLessonById";
+import updateLesson from "@/utils/backend/lessons/updateLesson";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {

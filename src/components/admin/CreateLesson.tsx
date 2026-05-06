@@ -12,7 +12,7 @@ import LessonCard from "../lessons/LessonCard";
 import TextField from "../inputs/TextField";
 import Message from "./Message";
 import type { Author, Lesson, Step, Tag } from "@/utils/types";
-import createLesson from "@/utils/backend/createLesson";
+import createLesson from "@/utils/backend/lessons/createLesson";
 import Hint from "../common/Hint";
 import EditTag from "./edit/EditTag";
 import LoadingSpinner from "../common/LoadingSpinner";

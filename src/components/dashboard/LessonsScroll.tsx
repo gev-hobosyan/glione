@@ -1,4 +1,4 @@
-import getLessonsByCount from "@/utils/backend/getLessonsByCount";
+import getLessonsByCount from "@/utils/backend/lessons/getLessonsByCount";
 import type { Lesson } from "@/utils/types";
 import { useEffect, useRef, useState } from "react";
 import LoadingSpinner from "../common/LoadingSpinner";

@@ -13,6 +13,7 @@ interface Props {
 const ProfileCard = ({ className = "" }: Props) => {
 	//Gets the current user session from authentication, or null if not logged in.
 	const session = UserAuth() ? UserAuth()?.session : null;
+
 	return (
 		<div
 			className={`bg-black/50 w-full max-w-sm h-55 border border-primary rounded-3xl px-3 py-3 flex flex-col justify-center relative ${className}`}

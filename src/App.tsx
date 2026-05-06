@@ -8,6 +8,7 @@ import ProtectedRoutes from "./utils/ProtectedRoutes";
 import Admin from "./pages/Admin";
 import Lesson from "./pages/Lesson";
 import EditLesson from "./components/admin/edit/EditLesson";
+import AdminRoutes from "./utils/AdminRoutes";
 
 const router = createBrowserRouter([
 	{
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
 	{ path: "/signup", element: <SignUp /> },
 	{
 		path: "/admin",
-		element: <Admin />,
+		element: (
+			<AdminRoutes>
+				<Admin />
+			</AdminRoutes>
+		),
 	},
 	{
 		path: "/lesson/:id",
@@ -35,7 +40,11 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/edit/:id",
-		element: <EditLesson></EditLesson>,
+		element: (
+			<AdminRoutes>
+				<EditLesson />
+			</AdminRoutes>
+		),
 	},
 ]);
 
