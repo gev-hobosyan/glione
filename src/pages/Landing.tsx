@@ -7,6 +7,7 @@ import PriceCard from "@/components/cards/PriceCard";
 import { useTranslation } from "react-i18next";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { Link } from "react-router-dom";
+import LessonsScroll from "@/components/dashboard/LessonsScroll";
 
 const Landing = () => {
 	const { t } = useTranslation();
@@ -87,7 +88,7 @@ const Landing = () => {
 				/>
 			</div>
 
-			<div
+			{/* <div
 				id="pricing"
 				className="flex gap-6 mx-10 my-10 items-center justify-between max-xl:flex-wrap max-xl:justify-center relative"
 			>
@@ -136,7 +137,7 @@ const Landing = () => {
 						t("PriceCardFeature14"),
 					]}
 				/>
-			</div>
+			</div> */}
 
 			<Footer />
 		</>

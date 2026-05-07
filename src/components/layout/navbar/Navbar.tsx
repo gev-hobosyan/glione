@@ -25,7 +25,7 @@ const Navbar = () => {
 				<NavbarElement href="#home">{t("NavbarHome")}</NavbarElement>
 				<NavbarElement href="#about">{t("NavbarAbout")}</NavbarElement>
 				<NavbarElement href="#courses">{t("NavbarCourses")}</NavbarElement>
-				<NavbarElement href="#pricing">{t("NavbarPricing")}</NavbarElement>
+			
 			</div>
 		</div>
 	);

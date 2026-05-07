@@ -1,4 +1,4 @@
-import { MoveRight } from "lucide-react";
+import { BookOpenText } from "lucide-react";
 import React from "react";
 
 interface Props {
@@ -29,9 +29,9 @@ const Card = ({ title, description, index, text, buttonText }: Props) => {
 					</p>
 					<h4 className="mt-3 text-[15px]  text-white">{title}</h4>
 					<p className="mt-3 text-[12px] text-white">{description}</p>
-					<div className="gap-3 mt-5 flex items-center group cursor-pointer">
+					<div className="gap-2 mt-5 flex items-center group cursor-pointer">
 						<h6 className="text-xs text-secondary">{buttonText}</h6>
-						<MoveRight className="stroke-secondary w-4 group-hover:translate-x-1 transition-all duration-150" />
+						<BookOpenText className="stroke-secondary w-4" />
 					</div>
 				</div>
 			</div>
