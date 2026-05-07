@@ -84,7 +84,7 @@ const Dashboard = () => {
 						/>
 					</div>
 
-					<div className="col-span-3 col-start-2 row-start-3 text-white border border-primary rounded-xl text-center font-bold text-3xl flex items-center justify-center bg-[url(/strings2.png)] max-md:h-30 shrink-0">
+					<div className="col-span-3 col-start-2 row-start-3 text-white border border-primary rounded-xl text-center font-bold text-2xl flex items-center justify-center bg-[url(/strings2.png)] max-md:h-30 shrink-0">
 						{t("DashboardText")}
 					</div>
 

@@ -16,10 +16,17 @@ const authorsList: Author[] = [
 	{ id: 4, name: "Levon" },
 ];
 
+/**
+ * This is a React component that manages selection of authors from a predefined list. It allows adding/removing authors.
+ * @param {function} edit - Initially selected authors when component loads.
+ * @param {Author} currentAuthors - List of all available authors that can be selected.
+ */
 const EditAuthors = ({ edit, currentAuthors }: Props) => {
+//This creates a state variable that stores the selected authors and allows it to be updated during the component’s lifecycle.
 	const [selectedAuthors, setSelectedAuthors] =
 		useState<Author[]>(currentAuthors);
 
+//This creates a memoized list of authors that are not currently selected, and only recalculates when selectedAuthors changes.
 	const allAuthors = useMemo(() => {
 		return authorsList.filter((author) => {
 			return !selectedAuthors.find((_a) => _a.id === author.id);

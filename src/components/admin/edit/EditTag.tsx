@@ -9,7 +9,14 @@ interface Props {
 	submit: (text: string) => void;
 }
 
+/**
+ * This component is a modal editor for a tag name. It lets the user view and change a tag’s text, then save it.
+ * @param {Tag} children - current tag being edited.
+ * @param {function} edit - updates tag state.
+ * @param {function} submit - submits the updated tag text.
+ */
 const EditTag = ({ children: tag, submit }: Props) => {
+// stores the current editable tag text (initialized from tag name)
 	const [text, setText] = useState<string>(tag.name);
 
 	return (
