@@ -273,6 +273,9 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 										<p
 											className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300"
 											key={tag.name}
+											onDoubleClick={() => {
+												setEditTag(tag);
+											}}
 										>
 											{tag.name}
 										</p>

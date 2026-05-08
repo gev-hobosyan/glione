@@ -65,9 +65,20 @@ const EditLesson = () => {
 				setTitle(res.title);
 				setDescription(res.description);
 				setAuthors(res.authors);
-				setSteps(res.steps || []);
+				setSteps(
+					res.steps?.map((step, index) => {
+						return { ...step, id: index } as Step;
+					}) || [],
+				);
 				setPublished(res.published);
-				setTags(res.tags);
+				setTags(
+					res.tags.map((tag, index) => {
+						return { ...tag, id: index };
+					}),
+				);
+
+				setCurentTagId(res.tags.length || 0);
+				setCurentStepId(res.steps?.length || 0);
 			} catch {
 				setError(true);
 			} finally {
@@ -302,6 +313,9 @@ const EditLesson = () => {
 										<p
 											className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300"
 											key={tag.name}
+											onDoubleClick={() => {
+												setEditTag(tag);
+											}}
 										>
 											{tag.name}
 										</p>
