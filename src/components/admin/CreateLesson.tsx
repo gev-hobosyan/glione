@@ -272,14 +272,10 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 									{tags.map((tag) => (
 										<p
 											className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300"
-<<<<<<< HEAD
 											key={tag.id}
-=======
-											key={tag.name}
 											onDoubleClick={() => {
 												setEditTag(tag);
 											}}
->>>>>>> d9ffc7c7d5f225ae5a86a91b6322b253f8bddc08
 										>
 											{tag.name}
 										</p>
@@ -318,7 +314,10 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 							<div className="flex flex-col items-center gap-2">
 								<div className="text-white flex items-center justify-center gap-2">
 									{authors.map((author) => (
-										<div className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300" key={author.id}>
+										<div
+											className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300"
+											key={author.id}
+										>
 											{author.name}
 										</div>
 									))}
@@ -414,9 +413,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 								</label>
 							</div>
 							{files.map((file, index) => (
-								<p
-								key={index}
-								>{file.name}</p>
+								<p key={index}>{file.name}</p>
 							))}
 						</div>
 					</div>
