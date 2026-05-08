@@ -8,6 +8,7 @@ import TextSection from "../components/lessons/sections/TextSection";
 import { useParams } from "react-router-dom";
 import ProgressBar from "@/components/lessons/ProgressBar";
 import { PhaserGame, type IRefPhaserGame } from "@/game/PhaserGame";
+import Complete from "@/components/lessons/sections/Complete";
 
 /**
  * The page where the lesson is displayed and can be done step by step.
@@ -36,6 +37,10 @@ const Lesson = () => {
 
 		return [] as number[];
 	}, [lesson]);
+
+	const completed = useMemo(() => {
+		return completedSteps === stepsOrder?.length;
+	}, [completedSteps, stepsOrder]);
 
 	//This function memoizes and returns the currently selected step by matching the selected index to its step ID.
 	const step = useMemo(() => {
@@ -115,7 +120,11 @@ const Lesson = () => {
 						setSelectedStep={setSelectedStep}
 						stepsOrder={stepsOrder!}
 					/>
-					{step != undefined ? (
+					{completed ? (
+						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-[80%] max-md:w-full relative">
+							<Complete />
+						</div>
+					) : step != undefined ? (
 						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-[80%] max-md:w-full relative">
 							{progressBar}
 

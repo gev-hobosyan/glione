@@ -1,5 +1,5 @@
 import ProfileCard from "@/components/cards/ProfileCard";
-import { ClipboardCheck, Clock10, Diamond, Flame, Percent } from "lucide-react";
+import { BookCheck, ClipboardCheck, Diamond, Flame, Zap } from "lucide-react";
 import SimpleDashboard from "./SimpleDashboard";
 import DashboardCalendar from "./DashboardCalendar";
 import CircularProgress from "./CircularProgress";
@@ -64,16 +64,16 @@ const Dashboard = () => {
 
 						<SimpleDashboard
 							className="col-start-1 row-start-3 max-md:col-span-2 max-md:col-start-3 max-md:row-start-1"
-							number={32}
-							text={t("HoursLearned")}
-							icon={<Clock10 className="stroke-primary" />}
+							number={userData?.lessons.length || 0}
+							text={t("CompletedLessons")}
+							icon={<BookCheck className="stroke-primary" />}
 						/>
 
 						<SimpleDashboard
 							className="col-start-1 row-start-4 max-md:col-span-2 max-md:col-start-3 max-md:row-start-2"
-							number={0}
-							text={t("AvgScore")}
-							icon={<Percent className="stroke-primary" />}
+							number={userData?.energy || 0}
+							text={t("Energy")}
+							icon={<Zap className="stroke-primary" />}
 						/>
 
 						<SimpleDashboard
