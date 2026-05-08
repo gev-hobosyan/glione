@@ -58,9 +58,10 @@ const LessonsScroll = () => {
 					ref={scrollRef}
 				>
 					{lessons &&
-						lessons.map((lesson) => {
+						lessons.map((lesson, index) => {
 							return (
 								<LessonCard
+								key={index}
 									id={lesson._id!}
 									name={lesson.title}
 									description={lesson.description}

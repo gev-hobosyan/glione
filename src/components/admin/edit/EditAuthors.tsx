@@ -43,6 +43,7 @@ const EditAuthors = ({ edit, currentAuthors }: Props) => {
 						{selectedAuthors.map((author) => (
 							<div
 								className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300 relative group"
+								key={author.id}
 								onClick={() => {
 									setSelectedAuthors((prev) =>
 										prev.filter(
@@ -61,6 +62,7 @@ const EditAuthors = ({ edit, currentAuthors }: Props) => {
 						{allAuthors.map((author) => (
 							<div
 								className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300 relative group"
+								key={author.id}
 								onClick={() =>
 									setSelectedAuthors((prev) => [...prev, author])
 								}

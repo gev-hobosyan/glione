@@ -18,7 +18,7 @@ const ProfileCard = ({ className = "" }: Props) => {
 		<div
 			className={`bg-black/50 w-full max-w-sm h-55 border border-primary rounded-3xl px-3 py-3 flex flex-col justify-center relative ${className}`}
 		>
-			<Settings className="stroke-white absolute right-4 w-5 hover:scale-105 transition-all duration-300 cursor-pointer top-3"></Settings>
+			<Settings className="stroke-white absolute right-4 w-5 hover:scale-105 transition-all duration-300 cursor-pointer top-3" >/</Settings>
 			<h3 className="text-white absolute top-3 font-semibold">
 				{t("MyProfile")}
 			</h3>

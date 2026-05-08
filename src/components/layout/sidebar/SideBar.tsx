@@ -50,6 +50,7 @@ const SideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 						{tabs.map((tab) => {
 							return (
 								<div
+								key={tab.id}
 									className={`p-2.5 rounded-xl ${activeTab == tab.id && "bg-primary"} hover:-translate-y-1 transition-all duration-300`}
 									onClick={() => setActiveTab(tab.id)}
 								>
@@ -64,7 +65,9 @@ const SideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 						className="stroke-red-700 hover:-translate-y-1 transition-all duration-300"
 						onClick={signOut}
 					/>
-					<SettingsIcon className="stroke-white hover:-translate-y-1 transition-all duration-300" />
+					<SettingsIcon className="stroke-white hover:-translate-y-1 transition-all duration-300" 
+					onClick={() => setOpenSettings(true)}
+					/>
 				</div>
 			</div>
 
@@ -74,6 +77,7 @@ const SideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 						{tabs.slice(0, 2).map((tab) => {
 							return (
 								<div
+								key={tab.id}
 									className={`p-2.5 rounded-xl ${activeTab == tab.id && "bg-primary"} hover:-translate-y-1 transition-all duration-300`}
 									onClick={() => setActiveTab(tab.id)}
 								>
@@ -96,7 +100,9 @@ const SideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 						<div
 							className={`p-2.5 rounded-xl hover:-translate-y-1 transition-all duration-300`}
 						>
-							<SettingsIcon className="stroke-white" />
+							<SettingsIcon className="stroke-white" 
+							onClick={() => setOpenSettings(true)}
+							/>
 						</div>
 					</div>
 				</div>

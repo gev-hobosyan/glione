@@ -31,16 +31,16 @@ const Settings = ({ close }: Props) => {
 						<p className="text-white px-4 py-2 bg-primary rounded-4xl">
 							My profile
 						</p>
-						<p className="text-white px-4 py-2">Security</p>
+						{/* <p className="text-white px-4 py-2">Security</p>
 						<p className="text-white px-4 py-2">Billing</p>
-						<p className="text-red-700 mt-3 px-4 py-2">Delete account</p>
+						<p className="text-red-700 mt-3 px-4 py-2">Delete account</p> */}
 					</div>
 
-					<div className="w-[80%] h-full flex flex-col items-start justify-between  px-6 py-13">
+					<div className="w-[80%] h-full flex flex-col items-start justify-between px-6 py-13 text-wrap wrap-anywhere truncate">
 						<p className="text-white">My profile</p>
-						<div className="border border-primary px-6 rounded-xl flex items-center w-full h-[20%]">
+						<div className="border border-primary px-6 rounded-xl flex items-center w-full h-[25%]">
 							<img
-								className="rounded-full w-20 h-20"
+								className="rounded-full w-18 h-18"
 								src={
 									session
 										? session["user"]["user_metadata"]["avatar_url"]
@@ -59,7 +59,7 @@ const Settings = ({ close }: Props) => {
 							</div>
 						</div>
 
-						<div className="border border-primary px-4 rounded-xl w-full h-[35%] pt-2 pb-5">
+						<div className="border border-primary px-4 rounded-xl w-full h-[55%] pt-2 pb-5">
 							<p className="text-white mb-2">Personal information</p>
 							<div className="grid grid-cols-2 grid-rows-3 gap-4 text-white h-full w-[60%] pb-5">
 								<div>
@@ -88,8 +88,6 @@ const Settings = ({ close }: Props) => {
 								</div>
 							</div>
 						</div>
-
-						<div className="border border-primary px-4 rounded-xl w-full h-[25%]"></div>
 					</div>
 				</div>
 			</div>

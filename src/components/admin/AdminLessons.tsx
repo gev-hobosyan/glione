@@ -53,6 +53,7 @@ const AdminLessons = () => {
 						lessons.map((lesson) => {
 							return (
 								<AdminLessonCard
+								key={lesson._id}
 									id={lesson._id!}
 									name={lesson.title}
 									description={lesson.description}

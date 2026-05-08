@@ -95,10 +95,11 @@ const TextSection = ({
 					</div>
 				) : (
 					<div className="text-white text-wrap font-sans max-h-80 overflow-scroll text-center mx-10 md:mx-40 whitespace-pre-wrap overflow-x-visible w-[calc(100%-3rem)] md:w-[calc(100%-10rem)] flex justify-center items-center flex-col gap-3">
-						{content.map((part) => {
+						{content.map((part, index) => {
 							if (filesUnique.find((file) => part === file)) {
 								return (
 									<img
+									key={index}
 										className="rounded-4xl border border-primary w-100 cursor-pointer min-h-100"
 										src={files[part]}
 										onClick={() => {

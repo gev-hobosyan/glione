@@ -2,12 +2,13 @@ import type {
 	AuthError,
 	Provider,
 	Session,
-	User,
+	SupabaseUser,
 	WeakPassword,
 } from "@supabase/supabase-js";
 import type { LucideProps } from "lucide-react";
 
 export type Author = {
+	_id: string;
 	id?: number;
 	name: string;
 };
@@ -66,7 +67,7 @@ export interface AuthContextInterface {
 		| {
 				success: boolean;
 				data: {
-					user: User | null;
+					user: SupabaseUser | null;
 					session: Session | null;
 				};
 				error?: undefined;
@@ -94,7 +95,7 @@ export interface AuthContextInterface {
 		| {
 				success: boolean;
 				data: {
-					user: User;
+					user: SupabaseUser;
 					session: Session;
 					weakPassword?: WeakPassword;
 				};

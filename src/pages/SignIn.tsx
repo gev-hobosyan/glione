@@ -27,8 +27,27 @@ const SignIn = () => {
 		if (signInUser !== undefined) {
 			const res = await signInUser(email, password);
 			if (res.success === false) {
-				setEmailError("Wrong credentials");
-				setPasswordError("Wrong credentials");
+				let _emailError = "";
+				let _passwordError = "";
+				if(res.error?.code == "email_address_invalid") {
+					_emailError = "Invalid Email Address";
+				} else  if(res.error?.code == "email_exists") {
+					_emailError = "This Email Already In Use";
+				} else if(res.error?.code == "email_not_confirmed") {
+					_emailError = "Email Address Is Not Confirmed";
+				} else if(res.error?.code == "weak_password") {
+					_passwordError = "Weak Password";
+				} else if(res.error?.code == "same_password") {
+					_passwordError = "This Password Already Used";
+				} else if(res.error?.code == "invalid_credentials") {
+					_emailError = "Invalid Email";
+					_passwordError = "Invalid Password";
+				} else {
+					_emailError = "Unknown Error";
+					_passwordError = "Unknown Error";
+				}
+				setEmailError(_emailError);
+				setPasswordError(_passwordError);
 			}
 		}
 	};

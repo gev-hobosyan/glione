@@ -67,7 +67,7 @@ const AdminLessonCard = ({
 						{authors.map((author) => (
 							<p
 								className="text-[11px] text-gray-400 ml-1 mb-0.5"
-								key={author.name}
+								key={author.id}
 							>
 								{author.name}
 							</p>
@@ -95,7 +95,7 @@ const AdminLessonCard = ({
 					{tags.map((tag) => (
 						<p
 							className="text-[11px] border border-primary rounded-full px-2 py-0.5 bg-primary/40 hover:scale-105 transition-all duration-300"
-							key={tag.name}
+							key={tag.id}
 						>
 							{tag.name}
 						</p>

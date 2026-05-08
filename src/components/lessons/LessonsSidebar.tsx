@@ -26,7 +26,7 @@ const LessonSidebar = ({
 		<div className="ml-2 border border-primary/40 bg-black/40 rounded-3xl h-full w-[20%] max-md:hidden">
 			<div className="flex gap-1 items-center justify-center flex-wrap px-10 py-3">
 				{lesson.authors!.map((author) => (
-					<p key={author.name} className="text-[13px] text-gray-400">
+					<p key={author.id} className="text-[13px] text-gray-400">
 						{author.name}
 					</p>
 				))}
@@ -37,7 +37,7 @@ const LessonSidebar = ({
 			<div className="flex gap-2 items-center justify-center flex-wrap px-10 py-3">
 				{lesson.tags!.map((tag) => (
 					<p
-						key={tag.name}
+						key={tag.id}
 						className="text-[12px] text-white px-3 py-0.5 bg-primary/40 border border-primary rounded-full"
 					>
 						{tag.name}

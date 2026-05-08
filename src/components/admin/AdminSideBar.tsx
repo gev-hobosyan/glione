@@ -27,6 +27,7 @@ const AdminSideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 						{tabs.map((tab) => {
 							return (
 								<div
+								key={tab.id}
 									className={`p-2.5 rounded-xl ${activeTab == tab.id && "bg-primary"} hover:-translate-y-1 transition-all duration-300`}
 									onClick={() => setActiveTab(tab.id)}
 								>
@@ -48,6 +49,7 @@ const AdminSideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 						{tabs.slice(0, 2).map((tab) => {
 							return (
 								<div
+								key={tab.id}
 									className={`p-2.5 rounded-xl ${activeTab == tab.id && "bg-primary"} hover:-translate-y-1 transition-all duration-300`}
 									onClick={() => setActiveTab(tab.id)}
 								>
@@ -65,6 +67,7 @@ const AdminSideBar = ({ tabs, activeTab, setActiveTab }: Props) => {
 						{tabs.slice(2, 3).map((tab) => {
 							return (
 								<div
+								key={tab.id}
 									className={`p-2.5 rounded-xl ${activeTab == tab.id && "bg-primary"} hover:-translate-y-1 transition-all duration-300`}
 									onClick={() => setActiveTab(tab.id)}
 								>

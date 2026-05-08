@@ -272,7 +272,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 									{tags.map((tag) => (
 										<p
 											className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300"
-											key={tag.name}
+											key={tag.id}
 										>
 											{tag.name}
 										</p>
@@ -311,7 +311,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 							<div className="flex flex-col items-center gap-2">
 								<div className="text-white flex items-center justify-center gap-2">
 									{authors.map((author) => (
-										<div className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300">
+										<div className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300" key={author.id}>
 											{author.name}
 										</div>
 									))}
@@ -368,6 +368,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 									<div
 										className="w-[80%] bg-black/55 border border-primary/50 px-6 py-3 rounded-full flex items-center justify-between shadow-[0_0_10px_#006e2a] cursor-pointer hover:scale-[102%] transition-all duration-300"
 										onClick={() => setEditStep(step)}
+										key={step.id}
 									>
 										<p className="text-white font-[12px]">
 											{step.title}
@@ -405,8 +406,10 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 									Choose images to upload
 								</label>
 							</div>
-							{files.map((file) => (
-								<p>{file.name}</p>
+							{files.map((file, index) => (
+								<p
+								key={index}
+								>{file.name}</p>
 							))}
 						</div>
 					</div>

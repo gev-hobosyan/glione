@@ -55,6 +55,7 @@ const Lessons = () => {
 						lessons.map((lesson) => {
 							return (
 								<LessonCard
+								key={lesson._id}
 									id={lesson._id!}
 									name={lesson.title}
 									description={lesson.description}

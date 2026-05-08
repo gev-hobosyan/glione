@@ -24,6 +24,7 @@ const ChoiceStep = ({
 				children.map((choice) =>
 					choice.id !== undefined ? (
 						<AdminChoice
+						key={choice.id}
 							changeText={(value: string) =>
 								changeText(value, choice.id!)
 							}
