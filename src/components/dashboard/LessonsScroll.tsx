@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import LoadingSpinner from "../common/LoadingSpinner";
 import LessonCard from "../lessons/LessonCard";
 import { CloudAlert, RotateCcw } from "lucide-react";
+import { getI18n } from "react-i18next";
 
 const LessonsScroll = () => {
 	// Stores lessons data, loading state, and any fetch error.
@@ -16,7 +17,7 @@ const LessonsScroll = () => {
 	const loadData = async () => {
 		setLoading(true);
 		try {
-			setLessons(await getLessonsByCount(10));
+			setLessons(await getLessonsByCount(10, getI18n().language));
 		} catch (e) {
 			setError(e);
 		} finally {

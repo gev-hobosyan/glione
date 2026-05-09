@@ -1,11 +1,13 @@
-const getAllLessons = async () => {
+const getAllLessons = async (lang: string) => {
 	const API_URL = import.meta.env.VITE_API_URL || "";
 
 	try {
-		const res = await fetch(`${API_URL}/lessons/admin/`);
+		const res = await fetch(`${API_URL}/lessons/admin/${lang}`, {
+			body: JSON.stringify({ lang }),
+		});
 		return await res.json();
 	} catch (e) {
-		throw new Error(`ERROR!!! ${e}`)
+		throw new Error(`ERROR!!! ${e}`);
 	}
 };
 

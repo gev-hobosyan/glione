@@ -20,6 +20,7 @@ import { t } from "i18next";
 import ToggleSwitch from "../ToggleSwitch";
 import EditAuthors from "./edit/EditAuthors";
 import { supabase } from "@/utils/supabaseClient";
+import { useTranslation } from "react-i18next";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
@@ -54,6 +55,8 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 	const [published, setPublished] = useState(true);
 	const [files, setFiles] = useState<File[]>([]);
 
+	const { i18n } = useTranslation();
+
 	const reload = useCallback(() => {
 		setEditStep(undefined);
 		setEditTitle(true);
@@ -65,6 +68,8 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 
 		setCurentStepId(0);
 		setCurentTagId(0);
+
+		setFiles([]);
 
 		setSuccess(undefined);
 		setError(false);
@@ -153,6 +158,7 @@ const CreateLesson = ({ steps, setSteps }: Props) => {
 			authors: authors,
 			section: "Python",
 			steps: steps,
+			lang: i18n.language,
 		};
 
 		setLoading(true);

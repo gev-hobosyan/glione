@@ -4,6 +4,7 @@ import type { Lesson } from "@/utils/types";
 import { useEffect, useState } from "react";
 import AdminLessonCard from "./AdminLessonCard";
 import { CloudAlert, RotateCcw } from "lucide-react";
+import { getI18n } from "react-i18next";
 
 const AdminLessons = () => {
 	const [lessons, setLessons] = useState<Lesson[]>();
@@ -13,7 +14,7 @@ const AdminLessons = () => {
 	const loadData = async () => {
 		setLoading(true);
 		try {
-			setLessons(await getAllLessons());
+			setLessons(await getAllLessons(getI18n().language));
 		} catch (e) {
 			setError(e);
 		} finally {

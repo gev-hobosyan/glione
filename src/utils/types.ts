@@ -51,6 +51,7 @@ export type Lesson = {
 	authors: Author[];
 	section: string;
 	steps?: Step[];
+	lang?: string;
 };
 
 export interface AuthContextInterface {
