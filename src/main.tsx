@@ -21,12 +21,12 @@ i18n.use(initReactI18next).init({
 				Module: "Module",
 				ButtonText: "Enjoy Լearning",
 				AboutTitle:
-					"Venture into the depths. Conquer the code. Master Python.",
+					"Interactive Python Learning Platform",
 				AboutDesc:
-					"Glione is an interactive Python and Computer Science learning platform where every lesson is a dungeon, every challange is a monster.",
+					"Glione is a Python learning website that helps beginners learn programming through interactive lessons, quizzes, and hands-on coding practice. The platform combines theory and practical exercises to create an engaging learning experience.",
 				AboutQuestion: "What is Glione?",
 				AboutDesc1:
-					"Glione turns learning Python into an adventure. Instead of dry tutorials you explore dungoens, slaying monsters. Solve coding challenges to defeat enemies, collect loot, and level up your character as your real-world skills grow.",
+					"Glione is an educational web application designed to make learning Python simple and interactive. Users can study structured lessons, answer multiple-choice questions to test their understanding, and practice coding directly in the built-in code editor. Our goal is to help learners improve their programming skills in a fun and effective way.",
 				NavbarHome: "Home",
 				NavbarAbout: "About",
 				NavbarCourses: "Courses",
@@ -117,8 +117,7 @@ i18n.use(initReactI18next).init({
 				Friday: "Fri",
 				Saturday: "Sat",
 				MyProfile: "My Profile",
-				DashboardText:
-					"Learn Python, challenge your mind, and build skills.",
+				DashboardText: "Learn Python, challenge your mind, and build skills.",
 			},
 		},
 		am: {
@@ -136,12 +135,12 @@ i18n.use(initReactI18next).init({
 				Module: "Մոդուլ",
 				ButtonText: "Վայելիր սովորելը",
 				AboutTitle:
-					"Սուզվիր խորքերը։ Հաղթահարիր կոդը։ Տիրապետիր Python-ին։",
+					"Ինտերակտիվ Python ուսուցման հարթակ",
 				AboutDesc:
-					"«Glione»-ը ինտերակտիվ Python-ի և համակարգչային գիտության ուսուցման հարթակ է, որտեղ ամեն դաս մի զնդան է, իսկ ամեն մարտահրավեր՝ հրեշ, որը պետք է հաղթահարես։",
+					"«Glione-ը Python ուսուցման կայք է, որը օգնում է սկսնակներին սովորել ծրագրավորում ինտերակտիվ դասերի, թեստերի և գործնական կոդավորման միջոցով։ Հարթակը համատեղում է տեսական և գործնական ուսուցումը՝ ապահովելով հետաքրքիր և արդյունավետ ուսուցման փորձ։",
 				AboutQuestion: "Ինչ է «Glione»-ը",
 				AboutDesc1:
-					"«Glione»-ը Python սովորելը վերածում է արկածի։ Չոր ու ձանձրալի ձեռնարկների փոխարեն դու ուսումնասիրում ես զնդաններ և կռվում հրեշների դեմ։ Լուծիր ծրագրավորման խնդիրներ՝ թշնամիներին հաղթելու համար, հավաքիր ավար և զարգացրու քո կերպարը, մինչ քո իրական հմտություններն էլ աճում են։",
+					"Glione-ը կրթական վեբ հավելված է, որը ստեղծվել է Python ծրագրավորման ուսուցումը հեշտ և ինտերակտիվ դարձնելու համար։ Օգտատերերը կարող են ուսումնասիրել կառուցվածքային դասեր, պատասխանել բազմակի ընտրությամբ հարցերի՝ իրենց գիտելիքները ստուգելու համար, և գրել ու փորձարկել Python կոդ ներկառուցված կոդի խմբագրիչում։ Մեր նպատակն է օգնել սովորողներին զարգացնել ծրագրավորման հմտությունները հետաքրքիր և արդյունավետ ձևով։",
 				NavbarHome: "Գլխավոր էջ",
 				NavbarAbout: "Մեր մասին",
 				NavbarCourses: "Դասընթացներ",
@@ -232,8 +231,7 @@ i18n.use(initReactI18next).init({
 				Friday: "Ուրբ",
 				Saturday: "Շաբ",
 				MyProfile: "Իմ Պրոֆիլը",
-				DashboardText:
-					"Սովորիր Python, մարտահրավեր նետիր մտքիդ և զարգացրու հմտություններ։",
+				DashboardText: "Սովորիր Python, մարտահրավեր նետիր մտքիդ և զարգացրու հմտություններ։",
 			},
 		},
 	},

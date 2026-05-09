@@ -1,4 +1,5 @@
 import { UserAuth } from "@/context/AuthContext";
+import { t } from "i18next";
 import { X } from "lucide-react";
 
 interface Props {
@@ -29,7 +30,7 @@ const Settings = ({ close }: Props) => {
 					></X>
 					<div className=" w-[20%] h-full border border-primary rounded-4xl px-5 py-12 flex flex-col gap-7">
 						<p className="text-white px-4 py-2 bg-primary rounded-4xl">
-							My profile
+							{t("MyProfile")}
 						</p>
 						{/* <p className="text-white px-4 py-2">Security</p>
 						<p className="text-white px-4 py-2">Billing</p>
@@ -37,7 +38,7 @@ const Settings = ({ close }: Props) => {
 					</div>
 
 					<div className="w-[80%] h-full flex flex-col items-start justify-between px-6 py-13 text-wrap wrap-anywhere truncate">
-						<p className="text-white">My profile</p>
+						<p className="text-white">{t("MyProfile")}</p>
 						<div className="border border-primary px-6 rounded-xl flex items-center w-full h-[25%]">
 							<img
 								className="rounded-full w-18 h-18"
