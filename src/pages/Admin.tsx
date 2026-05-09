@@ -11,9 +11,10 @@ import { useState } from "react";
 import type { Step } from "@/utils/types";
 import AdminLessons from "@/components/admin/AdminLessons";
 import { useTranslation } from "react-i18next";
+import useSessionStorage from "@/hooks/useSessionStorage";
 
 const Admin = () => {
-	const [activeTab, setActiveTab] = useState(2);
+	const [activeTab, setActiveTab] = useSessionStorage("adminTab", 0);
 	const { i18n } = useTranslation();
 
 	const currentLang = i18n.language;

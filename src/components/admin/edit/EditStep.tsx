@@ -149,7 +149,7 @@ const EditStep = ({ children, edit, submitStep, deleteStep }: Props) => {
 		});
 	};
 
-	const Icon = children.icon || TextInitial;
+	const Icon = icons[children.type] || TextInitial;
 
 	return (
 		<>

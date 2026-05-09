@@ -22,6 +22,7 @@ import { supabase } from "@/utils/supabaseClient";
 import { useParams } from "react-router-dom";
 import getLessonById from "@/utils/backend/lessons/getLessonById";
 import updateLesson from "@/utils/backend/lessons/updateLesson";
+import useSessionStorage from "@/hooks/useSessionStorage";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const icons = {
@@ -34,25 +35,37 @@ const EditLesson = () => {
 	const { id } = useParams();
 
 	const [editStep, setEditStep] = useState<Step | undefined>(undefined);
-	const [editTitle, setEditTitle] = useState<boolean>(true);
 	const [editTag, setEditTag] = useState<Tag | undefined>();
-	const [tags, setTags] = useState<Tag[]>([]);
-	const [title, setTitle] = useState("");
-	const [steps, setSteps] = useState<Step[]>([]);
-	const [description, setDescription] = useState("");
-	const [editDescription, setEditDescription] = useState<boolean>(true);
-	const [authors, setAuthors] = useState<Author[]>([]);
-	const [editAuthors, setEditAuthors] = useState<boolean>(false);
 
-	const [currentStepId, setCurentStepId] = useState(0);
-	const [currentTagId, setCurentTagId] = useState(0);
+	const [tags, setTags] = useSessionStorage<Tag[]>("tags", []);
+	const [title, setTitle] = useSessionStorage("title", "");
+	const [description, setDescription] = useSessionStorage("description", "");
+	const [steps, setSteps] = useSessionStorage<Step[]>("steps", []);
+
+	const [editTitle, setEditTitle] = useSessionStorage("editTitle", true);
+	const [editDescription, setEditDescription] = useSessionStorage(
+		"editDescription",
+		true,
+	);
+	const [editAuthors, setEditAuthors] = useSessionStorage(
+		"editAuthors",
+		false,
+	);
+
+	const [authors, setAuthors] = useSessionStorage<Author[]>("authors", []);
+
+	const [currentStepId, setCurentStepId] = useSessionStorage(
+		"currentStepId",
+		0,
+	);
+	const [currentTagId, setCurentTagId] = useSessionStorage("currentTagId", 0);
 
 	const [success, setSuccess] = useState<string | undefined>(undefined);
 	const [error, setError] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(false);
 
-	const [published, setPublished] = useState(true);
-	const [files, setFiles] = useState<File[]>([]);
+	const [published, setPublished] = useSessionStorage("published", true);
+	const [files, setFiles] = useSessionStorage<File[]>("files", []);
 
 	useEffect(() => {
 		const loadData = async () => {
@@ -91,7 +104,17 @@ const EditLesson = () => {
 		};
 
 		loadData();
-	}, [id]);
+	}, [
+		id,
+		setAuthors,
+		setCurentStepId,
+		setCurentTagId,
+		setDescription,
+		setPublished,
+		setSteps,
+		setTags,
+		setTitle,
+	]);
 
 	const reload = useCallback(() => {
 		setEditStep(undefined);
@@ -108,7 +131,15 @@ const EditLesson = () => {
 		setSuccess(undefined);
 		setError(false);
 		setLoading(false);
-	}, []);
+	}, [
+		setCurentStepId,
+		setCurentTagId,
+		setDescription,
+		setEditDescription,
+		setEditTitle,
+		setTags,
+		setTitle,
+	]);
 
 	const tryAgain = useCallback(() => {
 		setLoading(false);
@@ -411,7 +442,7 @@ const EditLesson = () => {
 
 					<div className="h-full w-[50vw] bg-black/40 rounded-3xl border border-primary/40 flex flex-col items-center justify-center overflow-y-scroll max-md:w-[calc(100vw-1rem)] max-md:min-h-80 max-md:max-h-180 max-md:h-fit py-5 relative">
 						{steps.map((step) => {
-							const Icon = step.icon || TextInitial;
+							const Icon = icons[step.type] || TextInitial;
 
 							return (
 								<>

@@ -5,7 +5,7 @@ import {
 	SquareCheck,
 	TextInitial,
 } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import EditStep from "./edit/EditStep";
 import Input from "../inputs/Input";
 import LessonCard from "../lessons/LessonCard";

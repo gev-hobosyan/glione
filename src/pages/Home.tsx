@@ -6,9 +6,10 @@ import SideBar from "@/components/layout/sidebar/SideBar";
 import Lessons from "./Lessons";
 import Dashboard from "@/components/dashboard/Dashboard";
 import { useTranslation } from "react-i18next";
+import useSessionStorage from "@/hooks/useSessionStorage";
 
 const Home = () => {
-	const [activeTab, setActiveTab] = useState(0);
+	const [activeTab, setActiveTab] = useSessionStorage("tab", 0);
 	const { i18n } = useTranslation();
 
 	const currentLang = i18n.language;
