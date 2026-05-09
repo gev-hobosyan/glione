@@ -4,7 +4,7 @@ import type { Lesson } from "@/utils/types";
 import { useCallback, useEffect, useState } from "react";
 import { CloudAlert, RotateCcw } from "lucide-react";
 import getPublishedLessons from "@/utils/backend/lessons/getPublishedLessons";
-import { getI18n, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const Lessons = () => {
 	// Holds fetched lessons, loading state during API call, and any error encountered

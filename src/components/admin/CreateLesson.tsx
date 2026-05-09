@@ -109,6 +109,7 @@ const CreateLesson = () => {
 				content: "",
 				icon: icons.text,
 				map: "",
+				rightAnswer: "",
 			};
 
 			setCurentStepId((prev) => prev + 1);

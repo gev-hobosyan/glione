@@ -3,26 +3,21 @@ import { useEffect, useState } from "react";
 import { Pyodide } from "../../lib/pyodide.ts";
 import { PlayIcon } from "lucide-react";
 
+interface Props {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	getOutput: (...data: any[]) => void;
+}
+
 /**
  * The CodeEditor used in the project
  *
  */
-const CodeEditor = () => {
-	const [value, setValue] = useState(`class Player:
-    def __init__(self, coins):
-        self.coins = coins
+const CodeEditor = ({ getOutput }: Props) => {
+	const [value, setValue] = useState(``);
 
-    def add_coins(self, coins):
-        self.coins += coins
-
-player = Player(10)
-
-print(player.coins)
-
-player.add_coins(2)
-
-print(player.coins)`);
 	const pyodide = Pyodide.getInstance();
+
+	pyodide.setOutput(getOutput);
 
 	const monaco = useMonaco();
 
@@ -55,12 +50,12 @@ print(player.coins)`);
 	}, [monaco]);
 
 	return (
-		<div className="border border-white rounded-4xl px-6 py-15 relative">
+		<div className="border border-primary rounded-4xl px-6 pt-10 pb-4 relative">
 			<Editor
 				height="50vh"
 				language="python"
 				theme="vs-dark"
-				width="90vh"
+				width="50vw"
 				value={value}
 				onChange={(value) => {
 					setValue(value!);
@@ -79,8 +74,9 @@ print(player.coins)`);
 				}}
 			/>
 			<PlayIcon
-				className="stroke-secondary fill-secondary absolute top-5 right-10"
+				className="stroke-secondary fill-secondary absolute top-3 right-5"
 				onClick={() => {
+					getOutput("");
 					pyodide.run(value);
 				}}
 			>

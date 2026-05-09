@@ -7,8 +7,6 @@ import {
 	SquarePen,
 	type LucideProps,
 } from "lucide-react";
-import { useState } from "react";
-import type { Step } from "@/utils/types";
 import AdminLessons from "@/components/admin/AdminLessons";
 import { useTranslation } from "react-i18next";
 import useSessionStorage from "@/hooks/useSessionStorage";

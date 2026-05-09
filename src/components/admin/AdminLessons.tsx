@@ -4,7 +4,7 @@ import type { Lesson } from "@/utils/types";
 import { useCallback, useEffect, useState } from "react";
 import AdminLessonCard from "./AdminLessonCard";
 import { CloudAlert, RotateCcw } from "lucide-react";
-import { getI18n, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const AdminLessons = () => {
 	const [lessons, setLessons] = useState<Lesson[]>();

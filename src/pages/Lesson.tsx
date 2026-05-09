@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import LessonSidebar from "../components/lessons/LessonsSidebar";
 import MultipleChoice from "../components/lessons/sections/MultipleChoice";
 import { type Lesson as LessonType, type Step, type User } from "@/utils/types";
@@ -7,13 +7,13 @@ import LoadingSpinner from "../components/common/LoadingSpinner";
 import TextSection from "../components/lessons/sections/TextSection";
 import { useParams } from "react-router-dom";
 import ProgressBar from "@/components/lessons/ProgressBar";
-import { PhaserGame, type IRefPhaserGame } from "@/game/PhaserGame";
 import Complete from "@/components/lessons/sections/Complete";
 import BlurCircle from "@/components/common/BlurCircle";
 import getUserData from "@/utils/backend/users/getUserData";
 import { UserAuth } from "@/context/AuthContext";
 import updateUserEnergy from "@/utils/backend/users/updateUserEnergy";
 import { Zap } from "lucide-react";
+import CodeSection from "@/components/lessons/sections/CodeSection";
 
 /**
  * The page where the lesson is displayed and can be done step by step.
@@ -132,10 +132,10 @@ const Lesson = () => {
 		);
 	}, [completedSteps, stepsOrder]);
 
-	const phaserRef = useRef<IRefPhaserGame | null>(null);
-	const currentScene = (scene: Phaser.Scene) => {
-		console.log(scene);
-	};
+	// const phaserRef = useRef<IRefPhaserGame | null>(null);
+	// const currentScene = (scene: Phaser.Scene) => {
+	// 	console.log(scene);
+	// };
 
 	return (
 		<>
@@ -184,15 +184,13 @@ const Lesson = () => {
 									stepCount={stepsOrder!.length}
 								/>
 							) : step.type == "code" ? (
-								<div className="flex items-center justify-center h-screen">
-									<div className="">
-										<PhaserGame
-											ref={phaserRef}
-											currentActiveScene={currentScene}
-											world={step.map!}
-										/>
-									</div>
-								</div>
+								<CodeSection
+									step={step}
+									changeCurrentStep={changeCurrentStep}
+									selectedStep={selectedStep}
+									stepCount={stepsOrder?.length || 0}
+									changeStatus={changeStatus}
+								></CodeSection>
 							) : (
 								<div></div>
 							)}

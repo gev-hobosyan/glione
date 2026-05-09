@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { loadPyodide } from "pyodide";
 
-export var Pyodide = (function () {
-	var instance: PythonRunner;
+export const Pyodide = (function () {
+	let instance: PythonRunner;
 	function createInstance() {
-		var object = new PythonRunner();
+		const object = new PythonRunner();
 		return object;
 	}
 	return {
@@ -44,9 +45,11 @@ class PythonRunner {
 			this._pyodide.runPython('print("Hello from Python!")');
 		});
 	}
+	
 	setOutput(output: any) {
 		this._output = output;
 	}
+	
 	run(code: string) {
 		if (this._pyodide) {
 			return this._pyodide.runPython(code);

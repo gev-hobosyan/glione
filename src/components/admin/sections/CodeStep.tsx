@@ -5,19 +5,19 @@ import { t } from "i18next";
 import type { Dispatch, SetStateAction } from "react";
 
 interface Props {
-	editMap: string | undefined;
-	setEditMap: Dispatch<SetStateAction<string | undefined>>;
-	submitMap: () => void;
+	editAnswer: string | undefined;
+	setEditAnswer: Dispatch<SetStateAction<string | undefined>>;
+	submitAnswer: () => void;
 	children: Step;
 }
 
-const CodeStep = ({ editMap, setEditMap, submitMap, children }: Props) => {
+const CodeStep = ({ editAnswer, setEditAnswer, submitAnswer, children }: Props) => {
 	return (
 		<div className="my-5">
-			{editMap !== undefined ? (
-				<form action={submitMap} className="w-full flex flex-col">
-					<TextField id="content" value={editMap} setValue={setEditMap}>
-						{t("Map")}
+			{editAnswer !== undefined ? (
+				<form action={submitAnswer} className="w-full flex flex-col">
+					<TextField id="content" value={editAnswer} setValue={setEditAnswer}>
+						{t("Code")}
 					</TextField>
 					<input
 						type="submit"
@@ -28,7 +28,7 @@ const CodeStep = ({ editMap, setEditMap, submitMap, children }: Props) => {
 			) : (
 				<div
 					className="mt-5 group relative text-white"
-					onDoubleClick={() => setEditMap(children.content)}
+					onDoubleClick={() => setEditAnswer(children.content)}
 				>
 					<p className="text-white wrap-anywhere overflow-scroll">
 						{children.map}

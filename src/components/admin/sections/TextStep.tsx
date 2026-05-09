@@ -39,7 +39,7 @@ const TextStep = ({
 					className="mt-5 group relative text-white"
 					onDoubleClick={() => setEditContent(children.content)}
 				>
-					<p className="text-white wrap-anywhere overflow-scroll whitespace-pre-line">
+					<p className="text-white max-w-full wrap-anywhere overflow-y-scroll whitespace-pre-line">
 						{children.content}
 					</p>
 					<Hint>{t("DoubleClickToEdit")}</Hint>

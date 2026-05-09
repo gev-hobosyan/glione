@@ -118,6 +118,7 @@ i18n.use(initReactI18next).init({
 				Saturday: "Sat",
 				MyProfile: "My Profile",
 				DashboardText: "Learn Python, challenge your mind, and build skills.",
+				Code: "Output"
 			},
 		},
 		am: {
@@ -232,6 +233,7 @@ i18n.use(initReactI18next).init({
 				Saturday: "Շաբ",
 				MyProfile: "Իմ Պրոֆիլը",
 				DashboardText: "Սովորիր Python, մարտահրավեր նետիր մտքիդ և զարգացրու հմտություններ։",
+				Code: "Արդյունք"
 			},
 		},
 	},

@@ -33,8 +33,8 @@ const EditStep = ({ children, edit, submitStep, deleteStep }: Props) => {
 		children.content ? undefined : children.content,
 	);
 	// stores edited map value (if user changes step map/location)
-	const [editMap, setEditMap] = useState<string | undefined>(
-		children.map ? undefined : children.map,
+	const [editAnswer, setEditAnswer] = useState<string | undefined>(
+		children.rightAnswer ? undefined : children.rightAnswer,
 	);
 
 	if (children === undefined) {
@@ -61,13 +61,13 @@ const EditStep = ({ children, edit, submitStep, deleteStep }: Props) => {
 		}
 	};
 
-	const submitMap = () => {
-		if (editMap) {
+	const submitAnswer = () => {
+		if (editAnswer) {
 			edit((prev) => {
-				return { ...prev, map: editMap } as Step;
+				return { ...prev, rightAnswer: editAnswer } as Step;
 			});
 
-			setEditMap(undefined);
+			setEditAnswer(undefined);
 		}
 	};
 
@@ -157,7 +157,7 @@ const EditStep = ({ children, edit, submitStep, deleteStep }: Props) => {
 				className="w-screen h-screen absolute z-10 bg-black/50 backdrop-blur-sm top-0 left-0 flex items-center justify-center"
 				onClick={() => submitStep()}
 			></div>
-			<div className="absolute top-12.5 left-12.5 bottom-12.5 right-12.5 bg-black rounded-4xl border border-primary/50 shadow-effective px-10 py-7 z-50">
+			<div className="absolute top-12.5 left-12.5 bottom-12.5 right-12.5 bg-black rounded-4xl border border-primary/50 shadow-effective px-10 py-7 z-50 overflow-scroll">
 				<div className="flex items-center justify-between">
 					{editTitle !== undefined ? (
 						<form
@@ -221,9 +221,9 @@ const EditStep = ({ children, edit, submitStep, deleteStep }: Props) => {
 					</ChoiceStep>
 				) : children.type == "code" ? (
 					<CodeStep
-						editMap={editMap}
-						setEditMap={setEditMap}
-						submitMap={submitMap}
+						editAnswer={editAnswer}
+						setEditAnswer={setEditAnswer}
+						submitAnswer={submitAnswer}
 					>
 						{children}
 					</CodeStep>
