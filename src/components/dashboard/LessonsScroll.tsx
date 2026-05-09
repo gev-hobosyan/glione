@@ -1,34 +1,34 @@
 import getLessonsByCount from "@/utils/backend/lessons/getLessonsByCount";
 import type { Lesson } from "@/utils/types";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import LoadingSpinner from "../common/LoadingSpinner";
 import LessonCard from "../lessons/LessonCard";
 import { CloudAlert, RotateCcw } from "lucide-react";
-import { getI18n } from "react-i18next";
+import { getI18n, useTranslation } from "react-i18next";
 
 const LessonsScroll = () => {
 	// Stores lessons data, loading state, and any fetch error.
 	const [lessons, setLessons] = useState<Lesson[]>();
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<unknown>();
+	const { i18n } = useTranslation();
 
 	// On mount, it loads 10 lessons, saves them to state, handles errors, and updates loading status.
-
-	const loadData = async () => {
+	const loadData = useCallback(async () => {
 		setLoading(true);
 		try {
-			setLessons(await getLessonsByCount(10, getI18n().language));
+			setLessons(await getLessonsByCount(10, i18n.language));
 		} catch (e) {
 			setError(e);
 		} finally {
 			setLoading(false);
 		}
-	};
+	}, [i18n]);
 
 	useEffect(() => {
 		// eslint-disable-next-line react-hooks/set-state-in-effect
 		loadData();
-	}, []);
+	}, [loadData]);
 
 	const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -62,7 +62,7 @@ const LessonsScroll = () => {
 						lessons.map((lesson, index) => {
 							return (
 								<LessonCard
-								key={index}
+									key={index}
 									id={lesson._id!}
 									name={lesson.title}
 									description={lesson.description}

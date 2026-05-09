@@ -1,33 +1,34 @@
 import LessonCard from "@/components/lessons/LessonCard";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
 import type { Lesson } from "@/utils/types";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { CloudAlert, RotateCcw } from "lucide-react";
 import getPublishedLessons from "@/utils/backend/lessons/getPublishedLessons";
-import { getI18n } from "react-i18next";
+import { getI18n, useTranslation } from "react-i18next";
 
 const Lessons = () => {
 	// Holds fetched lessons, loading state during API call, and any error encountered
 	const [lessons, setLessons] = useState<Lesson[]>();
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<unknown>();
+	const { i18n } = useTranslation();
 
 	// Fetches lessons on mount, updating loading, data, and error states accordingly
-	const loadData = async () => {
+	const loadData = useCallback(async () => {
 		setLoading(true);
 		try {
-			setLessons(await getPublishedLessons(getI18n().language));
+			setLessons(await getPublishedLessons(i18n.language));
 		} catch (e) {
 			setError(e);
 		} finally {
 			setLoading(false);
 		}
-	};
+	}, [i18n]);
 
 	useEffect(() => {
 		// eslint-disable-next-line react-hooks/set-state-in-effect
 		loadData();
-	}, []);
+	}, [loadData]);
 
 	return (
 		<>
@@ -56,7 +57,7 @@ const Lessons = () => {
 						lessons.map((lesson) => {
 							return (
 								<LessonCard
-								key={lesson._id}
+									key={lesson._id}
 									id={lesson._id!}
 									name={lesson.title}
 									description={lesson.description}

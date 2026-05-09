@@ -4,6 +4,7 @@ const getLessonsByCount = async (count: number, lang: string) => {
 	try {
 		const res = await fetch(`${API_URL}/lessons/count/${lang}/${count}`);
 		const json = await res.json();
+		
 		return json;
 	} catch (e) {
 		throw new Error(`ERROR!! ${e}`);

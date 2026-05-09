@@ -1,31 +1,32 @@
 import LoadingSpinner from "@/components/common/LoadingSpinner";
 import getAllLessons from "@/utils/backend/lessons/getAllLessons";
 import type { Lesson } from "@/utils/types";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import AdminLessonCard from "./AdminLessonCard";
 import { CloudAlert, RotateCcw } from "lucide-react";
-import { getI18n } from "react-i18next";
+import { getI18n, useTranslation } from "react-i18next";
 
 const AdminLessons = () => {
 	const [lessons, setLessons] = useState<Lesson[]>();
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<unknown>();
+	const { i18n } = useTranslation();
 
-	const loadData = async () => {
+	const loadData = useCallback(async () => {
 		setLoading(true);
 		try {
-			setLessons(await getAllLessons(getI18n().language));
+			setLessons(await getAllLessons(i18n.language));
 		} catch (e) {
 			setError(e);
 		} finally {
 			setLoading(false);
 		}
-	};
+	}, [i18n]);
 
 	useEffect(() => {
 		// eslint-disable-next-line react-hooks/set-state-in-effect
 		loadData();
-	}, []);
+	}, [loadData]);
 
 	return (
 		<>
@@ -54,7 +55,7 @@ const AdminLessons = () => {
 						lessons.map((lesson) => {
 							return (
 								<AdminLessonCard
-								key={lesson._id}
+									key={lesson._id}
 									id={lesson._id!}
 									name={lesson.title}
 									description={lesson.description}
