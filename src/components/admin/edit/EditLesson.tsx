@@ -11,7 +11,7 @@ import Input from "../../inputs/Input";
 import LessonCard from "../../lessons/LessonCard";
 import TextField from "../../inputs/TextField";
 import Message from "../Message";
-import type { Author, Lesson, Step, Tag } from "@/utils/types";
+import type { Author, Choice, Lesson, Step, Tag } from "@/utils/types";
 import Hint from "../../common/Hint";
 import EditTag from "./EditTag";
 import LoadingSpinner from "../../common/LoadingSpinner";
@@ -67,7 +67,11 @@ const EditLesson = () => {
 				setAuthors(res.authors);
 				setSteps(
 					res.steps?.map((step, index) => {
-						return { ...step, id: index } as Step;
+						const choices = step.choices?.map((choice, index) => {
+							return { ...choice, id: index } as Choice;
+						});
+
+						return { ...step, id: index, choices } as Step;
 					}) || [],
 				);
 				setPublished(res.published);
@@ -354,8 +358,10 @@ const EditLesson = () => {
 							<div className="flex flex-col items-center gap-2">
 								<div className="text-white flex items-center justify-center gap-2">
 									{authors.map((author) => (
-										<div className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300"
-										key={author.id}>
+										<div
+											className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300"
+											key={author.id}
+										>
 											{author.name}
 										</div>
 									))}

@@ -23,21 +23,16 @@ interface Props {
  * @param {function} submitStep - saves/submits the edited step.
  * @param {fuction} deleteStep - removes the current step.
  */
-const EditStep = ({
-	children,
-	edit,
-	submitStep,
-	deleteStep,
-}: Props) => {
-// stores edited title (if user changes step title)
+const EditStep = ({ children, edit, submitStep, deleteStep }: Props) => {
+	// stores edited title (if user changes step title)
 	const [editTitle, setEditTitle] = useState<string | undefined>(
 		children.title ? undefined : children.title,
 	);
-// stores edited content (if user changes step content)
+	// stores edited content (if user changes step content)
 	const [editContent, setEditContent] = useState<string | undefined>(
 		children.content ? undefined : children.content,
 	);
-// stores edited map value (if user changes step map/location)
+	// stores edited map value (if user changes step map/location)
 	const [editMap, setEditMap] = useState<string | undefined>(
 		children.map ? undefined : children.map,
 	);
