@@ -22,6 +22,11 @@ const LessonSidebar = ({
 	setSelectedStep,
 	stepsOrder,
 }: Props) => {
+	
+	if (!lesson) {
+		return <></>;
+	}
+
 	return (
 		<div className="ml-2 border border-primary/40 bg-black/40 rounded-3xl h-full w-[20%] max-md:hidden">
 			<div className="flex gap-1 items-center justify-center flex-wrap px-10 py-3">

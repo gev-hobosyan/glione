@@ -2,13 +2,13 @@ import type {
 	AuthError,
 	Provider,
 	Session,
-	SupabaseUser,
+	User as SupabaseUser,
 	WeakPassword,
 } from "@supabase/supabase-js";
 import type { LucideProps } from "lucide-react";
 
 export type Author = {
-	_id: string;
+	_id?: string;
 	id?: number;
 	name: string;
 };

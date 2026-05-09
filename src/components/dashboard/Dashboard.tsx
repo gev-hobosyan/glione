@@ -33,8 +33,6 @@ const Dashboard = () => {
 		loadData();
 	}, [session]);
 
-	console.log(userData);
-
 	return (
 		<>
 			{loading ? (
@@ -57,7 +55,7 @@ const Dashboard = () => {
 
 						<SimpleDashboard
 							className="col-start-1 row-start-2 max-md:col-span-2"
-							number={userData?.streak || 0}
+							number={userData?.xp || 0}
 							text="XP"
 							icon={<Diamond className="stroke-primary" />}
 						/>

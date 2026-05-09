@@ -1,4 +1,4 @@
-const updateUserXp = async (id: string, energy: number) => {
+const updateUserEnergy = async (id: string, energy: number) => {
 	const API_URL = import.meta.env.VITE_API_URL || "";
 
 	try {
@@ -13,4 +13,4 @@ const updateUserXp = async (id: string, energy: number) => {
 	}
 };
 
-export default updateUserXp;
+export default updateUserEnergy;

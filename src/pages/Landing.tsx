@@ -3,11 +3,9 @@ import About from "@/components/common/About";
 import Card from "@/components/cards/Card";
 import Footer from "@/components/layout/footer/Footer";
 import Navbar from "@/components/layout/navbar/Navbar";
-import PriceCard from "@/components/cards/PriceCard";
 import { useTranslation } from "react-i18next";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import { Link } from "react-router-dom";
-import LessonsScroll from "@/components/dashboard/LessonsScroll";
 
 const Landing = () => {
 	const { t } = useTranslation();

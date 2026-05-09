@@ -7,6 +7,8 @@ const updateUserXp = async (id: string, xp: number) => {
 			body: JSON.stringify({ xp }),
 		});
 
+		console.log(id, xp, res);
+
 		return await res.json();
 	} catch (e) {
 		throw new Error(`${e}`);

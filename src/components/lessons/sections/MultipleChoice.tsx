@@ -7,7 +7,7 @@ import {
 	ChevronLeft,
 	ChevronRight,
 } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { t } from "i18next";
 
 interface Props {
@@ -25,9 +25,8 @@ const MultipleChoice = ({
 	changeStatus,
 }: Props) => {
 	const [answer, setAnswer] = useState<ChoiceType | undefined>(undefined);
-	const [completed, setCompleted] = useState<boolean>(answer !== undefined);
 
-	const [status, setStatus] = useState<"ns" | "right" | "wrong">("ns");
+	const status = useMemo(() => step.status || "ns", [step]);
 	const [message, setMessage] = useState<string>("");
 
 	console.log(status, message);
@@ -40,20 +39,16 @@ const MultipleChoice = ({
 		if (answer && step.status === "ns") {
 			if (answer?.isRight) {
 				changeStatus("completed", step._id!);
-				setStatus("right");
 				setMessage("Good job!");
 			} else {
 				const rightAnswer = step.choices?.find(
 					(answer) => answer.isRight == true,
 				);
 				changeStatus("wrong", step._id!);
-				setStatus("wrong");
 				setMessage(
 					`Oops.. Wrong answer!! The right answer was: ${rightAnswer?.text}`,
 				);
 			}
-
-			setCompleted(true);
 		}
 	};
 
@@ -86,13 +81,11 @@ const MultipleChoice = ({
 					>
 						<ChevronLeft />
 					</button>
-					{completed ? (
+					{status !== "ns" ? (
 						<button
 							onClick={() => {
 								changeCurrentStep("next");
-								setCompleted(false);
 								setAnswer(undefined);
-								setStatus("ns");
 							}}
 							className={`text-white absolute border border-primary/40 bg-primary/40 p-3 rounded-full bottom-7 right-10 hover:scale-110 transition duration-300 cursor-pointer`}
 						>
@@ -120,13 +113,11 @@ const MultipleChoice = ({
 						{t("Previous")}
 					</button>
 
-					{completed ? (
+					{status !== "ns" ? (
 						<button
 							onClick={() => {
 								changeCurrentStep("next");
-								setCompleted(false);
 								setAnswer(undefined);
-								setStatus("ns");
 							}}
 							className={`group flex items-center gap-2 ${step.status === "wrong" ? "bg-red-900" : "bg-green-900"} rounded-full px-10 py-2 text-sm cursor-pointer `}
 						>

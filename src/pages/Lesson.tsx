@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import LessonSidebar from "../components/lessons/LessonsSidebar";
 import MultipleChoice from "../components/lessons/sections/MultipleChoice";
-import { type Lesson as LessonType, type Step } from "@/utils/types";
+import { type Lesson as LessonType, type Step, type User } from "@/utils/types";
 import getLessonById from "@/utils/backend/lessons/getLessonById";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import TextSection from "../components/lessons/sections/TextSection";
@@ -9,6 +9,11 @@ import { useParams } from "react-router-dom";
 import ProgressBar from "@/components/lessons/ProgressBar";
 import { PhaserGame, type IRefPhaserGame } from "@/game/PhaserGame";
 import Complete from "@/components/lessons/sections/Complete";
+import BlurCircle from "@/components/common/BlurCircle";
+import getUserData from "@/utils/backend/users/getUserData";
+import { UserAuth } from "@/context/AuthContext";
+import updateUserEnergy from "@/utils/backend/users/updateUserEnergy";
+import { Zap } from "lucide-react";
 
 /**
  * The page where the lesson is displayed and can be done step by step.
@@ -22,6 +27,26 @@ const Lesson = () => {
 	const [error, setError] = useState<unknown>();
 
 	console.log(error);
+
+	const session = UserAuth()?.session;
+	const [userData, setUserData] = useState<User>();
+
+	const loadData = useCallback(async () => {
+		setLoading(true);
+
+		try {
+			setUserData(await getUserData(session?.user.id || ""));
+		} catch (e) {
+			console.log(e);
+		} finally {
+			setLoading(false);
+		}
+	}, [session]);
+
+	useEffect(() => {
+		// eslint-disable-next-line react-hooks/set-state-in-effect
+		loadData();
+	}, [loadData]);
 
 	//This state is used to store the current selected step.
 	const [selectedStep, setSelectedStep] = useState<number>(0);
@@ -70,26 +95,32 @@ const Lesson = () => {
 		if (direction == "prev") {
 			setSelectedStep((prev) => (prev !== 0 ? prev - 1 : prev));
 		} else {
-			setSelectedStep((prev) =>
-				stepsOrder!.length - 1 !== prev ? prev + 1 : prev,
-			);
+			if (userData && userData.energy > 0) {
+				setSelectedStep((prev) =>
+					stepsOrder!.length - 1 !== prev ? prev + 1 : prev,
+				);
+			}
 		}
 	};
 
 	//This function is used to update a step’s status by ID and increment the completed steps counter.
 	const changeStatus = (status: "ns" | "completed" | "wrong", id: number) => {
-		setLesson((prev) => {
-			if (prev == undefined) return undefined;
-			const steps = prev.steps?.map((step) => {
-				if (step._id == id) {
-					step.status = status;
-				}
-				return step;
-			});
-			setCompletedSteps((prev) => prev + 1);
+		if (userData?.energy && userData?.energy > 0) {
+			setLesson((prev) => {
+				if (prev == undefined) return undefined;
+				const steps = prev.steps?.map((step) => {
+					if (step._id == id) {
+						step.status = status;
+						updateUserEnergy(userData.userId, 1);
+						loadData();
+					}
+					return step;
+				});
+				setCompletedSteps((prev) => prev + 1);
 
-			return { ...prev, steps };
-		});
+				return { ...prev, steps };
+			});
+		}
 	};
 
 	//This function memoizes a progress bar component based on the percentage of completed steps.
@@ -122,11 +153,19 @@ const Lesson = () => {
 					/>
 					{completed ? (
 						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-[80%] max-md:w-full relative">
-							<Complete />
+							<BlurCircle />
+							<BlurCircle />
+							<BlurCircle top="-100px" left="-200px" />
+							<BlurCircle bottom="-320px" right="-200px" />
+							<Complete xp={25} userData={userData} />
 						</div>
 					) : step != undefined ? (
 						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-[80%] max-md:w-full relative">
 							{progressBar}
+
+							<div className="text-primary absolute flex gap-2 top-2 text-lg items-center justify-center -translate-x-1/2 left-1/2">
+								{userData?.energy || 0} <Zap className="w-5"></Zap>
+							</div>
 
 							{step.type == "text" ? (
 								<TextSection

@@ -16,35 +16,35 @@ const AdminDashboard = () => {
 			<div className="grid max-md:grid-rows-3 max-md:grid-cols-4 gap-2 row-span-5 col-start-1 row-start-1">
 				<SimpleDashboard
 					className="max-md:col-span-2"
-					number="9"
+					number={9}
 					text={t("Streak")}
 					icon={<Flame className="stroke-primary" />}
 				/>
 
 				<SimpleDashboard
 					className="col-start-1 row-start-2 max-md:col-span-2"
-					number="5"
+					number={5}
 					text={t("Finished")}
 					icon={<ClipboardCheck className="stroke-primary" />}
 				/>
 
 				<SimpleDashboard
 					className="col-start-1 row-start-3 max-md:col-span-2 max-md:col-start-3 max-md:row-start-1"
-					number="32"
+					number={32}
 					text={t("HoursLearned")}
 					icon={<Clock10 className="stroke-primary" />}
 				/>
 
 				<SimpleDashboard
 					className="col-start-1 row-start-4 max-md:col-span-2 max-md:col-start-3 max-md:row-start-2"
-					number="85"
+					number={85}
 					text={t("AvgScore")}
 					icon={<Percent className="stroke-primary" />}
 				/>
 
 				<SimpleDashboard
 					className="col-start-1 row-start-5 max-md:col-span-4 max-md:row-start-3"
-					number="2"
+					number={2}
 					text={t("DailyFinished")}
 					icon={<ClipboardCheck className="stroke-primary" />}
 				/>
