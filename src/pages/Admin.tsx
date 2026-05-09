@@ -23,8 +23,6 @@ const Admin = () => {
 		i18n.changeLanguage(languageToSet);
 	};
 
-	const [steps, setSteps] = useState<Step[]>([]);
-
 	const tabs: Tab<Omit<LucideProps, "ref">>[] = [
 		{
 			id: 0,
@@ -39,7 +37,7 @@ const Admin = () => {
 		{
 			id: 2,
 			icon: SquarePen,
-			element: <CreateLesson steps={steps} setSteps={setSteps} />,
+			element: <CreateLesson />,
 		},
 	];
 
