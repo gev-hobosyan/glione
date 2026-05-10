@@ -5,6 +5,7 @@ import LoadingSpinner from "../common/LoadingSpinner";
 import LessonCard from "../lessons/LessonCard";
 import { CloudAlert, RotateCcw } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 
 const LessonsScroll = () => {
 	// Stores lessons data, loading state, and any fetch error.
@@ -42,14 +43,14 @@ const LessonsScroll = () => {
 				<div className="w-full h-full bg-black/40 rounded-3xl border border-primary flex items-center justify-center text-white flex-col gap-3">
 					<div className="flex gap-3 items-center justify-center">
 						<CloudAlert className="stroke-red-700 w-7 h-7"></CloudAlert>
-						<p className="text-xl">Error</p>
+						<p className="text-xl">{t("MessageError")}</p>
 					</div>
-					<p>Unexpected error accured while fetching the lessons</p>
+					<p>{t("ErrorText")}</p>
 					<div
 						className="flex gap-3 group cursor-pointer"
 						onClick={loadData}
 					>
-						<p>Please try again</p>
+						<p>{t("PleaseTryAgain")}</p>
 						<RotateCcw className="w-5 group-hover:-rotate-360 transition-all duration-700"></RotateCcw>
 					</div>
 				</div>

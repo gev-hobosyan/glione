@@ -17,7 +17,7 @@ interface Props {
 }
 
 /**
- * TextSection is a component that displays a step with title, content, and navigation buttons.
+ * CodeSection is the lesson step UI for code exercises.
  *
  * @param step - Current step data (title, content, id)
  * @param changeCurrentStep - Function to move between steps (next or previous)

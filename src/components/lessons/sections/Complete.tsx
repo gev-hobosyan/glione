@@ -1,5 +1,6 @@
 import updateUserXp from "@/utils/backend/users/updateUserXp";
 import type { User } from "@/utils/types";
+import { t } from "i18next";
 import { ArrowRight, Diamond } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -17,11 +18,11 @@ const Complete = ({ xp, userData }: Props) => {
 				<div className="text-white flex flex-col items-center justify-center absolute -translate-1/2 left-1/2 top-1/2 text-center">
 					<img src="/medusa.png" className="w-100" />
 					<p className="text-lg font-bold">
-						Congrats Traveler! You've completed the lesson!
+						{t("CompleteText")}
 					</p>
-					<p>You've gained incredeble knowledge and skills</p>
+					<p>{t("CompleteText1")}</p>
 					<p className="flex gap-2 mt-1">
-						Here's your reward
+						{t("CompleteText2")}
 						<span className="flex gap-1 text-primary">
 							{xp} <Diamond className="w-5"></Diamond>
 						</span>

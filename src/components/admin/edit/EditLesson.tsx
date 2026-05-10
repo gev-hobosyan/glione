@@ -253,7 +253,7 @@ const EditLesson = () => {
 					.from("LessonImages")
 					.upload(file.name, file);
 
-				console.log(file);
+				console.log(error);
 
 				if (error) {
 					throw new Error(`${error}`);
@@ -503,7 +503,7 @@ const EditLesson = () => {
 									}}
 								></input>
 								<label htmlFor="file_input" className="text-white">
-									Choose images to upload
+									{t("Image")}
 								</label>
 							</div>
 							{files.map((file, index) => (
