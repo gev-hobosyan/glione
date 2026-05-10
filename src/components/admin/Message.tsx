@@ -1,6 +1,6 @@
 import { t } from "i18next";
 import { ArrowRight, CloudAlert, CloudCheck, RotateCcw } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
 	id: string;
@@ -21,6 +21,8 @@ interface Props {
  * @param {Function} tryAgain - a function to close the message while keeping the data
  */
 const Message = ({ title, text, type, id, reload, tryAgain }: Props) => {
+	const navigate = useNavigate();
+
 	return (
 		<>
 			<div
@@ -46,15 +48,21 @@ const Message = ({ title, text, type, id, reload, tryAgain }: Props) => {
 				</div>
 				<p className="text-white text-[15px]">{text}</p>
 				{type == "success" ? (
-					<Link
-						to={`/lesson/${id}`}
+					<div
 						className="bg-primary px-6 py-3 rounded-2xl flex items-center justify-center gap-1 group"
+						onClick={() => {
+							reload();
+							navigate(`/lesson/${id}`);
+						}}
 					>
 						<p className="text-white">{t("CheckItOut")}</p>
 						<ArrowRight className="w-3 stroke-white group-hover:translate-x-0.5 transition duration-200 " />
-					</Link>
+					</div>
 				) : (
-					<div className="bg-red-600 px-5 py-2 rounded-2xl flex items-center justify-center gap-1 group" onClick={tryAgain}>
+					<div
+						className="bg-red-600 px-5 py-2 rounded-2xl flex items-center justify-center gap-1 group"
+						onClick={tryAgain}
+					>
 						<p className="text-white">{t("TryAgain")}</p>
 						<RotateCcw className="w-5 stroke-white group-hover:rotate-360 transition duration-500 " />
 					</div>

@@ -29,17 +29,17 @@ const SignIn = () => {
 			if (res.success === false) {
 				let _emailError = "";
 				let _passwordError = "";
-				if(res.error?.code == "email_address_invalid") {
+				if (res.error?.code == "email_address_invalid") {
 					_emailError = "Invalid Email Address";
-				} else  if(res.error?.code == "email_exists") {
+				} else if (res.error?.code == "email_exists") {
 					_emailError = "This Email Already In Use";
-				} else if(res.error?.code == "email_not_confirmed") {
+				} else if (res.error?.code == "email_not_confirmed") {
 					_emailError = "Email Address Is Not Confirmed";
-				} else if(res.error?.code == "weak_password") {
+				} else if (res.error?.code == "weak_password") {
 					_passwordError = "Weak Password";
-				} else if(res.error?.code == "same_password") {
+				} else if (res.error?.code == "same_password") {
 					_passwordError = "This Password Already Used";
-				} else if(res.error?.code == "invalid_credentials") {
+				} else if (res.error?.code == "invalid_credentials") {
 					_emailError = "Invalid Email";
 					_passwordError = "Invalid Password";
 				} else {
@@ -107,10 +107,10 @@ const SignIn = () => {
 					<BlurCircle z="z-10" right="60px" top="30px" />
 					<BlurCircle z="z-10" left="120px" bottom="45px" />
 					<img src="/medusa.png" width="300px" />
-					<p className="text-white text-[18px]">
+					<p className="text-white text-[18px] text-center">
 						{t("SignInRightPageText")}
 					</p>
-					<p className="text-white text-[18px]">
+					<p className="text-white text-[18px] text-center">
 						{t("SignInRightPageText1")}
 					</p>
 				</div>

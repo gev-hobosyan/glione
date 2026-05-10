@@ -1,6 +1,6 @@
 import Input from "@/components/inputs/Input";
 import LoginOptions from "@/components/login/LoginOptions";
-import VerifyEmail from "@/components/login/VerifyEmail";
+// import VerifyEmail from "@/components/login/VerifyEmail";
 import { supabase } from "@/utils/supabaseClient";
 import type { AuthError, EmailOtpType } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
@@ -171,10 +171,10 @@ const SignUp = () => {
 						<BlurCircle z="z-10" right="60px" top="30px" />
 						<BlurCircle z="z-10" left="120px" bottom="45px" />
 						<img src="/medusa.png" width="300px" />
-						<p className="text-white text-[18px]">
+						<p className="text-white text-[18px] text-center">
 							{t("SignInRightPageText")}
 						</p>
-						<p className="text-white text-[18px]">
+						<p className="text-white text-[18px] text-center">
 							{t("SignInRightPageText1")}
 						</p>
 					</div>

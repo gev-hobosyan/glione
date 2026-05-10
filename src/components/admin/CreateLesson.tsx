@@ -74,6 +74,8 @@ const CreateLesson = () => {
 		setTitle("");
 		setDescription("");
 		setEditDescription(true);
+		setSteps([]);
+		setAuthors([]);
 
 		setCurentStepId(0);
 		setCurentTagId(0);
@@ -84,14 +86,16 @@ const CreateLesson = () => {
 		setError(false);
 		setLoading(false);
 	}, [
-		setCurentStepId,
-		setCurentTagId,
-		setDescription,
-		setEditDescription,
 		setEditTitle,
-		setFiles,
 		setTags,
 		setTitle,
+		setDescription,
+		setEditDescription,
+		setSteps,
+		setAuthors,
+		setCurentStepId,
+		setCurentTagId,
+		setFiles,
 	]);
 
 	const tryAgain = useCallback(() => {
