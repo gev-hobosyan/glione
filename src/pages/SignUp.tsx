@@ -104,9 +104,9 @@ const SignUp = () => {
 				<ArrowLeft className="stroke-secondary fixed top-7 left-7 w-8 hover:scale-110 transition-all duration-300" />
 			</Link>
 
-			{verifying && <VerifyEmail email={email} />}
+			{/*{verifying && <VerifyEmail email={email} />}*/}
 			<div className="h-screen w-screen overflow-hidden flex items-center justify-center">
-				<div className="flex flex-col items-center justify-center h-screen w-[50%] border-r border-r-gray-500 rounded-2xl">
+				<div className="flex flex-col items-center justify-center h-screen w-[50%] max-md:w-full md:border-r md:border-r-gray-500 rounded-2xl">
 					<img src="/icon.png" className="w-20 h-20 mb-1" />
 					<p className="text-white text-2xl mb-7">{t("SignUpWelcome")}</p>
 					{verifying ? (
@@ -163,7 +163,7 @@ const SignUp = () => {
 						</Link>
 					</div>
 				</div>
-				<div className="h-screen w-[50%]">
+				<div className="h-screen w-[50%] max-md:hidden">
 					<div className="relative w-full h-screen flex flex-col items-center justify-center">
 						<BlurCircle z="z-10" />
 						<BlurCircle z="z-10" left="50px" top="15px" />
