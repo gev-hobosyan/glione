@@ -40,7 +40,7 @@ const EditAuthors = ({ edit, currentAuthors }: Props) => {
 				<div className="flex flex-col items-center justify-center text-white">
 					<p>Current Authors</p>
 					<div className="flex gap-2 py-3">
-						{selectedAuthors.map((author) => (
+						{(selectedAuthors || []).map((author) => (
 							<div
 								className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300 relative group"
 								key={author.id}
@@ -59,7 +59,7 @@ const EditAuthors = ({ edit, currentAuthors }: Props) => {
 					</div>
 					<p>All Authors</p>
 					<div className="flex gap-2 py-3">
-						{allAuthors.map((author) => (
+						{(allAuthors || []).map((author) => (
 							<div
 								className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300 relative group"
 								key={author.id}

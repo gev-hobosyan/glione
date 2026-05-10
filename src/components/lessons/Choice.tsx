@@ -3,6 +3,7 @@ interface Props {
 	isRight: boolean;
 	isChecked: boolean;
 	check: () => void;
+	status: "ns" | "completed" | "wrong";
 }
 
 /**
@@ -12,18 +13,39 @@ interface Props {
  * @param {boolean} isChecked - whether this choice is currently selected.
  * @param {function} check - runs when the choice is selected.
  */
-const Choice = ({ children, isChecked, check }: Props) => {
+const Choice = ({ children, isChecked, check, status, isRight }: Props) => {
 	return (
 		<>
-			<div className="border border-primary w-full px-5 py-1.5 rounded-lg flex items-center gap-5 has-checked:shadow-[0_0_15px_#006e2a] group">
-				<input
-					id={children}
-					type="radio"
-					name="choice"
-					onChange={() => check()}
-					className="appearance-none border border-white w-4 h-4 rounded-full relative checked:after:absolute checked:after:bg-primary checked:after:z-2 after:w-2.5 after:h-2.5 checked:after:rounded-full checked:after:top-0.5 checked:after:left-0.5 after:scale-0 checked:after:scale-100 transition-transform duration-300 cursor-pointer group-hover:scale-110 group-hover:shadow-[0_0_100px_#006e2a] shrink-0"
-					checked={isChecked}
-				/>
+			<div
+				className={`border w-full px-5 py-1.5 rounded-lg flex items-center gap-5 ${isRight || status !== "wrong" ? "has-checked:shadow-[0_0_15px_#006e2a] border-primary" : "has-checked:shadow-[0_0_15px_#ff0000] has-checked:border-red-600 border-primary"} group`}
+			>
+				{status !== "wrong" ? (
+					<input
+						id={children}
+						type="radio"
+						name="choice"
+						onChange={() => check()}
+						className="appearance-none border border-white w-4 h-4 rounded-full relative checked:after:absolute checked:after:bg-primary checked:after:z-2 after:w-2.5 after:h-2.5 checked:after:rounded-full checked:after:top-0.5 checked:after:left-0.5 after:scale-0 checked:after:scale-100 transition-transform duration-300 cursor-pointer group-hover:scale-110 group-hover:shadow-[0_0_100px_#006e2a] shrink-0"
+						checked={isChecked}
+					/>
+				) : isRight ? (
+					<input
+						id={children}
+						type="radio"
+						name="right"
+						className="appearance-none border border-white w-4 h-4 rounded-full relative checked:after:absolute checked:after:bg-primary checked:after:z-2 after:w-2.5 after:h-2.5 checked:after:rounded-full checked:after:top-0.5 checked:after:left-0.5 after:scale-0 checked:after:scale-100 transition-transform duration-300 cursor-pointer group-hover:scale-110 group-hover:shadow-[0_0_100px_#006e2a] shrink-0"
+						checked={isChecked}
+					/>
+				) : (
+					<input
+						id={children}
+						type="radio"
+						name="choice"
+						onChange={() => check()}
+						className="appearance-none border border-white w-4 h-4 rounded-full relative checked:after:absolute checked:after:bg-red-600 checked:after:z-2 after:w-2.5 after:h-2.5 checked:after:rounded-full checked:after:top-0.5 checked:after:left-0.5 after:scale-0 checked:after:scale-100 transition-transform duration-300 cursor-pointer group-hover:scale-110 group-hover:shadow-[0_0_100px_#006e2a] shrink-0"
+						checked={true}
+					/>
+				)}
 				<label htmlFor={children} className="text-white">
 					{children}
 				</label>

@@ -407,7 +407,7 @@ const EditLesson = () => {
 						) : (
 							<div className="flex flex-col items-center gap-2">
 								<div className="text-white flex items-center justify-center gap-2">
-									{authors.map((author) => (
+									{(authors || []).map((author) => (
 										<div
 											className="bg-primary/40 border-primary border px-3 py-0.5 rounded-full backdrop-blur-lg cursor-pointer hover:scale-105 transition-all duration-300"
 											key={author.id}

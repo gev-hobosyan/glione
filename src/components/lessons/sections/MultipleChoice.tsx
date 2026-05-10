@@ -7,7 +7,7 @@ import {
 	ChevronLeft,
 	ChevronRight,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { t } from "i18next";
 
 interface Props {
@@ -24,7 +24,19 @@ const MultipleChoice = ({
 	selectedStep,
 	changeStatus,
 }: Props) => {
-	const [answer, setAnswer] = useState<ChoiceType | undefined>(undefined);
+	const [answer, setAnswer] = useState<ChoiceType | undefined>(
+		sessionStorage.getItem("answer")
+			? JSON.parse(sessionStorage.getItem("answer")!)
+			: undefined,
+	);
+
+	useEffect(() => {
+		if (answer !== undefined) {
+			sessionStorage.setItem("answer", JSON.stringify(answer));
+		} else {
+			sessionStorage.removeItem("answer");
+		}
+	}, [answer]);
 
 	const status = useMemo(() => step.status || "ns", [step]);
 	const [message, setMessage] = useState<string>("");
@@ -67,6 +79,7 @@ const MultipleChoice = ({
 								isRight={choice.isRight}
 								isChecked={answer?._id == choice._id}
 								check={() => check(choice._id!)}
+								status={status}
 							>
 								{choice.text}
 							</Choice>
