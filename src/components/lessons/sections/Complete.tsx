@@ -14,7 +14,7 @@ const Complete = ({ xp, userData }: Props) => {
 	return (
 		<>
 			<div className="flex items-center justify-center flex-col h-full w-full relative">
-				<div className="text-white flex flex-col items-center justify-center absolute -translate-1/2 left-1/2 top-1/2 ">
+				<div className="text-white flex flex-col items-center justify-center absolute -translate-1/2 left-1/2 top-1/2 text-center">
 					<img src="/medusa.png" className="w-100" />
 					<p className="text-lg font-bold">
 						Congrats Traveler! You've completed the lesson!

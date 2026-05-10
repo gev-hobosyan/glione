@@ -31,7 +31,7 @@ const CodeStep = ({ editAnswer, setEditAnswer, submitAnswer, children }: Props) 
 					onDoubleClick={() => setEditAnswer(children.content)}
 				>
 					<p className="text-white wrap-anywhere overflow-scroll">
-						{children.map}
+						{children.rightAnswer}
 					</p>
 					<Hint>{t("DoubleClickToEdit")}</Hint>
 				</div>

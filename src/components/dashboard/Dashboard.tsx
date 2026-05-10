@@ -17,6 +17,8 @@ const Dashboard = () => {
 	const [userData, setUserData] = useState<User>();
 	const [loading, setLoading] = useState<boolean>(true);
 
+	console.log(userData)
+
 	useEffect(() => {
 		const loadData = async () => {
 			setLoading(true);

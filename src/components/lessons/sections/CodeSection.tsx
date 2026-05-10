@@ -1,8 +1,5 @@
 import type { Step } from "@/utils/types";
-import { t } from "i18next";
 import {
-	ArrowLeft,
-	ArrowRight,
 	Check,
 	ChevronLeft,
 	ChevronRight,
@@ -10,7 +7,6 @@ import {
 } from "lucide-react";
 import React, { useEffect, useMemo, useState } from "react";
 import CodeEditor from "../CodeEditor";
-import useSessionStorage from "@/hooks/useSessionStorage";
 
 interface Props {
 	step: Step;
@@ -45,6 +41,8 @@ const CodeSection = ({
 	}, [code]);
 
 	const [output, setOutput] = useState("");
+
+	console.log(step.rightAnswer)
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const getOuput = (...data: any[]) => {

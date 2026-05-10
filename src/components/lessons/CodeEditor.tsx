@@ -17,8 +17,6 @@ interface Props {
 const CodeEditor = ({ getOutput, value, setValue }: Props) => {
 	const pyodide = Pyodide.getInstance();
 
-	console.log(value, setValue)
-
 	pyodide.setOutput(getOutput);
 
 	const monaco = useMonaco();

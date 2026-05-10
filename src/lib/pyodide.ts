@@ -41,8 +41,6 @@ class PythonRunner {
             sys.version
         `),
 			);
-
-			this._pyodide.runPython('print("Hello from Python!")');
 		});
 	}
 	

@@ -63,9 +63,9 @@ const Lesson = () => {
 		return [] as number[];
 	}, [lesson]);
 
-	const completed = useMemo(() => {
-		return completedSteps === stepsOrder?.length;
-	}, [completedSteps, stepsOrder]);
+	const [completed, setCompleted] = useState(false);
+
+	const [xpToGive, setXpToGive] = useState(0);
 
 	//This function memoizes and returns the currently selected step by matching the selected index to its step ID.
 	const step = useMemo(() => {
@@ -96,9 +96,13 @@ const Lesson = () => {
 			setSelectedStep((prev) => (prev !== 0 ? prev - 1 : prev));
 		} else {
 			if (userData && userData.energy > 0) {
-				setSelectedStep((prev) =>
-					stepsOrder!.length - 1 !== prev ? prev + 1 : prev,
-				);
+				setSelectedStep((prev) => {
+					if (stepsOrder!.length - 1 === prev) {
+						setCompleted(true);
+					}
+
+					return stepsOrder!.length - 1 !== prev ? prev + 1 : prev;
+				});
 			}
 		}
 	};
@@ -111,6 +115,17 @@ const Lesson = () => {
 				const steps = prev.steps?.map((step) => {
 					if (step._id == id) {
 						step.status = status;
+						if (status === "completed")
+							setXpToGive(
+								(prev) =>
+									prev +
+									(step.type === "text"
+										? 1
+										: step.type === "multi"
+											? 2
+											: 3),
+							);
+
 						updateUserEnergy(userData.userId, 1);
 						loadData();
 					}
@@ -157,7 +172,7 @@ const Lesson = () => {
 							<BlurCircle />
 							<BlurCircle top="-100px" left="-200px" />
 							<BlurCircle bottom="-320px" right="-200px" />
-							<Complete xp={25} userData={userData} />
+							<Complete xp={xpToGive} userData={userData} />
 						</div>
 					) : step != undefined ? (
 						<div className="border border-primary/40 bg-black/40 rounded-3xl h-full w-[80%] max-md:w-full relative">
