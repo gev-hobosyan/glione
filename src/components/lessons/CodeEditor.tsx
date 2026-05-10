@@ -1,21 +1,23 @@
 import Editor, { useMonaco } from "@monaco-editor/react";
-import { useEffect, useState } from "react";
+import { useEffect, type Dispatch, type SetStateAction } from "react";
 import { Pyodide } from "../../lib/pyodide.ts";
 import { PlayIcon } from "lucide-react";
 
 interface Props {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	getOutput: (...data: any[]) => void;
+	value: string;
+	setValue: Dispatch<SetStateAction<string>>;
 }
 
 /**
  * The CodeEditor used in the project
  *
  */
-const CodeEditor = ({ getOutput }: Props) => {
-	const [value, setValue] = useState(``);
-
+const CodeEditor = ({ getOutput, value, setValue }: Props) => {
 	const pyodide = Pyodide.getInstance();
+
+	console.log(value, setValue)
 
 	pyodide.setOutput(getOutput);
 
@@ -45,20 +47,21 @@ const CodeEditor = ({ getOutput }: Props) => {
 					"editorLineNumber.activeForeground": "#006E2A",
 				},
 			});
+
 			monaco.editor.setTheme("myTheme");
 		}
-	}, [monaco]);
+	});
 
 	return (
 		<div className="border border-primary rounded-4xl px-6 pt-10 pb-4 relative">
 			<Editor
-				height="50vh"
+				height="40vh"
 				language="python"
 				theme="vs-dark"
 				width="50vw"
 				value={value}
 				onChange={(value) => {
-					setValue(value!);
+					setValue(value || "");
 				}}
 				options={{
 					fontSize: 18,

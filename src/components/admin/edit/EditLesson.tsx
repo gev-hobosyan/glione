@@ -37,35 +37,41 @@ const EditLesson = () => {
 	const [editStep, setEditStep] = useState<Step | undefined>(undefined);
 	const [editTag, setEditTag] = useState<Tag | undefined>();
 
-	const [tags, setTags] = useSessionStorage<Tag[]>("tags", []);
-	const [title, setTitle] = useSessionStorage("title", "");
-	const [description, setDescription] = useSessionStorage("description", "");
-	const [steps, setSteps] = useSessionStorage<Step[]>("steps", []);
-
-	const [editTitle, setEditTitle] = useSessionStorage("editTitle", true);
-	const [editDescription, setEditDescription] = useSessionStorage(
+	const [tags, setTags] = useSessionStorage<Tag[]>("editTags", []);
+	const [title, setTitle] = useSessionStorage("editTitle", "");
+	const [description, setDescription] = useSessionStorage(
 		"editDescription",
+		"",
+	);
+	const [steps, setSteps] = useSessionStorage<Step[]>("editSteps", []);
+
+	const [editTitle, setEditTitle] = useSessionStorage("editEditTitle", true);
+	const [editDescription, setEditDescription] = useSessionStorage(
+		"editEditDescription",
 		true,
 	);
 	const [editAuthors, setEditAuthors] = useSessionStorage(
-		"editAuthors",
+		"editEditAuthors",
 		false,
 	);
 
-	const [authors, setAuthors] = useSessionStorage<Author[]>("authors", []);
+	const [authors, setAuthors] = useSessionStorage<Author[]>("editAuthors", []);
 
 	const [currentStepId, setCurentStepId] = useSessionStorage(
-		"currentStepId",
+		"editCurrentStepId",
 		0,
 	);
-	const [currentTagId, setCurentTagId] = useSessionStorage("currentTagId", 0);
+	const [currentTagId, setCurentTagId] = useSessionStorage(
+		"editCurrentTagId",
+		0,
+	);
 
 	const [success, setSuccess] = useState<string | undefined>(undefined);
 	const [error, setError] = useState<boolean>(false);
 	const [loading, setLoading] = useState<boolean>(false);
 
-	const [published, setPublished] = useSessionStorage("published", true);
-	const [files, setFiles] = useSessionStorage<File[]>("files", []);
+	const [published, setPublished] = useSessionStorage("editPublished", true);
+	const [files, setFiles] = useSessionStorage<File[]>("editFiles", []);
 
 	useEffect(() => {
 		const loadData = async () => {
@@ -84,7 +90,12 @@ const EditLesson = () => {
 							return { ...choice, id: index } as Choice;
 						});
 
-						return { ...step, id: index, choices } as Step;
+						return {
+							...step,
+							id: index,
+							choices,
+							rightAnswer: step.rightAnswer || "",
+						} as Step;
 					}) || [],
 				);
 				setPublished(res.published);
@@ -124,21 +135,28 @@ const EditLesson = () => {
 		setTitle("");
 		setDescription("");
 		setEditDescription(true);
+		setSteps([]);
+		setAuthors([]);
 
 		setCurentStepId(0);
 		setCurentTagId(0);
+
+		setFiles([]);
 
 		setSuccess(undefined);
 		setError(false);
 		setLoading(false);
 	}, [
-		setCurentStepId,
-		setCurentTagId,
-		setDescription,
-		setEditDescription,
 		setEditTitle,
 		setTags,
 		setTitle,
+		setDescription,
+		setEditDescription,
+		setSteps,
+		setAuthors,
+		setCurentStepId,
+		setCurentTagId,
+		setFiles,
 	]);
 
 	const tryAgain = useCallback(() => {
@@ -156,6 +174,7 @@ const EditLesson = () => {
 				content: "",
 				icon: icons.text,
 				map: "",
+				rightAnswer: "",
 			};
 
 			setCurentStepId((prev) => prev + 1);

@@ -47,7 +47,7 @@ const LessonCard = ({
 					<div
 						className={`flex ${authors.length > 3 ? "w-30" : ""} flex-wrap items-center justify-center mt-2 group`}
 					>
-						{authors.map((author) => (
+						{(authors || []).map((author) => (
 							<p
 								className="text-[11px] text-gray-400 ml-1 mb-0.5"
 								key={author._id}

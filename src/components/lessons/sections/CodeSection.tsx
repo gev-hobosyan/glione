@@ -8,8 +8,9 @@ import {
 	ChevronRight,
 	Trash,
 } from "lucide-react";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import CodeEditor from "../CodeEditor";
+import useSessionStorage from "@/hooks/useSessionStorage";
 
 interface Props {
 	step: Step;
@@ -31,10 +32,18 @@ interface Props {
 const CodeSection = ({
 	step,
 	changeCurrentStep,
-	selectedStep,
-	stepCount,
+	// selectedStep,
+	// stepCount,
 	changeStatus,
 }: Props) => {
+	const [code, setCode] = useState(sessionStorage.getItem("code") || "");
+
+	useEffect(() => {
+		if (code === undefined) return sessionStorage.setItem("code", code);
+
+		sessionStorage.setItem("code", code);
+	}, [code]);
+
 	const [output, setOutput] = useState("");
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -43,8 +52,6 @@ const CodeSection = ({
 	};
 
 	const status = useMemo(() => step.status || "ns", [step]);
-
-	console.log(step.rightAnswer);
 
 	const checkAnswer = () => {
 		if (output && step.status === "ns") {
@@ -58,7 +65,7 @@ const CodeSection = ({
 
 	return (
 		<>
-			<div className="flex items-center justify-center flex-col h-full w-full relative">
+			<div className="flex items-center justify-end flex-col h-full w-full relative">
 				<p className="text-white text-wrap font-sans mb-5 text-xl">
 					{step.title}
 				</p>
@@ -68,9 +75,13 @@ const CodeSection = ({
 					{step.content}
 				</p>
 
-				<CodeEditor getOutput={getOuput}></CodeEditor>
+				<CodeEditor
+					getOutput={getOuput}
+					value={code}
+					setValue={setCode}
+				></CodeEditor>
 
-				<div className="relative w-1/2 h-20 mt-10">
+				<div className="relative w-1/2 h-20 mt-10 mb-3">
 					<p className="absolute left-3 -top-5 text-secondary">Output:</p>
 					<Trash
 						className="absolute w-4 -top-6 right-5 stroke-red-600 cursor-pointer"
@@ -81,37 +92,6 @@ const CodeSection = ({
 					<div className="text-white flex items-center justify-center px-3 py-3 overflow-scroll border border-primary w-full h-full rounded-4xl">
 						{output}
 					</div>
-				</div>
-
-				<div className="flex justify-center gap-6  text-white absolute bottom-10  ">
-					<button
-						onClick={() => changeCurrentStep("prev")}
-						className={`group flex items-center gap-2 border border-white
-								rounded-full px-6 py-2 text-sm cursor-pointer
-								${selectedStep == 0 ? "hidden" : ""}`}
-					>
-						<ArrowLeft
-							className=" transition duration-300 group-hover:-translate-x-0.5"
-							size={18}
-						/>
-						{t("Previous")}
-					</button>
-
-					<button
-						onClick={() => {
-							changeStatus("completed", step._id!);
-							changeCurrentStep("next");
-						}}
-						className={`group flex items-center gap-2 bg-green-900
-							rounded-full px-10 py-2 text-sm cursor-pointer
-							${selectedStep == stepCount - 1 ? "hidden" : ""}`}
-					>
-						{t("Next")}
-						<ArrowRight
-							className="transition duration-300 group-hover:translate-x-0.5"
-							size={18}
-						/>
-					</button>
 				</div>
 
 				<div className="">

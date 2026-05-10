@@ -100,7 +100,7 @@ const TextSection = ({
 								return (
 									<img
 									key={index}
-										className="rounded-4xl border border-primary w-100 cursor-pointer min-h-100"
+										className="rounded-4xl border border-primary w-100 cursor-pointer"
 										src={files[part]}
 										onClick={() => {
 											setImageUrl(files[part]);
